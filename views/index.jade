@@ -1,0 +1,9 @@
+h1 Users ...
+
+#Users
+	ul
+		- each user in users
+			li 
+				a(href='/ekmHoliCal/user/' + user.id)= user.username
+
+a(href='/ekmHoliCal/create') Create User		
