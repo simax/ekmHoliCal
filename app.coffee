@@ -16,21 +16,36 @@ UserModel = mongoose.model 'Users', UserSchema
 
 con = mongoose.connect 'mongodb://localhost:8124/ekmHoliCal'
 app = express.createServer().listen process.env.PORT
-
-
-app.configure ->
-  app.set 'views', __dirname + '/views'
-  app.set 'view engine', 'jade'
-  app.use express.static(__dirname + '/public')
-  app.use express.bodyParser()
-  return 
  
+app.configure ->
+	app.set 'views', __dirname + '/views'
+	app.set 'view engine', 'jade'
+	app.set 'view options', layout: true
+	app.use express.bodyParser()
+	app.use app.router
+	app.use express.static(__dirname + '/public')
+
+app.get '/ekmHoliCal/index', (req, res, next) ->
+	res.render 'index'
+	# UserModel.find (err, docs) ->
+	# 	res.render 'index', 
+	# 		locals: 
+	# 			users: docs	
+
+
 app.get '/ekmHoliCal', (req, res) ->
-	#res.render 'Index'
 	UserModel.find (err, docs) ->
 		res.render 'index', 
 			locals: 
 				users: docs	
+
+app.get '/ekmHoliCal/Users', (req, res) ->
+	res.contentType 'application/json' 
+	users = [{'username': 'User1', 'address1': 'Somewhere1'}]
+	res.send(users)
+	# return "[{username: 'User1', address1: 'Somewhere1'}]"
+	# UserModel.find (err, users) ->
+	# 	users
 
 app.get '/ekmHoliCal/create', (req, res) -> 
 	res.render 'create'
