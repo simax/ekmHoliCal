@@ -39,13 +39,25 @@ app.get '/ekmHoliCal', (req, res) ->
 			locals: 
 				users: docs	
 
+
+app.post '/ekmHoliCal/Users', (req, res) ->
+	userName = req.param('username')
+	addr = req.param('address')
+
+	user = new UserModel( 
+		username: userName
+		address: addr
+	)	
+	user.save (err) ->
+		res.send(err) if err 	
+
+
 app.get '/ekmHoliCal/Users', (req, res) ->
 	res.contentType 'application/json' 
-	users = [{'username': 'User1', 'address1': 'Somewhere1'}]
-	res.send(users)
-	# return "[{username: 'User1', address1: 'Somewhere1'}]"
-	# UserModel.find (err, users) ->
-	# 	users
+	# users = [{'username': '!!!!!!!!!!!!User1', 'address1': '!!!!!!!Somewhere1'}]
+	# res.send(users)
+	UserModel.find (err, users) ->
+		res.send(users)
 
 app.get '/ekmHoliCal/create', (req, res) -> 
 	res.render 'create'
@@ -56,15 +68,7 @@ app.get '/ekmHoliCal/user/:id', (req, res) ->
 			locals: 
 				user: doc
 
-app.post '/ekmHoliCal/addnewuser', (req, res) -> 
-	
-	userName = req.param('username')
-	user = new UserModel(username : userName) 
- 
-	user.save (err) ->
-		if !err
-			# res.send user.username + " Saved successfully  !!!!" unless err
-			res.redirect('/ekmHoliCal')	
+
 
 app.get '/ekmHoliCal/find/:userName', (req, res) -> 
 	

@@ -45,16 +45,24 @@
     });
   });
 
+  app.post('/ekmHoliCal/Users', function(req, res) {
+    var addr, user, userName;
+    userName = req.param('username');
+    addr = req.param('address');
+    user = new UserModel({
+      username: userName,
+      address: addr
+    });
+    return user.save(function(err) {
+      if (err) return res.send(err);
+    });
+  });
+
   app.get('/ekmHoliCal/Users', function(req, res) {
-    var users;
     res.contentType('application/json');
-    users = [
-      {
-        'username': 'User1',
-        'address1': 'Somewhere1'
-      }
-    ];
-    return res.send(users);
+    return UserModel.find(function(err, users) {
+      return res.send(users);
+    });
   });
 
   app.get('/ekmHoliCal/create', function(req, res) {
@@ -68,17 +76,6 @@
           user: doc
         }
       });
-    });
-  });
-
-  app.post('/ekmHoliCal/addnewuser', function(req, res) {
-    var user, userName;
-    userName = req.param('username');
-    user = new UserModel({
-      username: userName
-    });
-    return user.save(function(err) {
-      if (!err) return res.redirect('/ekmHoliCal');
     });
   });
 
