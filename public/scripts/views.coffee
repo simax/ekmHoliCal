@@ -9,7 +9,8 @@ class UserItemView extends Backbone.View
     "click .remove": "remove"
 
   remove: ->
-    @model.destroy()
+    # @model.id = @model.attributes._id
+    @model.toClient().destroy()
 
   show: (e) ->
     alert @model.get("username")
@@ -49,16 +50,16 @@ class UserView extends Backbone.View
 
   save: (e) ->
     e.preventDefault()
-    model = new User(
+    model = new app.User(
       username: @$("#username").val()
-      address1: @$("#address1").val()
+      address: @$("#address").val()
     )
     @clear()
-    @collection.add model
+    @collection.create model
 
   clear: ->
     @$("#username").val ""
-    @$("#address1").val ""
+    @$("#address").val ""
 
   render: ->
     @template.tmpl(@model.toJSON()).appendTo @el

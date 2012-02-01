@@ -11,6 +11,14 @@
       User.__super__.constructor.apply(this, arguments);
     }
 
+    User.prototype.toClient = function() {
+      var obj;
+      obj = this;
+      obj.id = this.attributes._id;
+      delete obj._id;
+      return obj;
+    };
+
     return User;
 
   })(Backbone.Model);

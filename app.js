@@ -10,8 +10,8 @@
   ObjectId = Schema.ObjectId;
 
   UserSchema = new Schema({
-    '_id': ObjectId,
-    'username': String
+    'username': String,
+    'address': String
   });
 
   UserModel = mongoose.model('Users', UserSchema);
@@ -53,20 +53,26 @@
       username: userName,
       address: addr
     });
-    return user.save(function(err) {
+    user.save(function(err) {
       if (err) return res.send(err);
     });
+    return res.send(user);
   });
 
   app.get('/ekmHoliCal/Users', function(req, res) {
+    console.log("called get on : /ekmHoliCal/Users");
     res.contentType('application/json');
     return UserModel.find(function(err, users) {
       return res.send(users);
     });
   });
 
-  app.get('/ekmHoliCal/create', function(req, res) {
-    return res.render('create');
+  app["delete"]('/ekmHoliCal/Users/:id', function(req, res) {
+    console.log("called delete on : /ekmHoliCal/Users/:id");
+    return UserModel.findById(req.params.id, function(err, doc) {
+      doc.remove();
+      return res.send(204);
+    });
   });
 
   app.get('/ekmHoliCal/user/:id', function(req, res) {

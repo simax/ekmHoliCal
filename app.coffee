@@ -7,7 +7,8 @@ ObjectId = Schema.ObjectId
 
 # Create the model schema
 UserSchema = new Schema
- 	'_id': ObjectId, 'username': String 
+ 	'username': String, 'address': String 
+			
 
 # Register the model with Mongoose, Users is now a Mongo collection
 # Create instances of UserModel (i.e. user = new UserModel(...) then call 
@@ -27,18 +28,12 @@ app.configure ->
 
 app.get '/ekmHoliCal/index', (req, res, next) ->
 	res.render 'index'
-	# UserModel.find (err, docs) ->
-	# 	res.render 'index', 
-	# 		locals: 
-	# 			users: docs	
-
 
 app.get '/ekmHoliCal', (req, res) ->
 	UserModel.find (err, docs) ->
 		res.render 'index', 
 			locals: 
 				users: docs	
-
 
 app.post '/ekmHoliCal/Users', (req, res) ->
 	userName = req.param('username')
@@ -49,26 +44,28 @@ app.post '/ekmHoliCal/Users', (req, res) ->
 		address: addr
 	)	
 	user.save (err) ->
-		res.send(err) if err 	
+		res.send(err) if err 
+	res.send(user)		
 
 
 app.get '/ekmHoliCal/Users', (req, res) ->
+	console.log "called get on : /ekmHoliCal/Users"
 	res.contentType 'application/json' 
-	# users = [{'username': '!!!!!!!!!!!!User1', 'address1': '!!!!!!!Somewhere1'}]
-	# res.send(users)
 	UserModel.find (err, users) ->
 		res.send(users)
 
-app.get '/ekmHoliCal/create', (req, res) -> 
-	res.render 'create'
+
+app.delete '/ekmHoliCal/Users/:id', (req, res) ->
+	console.log "called delete on : /ekmHoliCal/Users/:id"
+	UserModel.findById req.params.id, (err, doc) ->
+		doc.remove()
+		res.send(204)
  
 app.get '/ekmHoliCal/user/:id', (req, res) -> 
 	UserModel.findById req.params.id, (err, doc) ->
 		res.render 'edit',
 			locals: 
 				user: doc
-
-
 
 app.get '/ekmHoliCal/find/:userName', (req, res) -> 
 	

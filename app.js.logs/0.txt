@@ -1,0 +1,7 @@
+called get on : /ekmHoliCal/Users
+called delete on : /ekmHoliCal/Users/:id
+called get on : /ekmHoliCal/Users
+called delete on : /ekmHoliCal/Users/:id
+called delete on : /ekmHoliCal/Users/:id
+called delete on : /ekmHoliCal/Users/:id
+called delete on : /ekmHoliCal/Users/:id

@@ -24,7 +24,7 @@
     };
 
     UserItemView.prototype.remove = function() {
-      return this.model.destroy();
+      return this.model.toClient().destroy();
     };
 
     UserItemView.prototype.show = function(e) {
@@ -98,17 +98,17 @@
     UserView.prototype.save = function(e) {
       var model;
       e.preventDefault();
-      model = new User({
+      model = new app.User({
         username: this.$("#username").val(),
-        address1: this.$("#address1").val()
+        address: this.$("#address").val()
       });
       this.clear();
-      return this.collection.add(model);
+      return this.collection.create(model);
     };
 
     UserView.prototype.clear = function() {
       this.$("#username").val("");
-      return this.$("#address1").val("");
+      return this.$("#address").val("");
     };
 
     UserView.prototype.render = function() {
