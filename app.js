@@ -60,15 +60,21 @@
   });
 
   app.get('/ekmHoliCal/Users', function(req, res) {
-    console.log("called get on : /ekmHoliCal/Users");
     res.contentType('application/json');
     return UserModel.find(function(err, users) {
       return res.send(users);
     });
   });
 
+  app.put('/ekmHoliCal/Users/:id', function(req, res) {
+    console.log("put @ /ekmHoliCal/Users/:id");
+    return UserModel.findById(req.params.id, function(err, doc) {
+      doc.update();
+      return res.send(200);
+    });
+  });
+
   app["delete"]('/ekmHoliCal/Users/:id', function(req, res) {
-    console.log("called delete on : /ekmHoliCal/Users/:id");
     return UserModel.findById(req.params.id, function(err, doc) {
       doc.remove();
       return res.send(204);

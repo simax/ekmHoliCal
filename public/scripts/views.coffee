@@ -1,24 +1,24 @@
 class UserItemView extends Backbone.View
   tagName: "li"
   initialize: ->
-    _.bindAll @, "render", "show", "remove"
+    _.bindAll @, "render", "edit", "remove"
     @template = $("#user-list-item-template")
 
   events:
-    "click .edit": "show"
+    "click .edit": "edit"
     "click .remove": "remove"
 
   remove: ->
-    # @model.id = @model.attributes._id
     @model.toClient().destroy()
 
-  show: (e) ->
-    alert @model.get("username")
+  edit: (e) ->
+    console.log("xxxxxxxxxxxxxx")
+    app.UserView model: @model
+  
 
   render: ->
     @template.tmpl(@model.toJSON()).appendTo @el
     @
-
 
 class UserListView extends Backbone.View
   tagName: "ul"
@@ -43,6 +43,8 @@ class UserView extends Backbone.View
   initialize: ->
     _.bindAll @, "render"
     @template = $("#userTemplate")
+    console.log "UserView.model: "
+    # @model = options.model ? new app.User
     @render()
 
   events:
@@ -50,12 +52,17 @@ class UserView extends Backbone.View
 
   save: (e) ->
     e.preventDefault()
-    model = new app.User(
-      username: @$("#username").val()
-      address: @$("#address").val()
-    )
-    @clear()
-    @collection.create model
+    # model = new app.User 
+
+    # @model.username = @$("#username").val()
+    # @model.address = @$("#address").val()
+  
+    # @clear()
+    # if @model._id  
+    #   @model.save
+    # else    
+    #   @collection.create model
+
 
   clear: ->
     @$("#username").val ""
@@ -69,6 +76,4 @@ class UserView extends Backbone.View
 @app.UserItemView = UserItemView
 @app.UserListView = UserListView
 @app.UserView = UserView
-
-
 

@@ -49,14 +49,17 @@ app.post '/ekmHoliCal/Users', (req, res) ->
 
 
 app.get '/ekmHoliCal/Users', (req, res) ->
-	console.log "called get on : /ekmHoliCal/Users"
 	res.contentType 'application/json' 
 	UserModel.find (err, users) ->
 		res.send(users)
 
+app.put '/ekmHoliCal/Users/:id', (req, res) ->
+	console.log "put @ /ekmHoliCal/Users/:id"
+	UserModel.findById req.params.id, (err, doc) ->
+		doc.update()
+		res.send(200)
 
 app.delete '/ekmHoliCal/Users/:id', (req, res) ->
-	console.log "called delete on : /ekmHoliCal/Users/:id"
 	UserModel.findById req.params.id, (err, doc) ->
 		doc.remove()
 		res.send(204)

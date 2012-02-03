@@ -14,12 +14,12 @@
     UserItemView.prototype.tagName = "li";
 
     UserItemView.prototype.initialize = function() {
-      _.bindAll(this, "render", "show", "remove");
+      _.bindAll(this, "render", "edit", "remove");
       return this.template = $("#user-list-item-template");
     };
 
     UserItemView.prototype.events = {
-      "click .edit": "show",
+      "click .edit": "edit",
       "click .remove": "remove"
     };
 
@@ -27,8 +27,11 @@
       return this.model.toClient().destroy();
     };
 
-    UserItemView.prototype.show = function(e) {
-      return alert(this.model.get("username"));
+    UserItemView.prototype.edit = function(e) {
+      console.log("xxxxxxxxxxxxxx");
+      return app.UserView({
+        model: this.model
+      });
     };
 
     UserItemView.prototype.render = function() {
@@ -88,6 +91,7 @@
     UserView.prototype.initialize = function() {
       _.bindAll(this, "render");
       this.template = $("#userTemplate");
+      console.log("UserView.model: ");
       return this.render();
     };
 
@@ -96,14 +100,7 @@
     };
 
     UserView.prototype.save = function(e) {
-      var model;
-      e.preventDefault();
-      model = new app.User({
-        username: this.$("#username").val(),
-        address: this.$("#address").val()
-      });
-      this.clear();
-      return this.collection.create(model);
+      return e.preventDefault();
     };
 
     UserView.prototype.clear = function() {
