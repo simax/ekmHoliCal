@@ -17,25 +17,32 @@ UserModel = mongoose.model 'Users', UserSchema
 
 con = mongoose.connect 'mongodb://localhost:8124/ekmHoliCal'
 app = express.createServer().listen process.env.PORT
+
+root = '/ekmHoliCal'
  
 app.configure ->
+	app.register 'html',
+		compile: (str, options) ->
+			(locals) ->
+				str
+
 	app.set 'views', __dirname + '/views'
-	app.set 'view engine', 'jade'
-	app.set 'view options', layout: true
+	app.set 'view engine', 'html'
+	app.set 'view options', layout: false
 	app.use express.bodyParser()
 	app.use app.router
 	app.use express.static(__dirname + '/public')
 
-app.get '/ekmHoliCal/index', (req, res, next) ->
+app.get root + '/index', (req, res, next) ->
 	res.render 'index'
 
-app.get '/ekmHoliCal', (req, res) ->
+app.get root, (req, res) ->
 	UserModel.find (err, docs) ->
 		res.render 'index', 
 			locals: 
 				users: docs	
 
-app.post '/ekmHoliCal/Users', (req, res) ->
+app.post root + '/Users', (req, res) ->
 	userName = req.param('username')
 	addr = req.param('address')
 
@@ -47,31 +54,29 @@ app.post '/ekmHoliCal/Users', (req, res) ->
 		res.send(err) if err 
 	res.send(user)		
 
-
-app.get '/ekmHoliCal/Users', (req, res) ->
+app.get root + '/Users', (req, res) ->
 	res.contentType 'application/json' 
 	UserModel.find (err, users) ->
 		res.send(users)
 
-app.put '/ekmHoliCal/Users/:id', (req, res) ->
+app.put root + '/Users/:id', (req, res) ->
 	console.log "put @ /ekmHoliCal/Users/:id"
 	UserModel.findById req.params.id, (err, doc) ->
 		doc.update()
 		res.send(200)
 
-app.delete '/ekmHoliCal/Users/:id', (req, res) ->
+app.delete root + '/Users/:id', (req, res) ->
 	UserModel.findById req.params.id, (err, doc) ->
 		doc.remove()
 		res.send(204)
  
-app.get '/ekmHoliCal/user/:id', (req, res) -> 
+app.get root + '/user/:id', (req, res) -> 
 	UserModel.findById req.params.id, (err, doc) ->
 		res.render 'edit',
 			locals: 
 				user: doc
 
-app.get '/ekmHoliCal/find/:userName', (req, res) -> 
-	
+app.get root + '/find/:userName', (req, res) -> 
 	UserModel.findOne 'username' : req.params.userName, (err, doc) ->
 		if doc 
 			res.send "User " + doc.username + " found"

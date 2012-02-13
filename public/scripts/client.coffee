@@ -1,17 +1,26 @@
+Backbone.LayoutManager.configure 
+  render: (template, context) ->
+    Handlebars.compile(template)(context)
+
 $ ->
 
-  app.users.fetch()
   app.user = new app.User()
 
-  userListView = new app.UserListView(
-    el: $("#list-item")
-    collection: app.users
-  )
+  app.users.fetch().success () ->
+    main = new Backbone.LayoutManager 
+      name: "#main"
 
-  userView = new app.UserView(
-    el: $("#item")
-    model: app.user
-    collection: app.users
-  )
+    userListView = new app.UserListView
+      el: $(".list")
+      collection: app.users
+    
+    main.render (contents) -> 
+      $(".container").html(contents)
+  
+  return    
 
-  return
+  # userItemView = new app.UserItemView(
+  #   el: $(".detail")
+  #   model: app.user
+  #   collection: app.users
+  # )

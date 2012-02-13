@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Users</title>
+		<script type="text/javascript" src="/scripts/libs/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="/scripts/libs/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="/scripts/libs/underscore.js"></script>
+		<script type="text/javascript" src="/scripts/libs/backbone.js"></script>
+		<script type="text/javascript" src="/scripts/libs/handlebars.js"></script>
+		<script type="text/javascript" src="/scripts/libs/backbone.layoutmanager.js"></script>
+
+		<script type="text/javascript" src="/scripts/models.js"></script>
+		<script type="text/javascript" src="/scripts/collections.js"></script>
+		<script type="text/javascript" src="/scripts/views.js"></script>
+	</head>
+	<body>
+		<!-- Main content container -->
+		<div class="container"></div>	
+
+		<!-- Layout template -->
+		<script type="layout" id="main">
+			<div>
+				<br/><br/>
+				<div class="detail"></div>
+				<br/>
+				<br/>
+				<div class="list"></div>
+				<br/>
+				<br/>
+				<br/>
+			</div>
+		</script>
+
+		<script type="template" id="detail">
+			<form id="add-edit-form">
+				User name: <input id="username" type="text"/><br/>
+				Address 1: <input id="address" type="text"/><br/>
+				<button id="save-button" type="submit">Save</button>
+			</form>
+		</script>
+
+		<script type="template" id="list">
+			{{#each}}		
+				{{username}} {{address}}	
+				<button type="button" class="edit">Edit</button>
+				<button type="button" class="remove">Remove</button>
+			{{/each}}	
+		</script>
+
+		<script type="text/javascript" src="/scripts/client.js"></script>
+
+	</body>
+</html>		

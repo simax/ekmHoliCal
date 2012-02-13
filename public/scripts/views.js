@@ -1,5 +1,5 @@
 (function() {
-  var UserItemView, UserListView, UserView, _ref,
+  var UserItemView, UserListView, _ref,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
@@ -10,6 +10,8 @@
     function UserItemView() {
       UserItemView.__super__.constructor.apply(this, arguments);
     }
+
+    UserItemView.prototype.template = "#detail";
 
     UserItemView.prototype.tagName = "li";
 
@@ -34,11 +36,6 @@
       });
     };
 
-    UserItemView.prototype.render = function() {
-      this.template.tmpl(this.model.toJSON()).appendTo(this.el);
-      return this;
-    };
-
     return UserItemView;
 
   })(Backbone.View);
@@ -51,78 +48,32 @@
       UserListView.__super__.constructor.apply(this, arguments);
     }
 
-    UserListView.prototype.tagName = "ul";
+    UserListView.prototype.template = "#list";
 
     UserListView.prototype.initialize = function() {
       _.bindAll(this, "render");
       this.collection.bind("add", this.render);
       this.collection.bind("remove", this.render);
-      this.collection.bind("reset", this.render);
-      return this.render();
+      return this.collection.bind("reset", this.render);
     };
 
     UserListView.prototype.render = function() {
-      var els;
-      els = [];
+      var view;
+      view = layout(this);
       this.collection.each(function(model) {
-        var view;
-        view = new UserItemView({
+        return view.insert("ul", new UserItemView({
           model: model
-        });
-        return els.push(view.render().el);
+        }));
       });
-      $(this.el).empty();
-      $(this.el).append(els);
-      return this;
+      return view.render();
     };
 
     return UserListView;
 
   })(Backbone.View);
 
-  UserView = (function(_super) {
-
-    __extends(UserView, _super);
-
-    function UserView() {
-      UserView.__super__.constructor.apply(this, arguments);
-    }
-
-    UserView.prototype.initialize = function() {
-      _.bindAll(this, "render");
-      this.template = $("#userTemplate");
-      console.log("UserView.model: ");
-      return this.render();
-    };
-
-    UserView.prototype.events = {
-      "submit #add-edit-form": "save"
-    };
-
-    UserView.prototype.save = function(e) {
-      return e.preventDefault();
-    };
-
-    UserView.prototype.clear = function() {
-      this.$("#username").val("");
-      return this.$("#address").val("");
-    };
-
-    UserView.prototype.render = function() {
-      this.template.tmpl(this.model.toJSON()).appendTo(this.el);
-      return this;
-    };
-
-    return UserView;
-
-  })(Backbone.View);
-
   this.app = (_ref = window.app) != null ? _ref : {};
 
-  this.app.UserItemView = UserItemView;
-
   this.app.UserListView = UserListView;
-
-  this.app.UserView = UserView;
 
 }).call(this);

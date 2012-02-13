@@ -1,17 +1,25 @@
 (function() {
 
+  Backbone.LayoutManager.configure({
+    render: function(template, context) {
+      return Handlebars.compile(template)(context);
+    }
+  });
+
   $(function() {
-    var userListView, userView;
-    app.users.fetch();
     app.user = new app.User();
-    userListView = new app.UserListView({
-      el: $("#list-item"),
-      collection: app.users
-    });
-    userView = new app.UserView({
-      el: $("#item"),
-      model: app.user,
-      collection: app.users
+    app.users.fetch().success(function() {
+      var main, userListView;
+      main = new Backbone.LayoutManager({
+        name: "#main"
+      });
+      userListView = new app.UserListView({
+        el: $(".list"),
+        collection: app.users
+      });
+      return main.render(function(contents) {
+        return $(".container").html(contents);
+      });
     });
   });
 
