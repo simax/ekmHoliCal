@@ -7,18 +7,17 @@
   });
 
   $(function() {
+    var main;
     app.user = new app.User();
+    main = new Backbone.LayoutManager({
+      name: "#main"
+    });
     app.users.fetch().success(function() {
-      var main, userListView;
-      main = new Backbone.LayoutManager({
-        name: "#main"
-      });
-      userListView = new app.UserListView({
-        el: $(".list"),
+      main.views[".list"] = new app.UserListView({
         collection: app.users
       });
-      return main.render(function(contents) {
-        return $(".container").html(contents);
+      main.render(function(content) {
+        return $(".container").html(content);
       });
     });
   });

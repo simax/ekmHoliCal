@@ -54,7 +54,8 @@ app.post root + '/Users', (req, res) ->
 		res.send(err) if err 
 	res.send(user)		
 
-app.get root + '/Users', (req, res) ->
+app.get root + '/users', (req, res) ->
+	console.log "Attempting to fetch from /localhost" + root + '/Users'
 	res.contentType 'application/json' 
 	UserModel.find (err, users) ->
 		res.send(users)

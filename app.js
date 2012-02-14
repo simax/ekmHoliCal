@@ -68,7 +68,8 @@
     return res.send(user);
   });
 
-  app.get(root + '/Users', function(req, res) {
+  app.get(root + '/users', function(req, res) {
+    console.log("Attempting to fetch from /localhost" + root + '/Users');
     res.contentType('application/json');
     return UserModel.find(function(err, users) {
       return res.send(users);

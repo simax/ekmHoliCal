@@ -11,30 +11,9 @@
       UserItemView.__super__.constructor.apply(this, arguments);
     }
 
-    UserItemView.prototype.template = "#detail";
+    UserItemView.prototype.template = "#item";
 
     UserItemView.prototype.tagName = "li";
-
-    UserItemView.prototype.initialize = function() {
-      _.bindAll(this, "render", "edit", "remove");
-      return this.template = $("#user-list-item-template");
-    };
-
-    UserItemView.prototype.events = {
-      "click .edit": "edit",
-      "click .remove": "remove"
-    };
-
-    UserItemView.prototype.remove = function() {
-      return this.model.toClient().destroy();
-    };
-
-    UserItemView.prototype.edit = function(e) {
-      console.log("xxxxxxxxxxxxxx");
-      return app.UserView({
-        model: this.model
-      });
-    };
 
     return UserItemView;
 
@@ -57,7 +36,7 @@
       return this.collection.bind("reset", this.render);
     };
 
-    UserListView.prototype.render = function() {
+    UserListView.prototype.render = function(layout) {
       var view;
       view = layout(this);
       this.collection.each(function(model) {

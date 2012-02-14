@@ -6,17 +6,22 @@ $ ->
 
   app.user = new app.User()
 
-  app.users.fetch().success () ->
-    main = new Backbone.LayoutManager 
-      name: "#main"
+  main = new Backbone.LayoutManager 
+    name: "#main"
 
-    userListView = new app.UserListView
-      el: $(".list")
+  app.users.fetch().success () ->
+
+    main.views[".list"] = new app.UserListView
+      # el: $(".list")
       collection: app.users
     
-    main.render (contents) -> 
-      $(".container").html(contents)
-  
+    # userListView.render()
+    
+    main.render (content) -> 
+      $(".container").html(content)
+    
+    return
+    
   return    
 
   # userItemView = new app.UserItemView(

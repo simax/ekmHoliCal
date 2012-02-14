@@ -7,7 +7,11 @@
 		<script type="text/javascript" src="/scripts/libs/underscore.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.js"></script>
 		<script type="text/javascript" src="/scripts/libs/handlebars.js"></script>
-		<script type="text/javascript" src="/scripts/libs/backbone.layoutmanager.js"></script>
+		// <script type="text/javascript" src="/scripts/libs/backbone.layoutmanager.js"></script>
+
+
+		<script type="text/javascript" src="/scripts/libs/json2.js"></script>
+		<script type="text/javascript" src="/scripts/libs/backbone.marionette.js"></script>
 
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
@@ -19,19 +23,19 @@
 
 		<!-- Layout template -->
 		<script type="layout" id="main">
+			<div class="list"></div>
 			<div>
 				<br/><br/>
-				<div class="detail"></div>
+				<div class="user-maintenance"></div>
 				<br/>
 				<br/>
-				<div class="list"></div>
 				<br/>
 				<br/>
 				<br/>
 			</div>
 		</script>
 
-		<script type="template" id="detail">
+		<script type="template" id="user-maintenance">
 			<form id="add-edit-form">
 				User name: <input id="username" type="text"/><br/>
 				Address 1: <input id="address" type="text"/><br/>
@@ -39,13 +43,17 @@
 			</form>
 		</script>
 
-		<script type="template" id="list">
-			{{#each}}		
-				{{username}} {{address}}	
-				<button type="button" class="edit">Edit</button>
-				<button type="button" class="remove">Remove</button>
-			{{/each}}	
+		<script type="template" id="item">
+			{{username}} {{address}}	
+			<button type="button" class="edit">Edit</button>
+			<button type="button" class="remove">Remove</button>
 		</script>
+
+
+		<script type="template" id="list">
+			<ul></ul>
+		</script>
+
 
 		<script type="text/javascript" src="/scripts/client.js"></script>
 

@@ -1,22 +1,24 @@
 class UserItemView extends Backbone.View
-  template: "#detail"
+  template: "#item"
   tagName: "li"
 
-  initialize: ->
-    _.bindAll @, "render", "edit", "remove"
-    @template = $("#user-list-item-template")
+  # initialize: ->
+  #   _.bindAll @, "render", "edit", "remove"
+  #   # @template = $("#user-list-item-template")
 
-  events:
-    "click .edit": "edit"
-    "click .remove": "remove"
+  # events:
+  #   "click .edit": "edit"
+  #   "click .remove": "remove"
 
-  remove: ->
-    @model.toClient().destroy()
+  # remove: ->
+  #   @model.toClient().destroy()
 
-  edit: (e) ->
-    console.log("xxxxxxxxxxxxxx")
-    app.UserView model: @model
+  # edit: (e) ->
+  #   console.log("xxxxxxxxxxxxxx")
+  #   app.UserView model: @model
   
+  # serialize: () ->
+  #   @model
 
   # render: ->
   #   tmpl = Handlebars.compile(@template.html()) @model.toJSON()
@@ -35,10 +37,12 @@ class UserListView extends Backbone.View
   # serialize: -> 
   #   return @collection.toJSON()
         
-  render: ->
+  render: (layout) ->
     view = layout(this)
+
     @collection.each (model) ->
       view.insert "ul", new UserItemView(model: model)
+    
     view.render()
 
     # els = []
