@@ -1,31 +1,16 @@
-Backbone.LayoutManager.configure 
-  render: (template, context) ->
-    Handlebars.compile(template)(context)
 
 $ ->
 
-  app.user = new app.User()
+  app.bind "initialize:before", (options) ->
+    Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
 
-  main = new Backbone.LayoutManager 
-    name: "#main"
+  app.addRegions
+    listRegion: "#list"
 
-  app.users.fetch().success () ->
+  app.addInitializer () ->
+    userListView = new @UserListView
+      collection: @users
 
-    main.views[".list"] = new app.UserListView
-      # el: $(".list")
-      collection: app.users
+    @listRegion.show(userListView) 
     
-    # userListView.render()
-    
-    main.render (content) -> 
-      $(".container").html(content)
-    
-    return
-    
-  return    
-
-  # userItemView = new app.UserItemView(
-  #   el: $(".detail")
-  #   model: app.user
-  #   collection: app.users
-  # )
+  app.start()

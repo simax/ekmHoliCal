@@ -1,99 +1,52 @@
-class UserItemView extends Backbone.View
+@app = window.app ? new Backbone.Marionette.Application()
+
+class UserItemView extends Backbone.Marionette.ItemView
   template: "#item"
   tagName: "li"
 
-  # initialize: ->
-  #   _.bindAll @, "render", "edit", "remove"
-  #   # @template = $("#user-list-item-template")
+  events:
+    "click .edit": "edit"
+    "click .remove": "delete"
 
-  # events:
-  #   "click .edit": "edit"
-  #   "click .remove": "remove"
+  delete: (e) ->
+    @model.destroy()
 
-  # remove: ->
-  #   @model.toClient().destroy()
-
-  # edit: (e) ->
-  #   console.log("xxxxxxxxxxxxxx")
-  #   app.UserView model: @model
+  edit: (e) ->
+    alert JSON.stringify @model
   
-  # serialize: () ->
-  #   @model
-
-  # render: ->
-  #   tmpl = Handlebars.compile(@template.html()) @model.toJSON()
-  #   $(@el).html tmpl 
-  #   @
-
-class UserListView extends Backbone.View
-  template: "#list"
-
-  initialize: ->
-    _.bindAll @, "render"
-    @collection.bind "add", @render
-    @collection.bind "remove", @render
-    @collection.bind "reset", @render
-
-  # serialize: -> 
-  #   return @collection.toJSON()
-        
-  render: (layout) ->
-    view = layout(this)
-
-    @collection.each (model) ->
-      view.insert "ul", new UserItemView(model: model)
-    
-    view.render()
-
-    # els = []
-    # @collection.each (model) ->
-    #   view = new UserItemView(model: model)
-    #   els.push view.render().el
-
-    # $(@el).empty()
-    # $(@el).append els
-    # @
-
-# class UserView extends Backbone.LayoutManager.View
-
-#   initialize: ->
-#     # _.bindAll @, "render"
-#     # @template = $("#userTemplate")
-#     console.log "UserView.model: "
-#     # @model = options.model ? new app.User
-#     # @render()
-
-#   events:
-#     "submit #add-edit-form": "save"
-
-#   save: (e) ->
-#     e.preventDefault()
-#     # model = new app.User 
-
-#     # @model.username = @$("#username").val()
-#     # @model.address = @$("#address").val()
-  
-#     # @clear()
-#     # if @model._id  
-#     #   @model.save
-#     # else    
-#     #   @collection.create model
+@app.UserItemView = UserItemView
 
 
-#   clear: ->
-#     @$("#username").val ""
-#     @$("#address").val ""
+class UserListView extends Backbone.Marionette.CollectionView
+  tagName: "ul",
+  itemView: app.UserItemView
 
-#   serialize: () -> @model.toJSON()  
-
-#   # render: ->
-#   #   tmpl = Handlebars.compile(@template.html()) @model.toJSON()
-#   #   $(@el).html tmpl 
-#   #   @
-
-
-@app = window.app ? {}
-# @app.UserItemView = UserItemView
 @app.UserListView = UserListView
-# @app.UserView = UserView
+
+
+class UserEditView extends Backbone.Marionette.ItemView
+  template: "#user-maintenance"
+
+  events:
+    "submit #add-edit-form": "save"
+
+  save: (e) ->
+    e.preventDefault()
+    model = new app.User 
+
+    @model.username = @$("#username").val()
+    @model.address = @$("#address").val()
+  
+    @clear()
+    if @model.id  
+      @model.save
+    else    
+      @collection.create model
+
+  clear: ->
+    @$("#username").val ""
+    @$("#address").val ""
+
+
+@app.UserEditView = UserEditView
 

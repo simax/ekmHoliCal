@@ -19,8 +19,12 @@
 
   })(Backbone.Collection);
 
-  this.app = (_ref = window.app) != null ? _ref : {};
+  this.app = (_ref = window.app) != null ? _ref : new Backbone.Marionette.Application();
 
-  this.app.users = new Users;
+  this.app.Users = Users;
+
+  this.app.users = new this.app.Users;
+
+  this.app.users.fetch();
 
 }).call(this);

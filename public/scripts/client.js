@@ -1,25 +1,22 @@
 (function() {
 
-  Backbone.LayoutManager.configure({
-    render: function(template, context) {
-      return Handlebars.compile(template)(context);
-    }
-  });
-
   $(function() {
-    var main;
-    app.user = new app.User();
-    main = new Backbone.LayoutManager({
-      name: "#main"
+    app.bind("initialize:before", function(options) {
+      return Backbone.Marionette.ItemView.prototype.renderTemplate = function(template, data) {
+        return template.tmpl(data);
+      };
     });
-    app.users.fetch().success(function() {
-      main.views[".list"] = new app.UserListView({
-        collection: app.users
-      });
-      main.render(function(content) {
-        return $(".container").html(content);
-      });
+    app.addRegions({
+      listRegion: "#list"
     });
+    app.addInitializer(function() {
+      var userListView;
+      userListView = new this.UserListView({
+        collection: this.users
+      });
+      return this.listRegion.show(userListView);
+    });
+    return app.start();
   });
 
 }).call(this);

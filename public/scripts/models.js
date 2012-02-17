@@ -11,19 +11,13 @@
       User.__super__.constructor.apply(this, arguments);
     }
 
-    User.prototype.toClient = function() {
-      var obj;
-      obj = this;
-      obj.id = this.attributes._id;
-      delete obj._id;
-      return obj;
-    };
+    User.prototype.idAttribute = "_id";
 
     return User;
 
   })(Backbone.Model);
 
-  this.app = (_ref = window.app) != null ? _ref : {};
+  this.app = (_ref = window.app) != null ? _ref : new Backbone.Marionette.Application();
 
   this.app.User = User;
 

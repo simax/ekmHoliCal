@@ -2,40 +2,19 @@
 <html lang="en">
 	<head>
 		<title>Users</title>
-		<script type="text/javascript" src="/scripts/libs/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="/scripts/libs/jquery-1.7.1.js"></script>
 		<script type="text/javascript" src="/scripts/libs/jquery.tmpl.js"></script>
 		<script type="text/javascript" src="/scripts/libs/underscore.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.js"></script>
 		<script type="text/javascript" src="/scripts/libs/handlebars.js"></script>
-		// <script type="text/javascript" src="/scripts/libs/backbone.layoutmanager.js"></script>
 
-
-		<script type="text/javascript" src="/scripts/libs/json2.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.marionette.js"></script>
 
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
 		<script type="text/javascript" src="/scripts/views.js"></script>
-	</head>
-	<body>
-		<!-- Main content container -->
-		<div class="container"></div>	
 
-		<!-- Layout template -->
-		<script type="layout" id="main">
-			<div class="list"></div>
-			<div>
-				<br/><br/>
-				<div class="user-maintenance"></div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-			</div>
-		</script>
-
-		<script type="template" id="user-maintenance">
+		<script type="text/x-jquery-tmpl" id="user-maintenance">
 			<form id="add-edit-form">
 				User name: <input id="username" type="text"/><br/>
 				Address 1: <input id="address" type="text"/><br/>
@@ -43,19 +22,27 @@
 			</form>
 		</script>
 
-		<script type="template" id="item">
-			{{username}} {{address}}	
+		<script type="text/x-jquery-tmpl" id="item">
+			${username} ${address}
 			<button type="button" class="edit">Edit</button>
 			<button type="button" class="remove">Remove</button>
 		</script>
 
 
-		<script type="template" id="list">
-			<ul></ul>
-		</script>
-
-
 		<script type="text/javascript" src="/scripts/client.js"></script>
 
+	</head>
+	<body>
+
+			<div>
+				<br/><br/>
+				<div class="user-maintenance"></div>
+				<br/>
+				<br/>
+				<div id="list"></div>
+				<br/>
+				<br/>
+				<br/>
+			</div>
 	</body>
 </html>		
