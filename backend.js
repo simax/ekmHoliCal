@@ -1,5 +1,5 @@
 (function() {
-  var ObjectId, Schema, UserModel, UserSchema, app, con, express, mongoose, root;
+  var ObjectId, Schema, UserModel, UserSchema, backend, con, express, mongoose, root;
 
   express = require('express');
 
@@ -10,41 +10,66 @@
   ObjectId = Schema.ObjectId;
 
   UserSchema = new Schema({
-    'username': String,
-    'address': String
+    'firstname': {
+      type: String,
+      required: true
+    },
+    'lastname': {
+      type: String,
+      required: true
+    },
+    'email': {
+      type: String,
+      required: true,
+      validate: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/,
+      index: {
+        unique: true
+      }
+    },
+    'entitlement': {
+      type: Number,
+      min: 0,
+      max: 365
+    },
+    'startdate': Date,
+    'enddate': Date,
+    'active': {
+      type: Boolean,
+      "default": true
+    }
   });
 
   UserModel = mongoose.model('Users', UserSchema);
 
   con = mongoose.connect('mongodb://localhost:8124/ekmHoliCal');
 
-  app = express.createServer().listen(process.env.PORT);
+  backend = express.createServer().listen(process.env.PORT);
 
   root = '/ekmHoliCal';
 
-  app.configure(function() {
-    app.register('html', {
+  backend.configure(function() {
+    backend.register('html', {
       compile: function(str, options) {
         return function(locals) {
           return str;
         };
       }
     });
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'html');
-    app.set('view options', {
+    backend.set('views', __dirname + '/views');
+    backend.set('view engine', 'html');
+    backend.set('view options', {
       layout: false
     });
-    app.use(express.bodyParser());
-    app.use(app.router);
-    return app.use(express.static(__dirname + '/public'));
+    backend.use(express.bodyParser());
+    backend.use(backend.router);
+    return backend.use(express.static(__dirname + '/public'));
   });
 
-  app.get(root + '/index', function(req, res, next) {
+  backend.get(root + '/index', function(req, res, next) {
     return res.render('index');
   });
 
-  app.get(root, function(req, res) {
+  backend.get(root, function(req, res) {
     return UserModel.find(function(err, docs) {
       return res.render('index', {
         locals: {
@@ -54,7 +79,7 @@
     });
   });
 
-  app.post(root + '/Users', function(req, res) {
+  backend.post(root + '/Users', function(req, res) {
     var addr, user, userName;
     userName = req.param('username');
     addr = req.param('address');
@@ -68,30 +93,28 @@
     return res.send(user);
   });
 
-  app.get(root + '/users', function(req, res) {
-    console.log("Attempting to fetch from /localhost" + root + '/Users');
+  backend.get(root + '/users', function(req, res) {
     res.contentType('application/json');
     return UserModel.find(function(err, users) {
       return res.send(users);
     });
   });
 
-  app.put(root + '/Users/:id', function(req, res) {
-    console.log("put @ /ekmHoliCal/Users/:id");
+  backend.put(root + '/Users/:id', function(req, res) {
     return UserModel.findById(req.params.id, function(err, doc) {
       doc.update();
       return res.send(200);
     });
   });
 
-  app["delete"](root + '/Users/:id', function(req, res) {
+  backend["delete"](root + '/Users/:id', function(req, res) {
     return UserModel.findById(req.params.id, function(err, doc) {
       doc.remove();
       return res.send(204);
     });
   });
 
-  app.get(root + '/user/:id', function(req, res) {
+  backend.get(root + '/user/:id', function(req, res) {
     return UserModel.findById(req.params.id, function(err, doc) {
       return res.render('edit', {
         locals: {
@@ -101,7 +124,7 @@
     });
   });
 
-  app.get(root + '/find/:userName', function(req, res) {
+  backend.get(root + '/find/:userName', function(req, res) {
     return UserModel.findOne({
       'username': req.params.userName
     }, function(err, doc) {

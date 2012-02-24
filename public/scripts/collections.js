@@ -13,7 +13,7 @@
 
     Users.prototype.model = app.User;
 
-    Users.prototype.url = "/ekmHolical/Users";
+    Users.prototype.url = "/ekmHolical/users";
 
     return Users;
 

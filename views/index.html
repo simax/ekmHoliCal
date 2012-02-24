@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<title>Users</title>
+
 		<script type="text/javascript" src="/scripts/libs/jquery-1.7.1.js"></script>
 		<script type="text/javascript" src="/scripts/libs/jquery.tmpl.js"></script>
 		<script type="text/javascript" src="/scripts/libs/underscore.js"></script>
@@ -14,35 +15,178 @@
 		<script type="text/javascript" src="/scripts/collections.js"></script>
 		<script type="text/javascript" src="/scripts/views.js"></script>
 
-		<script type="text/x-jquery-tmpl" id="user-maintenance">
-			<form id="add-edit-form">
-				User name: <input id="username" type="text"/><br/>
-				Address 1: <input id="address" type="text"/><br/>
-				<button id="save-button" type="submit">Save</button>
-			</form>
-		</script>
-
-		<script type="text/x-jquery-tmpl" id="item">
-			${username} ${address}
-			<button type="button" class="edit">Edit</button>
-			<button type="button" class="remove">Remove</button>
-		</script>
-
-
+		
 		<script type="text/javascript" src="/scripts/client.js"></script>
+
+  	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+
+        .dropdown-menu {
+		    max-height: 400px;
+		    overflow-y: scroll;
+		    width: 220px;
+		}
+
+		.list-item {
+		    padding-top: 6px;
+		    padding-left: 56px;
+		}
+    </style>
+  	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 	</head>
 	<body>
 
-			<div>
-				<br/><br/>
-				<div class="user-maintenance"></div>
-				<br/>
-				<br/>
-				<div id="list"></div>
-				<br/>
-				<br/>
-				<br/>
-			</div>
+			<div id="main-navigation-menu" class="navbar navbar-fixed-top"></div>
+
+	    <div class="container">
+	    	<div style="margin-bottom:50px">
+					<h1>Bootstrap starter template</h1>
+					<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+				</div>
+				<div>	
+					<div id="main-region">
+					</div>
+				</div>
+	    </div> <!-- /container -->
+
+	    <!-- Main template -->
+			<script type="text/x-jquery-tmpl" id="tmpl-main-region">
+				<h2>This is stuff that appears on the main page</h2> 
+			</script>
+	    <!-- End of main template -->
+
+			<!-- User templates -->
+			<script type="text/x-jquery-tmpl" id="tmpl-user-navigation">
+				<div class="alert alert-info span3">
+					Add a new user to the system <button id="create" type="button" class="btn btn-primary">Create »</button>  
+				</div>
+			</script>
+
+			<script type="text/x-jquery-tmpl" id="tmpl-users-layout">
+				<div id="user-navigation-region"></div>
+				<div id="user-list-region"></div>
+			</script>
+
+			<script type="text/x-jquery-tmpl" id="tmpl-user-grid-header">
+				<thead><tr><th>First name</th><th>Last name</th><th>Email</th><th> </th><th> </th></tr></thead><tbody>
+			</script>
+
+			<script type="text/x-jquery-tmpl" id="tmpl-user-item">
+				<td>${firstname}</td> 
+				<td>${lastname}</td>
+				<td>${email}</td>
+				<td><button type="button" class="btn edit">Edit</button></td>
+				<td>
+					<button style="width:80px;" type="button" 
+						
+						class=
+						{{if active}}	
+							"remove btn btn-primary"
+						{{else}}
+							"remove btn btn-danger"
+							{{/if}}		
+						>
+
+						{{if active }} 
+							Active 
+						{{else}} 
+							Inactive 
+						{{/if}}
+					</button>
+				</td>
+			</script>
+
+			<script type="text/x-jquery-tmpl" id="tmpl-user-maintenance">
+					<div class="span8">
+						<form class="form-horizontal">
+							<fieldset>
+								<legend>User</legend>
+
+								<div class="control-group">			
+									<label class="control-label" for="firstname">First name:</label>
+									<div class="controls">
+										<input id="firstname" type="text" />
+									</div>
+								</div>	
+
+								<div class="control-group">			
+									<label class="control-label" for="lastname">Last name:</label>
+									<div class="controls">
+										<input id="lastname" type="text" />
+									</div>
+								</div>	
+
+								<div class="control-group">			
+									<label class="control-label" for="email">Email:</label>
+									<div class="controls">
+										<input class="span3" id="email" type="text" placeholder="EKM email address"/>
+									</div>
+								</div>	
+								
+								<div class="control-group">			
+									<label class="control-label" for="entitlemant">Entitlement:</label>
+									<div class="controls">
+										<input class="span1" id="entitlemant" type="text" />
+										<p class="help-block">Annual days holiday</p>
+									</div>	
+								</div>	
+								
+								<div class="control-group">			
+									<label class="control-label" for="startdate">Start date:</label>
+									<div class="controls">
+										<input class="span2" id="startdate" type="text" />
+									</div>
+								</div>	
+
+								<div class="control-group">			
+									<label class="control-label" for="active">Active:</label>
+									<div class="controls">
+										<input id="active" type="checkbox" />
+									</div>
+								</div>	
+
+								<div class="form-actions">			
+									<button class="btn btn-primary" id="save-button" type="submit">Save</button>
+									<button class="btn " id="cancel-button">Cancel</button>
+								</div>	
+
+							</fieldset>
+						</form>
+					</div>	
+			</script>
+						
+			<!-- End of Users templates-->
+
+	    <!-- Navigation menu templates -->
+			<script type="text/x-jquery-tmpl" id="tmpl-main-navigation-menu">
+	      <div class="navbar-inner">
+	        <div class="container">
+	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </a>
+	          <a class="brand" href="#">Holiday Calendar</a>
+	          <div class="nav-collapse">
+	            <ul class="nav">
+	              <li class="active">
+	              	<a id="main-home" href="#">Home</a>
+	              </li>
+	              <li>
+	              	<a id="main-about" href="#about">About</a>
+	              </li>
+	            </ul>
+							<a id="main-admin" class="btn pull-right" href="#admin">Admin</a>
+	          </div>
+	        </div>
+	      </div>
+			</script>
+	    <!-- End of navigation menu templates -->
+			<script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+
 	</body>
 </html>		

@@ -1,2 +1,0 @@
-Attempting to fetch from /localhost/ekmHoliCal/Users
-Attempting to fetch from /localhost/ekmHoliCal/Users

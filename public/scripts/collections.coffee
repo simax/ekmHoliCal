@@ -1,7 +1,7 @@
 
 class Users extends Backbone.Collection
   model: app.User 
-  url: "/ekmHolical/Users"
+  url: "/ekmHolical/users"
 
 @app = window.app ? new Backbone.Marionette.Application()
 @app.Users = Users 
