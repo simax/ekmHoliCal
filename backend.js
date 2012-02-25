@@ -31,8 +31,8 @@
       min: 0,
       max: 365
     },
-    'startdate': Date,
-    'enddate': Date,
+    'startdate': String,
+    'enddate': String,
     'active': {
       type: Boolean,
       "default": true
@@ -80,12 +80,17 @@
   });
 
   backend.post(root + '/Users', function(req, res) {
-    var addr, user, userName;
-    userName = req.param('username');
-    addr = req.param('address');
+    var user;
+    console.log("firstname: " + req.param('firstname'));
+    console.log("lastname: " + req.param('lastname'));
     user = new UserModel({
-      username: userName,
-      address: addr
+      firstname: req.param('firstname'),
+      lastname: req.param('lastname'),
+      email: req.param('email'),
+      entitlement: req.param('entitlement'),
+      startdate: req.param('startdate'),
+      enddate: "",
+      active: true
     });
     user.save(function(err) {
       if (err) return res.send(err);

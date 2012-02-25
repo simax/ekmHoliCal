@@ -34,7 +34,9 @@
     app.UserController = {
       adminCreate: function() {
         var userCreateView;
-        userCreateView = new app.UserCreateView;
+        userCreateView = new app.UserCreateView({
+          collection: app.users
+        });
         return app.mainRegion.show(userCreateView);
       }
     };

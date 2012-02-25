@@ -1,5 +1,5 @@
 (function() {
-  var MainNavigationMenuView, MainView, UserCreateView, UserEditView, UserItemView, UserListView, UserNavigationView, UsersLayoutView, _ref,
+  var MainNavigationMenuView, MainView, UserCreateView, UserItemView, UserListView, UserNavigationView, UsersLayoutView, _ref,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
@@ -64,7 +64,9 @@
 
     UserListView.prototype.tagName = "table";
 
-    UserListView.prototype.className = "table table-striped";
+    UserListView.prototype.className = "table table-striped table-bordered";
+
+    UserListView.prototype.id = "user-list";
 
     UserListView.prototype.render = function() {
       this.appendHtml(this.$el, $("script#tmpl-user-grid-header").tmpl());
@@ -74,50 +76,21 @@
       return this;
     };
 
+    UserListView.prototype.onShow = function() {
+      return $("#user-list").dataTable({
+        sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+        sPaginationType: "bootstrap",
+        oLanguage: {
+          sLengthMenu: "_MENU_ records per page"
+        }
+      });
+    };
+
     return UserListView;
 
   })(Backbone.Marionette.CollectionView);
 
   this.app.UserListView = UserListView;
-
-  UserEditView = (function(_super) {
-
-    __extends(UserEditView, _super);
-
-    function UserEditView() {
-      UserEditView.__super__.constructor.apply(this, arguments);
-    }
-
-    UserEditView.prototype.template = "#tmpl-user-maintenance";
-
-    UserEditView.prototype.events = {
-      "submit #add-edit-form": "save"
-    };
-
-    UserEditView.prototype.save = function(e) {
-      var model;
-      e.preventDefault();
-      model = new app.User;
-      this.model.username = this.$("#username").val();
-      this.model.address = this.$("#address").val();
-      this.clear();
-      if (this.model.id) {
-        return this.model.save;
-      } else {
-        return this.collection.create(model);
-      }
-    };
-
-    UserEditView.prototype.clear = function() {
-      this.$("#username").val("");
-      return this.$("#address").val("");
-    };
-
-    return UserEditView;
-
-  })(Backbone.Marionette.ItemView);
-
-  this.app.UserEditView = UserEditView;
 
   UserCreateView = (function(_super) {
 
@@ -130,6 +103,41 @@
     UserCreateView.prototype.template = "#tmpl-user-maintenance";
 
     UserCreateView.prototype.className = "row";
+
+    UserCreateView.prototype.events = {
+      "click #cancel-button": "cancel",
+      "submit #user-create": "save"
+    };
+
+    UserCreateView.prototype.save = function(e) {
+      var model;
+      e.preventDefault();
+      model = new app.User;
+      model.firstname = this.$("#firstname").val();
+      model.lastname = this.$("#lastname").val();
+      model.email = this.$("#email").val();
+      model.entitlement = 25;
+      model.startdate = this.$("#startdate").val();
+      model.enddate = "";
+      model.active = true;
+      this.collection.create(model);
+      this.clear();
+      return app.vent.trigger("main:admin");
+    };
+
+    UserCreateView.prototype.clear = function() {
+      this.$("#firstname").val("");
+      this.$("#lastname").val("");
+      this.$("#email").val("");
+      this.$("#entitlement").val("");
+      this.$("#startdate").val("");
+      return this.$("#active").val("");
+    };
+
+    UserCreateView.prototype.cancel = function(e) {
+      e.preventDefault();
+      return app.vent.trigger("main:admin");
+    };
 
     return UserCreateView;
 

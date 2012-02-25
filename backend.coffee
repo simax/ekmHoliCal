@@ -11,8 +11,8 @@ UserSchema = new Schema
  	'lastname': { type: String, required: true }, 
  	'email': { type: String, required: true,  validate: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/, index: { unique: true } },
  	'entitlement': { type: Number, min: 0, max: 365 },
- 	'startdate': Date,
- 	'enddate': Date,
+ 	'startdate': String,
+ 	'enddate': String,
  	'active': { type: Boolean, default: true } 
  
 # Register the model with Mongoose, Users is now a Mongo collection
@@ -48,13 +48,19 @@ backend.get root, (req, res) ->
 				users: docs	
 
 backend.post root + '/Users', (req, res) ->
-	userName = req.param('username')
-	addr = req.param('address')
 
-	user = new UserModel( 
-		username: userName
-		address: addr
-	)	
+	console.log "firstname: " + req.param('firstname')
+	console.log "lastname: " + req.param('lastname')
+
+	user = new UserModel
+		firstname: req.param('firstname')
+		lastname: req.param('lastname')
+		email: req.param('email')
+		entitlement: req.param('entitlement')
+		startdate: req.param('startdate')
+		enddate: ""
+		active: true # req.param('active')
+	
 	user.save (err) ->
 		res.send(err) if err 
 	res.send(user)		

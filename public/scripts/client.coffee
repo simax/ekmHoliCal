@@ -30,6 +30,8 @@ $ ->
   app.UserController = 
     adminCreate: () ->
       userCreateView = new app.UserCreateView
+        collection: app.users
+
       app.mainRegion.show(userCreateView)
 
   app.MainController = 

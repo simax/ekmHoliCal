@@ -18,7 +18,13 @@
 		
 		<script type="text/javascript" src="/scripts/client.js"></script>
 
-  	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+	  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<script type="text/javascript" src="/scripts/libs/datatables/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="/scripts/libs/datatables/DT_bootstrap.js"></script>
+  	<link href="/scripts/libs/datatables/jquery.dataTables.css" rel="stylesheet">
+  	<link href="/scripts/libs/datatables/DT_bootstrap.css" rel="stylesheet">
+
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -61,7 +67,7 @@
 
 			<!-- User templates -->
 			<script type="text/x-jquery-tmpl" id="tmpl-user-navigation">
-				<div class="alert alert-info span3">
+				<div class="alert alert-info span3" style="margin-bottom: 60px;">
 					Add a new user to the system <button id="create" type="button" class="btn btn-primary">Create »</button>  
 				</div>
 			</script>
@@ -102,7 +108,7 @@
 
 			<script type="text/x-jquery-tmpl" id="tmpl-user-maintenance">
 					<div class="span8">
-						<form class="form-horizontal">
+						<form id="user-create" class="form-horizontal">
 							<fieldset>
 								<legend>User</legend>
 
@@ -123,14 +129,14 @@
 								<div class="control-group">			
 									<label class="control-label" for="email">Email:</label>
 									<div class="controls">
-										<input class="span3" id="email" type="text" placeholder="EKM email address"/>
+										<input id="email" class="span3" type="text" placeholder="EKM email address"/>
 									</div>
 								</div>	
 								
 								<div class="control-group">			
-									<label class="control-label" for="entitlemant">Entitlement:</label>
+									<label class="control-label" for="entitlement">Entitlement:</label>
 									<div class="controls">
-										<input class="span1" id="entitlemant" type="text" />
+										<input id="entitlement" class="span1" type="text" />
 										<p class="help-block">Annual days holiday</p>
 									</div>	
 								</div>	
@@ -138,7 +144,7 @@
 								<div class="control-group">			
 									<label class="control-label" for="startdate">Start date:</label>
 									<div class="controls">
-										<input class="span2" id="startdate" type="text" />
+										<input id="startdate" class="span2" type="text" />
 									</div>
 								</div>	
 
