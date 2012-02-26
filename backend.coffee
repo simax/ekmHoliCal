@@ -9,7 +9,7 @@ ObjectId = Schema.ObjectId
 UserSchema = new Schema
  	'firstname': { type: String, required: true }, 
  	'lastname': { type: String, required: true }, 
- 	'email': { type: String, required: true,  validate: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/, index: { unique: true } },
+ 	'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b/ },
  	'entitlement': { type: Number, min: 0, max: 365 },
  	'startdate': String,
  	'enddate': String,
@@ -41,27 +41,32 @@ backend.configure ->
 backend.get root + '/index', (req, res, next) ->
 	res.render 'index'
 
-backend.get root, (req, res) ->
-	UserModel.find (err, docs) ->
-		res.render 'index', 
-			locals: 
-				users: docs	
+# backend.get root, (req, res) ->
+# 	UserModel.find (err, docs) ->
+# 		res.render 'index', 
+# 			locals: 
+# 				users: docs	
 
-backend.post root + '/Users', (req, res) ->
+backend.post root + '/users', (req, res) ->
 
-	console.log "firstname: " + req.param('firstname')
+	console.log "body: " + req.body.firstname
 	console.log "lastname: " + req.param('lastname')
+	console.log "email: " + req.param('email')
+	console.log "entitlement: " + req.param('entitlement')
+	console.log "startdate: " + req.param('startdate')
+	console.log "active: " + req.param('active')
 
 	user = new UserModel
-		firstname: req.param('firstname')
-		lastname: req.param('lastname')
-		email: req.param('email')
-		entitlement: req.param('entitlement')
-		startdate: req.param('startdate')
-		enddate: ""
-		active: true # req.param('active')
+	user.firstname = req.param('firstname')
+	user.lastname = req.param('lastname')
+	user.email = req.param('email')
+	user.entitlement = 25 #req.param('entitlement')
+	user.startdate = "startdate" #req.param('startdate')
+	user.enddate = "enddate"
+	user.active = true # req.param('active')
 	
 	user.save (err) ->
+		console.log err if err
 		res.send(err) if err 
 	res.send(user)		
 
@@ -70,12 +75,12 @@ backend.get root + '/users', (req, res) ->
 	UserModel.find (err, users) ->
 		res.send(users)
 
-backend.put root + '/Users/:id', (req, res) ->
+backend.put root + '/users/:id', (req, res) ->
 	UserModel.findById req.params.id, (err, doc) ->
 		doc.update()
 		res.send(200)
 
-backend.delete root + '/Users/:id', (req, res) ->
+backend.delete root + '/users/:id', (req, res) ->
 	UserModel.findById req.params.id, (err, doc) ->
 		doc.remove()
 		res.send(204)

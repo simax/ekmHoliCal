@@ -112,15 +112,18 @@
     UserCreateView.prototype.save = function(e) {
       var model;
       e.preventDefault();
-      model = new app.User;
-      model.firstname = this.$("#firstname").val();
-      model.lastname = this.$("#lastname").val();
-      model.email = this.$("#email").val();
-      model.entitlement = 25;
-      model.startdate = this.$("#startdate").val();
-      model.enddate = "";
-      model.active = true;
-      this.collection.create(model);
+      model = new app.User({
+        firstname: this.$("#firstname").val(),
+        lastname: this.$("#lastname").val(),
+        email: this.$("#email").val(),
+        entitlement: 25,
+        startdate: this.$("#startdate").val(),
+        enddate: "",
+        active: true
+      });
+      this.collection.create(model, {
+        wait: true
+      });
       this.clear();
       return app.vent.trigger("main:admin");
     };

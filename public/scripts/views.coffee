@@ -90,16 +90,17 @@ class UserCreateView extends Backbone.Marionette.ItemView
   save: (e) ->
     e.preventDefault()
     model = new app.User 
-
-    model.firstname = @$("#firstname").val()
-    model.lastname = @$("#lastname").val()
-    model.email = @$("#email").val()
-    model.entitlement = 25 # @$("#entitlement").val()
-    model.startdate = @$("#startdate").val()
-    model.enddate = ""
-    model.active = true # @$("#active").val()
+      firstname: @$("#firstname").val()
+      lastname: @$("#lastname").val()
+      email: @$("#email").val()
+      entitlement: 25 # @$("#entitlement").val()
+      startdate: @$("#startdate").val()
+      enddate: ""
+      active: true # @$("#active").val()
   
-    @collection.create model
+    @collection.create(model, {wait: true})
+    # alert retval
+    # model.save()
     @clear()
     app.vent.trigger "main:admin"
       

@@ -21,10 +21,10 @@
     'email': {
       type: String,
       required: true,
-      validate: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/,
       index: {
         unique: true
-      }
+      },
+      validate: /\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b/
     },
     'entitlement': {
       type: Number,
@@ -69,30 +69,24 @@
     return res.render('index');
   });
 
-  backend.get(root, function(req, res) {
-    return UserModel.find(function(err, docs) {
-      return res.render('index', {
-        locals: {
-          users: docs
-        }
-      });
-    });
-  });
-
-  backend.post(root + '/Users', function(req, res) {
+  backend.post(root + '/users', function(req, res) {
     var user;
-    console.log("firstname: " + req.param('firstname'));
+    console.log("body: " + req.body.firstname);
     console.log("lastname: " + req.param('lastname'));
-    user = new UserModel({
-      firstname: req.param('firstname'),
-      lastname: req.param('lastname'),
-      email: req.param('email'),
-      entitlement: req.param('entitlement'),
-      startdate: req.param('startdate'),
-      enddate: "",
-      active: true
-    });
+    console.log("email: " + req.param('email'));
+    console.log("entitlement: " + req.param('entitlement'));
+    console.log("startdate: " + req.param('startdate'));
+    console.log("active: " + req.param('active'));
+    user = new UserModel;
+    user.firstname = req.param('firstname');
+    user.lastname = req.param('lastname');
+    user.email = req.param('email');
+    user.entitlement = 25;
+    user.startdate = "startdate";
+    user.enddate = "enddate";
+    user.active = true;
     user.save(function(err) {
+      if (err) console.log(err);
       if (err) return res.send(err);
     });
     return res.send(user);
@@ -105,14 +99,14 @@
     });
   });
 
-  backend.put(root + '/Users/:id', function(req, res) {
+  backend.put(root + '/users/:id', function(req, res) {
     return UserModel.findById(req.params.id, function(err, doc) {
       doc.update();
       return res.send(200);
     });
   });
 
-  backend["delete"](root + '/Users/:id', function(req, res) {
+  backend["delete"](root + '/users/:id', function(req, res) {
     return UserModel.findById(req.params.id, function(err, doc) {
       doc.remove();
       return res.send(204);
