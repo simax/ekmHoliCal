@@ -1,3 +1,7 @@
+.invalid {
+	background-color: red;
+}
+
 
 div.dataTables_length label {
 	float: left;

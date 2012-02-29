@@ -15,6 +15,9 @@ $ ->
       controller: app.UserController  
 
   app.bind "initialize:after", () ->
+    Backbone.Validation.configure
+      selector: 'id'
+      
     if Backbone.history
       Backbone.history.start()
 

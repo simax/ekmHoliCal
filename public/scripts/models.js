@@ -13,6 +13,22 @@
 
     User.prototype.idAttribute = "_id";
 
+    User.prototype.validation = {
+      firstname: {
+        required: true,
+        msg: 'Firstname is required'
+      },
+      lastname: {
+        required: true,
+        msg: 'Lastname is required'
+      },
+      email: {
+        required: true,
+        pattern: 'email',
+        msg: 'A valid email address is required'
+      }
+    };
+
     return User;
 
   })(Backbone.Model);

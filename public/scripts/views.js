@@ -96,7 +96,8 @@
     UserCreateView.prototype.className = "row";
 
     UserCreateView.prototype.onRender = function() {
-      return Backbone.ModelBinding.bind(this);
+      Backbone.ModelBinding.bind(this);
+      return Backbone.Validation.bind(this);
     };
 
     UserCreateView.prototype.events = {
@@ -106,10 +107,14 @@
 
     UserCreateView.prototype.save = function(e) {
       e.preventDefault();
-      this.collection.create(this.model, {
-        wait: true
-      });
-      return app.vent.trigger("main:admin");
+      if (!this.model.isValid(true)) {
+        return alert("Invalid ");
+      } else {
+        this.collection.create(this.model, {
+          wait: true
+        });
+        return app.vent.trigger("main:admin");
+      }
     };
 
     UserCreateView.prototype.cancel = function(e) {

@@ -61,6 +61,7 @@ class UserCreateView extends Backbone.Marionette.ItemView
   
   onRender: ->
      Backbone.ModelBinding.bind(@)  
+     Backbone.Validation.bind(@)  
   
   events:
     "click #cancel-button": "cancel"
@@ -68,9 +69,12 @@ class UserCreateView extends Backbone.Marionette.ItemView
 
   save: (e) ->
     e.preventDefault()
-    @collection.create(@model, {wait: true})
-    # @clear()
-    app.vent.trigger "main:admin"
+    if not @model.isValid(true)
+      alert "Invalid "  
+    else
+      @collection.create(@model, {wait: true})
+      # @clear()
+      app.vent.trigger "main:admin"
       
   # clear: ->
   #   @$("#firstname").val ""

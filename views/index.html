@@ -11,6 +11,7 @@
 
 		<script type="text/javascript" src="/scripts/libs/backbone.marionette.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.modelbinding.js"></script>
+		<script type="text/javascript" src="/scripts/libs/backbone.validation.js"></script>
 
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
@@ -119,7 +120,7 @@
 							<div class="control-group">			
 								<label class="control-label" for="firstname">First name:</label>
 								<div class="controls">
-									<input id="firstname" type="text" data-bind="text firstname"/>
+									<input name="firstname" id="firstname" type="text" data-bind="text firstname"/>
 								</div>
 							</div>	
 
@@ -180,7 +181,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <a class="brand" href="#">Holiday Calendar</a>
+	          <a class="brand" href="#">Application</a>
 	          <div class="nav-collapse">
 	            <ul class="nav">
 	              <li class="active">
