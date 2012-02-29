@@ -16,7 +16,7 @@ class UserItemView extends Backbone.Marionette.ItemView
 
   events:
     "click .edit": "edit"
-    "click .active": "toggleActivation"
+    "click .active-status": "toggleActivation"
 
   toggleActivation: (e) ->
     alert JSON.stringify @model.get("active")
@@ -34,7 +34,8 @@ class UserListView extends Backbone.Marionette.CollectionView
   id: "user-list"  
 
   render: ->
-
+    
+    @$el.html ""  
     @appendHtml @$el, $("script#tmpl-user-grid-header").tmpl() 
     @collection.each(@addChildView)
     @appendHtml @$el, "</tbody></table>"  
@@ -43,45 +44,23 @@ class UserListView extends Backbone.Marionette.CollectionView
       @onRender()
     @
   
-  onShow: ->
-    $("#user-list").dataTable
-      sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-      sPaginationType: "bootstrap"
-      oLanguage:
-        sLengthMenu: "_MENU_ records per page"
+  # onRender: ->
+  #   $("#user-list").dataTable
+  #     sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+  #     sPaginationType: "bootstrap"
+  #     oLanguage:
+  #       sLengthMenu: "_MENU_ records per page"      
+
 
 @app.UserListView = UserListView
-
-
-# class UserEditView extends Backbone.Marionette.ItemView
-#   template: "#tmpl-user-maintenance"
-
-#   events:
-#     "submit #add-edit-form": "save"
-
-#   save: (e) ->
-#     e.preventDefault()
-#     model = new app.User 
-
-#     @model.username = @$("#username").val()
-#     @model.address = @$("#address").val()
-  
-#     @clear()
-#     if @model.id  
-#       @model.save
-#     else    
-#       @collection.create model
-
-#   clear: ->
-#     @$("#username").val ""
-#     @$("#address").val ""
-
-# @app.UserEditView = UserEditView
 
 
 class UserCreateView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
+  
+  onRender: ->
+     Backbone.ModelBinding.bind(@)  
   
   events:
     "click #cancel-button": "cancel"
@@ -89,28 +68,17 @@ class UserCreateView extends Backbone.Marionette.ItemView
 
   save: (e) ->
     e.preventDefault()
-    model = new app.User 
-      firstname: @$("#firstname").val()
-      lastname: @$("#lastname").val()
-      email: @$("#email").val()
-      entitlement: 25 # @$("#entitlement").val()
-      startdate: @$("#startdate").val()
-      enddate: ""
-      active: true # @$("#active").val()
-  
-    @collection.create(model, {wait: true})
-    # alert retval
-    # model.save()
-    @clear()
+    @collection.create(@model, {wait: true})
+    # @clear()
     app.vent.trigger "main:admin"
       
-  clear: ->
-    @$("#firstname").val ""
-    @$("#lastname").val ""
-    @$("#email").val ""
-    @$("#entitlement").val ""
-    @$("#startdate").val ""
-    @$("#active").val ""
+  # clear: ->
+  #   @$("#firstname").val ""
+  #   @$("#lastname").val ""
+  #   @$("#email").val ""
+  #   @$("#entitlement").val ""
+  #   @$("#startdate").val ""
+  #   @$("#active").val ""
 
   cancel: (e) ->
     e.preventDefault()
@@ -144,9 +112,10 @@ class UsersLayoutView extends Backbone.Marionette.ItemView
     userNavigationView = new app.UserNavigationView
     app.navigationRegion.show(userNavigationView)
     
-    # app.users.fetch(
+    # app.users.fetch()
     userListView = new app.UserListView
       collection: app.users
+
 
     app.listRegion.show(userListView)
       

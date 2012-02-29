@@ -31,6 +31,7 @@ $ ->
     adminCreate: () ->
       userCreateView = new app.UserCreateView
         collection: app.users
+        model: new app.User()
 
       app.mainRegion.show(userCreateView)
 
@@ -40,6 +41,7 @@ $ ->
       app.mainRegion.show(mainView)      
 
     admin: () ->
+      app.users.fetch()
       usersLayoutView = new app.UsersLayoutView
       app.mainRegion.show(usersLayoutView)
 

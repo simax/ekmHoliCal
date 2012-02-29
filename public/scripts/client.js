@@ -35,7 +35,8 @@
       adminCreate: function() {
         var userCreateView;
         userCreateView = new app.UserCreateView({
-          collection: app.users
+          collection: app.users,
+          model: new app.User()
         });
         return app.mainRegion.show(userCreateView);
       }
@@ -48,6 +49,7 @@
       },
       admin: function() {
         var usersLayoutView;
+        app.users.fetch();
         usersLayoutView = new app.UsersLayoutView;
         return app.mainRegion.show(usersLayoutView);
       }

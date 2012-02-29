@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="/scripts/libs/handlebars.js"></script>
 
 		<script type="text/javascript" src="/scripts/libs/backbone.marionette.js"></script>
+		<script type="text/javascript" src="/scripts/libs/backbone.modelbinding.js"></script>
 
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
@@ -49,19 +50,22 @@
 			<div id="main-navigation-menu" class="navbar navbar-fixed-top"></div>
 
 	    <div class="container">
-	    	<div style="margin-bottom:50px">
+    		<div style="margin-bottom:50px">
 					<h1>Bootstrap starter template</h1>
 					<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
 				</div>
 				<div>	
-					<div id="main-region">
-					</div>
+					<div id="main-region"></div>
 				</div>
 	    </div> <!-- /container -->
 
 	    <!-- Main template -->
 			<script type="text/x-jquery-tmpl" id="tmpl-main-region">
-				<h2>This is stuff that appears on the main page</h2> 
+				<div class="row">
+					<h4 class="span3">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+					</h4> 
+				</div>
 			</script>
 	    <!-- End of main template -->
 
@@ -91,9 +95,9 @@
 						
 						class=
 						{{if active}}	
-							"remove btn btn-primary"
+							"active-status remove btn btn-primary"
 						{{else}}
-							"remove btn btn-danger"
+							"active-status remove btn btn-danger"
 							{{/if}}		
 						>
 
@@ -107,62 +111,62 @@
 			</script>
 
 			<script type="text/x-jquery-tmpl" id="tmpl-user-maintenance">
-					<div class="span8">
-						<form id="user-create" class="form-horizontal">
-							<fieldset>
-								<legend>User</legend>
+				<div class="span8">
+					<form id="user-create" class="form-horizontal">
+						<fieldset>
+							<legend>User</legend>
 
-								<div class="control-group">			
-									<label class="control-label" for="firstname">First name:</label>
-									<div class="controls">
-										<input id="firstname" type="text" />
-									</div>
-								</div>	
+							<div class="control-group">			
+								<label class="control-label" for="firstname">First name:</label>
+								<div class="controls">
+									<input id="firstname" type="text" data-bind="text firstname"/>
+								</div>
+							</div>	
 
-								<div class="control-group">			
-									<label class="control-label" for="lastname">Last name:</label>
-									<div class="controls">
-										<input id="lastname" type="text" />
-									</div>
-								</div>	
+							<div class="control-group">			
+								<label class="control-label" for="lastname">Last name:</label>
+								<div class="controls">
+									<input id="lastname" type="text" />
+								</div>
+							</div>	
 
-								<div class="control-group">			
-									<label class="control-label" for="email">Email:</label>
-									<div class="controls">
-										<input id="email" class="span3" type="text" placeholder="EKM email address"/>
-									</div>
+							<div class="control-group">			
+								<label class="control-label" for="email">Email:</label>
+								<div class="controls">
+									<input id="email" class="span3" type="text" placeholder="EKM email address"/>
+								</div>
+							</div>	
+							
+							<div class="control-group">			
+								<label class="control-label" for="entitlement">Entitlement:</label>
+								<div class="controls">
+									<input id="entitlement" class="span1" type="text" />
+									<p class="help-block">Annual days holiday</p>
 								</div>	
-								
-								<div class="control-group">			
-									<label class="control-label" for="entitlement">Entitlement:</label>
-									<div class="controls">
-										<input id="entitlement" class="span1" type="text" />
-										<p class="help-block">Annual days holiday</p>
-									</div>	
-								</div>	
-								
-								<div class="control-group">			
-									<label class="control-label" for="startdate">Start date:</label>
-									<div class="controls">
-										<input id="startdate" class="span2" type="text" />
-									</div>
-								</div>	
+							</div>	
+							
+							<div class="control-group">			
+								<label class="control-label" for="startdate">Start date:</label>
+								<div class="controls">
+									<input id="startdate" class="span2" type="text" />
+								</div>
+							</div>	
 
-								<div class="control-group">			
-									<label class="control-label" for="active">Active:</label>
-									<div class="controls">
-										<input id="active" type="checkbox" />
-									</div>
-								</div>	
+							<div class="control-group">			
+								<label class="control-label" for="active">Active:</label>
+								<div class="controls">
+									<input id="active" type="checkbox" />
+								</div>
+							</div>	
 
-								<div class="form-actions">			
-									<button class="btn btn-primary" id="save-button" type="submit">Save</button>
-									<button class="btn " id="cancel-button">Cancel</button>
-								</div>	
+							<div class="form-actions">			
+								<button class="btn btn-primary" id="save-button" type="submit">Save</button>
+								<button class="btn " id="cancel-button">Cancel</button>
+							</div>	
 
-							</fieldset>
-						</form>
-					</div>	
+						</fieldset>
+					</form>
+				</div>	
 			</script>
 						
 			<!-- End of Users templates-->
@@ -186,7 +190,7 @@
 	              	<a id="main-about" href="#about">About</a>
 	              </li>
 	            </ul>
-							<a id="main-admin" class="btn pull-right" href="#admin">Admin</a>
+				<a id="main-admin" class="btn pull-right" href="#admin">Admin</a>
 	          </div>
 	        </div>
 	      </div>

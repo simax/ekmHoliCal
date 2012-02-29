@@ -35,7 +35,7 @@
 
     UserItemView.prototype.events = {
       "click .edit": "edit",
-      "click .active": "toggleActivation"
+      "click .active-status": "toggleActivation"
     };
 
     UserItemView.prototype.toggleActivation = function(e) {
@@ -69,21 +69,12 @@
     UserListView.prototype.id = "user-list";
 
     UserListView.prototype.render = function() {
+      this.$el.html("");
       this.appendHtml(this.$el, $("script#tmpl-user-grid-header").tmpl());
       this.collection.each(this.addChildView);
       this.appendHtml(this.$el, "</tbody></table>");
       if (this.onRender) this.onRender();
       return this;
-    };
-
-    UserListView.prototype.onShow = function() {
-      return $("#user-list").dataTable({
-        sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-        sPaginationType: "bootstrap",
-        oLanguage: {
-          sLengthMenu: "_MENU_ records per page"
-        }
-      });
     };
 
     return UserListView;
@@ -104,37 +95,21 @@
 
     UserCreateView.prototype.className = "row";
 
+    UserCreateView.prototype.onRender = function() {
+      return Backbone.ModelBinding.bind(this);
+    };
+
     UserCreateView.prototype.events = {
       "click #cancel-button": "cancel",
       "submit #user-create": "save"
     };
 
     UserCreateView.prototype.save = function(e) {
-      var model;
       e.preventDefault();
-      model = new app.User({
-        firstname: this.$("#firstname").val(),
-        lastname: this.$("#lastname").val(),
-        email: this.$("#email").val(),
-        entitlement: 25,
-        startdate: this.$("#startdate").val(),
-        enddate: "",
-        active: true
-      });
-      this.collection.create(model, {
+      this.collection.create(this.model, {
         wait: true
       });
-      this.clear();
       return app.vent.trigger("main:admin");
-    };
-
-    UserCreateView.prototype.clear = function() {
-      this.$("#firstname").val("");
-      this.$("#lastname").val("");
-      this.$("#email").val("");
-      this.$("#entitlement").val("");
-      this.$("#startdate").val("");
-      return this.$("#active").val("");
     };
 
     UserCreateView.prototype.cancel = function(e) {

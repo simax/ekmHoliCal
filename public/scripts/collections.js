@@ -13,7 +13,7 @@
 
     Users.prototype.model = app.User;
 
-    Users.prototype.url = "/ekmHoliCal/users";
+    Users.prototype.url = "/ekmHoliCal/api/users";
 
     return Users;
 
