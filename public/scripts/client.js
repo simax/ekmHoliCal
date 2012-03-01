@@ -51,10 +51,15 @@
         return app.mainRegion.show(mainView);
       },
       admin: function() {
-        var usersLayoutView;
-        app.users.fetch();
+        var userListView, usersLayoutView;
         usersLayoutView = new app.UsersLayoutView;
-        return app.mainRegion.show(usersLayoutView);
+        app.mainRegion.show(usersLayoutView);
+        usersLayoutView.navigationRegion.show(new app.UserNavigationView);
+        app.users.fetch();
+        userListView = new app.UserListView({
+          collection: app.users
+        });
+        return usersLayoutView.listRegion.show(userListView);
       }
     };
     app.addRegions({

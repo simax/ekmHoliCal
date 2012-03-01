@@ -165,23 +165,14 @@
 
     UsersLayoutView.prototype.template = "#tmpl-users-layout";
 
-    UsersLayoutView.prototype.onShow = function() {
-      var userListView, userNavigationView;
-      app.addRegions({
-        navigationRegion: "#user-navigation-region",
-        listRegion: "#user-list-region"
-      });
-      userNavigationView = new app.UserNavigationView;
-      app.navigationRegion.show(userNavigationView);
-      userListView = new app.UserListView({
-        collection: app.users
-      });
-      return app.listRegion.show(userListView);
+    UsersLayoutView.prototype.regions = {
+      navigationRegion: "#user-navigation-region",
+      listRegion: "#user-list-region"
     };
 
     return UsersLayoutView;
 
-  })(Backbone.Marionette.ItemView);
+  })(Backbone.Marionette.CompositeRegion);
 
   this.app.UsersLayoutView = UsersLayoutView;
 

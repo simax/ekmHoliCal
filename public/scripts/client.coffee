@@ -44,10 +44,17 @@ $ ->
       app.mainRegion.show(mainView)      
 
     admin: () ->
-      app.users.fetch()
       usersLayoutView = new app.UsersLayoutView
-      app.mainRegion.show(usersLayoutView)
+      app.mainRegion.show(usersLayoutView)      
 
+      usersLayoutView.navigationRegion.show(new app.UserNavigationView)
+
+      app.users.fetch()
+      userListView = new app.UserListView
+        collection: app.users
+
+      usersLayoutView.listRegion.show(userListView)
+        
   app.addRegions
     mainNavigationMenuRegion: "#main-navigation-menu",
     mainRegion: "#main-region"

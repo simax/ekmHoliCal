@@ -103,25 +103,29 @@ class UserNavigationView extends Backbone.Marionette.ItemView
     app.vent.trigger "admin:create"
       
 @app.UserNavigationView = UserNavigationView
-  
+   
 
-class UsersLayoutView extends Backbone.Marionette.ItemView
+class UsersLayoutView extends Backbone.Marionette.CompositeRegion
   template: "#tmpl-users-layout"
 
-  onShow: () ->
-    app.addRegions
-      navigationRegion: "#user-navigation-region",
-      listRegion: "#user-list-region"
+  regions:
+    navigationRegion: "#user-navigation-region"
+    listRegion: "#user-list-region"
 
-    userNavigationView = new app.UserNavigationView
-    app.navigationRegion.show(userNavigationView)
+  # onShow: () ->
+  #   app.addRegions
+  #     navigationRegion: "#user-navigation-region",
+  #     listRegion: "#user-list-region"
+
+  #   userNavigationView = new app.UserNavigationView
+  #   app.navigationRegion.show(userNavigationView)
     
-    # app.users.fetch()
-    userListView = new app.UserListView
-      collection: app.users
+  #   # app.users.fetch()
+  #   userListView = new app.UserListView
+  #     collection: app.users
 
 
-    app.listRegion.show(userListView)
+  #   app.listRegion.show(userListView)
       
 
 @app.UsersLayoutView = UsersLayoutView

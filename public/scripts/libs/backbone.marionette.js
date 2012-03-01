@@ -1,4 +1,4 @@
-// Backbone.Marionette v0.4.5
+// Backbone.Marionette v0.5.0
 //
 // Copyright (C)2011 Derick Bailey, Muted Solutions, LLC
 // Distributed Under MIT License
@@ -9,68 +9,7 @@
 Backbone.Marionette = (function(Backbone, _, $){
   var Marionette = {};
 
-  Marionette.version = "0.4.5";
-
-  // Region Manager
-  // --------------
-
-  // Manage the visual regions of your composite application. See
-  // http://lostechies.com/derickbailey/2011/12/12/composite-js-apps-regions-and-region-managers/
-  Marionette.RegionManager = function(options){
-    this.options = options || {};
-    if (!this.el){
-      var err = new Error("An 'el' must be specified");
-      err.name = "NoElError";
-      throw err;
-    }
-  };
-
-  _.extend(Marionette.RegionManager.prototype, Backbone.Events, {
-
-    // Displays a backbone view instance inside of the region.
-    // Handles calling the `render` method for you. Reads content
-    // directly from the `el` attribute. Also calls an optional
-    // `onShow` and `close` method on your view, just after showing
-    // or just before closing the view, respectively.
-    show: function(view){
-      this.ensureEl();
-      this.close();
-      this.open(view);
-
-      this.currentView = view;
-    },
-
-    ensureEl: function(){
-      if (!this.$el || this.$el.length == 0){
-        this.$el = $(this.el);
-      }
-    },
-
-    // Internal method to render and display a view. Not meant 
-    // to be called from any external code.
-    open: function(view){
-      var that = this;
-
-      $.when(view.render()).then(function () {
-        that.$el.html(view.el);
-        view.onShow && view.onShow();
-        that.trigger("view:show", view);
-      });
-
-    },
-
-    // Close the current view, if there is one. If there is no
-    // current view, it does nothing and returns immediately.
-    close: function(){
-      var view = this.currentView;
-      if (!view){ return; }
-
-      view.close && view.close();
-      this.trigger("view:closed", view);
-
-      delete this.currentView;
-    }
-  });
+  Marionette.version = "0.5.0";
 
   // Item View
   // ---------
@@ -92,9 +31,7 @@ Backbone.Marionette = (function(Backbone, _, $){
     // binds to. Override this method to prevent the initial
     // events, or to add your own initial events.
     initialEvents: function(){
-      if (this.model){
-        this.bindTo(this.model, "change", this.render, this);
-      } else if (this.collection){
+      if (this.collection){
         this.bindTo(this.collection, "reset", this.render, this);
       }
     },
@@ -190,8 +127,6 @@ Backbone.Marionette = (function(Backbone, _, $){
   // A view that iterates over a Backbone.Collection
   // and renders an individual ItemView for each model.
   Marionette.CollectionView = Backbone.View.extend({
-    modelView: Marionette.ItemView,
-
     constructor: function(){
       Backbone.View.prototype.constructor.apply(this, arguments);
 
@@ -218,28 +153,11 @@ Backbone.Marionette = (function(Backbone, _, $){
     // Loop through all of the items and render 
     // each of them with the specified `itemView`.
     render: function(){
-      this.renderModel();
-
       this.collection.each(this.addChildView);
       if (this.onRender){
         this.onRender();
       }
       return this;
-    },
-
-    // Render an individual model, if we have one, as
-    // part of a composite view (branch / leaf). For example:
-    // a treeview.
-    renderModel: function(){
-      if (this.model){
-        var modelView = new this.modelView({
-          model: this.model,
-          template: this.template
-        });
-        modelView.render();
-
-        this.$el.append(modelView.el);
-      }
     },
 
     // Render the child item's view and add it to the
@@ -316,6 +234,158 @@ Backbone.Marionette = (function(Backbone, _, $){
     }
   });
 
+  // Composite View
+  // --------------
+
+  // Used for rendering a branch-leaf, hierarchical structure.
+  // Extends directly from CollectionView and also renders an
+  // an item view as `modelView`, for the top leaf
+  Marionette.CompositeView = Marionette.CollectionView.extend({
+    modelView: Marionette.ItemView,
+
+    render: function(){
+      Marionette.CollectionView.prototype.render.call(this, arguments);
+      this.renderModel();
+    },
+
+    // Render an individual model, if we have one, as
+    // part of a composite view (branch / leaf). For example:
+    // a treeview.
+    renderModel: function(){
+      if (this.modelViewRendered){ return; }
+      this.modelViewRendered = true;
+
+      if (this.template){
+        var modelView = new this.modelView({
+          model: this.model,
+          template: this.template
+        });
+        modelView.render();
+
+        this.$el.append(modelView.el);
+      }
+    }
+  });
+
+  // Region Manager
+  // --------------
+
+  // Manage the visual regions of your composite application. See
+  // http://lostechies.com/derickbailey/2011/12/12/composite-js-apps-regions-and-region-managers/
+  Marionette.RegionManager = function(options){
+    this.options = options || {};
+
+    if (this.options.el){
+      this.el = options.el;
+    }
+
+    if (!this.el){
+      var err = new Error("An 'el' must be specified");
+      err.name = "NoElError";
+      throw err;
+    }
+  };
+
+  _.extend(Marionette.RegionManager.prototype, Backbone.Events, {
+
+    // Displays a backbone view instance inside of the region.
+    // Handles calling the `render` method for you. Reads content
+    // directly from the `el` attribute. Also calls an optional
+    // `onShow` and `close` method on your view, just after showing
+    // or just before closing the view, respectively.
+    show: function(view, appendMethod){
+      this.ensureEl();
+      this.close();
+      this.open(view, appendMethod);
+
+      this.currentView = view;
+    },
+
+    ensureEl: function(){
+      if (!this.$el || this.$el.length == 0){
+        this.$el = $(this.el);
+      }
+    },
+
+    // Internal method to render and display a view. Not meant 
+    // to be called from any external code.
+    open: function(view, appendMethod){
+      var that = this;
+      appendMethod = appendMethod || "html";
+
+      $.when(view.render()).then(function () {
+        that.$el[appendMethod](view.el);
+        view.onShow && view.onShow();
+        that.trigger("view:show", view);
+      });
+
+    },
+
+    // Close the current view, if there is one. If there is no
+    // current view, it does nothing and returns immediately.
+    close: function(){
+      var view = this.currentView;
+      if (!view){ return; }
+
+      view.close && view.close();
+      this.trigger("view:closed", view);
+
+      delete this.currentView;
+    },
+
+    // Attach an existing view to the region manager. This 
+    // will not call `render` or `onShow` for the new view, 
+    // and will not replace the current HTML for the `el`
+    // of the region manager.
+    attachView: function(view){
+      this.currentView = view;
+    }
+  });
+
+  // Composite Region
+  // ----------------
+
+  // A specialized view type that renders an area of HTML and then
+  // attaches `RegionManager` instances to the specified `regions`.
+  // Used for composite view management and sub-application areas.
+  Marionette.CompositeRegion = Marionette.ItemView.extend({
+    constructor: function () {
+      Backbone.Marionette.ItemView.call(this, arguments);
+      this.regionManagers = {};
+      this.vent = new Backbone.Marionette.EventAggregator();
+    },
+
+    render: function () {
+      Backbone.Marionette.ItemView.prototype.render.call(this, arguments);
+      this.initializeRegions();
+    },
+
+    close: function () {
+      Backbone.Marionette.ItemView.prototype.close.call(this, arguments);
+      this.closeRegions();
+    },
+
+    initializeRegions: function () {
+      var that = this;
+      _.each(this.regions, function (selector, name) {
+        var regionManager = new Backbone.Marionette.RegionManager({
+            el: selector
+        });
+        that.regionManagers[name] = regionManager;
+        that[name] = regionManager;
+      });
+    },
+
+    closeRegions: function () {
+      var that = this;
+      _.each(this.regionManagers, function (manager, name) {
+        manager.close();
+        delete that[name];
+      });
+      delete this.regionManagers;
+    }
+  });
+
   // BindTo: Event Binding
   // ---------------------
   
@@ -377,11 +447,15 @@ Backbone.Marionette = (function(Backbone, _, $){
       Backbone.Router.prototype.constructor.call(this, options);
 
       if (this.appRoutes){
-        this.processAppRoutes(options.controller, this.appRoutes);
+        var controller = this.controller;
+        if (options && options.controller) {
+          controller = options.controller;
+        }
+        this.processAppRoutes(controller, this.appRoutes);
       }
     },
 
-    processAppRoutes: function(app, appRoutes){
+    processAppRoutes: function(controller, appRoutes){
       var method, methodName;
       var route, routesLength;
       var routes = [];
@@ -395,7 +469,7 @@ Backbone.Marionette = (function(Backbone, _, $){
       for (var i = 0; i < routesLength; i++){
         route = routes[i][0];
         methodName = routes[i][1];
-        method = app[methodName];
+        method = controller[methodName];
         router.route(route, methodName, method);
       }
     }
@@ -431,6 +505,23 @@ Backbone.Marionette = (function(Backbone, _, $){
     }
   });
 
+  // Event Aggregator
+  // ----------------
+
+  // A pub-sub object that can be used to decouple various parts
+  // of an application through event-driven architecture.
+  Marionette.EventAggregator = function(options){
+    _.extend(this, options);
+  };
+
+  _.extend(Marionette.EventAggregator.prototype, Backbone.Events, Marionette.BindTo, {
+    // Assumes the event aggregator itself is the 
+    // object being bound to.
+    bindTo: function(eventName, callback, context){
+      Marionette.BindTo.bindTo.call(this, this, eventName, callback, context);
+    }
+  });
+
   // Composite Application
   // ---------------------
 
@@ -439,7 +530,7 @@ Backbone.Marionette = (function(Backbone, _, $){
   // event aggregator as `app.vent`
   Marionette.Application = function(options){
     this.initCallbacks = new Marionette.Callbacks();
-    this.vent = _.extend({}, Backbone.Events, Marionette.BindTo);
+    this.vent = new Marionette.EventAggregator();
     _.extend(this, options);
   };
 
@@ -474,14 +565,14 @@ Backbone.Marionette = (function(Backbone, _, $){
           regionValue = regions[region];
     
           if (typeof regionValue === "string"){
-            regionObj = Marionette.RegionManager.extend({
+            regionObj = new Marionette.RegionManager({
               el: regionValue
             });
           } else {
-            regionObj = regionValue;
+            regionObj = new regionValue;
           }
 
-          this[region] = new regionObj();
+          this[region] = regionObj;
         }
       }
     }
