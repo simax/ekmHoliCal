@@ -107,9 +107,13 @@
 
     UserCreateView.prototype.save = function(e) {
       e.preventDefault();
-      if (!this.model.isValid(true)) {
-        return alert("Invalid ");
-      } else {
+      console.log($('.invalid'));
+      $('.invalid').qtip({
+        content: 'This is an error',
+        style: 'dark'
+      });
+      $('#cancel-button').toggleClass("invalid").attr('data-error', 'An error has occured');
+      if (!this.model.isValid(true)) {} else {
         this.collection.create(this.model, {
           wait: true
         });

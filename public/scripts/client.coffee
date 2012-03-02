@@ -41,7 +41,7 @@ $ ->
   app.MainController = 
     home: () ->
       mainView = new app.MainView
-      app.mainRegion.show(mainView)      
+      app.mainRegion.show(mainView)       
 
     admin: () ->
       usersLayoutView = new app.UsersLayoutView
@@ -65,3 +65,4 @@ $ ->
   app.vent.bind "admin:create", (message) -> Backbone.history.navigate("admin/create", true)
     
   app.start()
+

@@ -60,8 +60,37 @@ class UserCreateView extends Backbone.Marionette.ItemView
   className: "row"
   
   onRender: ->
-     Backbone.ModelBinding.bind(@)  
-     Backbone.Validation.bind(@)  
+    Backbone.ModelBinding.bind(@)  
+    Backbone.Validation.bind(@) 
+
+  # onShow: ->
+  #   $('.invalid').qtip(
+  #     content: 'This is an error' # $(@).attr('data-error') # Set the tooltip content to the current corner
+  #     style: 'dark'
+  #   ) 
+             # position: {
+             #    corner: {
+             #       tooltip: corners[i], // Use the corner...
+             #       target: opposites[i] // ...and opposite corner
+             #    }
+             # },
+             # show: {
+             #    when: false, // Don't specify a show event
+             #    ready: true // Show the tooltip when ready
+             # },
+             # hide: false, // Don't specify a hide event
+             # style: {
+             #    border: {
+             #       width: 5,
+             #       radius: 10
+             #    },
+             #    padding: 10, 
+             #    textAlign: 'center',
+             #    tip: true, // Give it a speech bubble tip with automatic corner detection
+             #    name: 'cream' // Style it according to the preset 'cream' style
+             # }
+          # });
+
   
   events:
     "click #cancel-button": "cancel"
@@ -69,8 +98,14 @@ class UserCreateView extends Backbone.Marionette.ItemView
 
   save: (e) ->
     e.preventDefault()
+    console.log($('.invalid'))
+    $('.invalid').qtip(
+      content: 'This is an error' # $(@).attr('data-error') # Set the tooltip content to the current corner
+      style: 'dark'
+    ) 
+    $('#cancel-button').toggleClass("invalid").attr('data-error', 'An error has occured' )
     if not @model.isValid(true)
-      alert "Invalid "  
+      return
     else
       @collection.create(@model, {wait: true})
       # @clear()
