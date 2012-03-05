@@ -34,7 +34,6 @@ class UserListView extends Backbone.Marionette.CollectionView
   id: "user-list"  
 
   render: ->
-    
     @$el.html ""  
     @appendHtml @$el, $("script#tmpl-user-grid-header").tmpl() 
     @collection.each(@addChildView)
@@ -59,56 +58,25 @@ class UserCreateView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
   
-  onRender: ->
+  onRender: =>
     Backbone.ModelBinding.bind(@)  
-    Backbone.Validation.bind(@) 
-
-  # onShow: ->
-  #   $('.invalid').qtip(
-  #     content: 'This is an error' # $(@).attr('data-error') # Set the tooltip content to the current corner
-  #     style: 'dark'
-  #   ) 
-             # position: {
-             #    corner: {
-             #       tooltip: corners[i], // Use the corner...
-             #       target: opposites[i] // ...and opposite corner
-             #    }
-             # },
-             # show: {
-             #    when: false, // Don't specify a show event
-             #    ready: true // Show the tooltip when ready
-             # },
-             # hide: false, // Don't specify a hide event
-             # style: {
-             #    border: {
-             #       width: 5,
-             #       radius: 10
-             #    },
-             #    padding: 10, 
-             #    textAlign: 'center',
-             #    tip: true, // Give it a speech bubble tip with automatic corner detection
-             #    name: 'cream' // Style it according to the preset 'cream' style
-             # }
-          # });
-
-  
+    Backbone.Validation.bind(@)
+    $('#startdate').datepicker
+      constrainedInput: true
+      dateFormat: 'dd/mm/yy'
+      changeMonth: true
+      changeYear: true 
+      showButtonPanel: true
+    
   events:
     "click #cancel-button": "cancel"
     "submit #user-create": "save"
 
   save: (e) ->
     e.preventDefault()
-    console.log($('.invalid'))
-    $('.invalid').qtip(
-      content: 'This is an error' # $(@).attr('data-error') # Set the tooltip content to the current corner
-      style: 'dark'
-    ) 
-    $('#cancel-button').toggleClass("invalid").attr('data-error', 'An error has occured' )
-    if not @model.isValid(true)
-      return
-    else
+    console.log "lastname: " + @model.get("lastname")
+    if @model.isValid(true)
       @collection.create(@model, {wait: true})
-      # @clear()
       app.vent.trigger "main:admin"
       
   # clear: ->
@@ -146,22 +114,6 @@ class UsersLayoutView extends Backbone.Marionette.CompositeRegion
   regions:
     navigationRegion: "#user-navigation-region"
     listRegion: "#user-list-region"
-
-  # onShow: () ->
-  #   app.addRegions
-  #     navigationRegion: "#user-navigation-region",
-  #     listRegion: "#user-list-region"
-
-  #   userNavigationView = new app.UserNavigationView
-  #   app.navigationRegion.show(userNavigationView)
-    
-  #   # app.users.fetch()
-  #   userListView = new app.UserListView
-  #     collection: app.users
-
-
-  #   app.listRegion.show(userListView)
-      
 
 @app.UsersLayoutView = UsersLayoutView
 

@@ -16,17 +16,45 @@
     User.prototype.validation = {
       firstname: {
         required: true,
-        msg: 'Firstname is required'
+        msg: 'A first name is required'
       },
       lastname: {
         required: true,
-        msg: 'Lastname is required'
+        msg: 'A last name is required'
       },
       email: {
         required: true,
         pattern: 'email',
         msg: 'A valid email address is required'
       }
+    };
+
+    User.prototype.initialize = function() {
+      return this.on('validated', function(isValid, model, attrs) {
+        console.log('OnValidated event isValid: ' + isValid);
+        $(':not(.invalid)').qtip('destroy');
+        return $('.invalid').qtip({
+          overwrite: false,
+          content: {
+            text: function(api) {
+              return $(this).attr('data-error');
+            }
+          },
+          position: {
+            my: 'left center',
+            at: 'right center',
+            viewport: $(window)
+          },
+          show: {
+            event: false,
+            ready: true
+          },
+          hide: false,
+          style: {
+            classes: 'ui-tooltip-jtools'
+          }
+        });
+      });
     };
 
     return User;

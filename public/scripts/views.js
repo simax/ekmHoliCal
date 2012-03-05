@@ -1,7 +1,8 @@
 (function() {
   var MainNavigationMenuView, MainView, UserCreateView, UserItemView, UserListView, UserNavigationView, UsersLayoutView, _ref,
     __hasProp = Object.prototype.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   this.app = (_ref = window.app) != null ? _ref : new Backbone.Marionette.Application();
 
@@ -88,6 +89,7 @@
     __extends(UserCreateView, _super);
 
     function UserCreateView() {
+      this.onRender = __bind(this.onRender, this);
       UserCreateView.__super__.constructor.apply(this, arguments);
     }
 
@@ -97,7 +99,14 @@
 
     UserCreateView.prototype.onRender = function() {
       Backbone.ModelBinding.bind(this);
-      return Backbone.Validation.bind(this);
+      Backbone.Validation.bind(this);
+      return $('#startdate').datepicker({
+        constrainedInput: true,
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true
+      });
     };
 
     UserCreateView.prototype.events = {
@@ -107,13 +116,8 @@
 
     UserCreateView.prototype.save = function(e) {
       e.preventDefault();
-      console.log($('.invalid'));
-      $('.invalid').qtip({
-        content: 'This is an error',
-        style: 'dark'
-      });
-      $('#cancel-button').toggleClass("invalid").attr('data-error', 'An error has occured');
-      if (!this.model.isValid(true)) {} else {
+      console.log("lastname: " + this.model.get("lastname"));
+      if (this.model.isValid(true)) {
         this.collection.create(this.model, {
           wait: true
         });

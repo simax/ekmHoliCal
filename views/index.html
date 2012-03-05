@@ -5,6 +5,7 @@
 
 		<script type="text/javascript" src="/scripts/libs/jquery-1.7.1.js"></script>
 		<script type="text/javascript" src="/scripts/libs/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="/scripts/libs/jquery-ui-1.8.18.custom.min.js"></script>
 		<script type="text/javascript" src="/scripts/libs/underscore.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.js"></script>
 		<script type="text/javascript" src="/scripts/libs/handlebars.js"></script>
@@ -13,7 +14,7 @@
 		<script type="text/javascript" src="/scripts/libs/backbone.modelbinding.js"></script>
 		<script type="text/javascript" src="/scripts/libs/backbone.validation.js"></script>
 
-		<script type="text/javascript" src="/scripts/libs/jquery.qtip-1.0.0-rc3.js"></script>
+		<script type="text/javascript" src="/scripts/libs/jquery.qtip.js"></script>
 
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
@@ -22,12 +23,14 @@
 		
 		<script type="text/javascript" src="/scripts/client.js"></script>
 
-	  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/scripts/libs/jquery.qtip.css" rel="stylesheet">
 
 		<script type="text/javascript" src="/scripts/libs/datatables/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="/scripts/libs/datatables/DT_bootstrap.js"></script>
   	<link href="/scripts/libs/datatables/jquery.dataTables.css" rel="stylesheet">
   	<link href="/scripts/libs/datatables/DT_bootstrap.css" rel="stylesheet">
+  	<link href="/scripts/libs/jquery-ui-1.8.16.custom.css" rel="stylesheet">
  
     <style>
         body {
@@ -124,21 +127,21 @@
 							<div class="control-group">			
 								<label class="control-label" for="firstname">First name:</label>
 								<div class="controls">
-									<input name="firstname" id="firstname" type="text" data-bind="text firstname"/>
+									<input name="firstname" id="firstname" type="text" />
 								</div>
 							</div>	
 
 							<div class="control-group">			
 								<label class="control-label" for="lastname">Last name:</label>
 								<div class="controls">
-									<input id="lastname" type="text" />
+									<input name="lastname" id="lastname" type="text" />
 								</div>
 							</div>	
 
 							<div class="control-group">			
 								<label class="control-label" for="email">Email:</label>
 								<div class="controls">
-									<input id="email" class="span3" type="text" placeholder="EKM email address"/>
+									<input name="email" id="email" class="span3" type="text" placeholder="EKM email address" />
 								</div>
 							</div>	
 							
@@ -153,14 +156,14 @@
 							<div class="control-group">			
 								<label class="control-label" for="startdate">Start date:</label>
 								<div class="controls">
-									<input id="startdate" class="span2" type="text" />
+									<input name="startdate" id="startdate" class="span2" type="text" />
 								</div>
 							</div>	
 
 							<div class="control-group">			
 								<label class="control-label" for="active">Active:</label>
 								<div class="controls">
-									<input id="active" type="checkbox" />
+									<input name="active" id="active" type="checkbox" />
 								</div>
 							</div>	
 

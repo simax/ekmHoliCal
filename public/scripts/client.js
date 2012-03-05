@@ -18,9 +18,6 @@
       });
     });
     app.bind("initialize:after", function() {
-      Backbone.Validation.configure({
-        selector: 'id'
-      });
       if (Backbone.history) return Backbone.history.start();
     });
     app.MainRouter = Backbone.Marionette.AppRouter.extend({
