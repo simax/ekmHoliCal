@@ -22,7 +22,8 @@ class UserItemView extends Backbone.Marionette.ItemView
     alert JSON.stringify @model.get("active")
 
   edit: (e) ->
-    alert JSON.stringify @model
+    id = @model.id
+    app.vent.trigger "admin:edit", id  
   
 @app.UserItemView = UserItemView
 
@@ -53,45 +54,44 @@ class UserListView extends Backbone.Marionette.CollectionView
 
 @app.UserListView = UserListView
 
-
-class UserCreateView extends Backbone.Marionette.ItemView
+class UserMaintenanceView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
   
-  onRender: =>
+  onRender: ->
     Backbone.ModelBinding.bind(@)  
     Backbone.Validation.bind(@)
+    
+  events:
+    "click #cancel-button": "cancel"
+    "submit #user-create": "save"
+    "focus #startdate": "showDatePicker"
+
+  showDatePicker: ->
     $('#startdate').datepicker
       constrainedInput: true
       dateFormat: 'dd/mm/yy'
       changeMonth: true
       changeYear: true 
       showButtonPanel: true
-    
-  events:
-    "click #cancel-button": "cancel"
-    "submit #user-create": "save"
 
   save: (e) ->
     e.preventDefault()
-    console.log "lastname: " + @model.get("lastname")
-    if @model.isValid(true)
-      @collection.create(@model, {wait: true})
-      app.vent.trigger "main:admin"
-      
-  # clear: ->
-  #   @$("#firstname").val ""
-  #   @$("#lastname").val ""
-  #   @$("#email").val ""
-  #   @$("#entitlement").val ""
-  #   @$("#startdate").val ""
-  #   @$("#active").val ""
+    modelValid = @model.isValid(true)
+    console.log "Is model valid:" + modelValid
+
+    if modelValid
+      if @model.isNew() 
+        @collection.create(@model, {wait: true}) 
+      else
+        @model.save()  
+      app.vent.trigger "main:admin"      
 
   cancel: (e) ->
     e.preventDefault()
     app.vent.trigger "main:admin"
     
-@app.UserCreateView = UserCreateView
+@app.UserMaintenanceView = UserMaintenanceView
 
 
 class UserNavigationView extends Backbone.Marionette.ItemView

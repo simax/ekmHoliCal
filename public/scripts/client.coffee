@@ -29,14 +29,22 @@ $ ->
   app.UserRouter = Backbone.Marionette.AppRouter.extend
     appRoutes: 
       "admin/create": "adminCreate"
+      "admin/edit/:id": "adminEdit"
 
   app.UserController = 
     adminCreate: () ->
-      userCreateView = new app.UserCreateView
+      userMaintenanceView = new app.UserMaintenanceView
         collection: app.users
         model: new app.User()
 
-      app.mainRegion.show(userCreateView)
+      app.mainRegion.show(userMaintenanceView)
+
+    adminEdit: (id) ->
+      userMaintenanceView = new app.UserMaintenanceView
+        collection: app.users
+        model: app.users.get(id)
+
+      app.mainRegion.show(userMaintenanceView)
 
   app.MainController = 
     home: () ->
@@ -59,10 +67,11 @@ $ ->
     mainNavigationMenuRegion: "#main-navigation-menu",
     mainRegion: "#main-region"
   
-  app.vent.bind "main:home", (message) -> Backbone.history.navigate("", true)
-  app.vent.bind "main:admin", (message) -> Backbone.history.navigate("admin", true)
+  app.vent.bind "main:home", () -> app.mainRouter.navigate("", true)
+  app.vent.bind "main:admin", () -> app.mainRouter.navigate("admin", true)
 
-  app.vent.bind "admin:create", (message) -> Backbone.history.navigate("admin/create", true)
+  app.vent.bind "admin:create", () -> app.userRouter.navigate("admin/create", true)
+  app.vent.bind "admin:edit", (id) -> app.userRouter.navigate("admin/edit/" + id, true)
     
   app.start()
 

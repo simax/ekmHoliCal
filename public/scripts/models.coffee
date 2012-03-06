@@ -30,6 +30,13 @@ class User extends Backbone.Model
 	initialize: ->				
 		@on 'validated', (isValid, model, attrs) ->
 			console.log 'OnValidated event isValid: ' + isValid
+			console.log '-------------------------'
+			console.log "firstname: " + model.get("firstname")
+			console.log "lastname: " + model.get("lastname")
+			console.log "email: " + model.get("email")
+			console.log "attrs: " + attrs
+			console.log '-------------------------'
+
 			# $(@).qtip("destroy") if $(@).data("qtip") 
 			# if(!isValid)
 			$(':not(.invalid)').qtip('destroy')

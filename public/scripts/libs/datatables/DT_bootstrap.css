@@ -1,6 +1,6 @@
 .invalid {
-	border-color: red;
-	background-color: #fdecee;
+	border-color: red !important ; 
+	background-color: #fdecee !important ; 
 }
 
 

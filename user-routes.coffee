@@ -27,14 +27,8 @@ class UserRoutes
 
 	post: (req, res) =>
 		user = new @UserModel
-		user.firstname = req.body.firstname
-		user.lastname = req.body.lastname
-		user.email = req.body.email
-		user.entitlement = req.body.entitlement
-		user.startdate = req.body.startdate
-		user.enddate = ""
-		user.active = req.body.active
-		
+		@modelBind(user, req)
+
 		user.save (err) ->
 			console.log err if err
 			res.send(err) if err 
@@ -46,18 +40,35 @@ class UserRoutes
 			res.send(users)
 
 	get: (req, res) =>
-		console.log "req.params.id:" + req.params.id + "req.body.id: " + req.body.id
+		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
 		@UserModel.findById req.params.id, (err, doc) ->
 			res.send(doc)
 
 	put: (req, res) =>
+		console.log "req.params.id: " + req.params.id
 		@UserModel.findById req.params.id, (err, doc) ->
-			doc.update()
-			res.send(200)
+			console.log err if err
+			res.send(err) if err 
+			console.log "firstname: " +  req.body.firstname
+			# @modelBind doc, req
+			# user.save (err) ->
+			# 	console.log err if err
+			# 	res.send(err) if err 
+			# res.send(user)		
 
 	delete: (req, res) =>
 		@UserModel.findById req.params.id, (err, doc) ->
 			doc.remove()
 			res.send(204)
+
+	modelBind: (doc, req) =>
+		console.log "req.body.firstname: " + req.body.firstname
+		doc.firstname = req.body.firstname
+		doc.lastname = req.body.lastname
+		doc.email = req.body.email
+		doc.entitlement = req.body.entitlement
+		doc.startdate = req.body.startdate
+		doc.enddate = ""
+		doc.active = req.body.active
 
 module.exports = new UserRoutes()

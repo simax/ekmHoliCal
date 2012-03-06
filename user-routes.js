@@ -5,6 +5,7 @@
   UserRoutes = (function() {
 
     function UserRoutes() {
+      this.modelBind = __bind(this.modelBind, this);
       this["delete"] = __bind(this["delete"], this);
       this.put = __bind(this.put, this);
       this.get = __bind(this.get, this);
@@ -49,13 +50,7 @@
     UserRoutes.prototype.post = function(req, res) {
       var user;
       user = new this.UserModel;
-      user.firstname = req.body.firstname;
-      user.lastname = req.body.lastname;
-      user.email = req.body.email;
-      user.entitlement = req.body.entitlement;
-      user.startdate = req.body.startdate;
-      user.enddate = "";
-      user.active = req.body.active;
+      this.modelBind(user, req);
       user.save(function(err) {
         if (err) console.log(err);
         if (err) return res.send(err);
@@ -71,16 +66,18 @@
     };
 
     UserRoutes.prototype.get = function(req, res) {
-      console.log("req.params.id:" + req.params.id + "req.body.id: " + req.body.id);
+      console.log("req.params.id: " + req.params.id + "req.body.id: " + req.body.id);
       return this.UserModel.findById(req.params.id, function(err, doc) {
         return res.send(doc);
       });
     };
 
     UserRoutes.prototype.put = function(req, res) {
+      console.log("req.params.id: " + req.params.id);
       return this.UserModel.findById(req.params.id, function(err, doc) {
-        doc.update();
-        return res.send(200);
+        if (err) console.log(err);
+        if (err) res.send(err);
+        return console.log("firstname: " + req.body.firstname);
       });
     };
 
@@ -89,6 +86,17 @@
         doc.remove();
         return res.send(204);
       });
+    };
+
+    UserRoutes.prototype.modelBind = function(doc, req) {
+      console.log("req.body.firstname: " + req.body.firstname);
+      doc.firstname = req.body.firstname;
+      doc.lastname = req.body.lastname;
+      doc.email = req.body.email;
+      doc.entitlement = req.body.entitlement;
+      doc.startdate = req.body.startdate;
+      doc.enddate = "";
+      return doc.active = req.body.active;
     };
 
     return UserRoutes;

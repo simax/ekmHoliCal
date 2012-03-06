@@ -32,6 +32,12 @@
     User.prototype.initialize = function() {
       return this.on('validated', function(isValid, model, attrs) {
         console.log('OnValidated event isValid: ' + isValid);
+        console.log('-------------------------');
+        console.log("firstname: " + model.get("firstname"));
+        console.log("lastname: " + model.get("lastname"));
+        console.log("email: " + model.get("email"));
+        console.log("attrs: " + attrs);
+        console.log('-------------------------');
         $(':not(.invalid)').qtip('destroy');
         return $('.invalid').qtip({
           overwrite: false,

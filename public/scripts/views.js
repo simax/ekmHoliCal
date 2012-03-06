@@ -1,8 +1,7 @@
 (function() {
-  var MainNavigationMenuView, MainView, UserCreateView, UserItemView, UserListView, UserNavigationView, UsersLayoutView, _ref,
+  var MainNavigationMenuView, MainView, UserItemView, UserListView, UserMaintenanceView, UserNavigationView, UsersLayoutView, _ref,
     __hasProp = Object.prototype.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   this.app = (_ref = window.app) != null ? _ref : new Backbone.Marionette.Application();
 
@@ -44,7 +43,9 @@
     };
 
     UserItemView.prototype.edit = function(e) {
-      return alert(JSON.stringify(this.model));
+      var id;
+      id = this.model.id;
+      return app.vent.trigger("admin:edit", id);
     };
 
     return UserItemView;
@@ -84,22 +85,30 @@
 
   this.app.UserListView = UserListView;
 
-  UserCreateView = (function(_super) {
+  UserMaintenanceView = (function(_super) {
 
-    __extends(UserCreateView, _super);
+    __extends(UserMaintenanceView, _super);
 
-    function UserCreateView() {
-      this.onRender = __bind(this.onRender, this);
-      UserCreateView.__super__.constructor.apply(this, arguments);
+    function UserMaintenanceView() {
+      UserMaintenanceView.__super__.constructor.apply(this, arguments);
     }
 
-    UserCreateView.prototype.template = "#tmpl-user-maintenance";
+    UserMaintenanceView.prototype.template = "#tmpl-user-maintenance";
 
-    UserCreateView.prototype.className = "row";
+    UserMaintenanceView.prototype.className = "row";
 
-    UserCreateView.prototype.onRender = function() {
+    UserMaintenanceView.prototype.onRender = function() {
       Backbone.ModelBinding.bind(this);
-      Backbone.Validation.bind(this);
+      return Backbone.Validation.bind(this);
+    };
+
+    UserMaintenanceView.prototype.events = {
+      "click #cancel-button": "cancel",
+      "submit #user-create": "save",
+      "focus #startdate": "showDatePicker"
+    };
+
+    UserMaintenanceView.prototype.showDatePicker = function() {
       return $('#startdate').datepicker({
         constrainedInput: true,
         dateFormat: 'dd/mm/yy',
@@ -109,32 +118,33 @@
       });
     };
 
-    UserCreateView.prototype.events = {
-      "click #cancel-button": "cancel",
-      "submit #user-create": "save"
-    };
-
-    UserCreateView.prototype.save = function(e) {
+    UserMaintenanceView.prototype.save = function(e) {
+      var modelValid;
       e.preventDefault();
-      console.log("lastname: " + this.model.get("lastname"));
-      if (this.model.isValid(true)) {
-        this.collection.create(this.model, {
-          wait: true
-        });
+      modelValid = this.model.isValid(true);
+      console.log("Is model valid:" + modelValid);
+      if (modelValid) {
+        if (this.model.isNew()) {
+          this.collection.create(this.model, {
+            wait: true
+          });
+        } else {
+          this.model.save();
+        }
         return app.vent.trigger("main:admin");
       }
     };
 
-    UserCreateView.prototype.cancel = function(e) {
+    UserMaintenanceView.prototype.cancel = function(e) {
       e.preventDefault();
       return app.vent.trigger("main:admin");
     };
 
-    return UserCreateView;
+    return UserMaintenanceView;
 
   })(Backbone.Marionette.ItemView);
 
-  this.app.UserCreateView = UserCreateView;
+  this.app.UserMaintenanceView = UserMaintenanceView;
 
   UserNavigationView = (function(_super) {
 

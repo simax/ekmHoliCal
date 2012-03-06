@@ -28,17 +28,26 @@
     });
     app.UserRouter = Backbone.Marionette.AppRouter.extend({
       appRoutes: {
-        "admin/create": "adminCreate"
+        "admin/create": "adminCreate",
+        "admin/edit/:id": "adminEdit"
       }
     });
     app.UserController = {
       adminCreate: function() {
-        var userCreateView;
-        userCreateView = new app.UserCreateView({
+        var userMaintenanceView;
+        userMaintenanceView = new app.UserMaintenanceView({
           collection: app.users,
           model: new app.User()
         });
-        return app.mainRegion.show(userCreateView);
+        return app.mainRegion.show(userMaintenanceView);
+      },
+      adminEdit: function(id) {
+        var userMaintenanceView;
+        userMaintenanceView = new app.UserMaintenanceView({
+          collection: app.users,
+          model: app.users.get(id)
+        });
+        return app.mainRegion.show(userMaintenanceView);
       }
     };
     app.MainController = {
@@ -63,14 +72,17 @@
       mainNavigationMenuRegion: "#main-navigation-menu",
       mainRegion: "#main-region"
     });
-    app.vent.bind("main:home", function(message) {
-      return Backbone.history.navigate("", true);
+    app.vent.bind("main:home", function() {
+      return app.mainRouter.navigate("", true);
     });
-    app.vent.bind("main:admin", function(message) {
-      return Backbone.history.navigate("admin", true);
+    app.vent.bind("main:admin", function() {
+      return app.mainRouter.navigate("admin", true);
     });
-    app.vent.bind("admin:create", function(message) {
-      return Backbone.history.navigate("admin/create", true);
+    app.vent.bind("admin:create", function() {
+      return app.userRouter.navigate("admin/create", true);
+    });
+    app.vent.bind("admin:edit", function(id) {
+      return app.userRouter.navigate("admin/edit/" + id, true);
     });
     return app.start();
   });
