@@ -67,22 +67,25 @@
 
     UserRoutes.prototype.get = function(req, res) {
       console.log("req.params.id: " + req.params.id + "req.body.id: " + req.body.id);
-      return this.UserModel.findById(req.params.id, function(err, doc) {
-        return res.send(doc);
+      return this.UserModel.findById(req.params.id, function(err, user) {
+        return res.send(user);
       });
     };
 
     UserRoutes.prototype.put = function(req, res) {
-      console.log("req.params.id: " + req.params.id);
-      return this.UserModel.findById(req.params.id, function(err, doc) {
-        if (err) console.log(err);
+      var _this = this;
+      return this.UserModel.findById(req.params.id, function(err, user) {
         if (err) res.send(err);
-        return console.log("firstname: " + req.body.firstname);
+        _this.modelBind(user, req);
+        user.save(function(err) {
+          if (err) return res.send(err);
+        });
+        return res.send(user);
       });
     };
 
     UserRoutes.prototype["delete"] = function(req, res) {
-      return this.UserModel.findById(req.params.id, function(err, doc) {
+      return this.UserModel.findById(req.params.id, function(err, user) {
         doc.remove();
         return res.send(204);
       });

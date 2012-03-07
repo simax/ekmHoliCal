@@ -44,7 +44,7 @@ class UserListView extends Backbone.Marionette.CollectionView
       @onRender()
     @
   
-  # onRender: ->
+  # onShow: ->
   #   $("#user-list").dataTable
   #     sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
   #     sPaginationType: "bootstrap"
@@ -74,6 +74,13 @@ class UserMaintenanceView extends Backbone.Marionette.ItemView
       changeMonth: true
       changeYear: true 
       showButtonPanel: true
+
+  hideDatePicker: ->
+    $('#startdate').datepicker('hide')
+
+  close: =>
+    @hideDatePicker()
+    super
 
   save: (e) ->
     e.preventDefault()

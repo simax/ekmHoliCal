@@ -67,11 +67,12 @@ $ ->
     mainNavigationMenuRegion: "#main-navigation-menu",
     mainRegion: "#main-region"
   
-  app.vent.bind "main:home", () -> app.mainRouter.navigate("", true)
-  app.vent.bind "main:admin", () -> app.mainRouter.navigate("admin", true)
+        
+  app.vent.on "main:home", () -> app.mainRouter.navigate("", true)
+  app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
 
-  app.vent.bind "admin:create", () -> app.userRouter.navigate("admin/create", true)
-  app.vent.bind "admin:edit", (id) -> app.userRouter.navigate("admin/edit/" + id, true)
+  app.vent.on "admin:create", () -> app.userRouter.navigate("admin/create", true)
+  app.vent.on "admin:edit", (id) -> app.userRouter.navigate("admin/edit/" + id, true)
     
   app.start()
 

@@ -17,18 +17,15 @@ class UserRoutes
 		 	'active': { type: Boolean, default: true } 
 		 
 		# Register a users Mongo collection
-
 		@UserModel = @mongoose.model 'Users', @UserSchema
 
 		con = @mongoose.connect 'mongodb://localhost:8124/ekmHoliCal'
-
 
 	# User routes
 
 	post: (req, res) =>
 		user = new @UserModel
 		@modelBind(user, req)
-
 		user.save (err) ->
 			console.log err if err
 			res.send(err) if err 
@@ -41,23 +38,19 @@ class UserRoutes
 
 	get: (req, res) =>
 		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
-		@UserModel.findById req.params.id, (err, doc) ->
-			res.send(doc)
+		@UserModel.findById req.params.id, (err, user) ->
+			res.send(user)
 
 	put: (req, res) =>
-		console.log "req.params.id: " + req.params.id
-		@UserModel.findById req.params.id, (err, doc) ->
-			console.log err if err
+		@UserModel.findById req.params.id, (err, user) =>
 			res.send(err) if err 
-			console.log "firstname: " +  req.body.firstname
-			# @modelBind doc, req
-			# user.save (err) ->
-			# 	console.log err if err
-			# 	res.send(err) if err 
-			# res.send(user)		
-
+			@modelBind user, req
+			user.save (err) ->
+				res.send(err) if err 
+			res.send(user)		
+ 
 	delete: (req, res) =>
-		@UserModel.findById req.params.id, (err, doc) ->
+		@UserModel.findById req.params.id, (err, user) ->
 			doc.remove()
 			res.send(204)
 

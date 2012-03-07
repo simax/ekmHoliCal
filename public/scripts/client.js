@@ -72,16 +72,16 @@
       mainNavigationMenuRegion: "#main-navigation-menu",
       mainRegion: "#main-region"
     });
-    app.vent.bind("main:home", function() {
+    app.vent.on("main:home", function() {
       return app.mainRouter.navigate("", true);
     });
-    app.vent.bind("main:admin", function() {
+    app.vent.on("main:admin", function() {
       return app.mainRouter.navigate("admin", true);
     });
-    app.vent.bind("admin:create", function() {
+    app.vent.on("admin:create", function() {
       return app.userRouter.navigate("admin/create", true);
     });
-    app.vent.bind("admin:edit", function(id) {
+    app.vent.on("admin:edit", function(id) {
       return app.userRouter.navigate("admin/edit/" + id, true);
     });
     return app.start();
