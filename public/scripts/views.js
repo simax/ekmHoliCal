@@ -1,5 +1,5 @@
 (function() {
-  var MainNavigationMenuView, MainView, UserItemView, UserListView, UserMaintenanceView, UserNavigationView, UsersLayoutView, _ref,
+  var DepartmentMaintenanceView, MainNavigationMenuView, MainView, UserItemView, UserListView, UserMaintenanceView, UserNavigationView, UsersLayoutView, _ref,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
@@ -46,7 +46,7 @@
     UserItemView.prototype.edit = function(e) {
       var id;
       id = this.model.id;
-      return app.vent.trigger("admin:edit", id);
+      return app.vent.trigger("admin:users:edit", id);
     };
 
     return UserItemView;
@@ -99,9 +99,11 @@
 
     UserMaintenanceView.prototype.className = "row";
 
-    UserMaintenanceView.prototype.onRender = function() {
+    UserMaintenanceView.prototype.onShow = function() {
       Backbone.ModelBinding.bind(this);
-      return Backbone.Validation.bind(this);
+      return Backbone.Validation.bind(this, {
+        forceUpdate: true
+      });
     };
 
     UserMaintenanceView.prototype.events = {
@@ -142,13 +144,13 @@
         } else {
           this.model.save();
         }
-        return app.vent.trigger("main:admin");
+        return app.vent.trigger("main:admin:users");
       }
     };
 
     UserMaintenanceView.prototype.cancel = function(e) {
       e.preventDefault();
-      return app.vent.trigger("main:admin");
+      return app.vent.trigger("main:admin:users");
     };
 
     return UserMaintenanceView;
@@ -175,7 +177,7 @@
 
     UserNavigationView.prototype.create = function(e) {
       e.preventDefault();
-      return app.vent.trigger("admin:create");
+      return app.vent.trigger("admin:users:create");
     };
 
     return UserNavigationView;
@@ -205,6 +207,52 @@
 
   this.app.UsersLayoutView = UsersLayoutView;
 
+  DepartmentMaintenanceView = (function(_super) {
+
+    __extends(DepartmentMaintenanceView, _super);
+
+    function DepartmentMaintenanceView() {
+      DepartmentMaintenanceView.__super__.constructor.apply(this, arguments);
+    }
+
+    DepartmentMaintenanceView.prototype.template = "#tmpl-department-maintenance";
+
+    DepartmentMaintenanceView.prototype.className = "row";
+
+    DepartmentMaintenanceView.prototype.onShow = function() {
+      Backbone.ModelBinding.bind(this);
+      return Backbone.Validation.bind(this, {
+        forceUpdate: true
+      });
+    };
+
+    DepartmentMaintenanceView.prototype.events = {
+      "click #cancel-button": "cancel",
+      "submit #user-create": "save"
+    };
+
+    DepartmentMaintenanceView.prototype.save = function(e) {
+      var modelValid;
+      e.preventDefault();
+      modelValid = this.model.isValid(true);
+      console.log("Is model valid:" + modelValid);
+      if (modelValid) {
+        this.model.save();
+        return app.vent.trigger("main:admin");
+      }
+    };
+
+    DepartmentMaintenanceView.prototype.cancel = function(e) {
+      e.preventDefault();
+      return app.vent.trigger("main:admin");
+    };
+
+    return DepartmentMaintenanceView;
+
+  })(Backbone.Marionette.ItemView);
+
+  this.app.DepartmentMaintenanceView = DepartmentMaintenanceView;
+
   MainNavigationMenuView = (function(_super) {
 
     __extends(MainNavigationMenuView, _super);
@@ -224,12 +272,12 @@
 
     MainNavigationMenuView.prototype.adminClick = function(e) {
       e.preventDefault();
-      return app.vent.trigger("main:admin");
+      return app.vent.trigger("main:admin:users");
     };
 
     MainNavigationMenuView.prototype.homeClick = function(e) {
       e.preventDefault();
-      return app.vent.trigger("admin:home");
+      return app.vent.trigger("main");
     };
 
     return MainNavigationMenuView;

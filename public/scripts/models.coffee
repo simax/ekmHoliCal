@@ -12,6 +12,10 @@ class User extends Backbone.Model
 			required: true
 			pattern: 'email'
 			msg: 'A valid email address is required'
+		department:
+			required: true
+			msg: 'A department is required'
+
 		# startdate:
 		# 	fn: (value, attr, computedState) ->
 		# 		return '' if not value
@@ -29,24 +33,13 @@ class User extends Backbone.Model
 	
 	initialize: ->				
 		@on 'validated', (isValid, model, attrs) ->
-			console.log 'OnValidated event isValid: ' + isValid
-			console.log '-------------------------'
-			console.log "firstname: " + model.get("firstname")
-			console.log "lastname: " + model.get("lastname")
-			console.log "email: " + model.get("email")
-			console.log "attrs: " + attrs
-			console.log '-------------------------'
-
-			# $(@).qtip("destroy") if $(@).data("qtip") 
-			# if(!isValid)
 			$(':not(.invalid)').qtip('destroy')
-
 			$('.invalid')
 				.qtip(
 					overwrite: false
 					content: 
 						text: (api) ->
-         			$(this).attr('data-error')
+	       			$(this).attr('data-error')
 					position: 
 					   my: 'left center'
 					   at: 'right center'
@@ -62,3 +55,17 @@ class User extends Backbone.Model
 
 @app = window.app ? new Backbone.Marionette.Application()
 @app.User = User 
+
+class Department extends Backbone.Model
+	idAttribute: "_id"
+	validation: 
+		name:
+			required: true
+			msg: 'A department name is required'
+
+@app = window.app ? new Backbone.Marionette.Application()
+@app.Department = Department 
+
+
+
+

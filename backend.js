@@ -1,11 +1,13 @@
 (function() {
-  var backend, basePath, express, userroutes, _ref;
+  var backend, basePath, departmentroutes, express, userroutes, _ref;
 
   require('express-namespace');
 
   express = require('express');
 
   userroutes = require('./user-routes');
+
+  departmentroutes = require('./department-routes');
 
   backend = (_ref = global.backend) != null ? _ref : express.createServer().listen(process.env.PORT);
 
@@ -30,7 +32,7 @@
   });
 
   backend.namespace(basePath, function() {
-    backend.get('/index', function(req, res, next) {
+    backend.get('/', function(req, res, next) {
       return res.render('index');
     });
     return backend.namespace('/api', function() {
@@ -38,7 +40,12 @@
       backend.get('/users/:id', userroutes.get);
       backend.post('/users', userroutes.post);
       backend.put('/users/:id', userroutes.put);
-      return backend["delete"]('/users/:id', userroutes["delete"]);
+      backend["delete"]('/users/:id', userroutes["delete"]);
+      backend.get('/departments', departmentroutes.getall);
+      backend.get('/departments/:id', departmentroutes.get);
+      backend.post('/departments', departmentroutes.post);
+      backend.put('/departments/:id', departmentroutes.put);
+      return backend["delete"]('/departments/:id', departmentroutes["delete"]);
     });
   });
 

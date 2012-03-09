@@ -1,5 +1,5 @@
 (function() {
-  var User, _ref,
+  var Department, User, _ref, _ref2,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
@@ -26,18 +26,15 @@
         required: true,
         pattern: 'email',
         msg: 'A valid email address is required'
+      },
+      department: {
+        required: true,
+        msg: 'A department is required'
       }
     };
 
     User.prototype.initialize = function() {
       return this.on('validated', function(isValid, model, attrs) {
-        console.log('OnValidated event isValid: ' + isValid);
-        console.log('-------------------------');
-        console.log("firstname: " + model.get("firstname"));
-        console.log("lastname: " + model.get("lastname"));
-        console.log("email: " + model.get("email"));
-        console.log("attrs: " + attrs);
-        console.log('-------------------------');
         $(':not(.invalid)').qtip('destroy');
         return $('.invalid').qtip({
           overwrite: false,
@@ -70,5 +67,30 @@
   this.app = (_ref = window.app) != null ? _ref : new Backbone.Marionette.Application();
 
   this.app.User = User;
+
+  Department = (function(_super) {
+
+    __extends(Department, _super);
+
+    function Department() {
+      Department.__super__.constructor.apply(this, arguments);
+    }
+
+    Department.prototype.idAttribute = "_id";
+
+    Department.prototype.validation = {
+      name: {
+        required: true,
+        msg: 'A department name is required'
+      }
+    };
+
+    return Department;
+
+  })(Backbone.Model);
+
+  this.app = (_ref2 = window.app) != null ? _ref2 : new Backbone.Marionette.Application();
+
+  this.app.Department = Department;
 
 }).call(this);

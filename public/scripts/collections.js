@@ -1,5 +1,5 @@
 (function() {
-  var Users, _ref,
+  var Departments, Users, _ref, _ref2,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
@@ -26,5 +26,29 @@
   this.app.users = new this.app.Users;
 
   this.app.users.fetch();
+
+  Departments = (function(_super) {
+
+    __extends(Departments, _super);
+
+    function Departments() {
+      Departments.__super__.constructor.apply(this, arguments);
+    }
+
+    Departments.prototype.model = app.User;
+
+    Departments.prototype.url = "/ekmHoliCal/api/departments";
+
+    return Departments;
+
+  })(Backbone.Collection);
+
+  this.app = (_ref2 = window.app) != null ? _ref2 : new Backbone.Marionette.Application();
+
+  this.app.Departments = Departments;
+
+  this.app.Departments = new this.app.Departments;
+
+  this.app.departments.fetch();
 
 }).call(this);

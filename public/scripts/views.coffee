@@ -23,7 +23,7 @@ class UserItemView extends Backbone.Marionette.ItemView
 
   edit: (e) ->
     id = @model.id
-    app.vent.trigger "admin:edit", id  
+    app.vent.trigger "admin:users:edit", id  
   
 @app.UserItemView = UserItemView
 
@@ -58,10 +58,10 @@ class UserMaintenanceView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
   
-  onRender: ->
+  onShow: ->
     Backbone.ModelBinding.bind(@)  
-    Backbone.Validation.bind(@)
-    
+    Backbone.Validation.bind(@, forceUpdate: true) 
+
   events:
     "click #cancel-button": "cancel"
     "submit #user-create": "save"
@@ -92,11 +92,11 @@ class UserMaintenanceView extends Backbone.Marionette.ItemView
         @collection.create(@model, {wait: true}) 
       else
         @model.save()  
-      app.vent.trigger "main:admin"      
+      app.vent.trigger "main:admin:users"      
 
   cancel: (e) ->
     e.preventDefault()
-    app.vent.trigger "main:admin"
+    app.vent.trigger "main:admin:users"
     
 @app.UserMaintenanceView = UserMaintenanceView
 
@@ -110,7 +110,7 @@ class UserNavigationView extends Backbone.Marionette.ItemView
 
   create: (e) ->
     e.preventDefault()
-    app.vent.trigger "admin:create"
+    app.vent.trigger "admin:users:create"
       
 @app.UserNavigationView = UserNavigationView
    
@@ -126,6 +126,41 @@ class UsersLayoutView extends Backbone.Marionette.CompositeRegion
 
 # End of user views
 
+# Department views
+
+class DepartmentMaintenanceView extends Backbone.Marionette.ItemView
+  template: "#tmpl-department-maintenance"
+  className: "row"
+  
+  onShow: ->
+    Backbone.ModelBinding.bind(@)  
+    Backbone.Validation.bind(@, forceUpdate: true) 
+
+  events:
+    "click #cancel-button": "cancel"
+    "submit #user-create": "save"
+
+  save: (e) ->
+    e.preventDefault()
+    modelValid = @model.isValid(true)
+    console.log "Is model valid:" + modelValid
+
+    if modelValid
+      # if @model.isNew() 
+      #   @collection.create(@model, {wait: true}) 
+      # else
+      @model.save()  
+      app.vent.trigger "main:admin"      
+
+  cancel: (e) ->
+    e.preventDefault()
+    app.vent.trigger "main:admin"
+    
+@app.DepartmentMaintenanceView = DepartmentMaintenanceView
+
+# End of department views
+
+
 # Main navigation menu views
 
 class MainNavigationMenuView extends Backbone.Marionette.ItemView
@@ -138,11 +173,11 @@ class MainNavigationMenuView extends Backbone.Marionette.ItemView
 
   adminClick: (e) ->
     e.preventDefault()
-    app.vent.trigger "main:admin"
+    app.vent.trigger "main:admin:users"
 
   homeClick: (e) ->
     e.preventDefault()
-    app.vent.trigger "admin:home"
+    app.vent.trigger "main"
 
 @app.MainNavigationMenuView = MainNavigationMenuView
 

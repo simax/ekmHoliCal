@@ -3,6 +3,7 @@ require 'express-namespace'
 
 express = require 'express'
 userroutes = require './user-routes'
+departmentroutes = require './department-routes'
 
 backend = global.backend ? express.createServer().listen process.env.PORT
 
@@ -26,10 +27,12 @@ backend.configure ->
 
 backend.namespace basePath, ->
 
-		backend.get '/index', (req, res, next) -> res.render 'index'
+		backend.get '/', (req, res, next) -> res.render 'index'
 
 		backend.namespace '/api', ->
 
+			# User routes 		
+			
 			backend.get '/users', userroutes.getall
 
 			backend.get '/users/:id', userroutes.get
@@ -39,4 +42,16 @@ backend.namespace basePath, ->
 			backend.put '/users/:id', userroutes.put
 
 			backend.delete '/users/:id', userroutes.delete
+ 
+			# Department routes 		
+
+			backend.get '/departments', departmentroutes.getall
+
+			backend.get '/departments/:id', departmentroutes.get
+
+			backend.post '/departments', departmentroutes.post
+
+			backend.put '/departments/:id', departmentroutes.put
+
+			backend.delete '/departments/:id', departmentroutes.delete
  

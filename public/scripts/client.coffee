@@ -14,6 +14,9 @@ $ ->
     app.userRouter = new app.UserRouter
       controller: app.UserController  
 
+    app.departmentRouter = new app.DepartmentRouter
+      controller: app.DepartmentController  
+
   app.bind "initialize:after", () ->
     # Backbone.Validation.configure
     #   selector: 'id'
@@ -24,27 +27,52 @@ $ ->
   app.MainRouter = Backbone.Marionette.AppRouter.extend
     appRoutes: 
       "": "home",
-      "admin": "admin"
+      "admin/users": "admin"
+      "admin/departments": "departments"
 
   app.UserRouter = Backbone.Marionette.AppRouter.extend
     appRoutes: 
-      "admin/create": "adminCreate"
-      "admin/edit/:id": "adminEdit"
+      "admin/users/create": "adminUsersCreate"
+      "admin/users/edit/:id": "adminUsersEdit"
 
-  app.UserController = 
-    adminCreate: () ->
+  app.UserController => 
+    adminUsersCreate: () ->
       userMaintenanceView = new app.UserMaintenanceView
         collection: app.users
         model: new app.User()
 
       app.mainRegion.show(userMaintenanceView)
 
-    adminEdit: (id) ->
+    adminUsersEdit: (id) ->
+      console.log "id: " + id
       userMaintenanceView = new app.UserMaintenanceView
         collection: app.users
         model: app.users.get(id)
 
       app.mainRegion.show(userMaintenanceView)
+
+
+
+  app.DepartmentRouter = Backbone.Marionette.AppRouter.extend
+    appRoutes: 
+      "admin/departments/create": "adminDepartmentsCreate"
+      "admin/departments/edit/:id": "adminDepartmentsEdit"
+
+  app.DepartmentController => 
+    adminDepartmentsCreate: () ->
+      userMaintenanceView = new app.DepartmentMaintenanceView
+        collection: app.departments
+        model: new app.Department()
+
+      app.mainRegion.show(departmentMaintenanceView)
+
+    adminDepartmentsEdit: (id) ->
+      console.log "id: " + id
+      departmentMaintenanceView = new app.DepartmentMaintenanceView
+        collection: app.departments
+        model: app.departments.get(id)
+
+      app.mainRegion.show(departmentMaintenanceView)
 
   app.MainController = 
     home: () ->
@@ -69,10 +97,14 @@ $ ->
   
         
   app.vent.on "main:home", () -> app.mainRouter.navigate("", true)
-  app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
+  # app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
+  app.vent.on "main:admin:users", () -> app.userRouter.navigate("admin/users", true)
 
-  app.vent.on "admin:create", () -> app.userRouter.navigate("admin/create", true)
-  app.vent.on "admin:edit", (id) -> app.userRouter.navigate("admin/edit/" + id, true)
+  app.vent.on "admin:users:create", () -> app.userRouter.navigate("admin/users/create", true)
+  app.vent.on "admin:users:edit", (id) -> app.userRouter.navigate("admin/users/edit/" + id, true)
+
+  app.vent.on "admin:departments:create", () -> app.userRouter.navigate("admin/departments/create", true)
+  app.vent.on "admin:departments:edit", (id) -> app.userRouter.navigate("admin/departments/edit/" + id, true)
     
   app.start()
 
