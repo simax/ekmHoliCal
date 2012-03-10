@@ -92,12 +92,17 @@
 
     function UserMaintenanceView() {
       this.close = __bind(this.close, this);
+      this.onShow = __bind(this.onShow, this);
       UserMaintenanceView.__super__.constructor.apply(this, arguments);
     }
 
     UserMaintenanceView.prototype.template = "#tmpl-user-maintenance";
 
     UserMaintenanceView.prototype.className = "row";
+
+    UserMaintenanceView.prototype.getUserGravatarURL = function() {
+      return "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(this.model.get("email"));
+    };
 
     UserMaintenanceView.prototype.onShow = function() {
       Backbone.ModelBinding.bind(this);

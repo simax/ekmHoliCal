@@ -23,7 +23,7 @@ backend.configure ->
 	backend.use express.static(__dirname + '/public')
 
 
-# Routes
+# API Routes
 
 backend.namespace basePath, ->
 
@@ -34,24 +34,16 @@ backend.namespace basePath, ->
 			# User routes 		
 			
 			backend.get '/users', userroutes.getall
-
 			backend.get '/users/:id', userroutes.get
-
 			backend.post '/users', userroutes.post
-
 			backend.put '/users/:id', userroutes.put
-
 			backend.delete '/users/:id', userroutes.delete
  
 			# Department routes 		
 
 			backend.get '/departments', departmentroutes.getall
-
 			backend.get '/departments/:id', departmentroutes.get
-
 			backend.post '/departments', departmentroutes.post
-
 			backend.put '/departments/:id', departmentroutes.put
-
 			backend.delete '/departments/:id', departmentroutes.delete
  

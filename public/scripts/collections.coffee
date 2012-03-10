@@ -10,10 +10,10 @@ class Users extends Backbone.Collection
 
 
 class Departments extends Backbone.Collection
-  model: app.User 
+  model: app.Department
   url: "/ekmHoliCal/api/departments"
 
 @app = window.app ? new Backbone.Marionette.Application()
 @app.Departments = Departments 
-@app.Departments = new @app.Departments 
+@app.departments = new @app.Departments 
 @app.departments.fetch()

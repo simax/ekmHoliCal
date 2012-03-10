@@ -35,7 +35,7 @@ $ ->
       "admin/users/create": "adminUsersCreate"
       "admin/users/edit/:id": "adminUsersEdit"
 
-  app.UserController => 
+  app.UserController =
     adminUsersCreate: () ->
       userMaintenanceView = new app.UserMaintenanceView
         collection: app.users
@@ -51,14 +51,12 @@ $ ->
 
       app.mainRegion.show(userMaintenanceView)
 
-
-
   app.DepartmentRouter = Backbone.Marionette.AppRouter.extend
     appRoutes: 
       "admin/departments/create": "adminDepartmentsCreate"
       "admin/departments/edit/:id": "adminDepartmentsEdit"
 
-  app.DepartmentController => 
+  app.DepartmentController = 
     adminDepartmentsCreate: () ->
       userMaintenanceView = new app.DepartmentMaintenanceView
         collection: app.departments

@@ -1,7 +1,6 @@
 (function() {
 
   $(function() {
-    var _this = this;
     app.bind("initialize:before", function(options) {
       return Backbone.Marionette.ItemView.prototype.renderTemplate = function(template, data) {
         return template.tmpl(data);
@@ -37,54 +36,50 @@
         "admin/users/edit/:id": "adminUsersEdit"
       }
     });
-    app.UserController(function() {
-      return {
-        adminUsersCreate: function() {
-          var userMaintenanceView;
-          userMaintenanceView = new app.UserMaintenanceView({
-            collection: app.users,
-            model: new app.User()
-          });
-          return app.mainRegion.show(userMaintenanceView);
-        },
-        adminUsersEdit: function(id) {
-          var userMaintenanceView;
-          console.log("id: " + id);
-          userMaintenanceView = new app.UserMaintenanceView({
-            collection: app.users,
-            model: app.users.get(id)
-          });
-          return app.mainRegion.show(userMaintenanceView);
-        }
-      };
-    });
+    app.UserController = {
+      adminUsersCreate: function() {
+        var userMaintenanceView;
+        userMaintenanceView = new app.UserMaintenanceView({
+          collection: app.users,
+          model: new app.User()
+        });
+        return app.mainRegion.show(userMaintenanceView);
+      },
+      adminUsersEdit: function(id) {
+        var userMaintenanceView;
+        console.log("id: " + id);
+        userMaintenanceView = new app.UserMaintenanceView({
+          collection: app.users,
+          model: app.users.get(id)
+        });
+        return app.mainRegion.show(userMaintenanceView);
+      }
+    };
     app.DepartmentRouter = Backbone.Marionette.AppRouter.extend({
       appRoutes: {
         "admin/departments/create": "adminDepartmentsCreate",
         "admin/departments/edit/:id": "adminDepartmentsEdit"
       }
     });
-    app.DepartmentController(function() {
-      return {
-        adminDepartmentsCreate: function() {
-          var userMaintenanceView;
-          userMaintenanceView = new app.DepartmentMaintenanceView({
-            collection: app.departments,
-            model: new app.Department()
-          });
-          return app.mainRegion.show(departmentMaintenanceView);
-        },
-        adminDepartmentsEdit: function(id) {
-          var departmentMaintenanceView;
-          console.log("id: " + id);
-          departmentMaintenanceView = new app.DepartmentMaintenanceView({
-            collection: app.departments,
-            model: app.departments.get(id)
-          });
-          return app.mainRegion.show(departmentMaintenanceView);
-        }
-      };
-    });
+    app.DepartmentController = {
+      adminDepartmentsCreate: function() {
+        var userMaintenanceView;
+        userMaintenanceView = new app.DepartmentMaintenanceView({
+          collection: app.departments,
+          model: new app.Department()
+        });
+        return app.mainRegion.show(departmentMaintenanceView);
+      },
+      adminDepartmentsEdit: function(id) {
+        var departmentMaintenanceView;
+        console.log("id: " + id);
+        departmentMaintenanceView = new app.DepartmentMaintenanceView({
+          collection: app.departments,
+          model: app.departments.get(id)
+        });
+        return app.mainRegion.show(departmentMaintenanceView);
+      }
+    };
     app.MainController = {
       home: function() {
         var mainView;

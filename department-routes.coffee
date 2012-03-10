@@ -31,7 +31,7 @@ class DepartmentRoutes
  
 	getall: (req, res) =>
 		res.contentType 'application/json' 
-		@Model.find (err, entitys) ->
+		@Model.find (err, entity) ->
 			res.send(entity)
 
 	get: (req, res) =>

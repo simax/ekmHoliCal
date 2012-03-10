@@ -43,7 +43,7 @@
 
     DepartmentRoutes.prototype.getall = function(req, res) {
       res.contentType('application/json');
-      return this.Model.find(function(err, entitys) {
+      return this.Model.find(function(err, entity) {
         return res.send(entity);
       });
     };

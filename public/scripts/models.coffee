@@ -33,24 +33,7 @@ class User extends Backbone.Model
 	
 	initialize: ->				
 		@on 'validated', (isValid, model, attrs) ->
-			$(':not(.invalid)').qtip('destroy')
-			$('.invalid')
-				.qtip(
-					overwrite: false
-					content: 
-						text: (api) ->
-	       			$(this).attr('data-error')
-					position: 
-					   my: 'left center'
-					   at: 'right center'
-					   viewport: $(window)
-					show: 
-						event: false
-						ready: true
-					hide: false
-					style: 
-					   classes: 'ui-tooltip-jtools' # ui-tooltip-red ui-tooltip-rounded ui-tooltip-shadow
-			)
+			app.Utils.showValidationErrors()
 
 
 @app = window.app ? new Backbone.Marionette.Application()
@@ -62,6 +45,11 @@ class Department extends Backbone.Model
 		name:
 			required: true
 			msg: 'A department name is required'
+	
+	initialize: ->				
+		@on 'validated', (isValid, model, attrs) ->
+			app.Utils.showValidationErrors()
+
 
 @app = window.app ? new Backbone.Marionette.Application()
 @app.Department = Department 

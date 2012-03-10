@@ -58,7 +58,11 @@ class UserMaintenanceView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
   
-  onShow: ->
+  getUserGravatarURL: ->
+      "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(@model.get("email"))
+
+  onShow: =>
+    # $("#user-gravatar").src = @getUserGravatarURL()
     Backbone.ModelBinding.bind(@)  
     Backbone.Validation.bind(@, forceUpdate: true) 
 

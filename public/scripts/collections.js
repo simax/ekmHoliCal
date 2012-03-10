@@ -35,7 +35,7 @@
       Departments.__super__.constructor.apply(this, arguments);
     }
 
-    Departments.prototype.model = app.User;
+    Departments.prototype.model = app.Department;
 
     Departments.prototype.url = "/ekmHoliCal/api/departments";
 
@@ -47,7 +47,7 @@
 
   this.app.Departments = Departments;
 
-  this.app.Departments = new this.app.Departments;
+  this.app.departments = new this.app.Departments;
 
   this.app.departments.fetch();
 

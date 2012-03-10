@@ -17,6 +17,7 @@
 
 		<script type="text/javascript" src="/scripts/libs/jquery.qtip.js"></script>
 
+		<script type="text/javascript" src="/scripts/utils.js"></script>
 		<script type="text/javascript" src="/scripts/models.js"></script>
 		<script type="text/javascript" src="/scripts/collections.js"></script>
 		<script type="text/javascript" src="/scripts/views.js"></script>
@@ -133,7 +134,11 @@
 				<div class="span8">
 					<form id="user-create" class="form-horizontal">
 						<fieldset>
-							<legend>User</legend>
+
+							<div class="control-group">	
+								<img style="margin-bottom: -30px;" class="pull-right" src="/images/blank-gravatar.jpg" id="user-gravatar" alt="users gravatar">
+								<legend>User</legend>
+							</div>	
 
 							<div class="control-group">			
 								<label class="control-label" for="firstname">First name:</label>
