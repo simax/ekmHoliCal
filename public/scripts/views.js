@@ -100,21 +100,26 @@
 
     UserMaintenanceView.prototype.className = "row";
 
-    UserMaintenanceView.prototype.getUserGravatarURL = function() {
-      return "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(this.model.get("email"));
-    };
-
-    UserMaintenanceView.prototype.onShow = function() {
-      Backbone.ModelBinding.bind(this);
-      return Backbone.Validation.bind(this, {
-        forceUpdate: true
-      });
+    UserMaintenanceView.prototype.initialize = function() {
+      return this.model.on('change', this.render, this);
     };
 
     UserMaintenanceView.prototype.events = {
       "click #cancel-button": "cancel",
       "submit #user-create": "save",
       "focus #startdate": "showDatePicker"
+    };
+
+    UserMaintenanceView.prototype.getUserGravatarURL = function() {
+      return "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(this.model.get("email"));
+    };
+
+    UserMaintenanceView.prototype.onShow = function() {
+      Backbone.ModelBinding.bind(this);
+      Backbone.Validation.bind(this, {
+        forceUpdate: true
+      });
+      return $("#user-gravatar").attr("src", this.getUserGravatarURL());
     };
 
     UserMaintenanceView.prototype.showDatePicker = function() {

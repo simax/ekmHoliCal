@@ -57,19 +57,22 @@ class UserListView extends Backbone.Marionette.CollectionView
 class UserMaintenanceView extends Backbone.Marionette.ItemView
   template: "#tmpl-user-maintenance"
   className: "row"
-  
-  getUserGravatarURL: ->
-      "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(@model.get("email"))
 
-  onShow: =>
-    # $("#user-gravatar").src = @getUserGravatarURL()
-    Backbone.ModelBinding.bind(@)  
-    Backbone.Validation.bind(@, forceUpdate: true) 
+  initialize: ->
+    @model.on 'change', @render, @
 
   events:
     "click #cancel-button": "cancel"
     "submit #user-create": "save"
     "focus #startdate": "showDatePicker"
+
+  getUserGravatarURL: ->
+    "http://www.gravatar.com/avatar/" + app.Utils.CreateMD5Hash(@model.get("email"))
+    
+  onShow: =>
+    Backbone.ModelBinding.bind(@)  
+    Backbone.Validation.bind(@, forceUpdate: true) 
+    $("#user-gravatar").attr "src", @getUserGravatarURL()
 
   showDatePicker: ->
     $('#startdate').datepicker
