@@ -5,9 +5,9 @@
 
   express = require('express');
 
-  userroutes = require('./user-routes');
+  userroutes = require('./backend/route.user');
 
-  departmentroutes = require('./department-routes');
+  departmentroutes = require('./backend/route.department');
 
   backend = (_ref = global.backend) != null ? _ref : express.createServer().listen(process.env.PORT);
 
@@ -21,7 +21,7 @@
         };
       }
     });
-    backend.set('views', __dirname + '/views');
+    backend.set('views', __dirname);
     backend.set('view engine', 'html');
     backend.set('view options', {
       layout: false

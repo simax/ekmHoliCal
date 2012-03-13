@@ -1,0 +1,2 @@
+use ekmHoliCal
+db.users.find()

@@ -1,5 +1,6 @@
 
   require.config 
+    # baseUrl:            '.'  
     paths:
       application:      'app'  
       jquery:           'libs/jquery-1.7.1'
@@ -22,7 +23,7 @@
       DT_bootstrap:     'libs/datatables/DT_bootstrap'
 
   require [
-      "require"
+      "require",
       "jquery", 
       "order!underscore",  
       "order!backbone",  

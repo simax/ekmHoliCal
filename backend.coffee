@@ -2,8 +2,9 @@
 require 'express-namespace'
 
 express = require 'express'
-userroutes = require './user-routes'
-departmentroutes = require './department-routes'
+
+userroutes = require './backend/route.user'
+departmentroutes = require './backend/route.department'
 
 backend = global.backend ? express.createServer().listen process.env.PORT
 
@@ -15,7 +16,7 @@ backend.configure ->
 			(locals) ->
 				str
 
-	backend.set 'views', __dirname + '/views'
+	backend.set 'views', __dirname  # + '/public'
 	backend.set 'view engine', 'html'
 	backend.set 'view options', layout: false
 	backend.use express.bodyParser()

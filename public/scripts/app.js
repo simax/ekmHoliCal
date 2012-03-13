@@ -4,17 +4,10 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var App, Department, Departments, MainNavigationMenuView, User, Users, routeDepartment, routeMain, routeUser;
+    var App, User;
     User = require('../models/model.user');
-    Users = require('../models/model.users');
-    Department = require('../models/model.department');
-    Departments = require('../models/model.departments');
-    MainNavigationMenuView = require('../views/view.main.navigation');
-    routeMain = require('../routers/routers.main.coffee');
-    routeUser = require('../routers/routers.user.coffee');
-    routeDepartment = require('../routers/routers.department.coffee');
     require("text!../templates/tmpl.main.navigation.html");
-    return App = (function(_super) {
+    App = (function(_super) {
 
       __extends(App, _super);
 
@@ -72,9 +65,8 @@
 
       return App;
 
-    })(Backbone.Marionette.Application());
+    })(Backbone.Marionette.Application);
+    return App;
   });
-
-  return App;
 
 }).call(this);
