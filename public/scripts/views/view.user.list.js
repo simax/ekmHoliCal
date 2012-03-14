@@ -4,7 +4,7 @@
 
   define(function(require) {
     var UserItemView, UserListView;
-    UserItemView = require('user.item');
+    UserItemView = require('scripts/views/view.user.item.js');
     UserListView = (function(_super) {
 
       __extends(UserListView, _super);

@@ -2,7 +2,7 @@
   require.config 
     # baseUrl:            '.'  
     paths:
-      application:      'app'  
+      app:              'app'  
       jquery:           'libs/jquery-1.7.1'
       jqueryTmpl:       'libs/jquery.tmpl'
       jqueryUI:         'libs/jquery-ui-1.8.18.custom.min'
@@ -24,13 +24,10 @@
 
   require [
       "require",
-      "jquery", 
+      "jquery",
+      "order!jqueryTmpl",
       "order!underscore",  
       "order!backbone",  
       "order!marionette",
-      "application"
-  ], (application) ->
-
-      app = new Application()
-      app.start()
-
+      "app"
+  ]

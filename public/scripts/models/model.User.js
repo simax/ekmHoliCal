@@ -4,8 +4,8 @@
 
   define(function(require) {
     var User, Utils;
-    Utils = require('../../Utils');
-    return User = (function(_super) {
+    Utils = require('scripts/Utils.js');
+    User = (function(_super) {
 
       __extends(User, _super);
 
@@ -44,8 +44,7 @@
       return User;
 
     })(Backbone.Model);
+    return User;
   });
-
-  return User;
 
 }).call(this);

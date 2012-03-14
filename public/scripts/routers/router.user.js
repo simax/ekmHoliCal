@@ -3,7 +3,12 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var UserController, UserRouter;
+    var User, UserController, UserMaintenanceView, UserRouter, Users, users;
+    Users = require('scripts/collections/collection.users.js');
+    User = require('scripts/models/model.user.js');
+    users = new Users();
+    users.fetch();
+    UserMaintenanceView = require('scripts/views/view.user.maintenance.js');
     UserRouter = (function(_super) {
 
       __extends(UserRouter, _super);
@@ -20,15 +25,15 @@
       return UserRouter;
 
     })(Backbone.Marionette.AppRouter);
-    return UserController = (function() {
+    UserController = (function() {
 
       function UserController() {}
 
       UserController.prototype.adminUsersCreate = function() {
         var userMaintenanceView;
         userMaintenanceView = new this.UserMaintenanceView({
-          collection: this.users,
-          model: new this.User()
+          collection: users,
+          model: new User()
         });
         return this.mainRegion.show(userMaintenanceView);
       };
@@ -37,8 +42,8 @@
         var userMaintenanceView;
         console.log("id: " + id);
         userMaintenanceView = new this.UserMaintenanceView({
-          collection: this.users,
-          model: this.users.get(id)
+          collection: users,
+          model: users.get(id)
         });
         return this.mainRegion.show(userMaintenanceView);
       };
@@ -46,11 +51,10 @@
       return UserController;
 
     })();
-  });
-
-  ({
-    UserRouter: UserRouter,
-    UserController: UserController
+    return {
+      UserRouter: UserRouter,
+      UserController: UserController
+    };
   });
 
 }).call(this);

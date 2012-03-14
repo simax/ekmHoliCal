@@ -1,6 +1,6 @@
 define (require) ->
 	
-	Utils = require '../../Utils' 
+	Utils = require 'scripts/Utils.js' 
 
 	class Department extends Backbone.Model
 		idAttribute: "_id"
@@ -13,5 +13,4 @@ define (require) ->
 			@on 'validated', (isValid, model, attrs) ->
 				Utils.showValidationErrors()
 
-
-	return Department 
+	Department 

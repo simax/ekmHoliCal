@@ -4,7 +4,7 @@
 
   define(function(require) {
     var User, Users;
-    User = require('../models/User');
+    User = require('scripts/models/model.user.js');
     Users = (function(_super) {
 
       __extends(Users, _super);

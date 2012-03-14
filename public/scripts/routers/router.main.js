@@ -4,11 +4,11 @@
 
   define(function(require) {
     var MainController, MainRouter, MainView, UserListView, UserNavigationView, Users, UsersLayoutView;
-    MainView = require('../../views/view.main.coffee');
-    UsersLayoutView = require('../../views/view.users.layout.coffee');
-    UserNavigationView = require('../../views/view.user.navigation.menu');
-    UserListView = require('../../views/view.user.list.menu');
-    Users = require('../../collections/collection.Users');
+    MainView = require('scripts/views/view.main.js');
+    UsersLayoutView = require('scripts/views/view.users.layout.js');
+    UserNavigationView = require('scripts/views/view.user.navigation.menu.js');
+    UserListView = require('scripts/views/view.user.list.js');
+    Users = require('scripts/collections/collection.Users');
     MainRouter = (function(_super) {
 
       __extends(MainRouter, _super);

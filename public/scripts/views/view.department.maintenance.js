@@ -4,7 +4,7 @@
 
   define(function(require) {
     var DepartmentMaintenanceView;
-    require('text!../../templates/tmpl.department.maintenance.html');
+    require('text!templates/tmpl.department.maintenance.html');
     DepartmentMaintenanceView = (function(_super) {
 
       __extends(DepartmentMaintenanceView, _super);

@@ -21,7 +21,7 @@
         };
       }
     });
-    backend.set('views', __dirname);
+    backend.set('views', __dirname + '/public');
     backend.set('view engine', 'html');
     backend.set('view options', {
       layout: false

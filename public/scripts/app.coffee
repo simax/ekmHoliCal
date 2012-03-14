@@ -1,49 +1,58 @@
 define (require) ->
   
-  User = require '../models/model.user'
-  # Users = require '../models/model.users'
+  # $ = require 'jquery'
+
+  # _ = require 'scripts/libs/underscore.js'
+  # Backbone = require 'scripts/libs/backbone.js'
+  # Backbone.Marionette = require 'scripts/libs/Backbone.Marionette.js'
+
+  # User = require 'scripts/models/model.user.js'
+  # Users = require 'scripts/collections/collection.users.js'
 
   # Department = require '../models/model.department'
   # Departments = require '../models/model.departments'
 
-  # MainNavigationMenuView = require '../views/view.main.navigation'
 
-  # routeMain = require '../routers/routers.main.coffee'
-  # routeUser = require '../routers/routers.user.coffee'
-  # routeDepartment = require '../routers/routers.department.coffee'
+  routeMain = require 'scripts/routers/router.main.js'
+  routeUser = require 'scripts/routers/router.user.js'
+  # routeDepartment = require 'scripts/routers/router.department.js'
 
-  require "text!../templates/tmpl.main.navigation.html"
+  MainNavigationMenuView = require 'scripts/views/view.main.navigation.js'
 
 
-  class App extends Backbone.Marionette.Application
-    initialize: =>
-      @bind "initialize:before", (options) ->
-        Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
+  class Application extends Backbone.Marionette.Application
+  app = new Application()        
 
-      @addInitializer () ->
-        mainNavMenuView = new MainNavigationMenuView()
-        @mainNavigationMenuRegion.show(mainNavMenuView)
+    # initialize: =>
+  app.bind "initialize:before", (options) ->
+    Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
 
-        @mainRouter = new routeMain.MainRouter(controller: routeMain.MainController)
-        @userRouter = new routeUser.UserRouter(controller: routeUser.UserController)  
-        @departmentRouter = new routeDepartment.DepartmentRouter(controller: routeDepartment.DepartmentController)  
+  app.addInitializer () ->
+    mainNavMenuView = new MainNavigationMenuView()
+    app.mainNavigationMenuRegion.show(mainNavMenuView)
 
-      @bind "initialize:after", () ->
-        if Backbone.history
-          Backbone.history.start()
+    app.mainRouter = new routeMain.MainRouter(controller: routeMain.MainController)
+    app.userRouter = new routeUser.UserRouter(controller: routeUser.UserController)  
+    # app.departmentRouter = new routeDepartment.DepartmentRouter(controller: routeDepartment.DepartmentController)  
 
-      @addRegions 
-        mainNavigationMenuRegion: "#main-navigation-menu",
-        mainRegion: "#main-region"
+  app.bind "initialize:after", () ->
+    if Backbone.history
+      Backbone.history.start()
 
-      @vent.on "main:home", () -> @mainRouter.navigate("", true)
-      # @vent.on "main:admin", () -> @mainRouter.navigate("admin", true)
-      @vent.on "main:admin:users", () -> @userRouter.navigate("admin/users", true)
+  app.addRegions 
+    mainNavigationMenuRegion: "#main-navigation-menu",
+    mainRegion: "#main-region"
 
-      @vent.on "admin:users:create", () -> @userRouter.navigate("admin/users/create", true)
-      @vent.on "admin:users:edit", (id) -> @userRouter.navigate("admin/users/edit/" + id, true)
+  app.vent.on "main:home", () -> app.mainRouter.navigate("", true)
+  # app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
+  app.vent.on "main:admin:users", () -> app.userRouter.navigate("admin/users", true)
 
-      @vent.on "admin:departments:create", () -> @userRouter.navigate("admin/departments/create", true)
-      @vent.on "admin:departments:edit", (id) -> @userRouter.navigate("admin/departments/edit/" + id, true)
+  app.vent.on "admin:users:create", () -> app.userRouter.navigate("admin/users/create", true)
+  app.vent.on "admin:users:edit", (id) -> app.userRouter.navigate("admin/users/edit/" + id, true)
 
-  return App
+  app.vent.on "admin:departments:create", () -> app.userRouter.navigate("admin/departments/create", true)
+  app.vent.on "admin:departments:edit", (id) -> app.userRouter.navigate("admin/departments/edit/" + id, true)
+
+  app.start()    
+  return
+  

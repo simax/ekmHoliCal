@@ -2,7 +2,7 @@
 
   define(function(require) {
     var Utils;
-    return Utils = (function() {
+    Utils = (function() {
 
       function Utils() {}
 
@@ -261,8 +261,7 @@
       return Utils;
 
     })();
+    return Utils;
   });
-
-  return Utils;
 
 }).call(this);

@@ -4,7 +4,7 @@
 
   define(function(require) {
     var Department, Departments;
-    Department = require('../models/Department');
+    Department = require('scripts/models/department.js');
     Departments = (function(_super) {
 
       __extends(Departments, _super);

@@ -5,8 +5,8 @@
 
   define(function(require) {
     var UserMaintenanceView, Utils;
-    require('text!../../templates/tmpl.user.maintenance.html');
-    Utils = require('../../Utils');
+    require('text!templates/tmpl.user.maintenance.html');
+    Utils = require('scripts/Utils.js');
     return UserMaintenanceView = (function(_super) {
 
       __extends(UserMaintenanceView, _super);

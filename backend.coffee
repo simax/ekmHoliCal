@@ -16,7 +16,7 @@ backend.configure ->
 			(locals) ->
 				str
 
-	backend.set 'views', __dirname  # + '/public'
+	backend.set 'views', __dirname  + '/public'
 	backend.set 'view engine', 'html'
 	backend.set 'view options', layout: false
 	backend.use express.bodyParser()

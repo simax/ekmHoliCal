@@ -1,9 +1,9 @@
 define (require) ->
 
-	Department = require '../models/Department'
+	Department = require 'scripts/models/department.js'
 
 	class Departments extends Backbone.Collection
 	  model: Department
 	  url: "/ekmHoliCal/api/departments"
 
-	return Departments
+	Departments

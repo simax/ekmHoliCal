@@ -1,11 +1,11 @@
 define (require) ->
 
-  MainView = require '../../views/view.main.coffee'
-  UsersLayoutView = require '../../views/view.users.layout.coffee'
-  UserNavigationView = require '../../views/view.user.navigation.menu'
-  UserListView = require '../../views/view.user.list.menu'
+  MainView = require 'scripts/views/view.main.js'
+  UsersLayoutView = require 'scripts/views/view.users.layout.js'
+  UserNavigationView = require 'scripts/views/view.user.navigation.menu.js'
+  UserListView = require 'scripts/views/view.user.list.js'
 
-  Users = require '../../collections/collection.Users'
+  Users = require 'scripts/collections/collection.Users'
 
   class MainRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
