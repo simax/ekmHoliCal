@@ -33,13 +33,13 @@
       MainController.prototype.home = function() {
         var mainView;
         mainView = new MainView;
-        return this.mainRegion.show(mainView);
+        return app.mainRegion.show(mainView);
       };
 
       MainController.prototype.admin = function() {
         var userListView, users, usersLayoutView;
         usersLayoutView = new UsersLayoutView;
-        this.mainRegion.show(usersLayoutView);
+        app.mainRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
         users = new Users();
         users.fetch();

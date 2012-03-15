@@ -26,4 +26,4 @@ define (require) ->
     #       sLengthMenu: "_MENU_ records per page"      
 
 
-  return UserListView
+  UserListView

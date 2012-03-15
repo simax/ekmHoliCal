@@ -32,6 +32,6 @@
 
   })(Backbone.Marionette.ItemView);
 
-  return UserNavigationView;
+  UserNavigationView;
 
 }).call(this);

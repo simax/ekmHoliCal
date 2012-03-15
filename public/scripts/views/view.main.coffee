@@ -1,4 +1,4 @@
-define () ->
+define (require) ->
 	
   require 'text!templates/tmpl.main.region.html'
 

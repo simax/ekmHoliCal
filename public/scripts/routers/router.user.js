@@ -31,21 +31,21 @@
 
       UserController.prototype.adminUsersCreate = function() {
         var userMaintenanceView;
-        userMaintenanceView = new this.UserMaintenanceView({
+        userMaintenanceView = new UserMaintenanceView({
           collection: users,
           model: new User()
         });
-        return this.mainRegion.show(userMaintenanceView);
+        return app.mainRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
         var userMaintenanceView;
         console.log("id: " + id);
-        userMaintenanceView = new this.UserMaintenanceView({
+        userMaintenanceView = new UserMaintenanceView({
           collection: users,
           model: users.get(id)
         });
-        return this.mainRegion.show(userMaintenanceView);
+        return app.mainRegion.show(userMaintenanceView);
       };
 
       return UserController;

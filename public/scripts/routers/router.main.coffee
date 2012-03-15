@@ -16,11 +16,11 @@ define (require) ->
   class MainController 
     home: () ->
       mainView = new MainView
-      @mainRegion.show(mainView)       
+      app.mainRegion.show(mainView)       
 
     admin: () ->
       usersLayoutView = new UsersLayoutView
-      @mainRegion.show(usersLayoutView)      
+      app.mainRegion.show(usersLayoutView)      
 
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 

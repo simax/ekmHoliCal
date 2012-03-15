@@ -1,18 +1,5 @@
 define (require) ->
   
-  # $ = require 'jquery'
-
-  # _ = require 'scripts/libs/underscore.js'
-  # Backbone = require 'scripts/libs/backbone.js'
-  # Backbone.Marionette = require 'scripts/libs/Backbone.Marionette.js'
-
-  # User = require 'scripts/models/model.user.js'
-  # Users = require 'scripts/collections/collection.users.js'
-
-  # Department = require '../models/model.department'
-  # Departments = require '../models/model.departments'
-
-
   routeMain = require 'scripts/routers/router.main.js'
   routeUser = require 'scripts/routers/router.user.js'
   # routeDepartment = require 'scripts/routers/router.department.js'
@@ -21,9 +8,8 @@ define (require) ->
 
 
   class Application extends Backbone.Marionette.Application
-  app = new Application()        
+  window.app = if not window.app then new Application() else window.app        
 
-    # initialize: =>
   app.bind "initialize:before", (options) ->
     Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
 

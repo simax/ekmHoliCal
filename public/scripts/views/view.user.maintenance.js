@@ -7,7 +7,7 @@
     var UserMaintenanceView, Utils;
     require('text!templates/tmpl.user.maintenance.html');
     Utils = require('scripts/Utils.js');
-    return UserMaintenanceView = (function(_super) {
+    UserMaintenanceView = (function(_super) {
 
       __extends(UserMaintenanceView, _super);
 
@@ -93,8 +93,7 @@
       return UserMaintenanceView;
 
     })(Backbone.Marionette.ItemView);
+    return UserMaintenanceView;
   });
-
-  return UserMaintenanceView;
 
 }).call(this);

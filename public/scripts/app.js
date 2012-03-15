@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Application, MainNavigationMenuView, app, routeMain, routeUser;
+    var Application, MainNavigationMenuView, routeMain, routeUser;
     routeMain = require('scripts/routers/router.main.js');
     routeUser = require('scripts/routers/router.user.js');
     MainNavigationMenuView = require('scripts/views/view.main.navigation.js');
@@ -18,7 +18,7 @@
       return Application;
 
     })(Backbone.Marionette.Application);
-    app = new Application();
+    window.app = !window.app ? new Application() : window.app;
     app.bind("initialize:before", function(options) {
       return Backbone.Marionette.ItemView.prototype.renderTemplate = function(template, data) {
         return template.tmpl(data);

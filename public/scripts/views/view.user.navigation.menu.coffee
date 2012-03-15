@@ -13,4 +13,4 @@ define (require) ->
 	    e.preventDefault()
 	    app.vent.trigger "admin:users:create"
 	      
-	return UserNavigationView
+	UserNavigationView

@@ -57,4 +57,4 @@ define (require) ->
       e.preventDefault()
       app.vent.trigger "main:admin:users"
     
-return UserMaintenanceView
+  UserMaintenanceView

@@ -7,7 +7,8 @@ define (require) ->
   users.fetch()
 
   UserMaintenanceView = require 'scripts/views/view.user.maintenance.js'
- 
+  
+
   class UserRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/users/create": "adminUsersCreate"
@@ -15,19 +16,19 @@ define (require) ->
 
   class UserController 
     adminUsersCreate: () ->
-      userMaintenanceView = new @UserMaintenanceView
+      userMaintenanceView = new UserMaintenanceView
         collection: users
         model: new User()
 
-      @mainRegion.show(userMaintenanceView)
+      app.mainRegion.show(userMaintenanceView)
 
     adminUsersEdit: (id) ->
       console.log "id: " + id
-      userMaintenanceView = new @UserMaintenanceView
+      userMaintenanceView = new UserMaintenanceView
         collection: users
         model: users.get(id)
 
-      @mainRegion.show(userMaintenanceView)
+      app.mainRegion.show(userMaintenanceView)
 
   UserRouter: UserRouter
   UserController: UserController
