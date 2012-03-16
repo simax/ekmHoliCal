@@ -3,10 +3,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Application, MainNavigationMenuView, routeMain, routeUser;
-    routeMain = require('scripts/routers/router.main.js');
-    routeUser = require('scripts/routers/router.user.js');
-    MainNavigationMenuView = require('scripts/views/view.main.navigation.js');
+    var Application, MainNavigationMenuView;
+    MainNavigationMenuView = require('scripts/views/view.main.navigation');
     Application = (function(_super) {
 
       __extends(Application, _super);

@@ -1,10 +1,10 @@
 define (require) ->
   
-  routeMain = require 'scripts/routers/router.main.js'
-  routeUser = require 'scripts/routers/router.user.js'
+  # routeMain = require 'scripts/routers/router.main.js'
+  # routeUser = require 'scripts/routers/router.user.js'
   # routeDepartment = require 'scripts/routers/router.department.js'
 
-  MainNavigationMenuView = require 'scripts/views/view.main.navigation.js'
+  MainNavigationMenuView = require 'scripts/views/view.main.navigation'
 
 
   class Application extends Backbone.Marionette.Application
@@ -40,5 +40,5 @@ define (require) ->
   app.vent.on "admin:departments:edit", (id) -> app.userRouter.navigate("admin/departments/edit/" + id, true)
 
   app.start()    
-  return
+  return 
   
