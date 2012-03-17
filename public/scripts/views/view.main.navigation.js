@@ -4,7 +4,7 @@
 
   define(function(require) {
     var MainNavigationMenuView;
-    require('text!templates/tmpl.main.navigation.menu.html');
+    require('text!../../templates/tmpl.main.navigation.menu.html');
     MainNavigationMenuView = (function(_super) {
 
       __extends(MainNavigationMenuView, _super);

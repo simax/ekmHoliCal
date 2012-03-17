@@ -3,12 +3,14 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var MainController, MainRouter, MainView, UserListView, UserNavigationView, Users, UsersLayoutView;
-    MainView = require('scripts/views/view.main.js');
-    UsersLayoutView = require('scripts/views/view.users.layout.js');
-    UserNavigationView = require('scripts/views/view.user.navigation.menu.js');
-    UserListView = require('scripts/views/view.user.list.js');
-    Users = require('scripts/collections/collection.Users');
+    var Backbone, MainController, MainRouter, MainView, UserListView, UserNavigationView, Users, UsersLayoutView;
+    Backbone = require('backbone');
+    require('marionette');
+    MainView = require('../../scripts/views/view.main.js');
+    UsersLayoutView = require('../../scripts/views/view.users.layout.js');
+    UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');
+    UserListView = require('../../scripts/views/view.user.list.js');
+    Users = require('../../scripts/collections/collection.Users');
     MainRouter = (function(_super) {
 
       __extends(MainRouter, _super);

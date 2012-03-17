@@ -1,6 +1,9 @@
 define (require) ->
 
-  require 'text!templates/tmpl.users.layout.html'
+  Backbone = require 'backbone'
+  require 'marionette'
+
+  require 'text!../../templates/tmpl.users.layout.html'
 
 	class UsersLayoutView extends Backbone.Marionette.CompositeRegion
 	  template: "#tmpl-users-layout"

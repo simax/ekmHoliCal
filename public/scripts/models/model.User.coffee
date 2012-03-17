@@ -1,6 +1,6 @@
 define (require) ->
 	
-	Utils = require 'scripts/Utils.js' 
+	Utils = require '../../scripts/Utils.js' 
 
 	class User extends Backbone.Model
 		idAttribute: "_id"

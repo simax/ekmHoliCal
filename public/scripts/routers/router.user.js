@@ -4,11 +4,11 @@
 
   define(function(require) {
     var User, UserController, UserMaintenanceView, UserRouter, Users, users;
-    Users = require('scripts/collections/collection.users.js');
-    User = require('scripts/models/model.user.js');
+    Users = require('../../scripts/collections/collection.users.js');
+    User = require('../../scripts/models/model.user.js');
     users = new Users();
     users.fetch();
-    UserMaintenanceView = require('scripts/views/view.user.maintenance.js');
+    UserMaintenanceView = require('../../scripts/views/view.user.maintenance.js');
     UserRouter = (function(_super) {
 
       __extends(UserRouter, _super);

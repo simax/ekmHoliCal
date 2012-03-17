@@ -1,6 +1,6 @@
 define (require) ->
 
-  require 'text!templates/tmpl.user.navigation.html'
+  require 'text!../../templates/tmpl.user.navigation.html'
 
 	class UserNavigationView extends Backbone.Marionette.ItemView
 	  template: "#tmpl-user-navigation"

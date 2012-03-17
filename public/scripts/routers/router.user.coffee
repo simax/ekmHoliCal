@@ -1,12 +1,12 @@
 define (require) ->
 
-  Users = require 'scripts/collections/collection.users.js'
-  User = require 'scripts/models/model.user.js'
+  Users = require '../../scripts/collections/collection.users.js'
+  User = require '../../scripts/models/model.user.js'
 
   users = new Users()
   users.fetch()
 
-  UserMaintenanceView = require 'scripts/views/view.user.maintenance.js'
+  UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
   
 
   class UserRouter extends Backbone.Marionette.AppRouter

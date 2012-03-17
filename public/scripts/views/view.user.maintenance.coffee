@@ -1,7 +1,7 @@
 define (require) ->
   
-  require 'text!templates/tmpl.user.maintenance.html'
-  Utils = require 'scripts/Utils.js' 
+  require 'text!../../templates/tmpl.user.maintenance.html'
+  Utils = require '../../scripts/Utils.js' 
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
     template: "#tmpl-user-maintenance"

@@ -4,7 +4,7 @@
 
   define(function(require) {
     var UserItemView;
-    require('text!templates/tmpl.user.item.html');
+    require('text!../../templates/tmpl.user.item.html');
     UserItemView = (function(_super) {
 
       __extends(UserItemView, _super);

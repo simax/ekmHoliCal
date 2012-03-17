@@ -1,6 +1,6 @@
 define (require) ->
 
-  UserItemView = require 'scripts/views/view.user.item.js'
+  UserItemView = require '../../scripts/views/view.user.item.js'
 
   class UserListView extends Backbone.Marionette.CollectionView
     itemView: UserItemView

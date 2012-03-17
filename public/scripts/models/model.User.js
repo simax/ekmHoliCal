@@ -4,7 +4,7 @@
 
   define(function(require) {
     var User, Utils;
-    Utils = require('scripts/Utils.js');
+    Utils = require('../../scripts/Utils.js');
     User = (function(_super) {
 
       __extends(User, _super);
