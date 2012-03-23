@@ -29,5 +29,6 @@
       "backbone",  
       "order!jqueryTmpl",
       "order!marionette",
+      "order!validation",
       "app"
   ]

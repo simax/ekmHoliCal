@@ -5,8 +5,6 @@
   define(function(require) {
     var Backbone, MainView;
     Backbone = require('backbone');
-    require('marionette');
-    require('text!../../templates/tmpl.main.region.html');
     MainView = (function(_super) {
 
       __extends(MainView, _super);

@@ -24,6 +24,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "order!jqueryTmpl", "order!marionette", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "order!jqueryTmpl", "order!marionette", "order!validation", "app"]);
 
 }).call(this);

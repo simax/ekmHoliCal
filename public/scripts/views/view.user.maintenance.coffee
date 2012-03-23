@@ -1,6 +1,11 @@
 define (require) ->
   
-  require 'text!../../templates/tmpl.user.maintenance.html'
+  Backbone = require 'backbone'
+  Backbone.ModelBinding = require 'modelbinding'
+  require 'jqueryUI'
+  require 'jqueryQtip'
+
+  # require 'text!../../templates/tmpl.user.maintenance.html'
   Utils = require '../../scripts/Utils.js' 
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
@@ -14,7 +19,7 @@ define (require) ->
       "click #cancel-button": "cancel"
       "submit #user-create": "save"
       "focus #startdate": "showDatePicker"
-
+  
     getGravatarURL: =>
       "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(@model.get("email"))
     

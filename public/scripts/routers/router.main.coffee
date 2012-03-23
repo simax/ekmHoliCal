@@ -1,7 +1,6 @@
 define (require) ->
 
   Backbone = require 'backbone'
-  require 'marionette'
 
   MainView = require '../../scripts/views/view.main.js'
   UsersLayoutView = require '../../scripts/views/view.users.layout.js'

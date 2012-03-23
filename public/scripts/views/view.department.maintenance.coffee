@@ -1,6 +1,6 @@
 define (require) ->
   
-  require 'text!../templates/tmpl.department.maintenance.html'
+  # require 'text!../templates/tmpl.department.maintenance.html'
 
   class DepartmentMaintenanceView extends Backbone.Marionette.ItemView
     template: "#tmpl-department-maintenance"

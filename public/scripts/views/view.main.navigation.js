@@ -4,7 +4,7 @@
 
   define(function(require) {
     var MainNavigationMenuView;
-    require('text!../../templates/tmpl.main.navigation.menu.html');
+    require('marionette');
     MainNavigationMenuView = (function(_super) {
 
       __extends(MainNavigationMenuView, _super);

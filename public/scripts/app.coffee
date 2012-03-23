@@ -1,10 +1,6 @@
 define (require) ->
   
   Backbone = require 'backbone'
-  # require 'marionette'
-  # require 'modelbinding'
-  # require 'validation'
-
   routeMain = require '../scripts/routers/router.main.js'
   routeUser = require '../scripts/routers/router.user.js'
   # routeDepartment = require '../scripts/routers/router.department.js'
@@ -26,13 +22,14 @@ define (require) ->
 # --------------------
 
   app.bind "initialize:before", (options) ->
-    Backbone.Marionette.TemplateManager.loadTemplate = (templateId, callback) ->
-      that = this
-      return if templateId.indexOf("tmpl") != 1
-      tmpl1 = templateId.replace(/#/g, "")
-      tmpl = tmpl1.replace(/-/g, ".") + ".html"
-      $.get tmpl, (template) ->
-        callback.call this, template
+    # Backbone.Marionette.TemplateManager.loadTemplate = (templateId, callback) ->
+    #   that = this
+    #   return if templateId.indexOf("tmpl") != 1
+    #   tmpl1 = templateId.replace(/#/g, "")
+    #   tmpl = tmpl1.replace(/-/g, ".") + ".html"
+    #   $.get tmpl, (template) ->
+    #     callback.call this, template
+        
     Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
 
   app.addInitializer () ->

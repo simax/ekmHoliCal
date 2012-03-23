@@ -5,7 +5,6 @@
   define(function(require) {
     var Backbone, MainController, MainRouter, MainView, UserListView, UserNavigationView, Users, UsersLayoutView;
     Backbone = require('backbone');
-    require('marionette');
     MainView = require('../../scripts/views/view.main.js');
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
     UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');

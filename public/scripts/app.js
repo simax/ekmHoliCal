@@ -21,16 +21,6 @@
     })(Backbone.Marionette.Application);
     window.app = !window.app ? new Application() : window.app;
     app.bind("initialize:before", function(options) {
-      Backbone.Marionette.TemplateManager.loadTemplate = function(templateId, callback) {
-        var that, tmpl, tmpl1;
-        that = this;
-        if (templateId.indexOf("tmpl") !== 1) return;
-        tmpl1 = templateId.replace(/#/g, "");
-        tmpl = tmpl1.replace(/-/g, ".") + ".html";
-        return $.get(tmpl, function(template) {
-          return callback.call(this, template);
-        });
-      };
       return Backbone.Marionette.ItemView.prototype.renderTemplate = function(template, data) {
         return template.tmpl(data);
       };

@@ -1,6 +1,6 @@
 define (require) ->
 
-  require 'text!../../templates/tmpl.user.item.html'
+  # require 'text!../../templates/tmpl.user.item.html'
 
   class UserItemView extends Backbone.Marionette.ItemView
     template: "#tmpl-user-item"
