@@ -1,16 +1,17 @@
 define (require) ->
 
-  # require 'text!../../templates/tmpl.user.navigation.html'
+  class UserNavigationView extends Backbone.Marionette.ItemView
+    className: "row" 
 
-	class UserNavigationView extends Backbone.Marionette.ItemView
-	  template: "#tmpl-user-navigation"
-	  className: "row" 
+    initialize: ->
+      @template = require '../../scripts/text!user_navigation.html'
+      return	
 
-	  events:
-	    "click #create": "create"
+    events:
+      "click #create": "create"
 
-	  create: (e) ->
-	    e.preventDefault()
-	    app.vent.trigger "admin:users:create"
-	      
-	UserNavigationView
+    create: (e) ->
+      e.preventDefault()
+      app.vent.trigger "admin:users:create"
+
+  UserNavigationView

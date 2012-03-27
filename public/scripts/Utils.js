@@ -31,7 +31,7 @@
         });
       };
 
-      Utils.CreateMD5Hash = function(string) {
+      Utils.CreateMD5Hash = function(zstring) {
         var AA, AddUnsigned, BB, CC, ConvertToWordArray, DD, F, FF, G, GG, H, HH, I, II, RotateLeft, S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S34, S41, S42, S43, S44, Utf8Encode, WordToHex, a, b, c, d, k, temp, x;
         RotateLeft = function(lValue, iShiftBits) {
           return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
@@ -87,10 +87,10 @@
           a = AddUnsigned(a, AddUnsigned(AddUnsigned(I(b, c, d), x), ac));
           return AddUnsigned(RotateLeft(a, s), b);
         };
-        ConvertToWordArray = function(string) {
+        ConvertToWordArray = function(zstring) {
           var lByteCount, lBytePosition, lMessageLength, lNumberOfWords, lNumberOfWords_temp1, lNumberOfWords_temp2, lWordArray, lWordCount;
           lWordCount = void 0;
-          lMessageLength = string.length;
+          lMessageLength = zstring.length;
           lNumberOfWords_temp1 = lMessageLength + 8;
           lNumberOfWords_temp2 = (lNumberOfWords_temp1 - (lNumberOfWords_temp1 % 64)) / 64;
           lNumberOfWords = (lNumberOfWords_temp2 + 1) * 16;
@@ -100,7 +100,7 @@
           while (lByteCount < lMessageLength) {
             lWordCount = (lByteCount - (lByteCount % 4)) / 4;
             lBytePosition = (lByteCount % 4) * 8;
-            lWordArray[lWordCount] = lWordArray[lWordCount] | (string.charCodeAt(lByteCount) << lBytePosition);
+            lWordArray[lWordCount] = lWordArray[lWordCount] | (zstring.charCodeAt(lByteCount) << lBytePosition);
             lByteCount++;
           }
           lWordCount = (lByteCount - (lByteCount % 4)) / 4;
@@ -125,13 +125,14 @@
           }
           return WordToHexValue;
         };
-        Utf8Encode = function(string) {
+        Utf8Encode = function(zstring) {
           var c, n, utftext;
-          string = string.replace(/\r\n/g, "\n");
+          if (!(zstring != null)) zstring = "";
+          zstring = zstring.replace(/\r\n/g, "\n");
           utftext = "";
           n = 0;
-          while (n < string.length) {
-            c = string.charCodeAt(n);
+          while (n < zstring.length) {
+            c = zstring.charCodeAt(n);
             if (c < 128) {
               utftext += String.fromCharCode(c);
             } else if ((c > 127) && (c < 2048)) {
@@ -172,8 +173,8 @@
         S42 = 10;
         S43 = 15;
         S44 = 21;
-        string = Utf8Encode(string);
-        x = ConvertToWordArray(string);
+        zstring = Utf8Encode(zstring);
+        x = ConvertToWordArray(zstring);
         a = 0x67452301;
         b = 0xEFCDAB89;
         c = 0x98BADCFE;

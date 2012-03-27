@@ -16,6 +16,10 @@
 
       UserItemView.prototype.tagName = "tr";
 
+      UserItemView.prototype.initialize = function() {
+        return this.template = require('../../scripts/text!user_item.html');
+      };
+
       UserItemView.prototype.events = {
         "click .edit": "edit",
         "click .active-status": "toggleActivation"

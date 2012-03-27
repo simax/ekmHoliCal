@@ -5,14 +5,13 @@ define (require) ->
   require 'jqueryUI'
   require 'jqueryQtip'
 
-  # require 'text!../../templates/tmpl.user.maintenance.html'
   Utils = require '../../scripts/Utils.js' 
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
-    template: "#tmpl-user-maintenance"
     className: "row"
 
     initialize: ->
+      @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
 
     events:

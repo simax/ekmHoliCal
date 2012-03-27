@@ -1,10 +1,11 @@
 define (require) ->
 
-  # require 'text!../../templates/tmpl.user.item.html'
-
   class UserItemView extends Backbone.Marionette.ItemView
     template: "#tmpl-user-item"
     tagName: "tr"
+
+    initialize: ->
+      @template = require '../../scripts/text!user_item.html'
 
     events:
       "click .edit": "edit"

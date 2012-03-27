@@ -12,9 +12,11 @@
         UserNavigationView.__super__.constructor.apply(this, arguments);
       }
 
-      UserNavigationView.prototype.template = "#tmpl-user-navigation";
-
       UserNavigationView.prototype.className = "row";
+
+      UserNavigationView.prototype.initialize = function() {
+        this.template = require('../../scripts/text!user_navigation.html');
+      };
 
       UserNavigationView.prototype.events = {
         "click #create": "create"

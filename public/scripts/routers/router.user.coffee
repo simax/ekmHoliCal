@@ -23,7 +23,6 @@ define (require) ->
       app.mainRegion.show(userMaintenanceView)
 
     adminUsersEdit: (id) ->
-      console.log "id: " + id
       userMaintenanceView = new UserMaintenanceView
         collection: users
         model: users.get(id)

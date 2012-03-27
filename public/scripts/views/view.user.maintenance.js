@@ -22,11 +22,10 @@
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
 
-      UserMaintenanceView.prototype.template = "#tmpl-user-maintenance";
-
       UserMaintenanceView.prototype.className = "row";
 
       UserMaintenanceView.prototype.initialize = function() {
+        this.template = require('../../scripts/text!user_maintenance.html');
         return this.model.on('change:email', this.SetGravatarImage, this);
       };
 

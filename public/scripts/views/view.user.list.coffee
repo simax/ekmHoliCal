@@ -8,6 +8,7 @@ define (require) ->
     className: "table table-striped table-bordered"
     id: "user-list"  
 
+
     render: ->
       @$el.html ""  
       @appendHtml @$el, $("script#tmpl-user-grid-header").tmpl() 

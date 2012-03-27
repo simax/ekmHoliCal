@@ -15,12 +15,17 @@
       modelbinding: 'libs/backbone.modelbinding',
       validation: 'libs/backbone.validation',
       jqueryQtip: 'libs/jquery.qtip',
-      utils: 'libs/utils',
-      models: 'libs/models',
-      collections: 'libs/collections',
-      views: 'libs/views',
+      utils: 'utils',
       jqueryDatatables: 'libs/datatables/jquery.dataTables',
-      DT_bootstrap: 'libs/datatables/DT_bootstrap'
+      DT_bootstrap: 'libs/datatables/DT_bootstrap',
+      main_navigation_menu: 'templates/tmpl.main.navigation.menu',
+      main_region: 'templates/tmpl.main.region',
+      user_grid_header: 'templates/tmpl.user.grid.header',
+      user_item: 'templates/tmpl.user.item',
+      user_maintenance: 'templates/tmpl.user.maintenance',
+      user_navigation: 'templates/tmpl.user.navigation',
+      user_layout: 'templates/tmpl.users.layout',
+      department_maintenance: 'templates/tmpl.department.maintenance'
     }
   });
 

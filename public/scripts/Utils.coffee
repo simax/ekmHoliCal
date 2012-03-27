@@ -19,7 +19,7 @@ define (require) ->
           hide: false
           style: classes: 'ui-tooltip-jtools' # ui-tooltip-red ui-tooltip-rounded ui-tooltip-shadow 
 
-    @CreateMD5Hash = (string) ->
+    @CreateMD5Hash = (zstring) ->
       RotateLeft = (lValue, iShiftBits) ->
         (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits))
       AddUnsigned = (lX, lY) ->
@@ -61,9 +61,9 @@ define (require) ->
       II = (a, b, c, d, x, s, ac) ->
         a = AddUnsigned(a, AddUnsigned(AddUnsigned(I(b, c, d), x), ac))
         AddUnsigned RotateLeft(a, s), b
-      ConvertToWordArray = (string) ->
+      ConvertToWordArray = (zstring) ->
         lWordCount = undefined
-        lMessageLength = string.length
+        lMessageLength = zstring.length
         lNumberOfWords_temp1 = lMessageLength + 8
         lNumberOfWords_temp2 = (lNumberOfWords_temp1 - (lNumberOfWords_temp1 % 64)) / 64
         lNumberOfWords = (lNumberOfWords_temp2 + 1) * 16
@@ -73,7 +73,7 @@ define (require) ->
         while lByteCount < lMessageLength
           lWordCount = (lByteCount - (lByteCount % 4)) / 4
           lBytePosition = (lByteCount % 4) * 8
-          lWordArray[lWordCount] = (lWordArray[lWordCount] | (string.charCodeAt(lByteCount) << lBytePosition))
+          lWordArray[lWordCount] = (lWordArray[lWordCount] | (zstring.charCodeAt(lByteCount) << lBytePosition))
           lByteCount++
         lWordCount = (lByteCount - (lByteCount % 4)) / 4
         lBytePosition = (lByteCount % 4) * 8
@@ -93,13 +93,15 @@ define (require) ->
           WordToHexValue = WordToHexValue + WordToHexValue_temp.substr(WordToHexValue_temp.length - 2, 2)
           lCount++
         WordToHexValue
-      Utf8Encode = (string) ->
-        string = string.replace(/\r\n/g, "\n")
+      Utf8Encode = (zstring) ->
+        zstring = "" if not zstring?  
+        zstring = zstring.replace(/\r\n/g, "\n")
+
         utftext = ""
         n = 0
 
-        while n < string.length
-          c = string.charCodeAt(n)
+        while n < zstring.length
+          c = zstring.charCodeAt(n)
           if c < 128
             utftext += String.fromCharCode(c)
           else if (c > 127) and (c < 2048)
@@ -137,8 +139,8 @@ define (require) ->
       S42 = 10
       S43 = 15
       S44 = 21
-      string = Utf8Encode(string)
-      x = ConvertToWordArray(string)
+      zstring = Utf8Encode(zstring)
+      x = ConvertToWordArray(zstring)
       a = 0x67452301
       b = 0xEFCDAB89
       c = 0x98BADCFE
