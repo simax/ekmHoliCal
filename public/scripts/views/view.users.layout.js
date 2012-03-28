@@ -13,7 +13,9 @@
         UsersLayoutView.__super__.constructor.apply(this, arguments);
       }
 
-      UsersLayoutView.prototype.template = "#tmpl-users-layout";
+      UsersLayoutView.prototype.initialize = function() {
+        return this.template = require('text!../../templates/tmpl.users.layout.html');
+      };
 
       UsersLayoutView.prototype.regions = {
         navigationRegion: "#user-navigation-region",

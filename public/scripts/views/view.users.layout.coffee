@@ -2,10 +2,12 @@ define (require) ->
 
   Backbone = require 'backbone'
 
-  # require 'text!../../templates/tmpl.users.layout.html'
 
   class UsersLayoutView extends Backbone.Marionette.CompositeRegion
-    template: "#tmpl-users-layout"
+    # template: "#tmpl-users-layout"
+
+    initialize: ->
+      @template = require 'text!../../templates/tmpl.users.layout.html'
 
     regions:
       navigationRegion: "#user-navigation-region"
