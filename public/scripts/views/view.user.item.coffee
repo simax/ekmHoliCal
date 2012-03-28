@@ -18,4 +18,3 @@ define (require) ->
       id = @model.id
       app.vent.trigger "admin:users:edit", id  
     
-  return UserItemView

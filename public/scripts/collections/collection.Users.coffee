@@ -6,4 +6,3 @@ define (require) ->
 	  model: User 
 	  url: "/ekmHoliCal/api/users"
 
-	Users

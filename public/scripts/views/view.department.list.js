@@ -1,16 +1,16 @@
 define (require) ->
 
-  UserItemView = require '../../scripts/views/view.user.item.js'
+  DepartmentItemView = require '../../scripts/views/view.department.item.js'
 
-  class UserListView extends Backbone.Marionette.CollectionView
-    itemView: UserItemView
+  class DepartmentListView extends Backbone.Marionette.CollectionView
+    itemView: DepartmentItemView
     tagName: "table"
     className: "table table-striped table-bordered"
-    id: "user-list"  
+    id: "department-list"  
 
     render: ->
       @$el.html ""  
-      @appendHtml @$el, $("script#tmpl-user-grid-header").tmpl() 
+      @appendHtml @$el, $("script#tmpl-department-grid-header").tmpl() 
       @collection.each(@addChildView)
       @appendHtml @$el, "</tbody></table>"  
 
@@ -19,7 +19,7 @@ define (require) ->
       @
     
     # onShow: ->
-    #   $("#user-list").dataTable
+    #   $("#department-list").dataTable
     #     sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
     #     sPaginationType: "bootstrap"
     #     oLanguage:

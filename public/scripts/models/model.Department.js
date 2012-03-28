@@ -5,7 +5,7 @@
   define(function(require) {
     var Department, Utils;
     Utils = require('../../scripts/Utils.js');
-    Department = (function(_super) {
+    return Department = (function(_super) {
 
       __extends(Department, _super);
 
@@ -31,7 +31,6 @@
       return Department;
 
     })(Backbone.Model);
-    return Department;
   });
 
 }).call(this);

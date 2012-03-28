@@ -5,7 +5,7 @@
   define(function(require) {
     var User, Users;
     User = require('../../scripts/models/model.user.js');
-    Users = (function(_super) {
+    return Users = (function(_super) {
 
       __extends(Users, _super);
 
@@ -20,7 +20,6 @@
       return Users;
 
     })(Backbone.Collection);
-    return Users;
   });
 
 }).call(this);

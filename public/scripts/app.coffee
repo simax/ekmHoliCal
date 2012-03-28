@@ -1,6 +1,5 @@
 define (require) ->
   
-  Backbone = require 'backbone'
   routeMain = require '../scripts/routers/router.main.js'
   routeUser = require '../scripts/routers/router.user.js'
   # routeDepartment = require '../scripts/routers/router.department.js'
@@ -9,17 +8,6 @@ define (require) ->
 
   class Application extends Backbone.Marionette.Application
   window.app = if not window.app then new Application() else window.app        
-
-# -------------------
-  # Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)
-
-  # app.addRegions 
-  #   mainNavigationMenuRegion: "#main-navigation-menu",
-  #   mainRegion: "#main-region"
-
-  # mainNavMenuView = new MainNavigationMenuView()
-  # app.mainNavigationMenuRegion.show(mainNavMenuView)
-# --------------------
 
   app.bind "initialize:before", (options) ->
     Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> template.tmpl(data) # Handlebars.compile(template)(data)

@@ -4,7 +4,7 @@
 
   define(function(require) {
     var DepartmentMaintenanceView;
-    DepartmentMaintenanceView = (function(_super) {
+    return DepartmentMaintenanceView = (function(_super) {
 
       __extends(DepartmentMaintenanceView, _super);
 
@@ -47,7 +47,6 @@
       return DepartmentMaintenanceView;
 
     })(Backbone.Marionette.ItemView);
-    return DepartmentMaintenanceView;
   });
 
 }).call(this);

@@ -4,8 +4,8 @@
 
   define(function(require) {
     var Department, Departments;
-    Department = require('../../scripts/models/department.js');
-    Departments = (function(_super) {
+    Department = require('../../scripts/models/model.department.js');
+    return Departments = (function(_super) {
 
       __extends(Departments, _super);
 
@@ -20,7 +20,6 @@
       return Departments;
 
     })(Backbone.Collection);
-    return Departments;
   });
 
 }).call(this);

@@ -4,7 +4,7 @@
 
   define(function(require) {
     var UserNavigationView;
-    UserNavigationView = (function(_super) {
+    return UserNavigationView = (function(_super) {
 
       __extends(UserNavigationView, _super);
 
@@ -30,7 +30,6 @@
       return UserNavigationView;
 
     })(Backbone.Marionette.ItemView);
-    return UserNavigationView;
   });
 
 }).call(this);

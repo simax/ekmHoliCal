@@ -1,6 +1,5 @@
 define (require) ->
   
-  Backbone = require 'backbone'
   Backbone.ModelBinding = require 'modelbinding'
   require 'jqueryUI'
   require 'jqueryQtip'
@@ -60,5 +59,3 @@ define (require) ->
     cancel: (e) ->
       e.preventDefault()
       app.vent.trigger "main:admin:users"
-    
-  UserMaintenanceView

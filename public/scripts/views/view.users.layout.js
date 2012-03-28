@@ -3,9 +3,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Backbone, UsersLayoutView;
-    Backbone = require('backbone');
-    UsersLayoutView = (function(_super) {
+    var UsersLayoutView;
+    return UsersLayoutView = (function(_super) {
 
       __extends(UsersLayoutView, _super);
 
@@ -25,7 +24,6 @@
       return UsersLayoutView;
 
     })(Backbone.Marionette.CompositeRegion);
-    return UsersLayoutView;
   });
 
 }).call(this);

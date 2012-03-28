@@ -25,7 +25,11 @@
       user_maintenance: 'templates/tmpl.user.maintenance',
       user_navigation: 'templates/tmpl.user.navigation',
       user_layout: 'templates/tmpl.users.layout',
-      department_maintenance: 'templates/tmpl.department.maintenance'
+      department_grid_header: 'templates/tmpl.department.grid.header',
+      department_item: 'templates/tmpl.department.item',
+      department_maintenance: 'templates/tmpl.department.maintenance',
+      department_navigation: 'templates/tmpl.department.navigation',
+      department_layout: 'templates/tmpl.department.layout'
     }
   });
 

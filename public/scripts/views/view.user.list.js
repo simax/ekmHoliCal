@@ -5,7 +5,7 @@
   define(function(require) {
     var UserItemView, UserListView;
     UserItemView = require('../../scripts/views/view.user.item.js');
-    UserListView = (function(_super) {
+    return UserListView = (function(_super) {
 
       __extends(UserListView, _super);
 
@@ -26,14 +26,13 @@
         this.appendHtml(this.$el, $("script#tmpl-user-grid-header").tmpl());
         this.collection.each(this.addChildView);
         this.appendHtml(this.$el, "</tbody></table>");
-        if (this.onRender) this.onRender();
+        if (this.onShow) this.onShow();
         return this;
       };
 
       return UserListView;
 
     })(Backbone.Marionette.CollectionView);
-    return UserListView;
   });
 
 }).call(this);

@@ -5,7 +5,7 @@
   define(function(require) {
     var MainNavigationMenuView;
     require('marionette');
-    MainNavigationMenuView = (function(_super) {
+    return MainNavigationMenuView = (function(_super) {
 
       __extends(MainNavigationMenuView, _super);
 
@@ -16,6 +16,10 @@
       MainNavigationMenuView.prototype.template = "#tmpl-main-navigation-menu";
 
       MainNavigationMenuView.prototype.className = "navbar";
+
+      MainNavigationMenuView.prototype.initialize = function() {
+        return this.template = require('text!../../templates/tmpl.main.navigation.menu.html');
+      };
 
       MainNavigationMenuView.prototype.events = {
         "click #main-admin": "adminClick",
@@ -35,7 +39,6 @@
       return MainNavigationMenuView;
 
     })(Backbone.Marionette.ItemView);
-    return MainNavigationMenuView;
   });
 
 }).call(this);

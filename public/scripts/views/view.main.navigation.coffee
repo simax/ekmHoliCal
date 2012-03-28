@@ -1,11 +1,13 @@
 define (require) ->
 
-  # require 'text!../../templates/tmpl.main.navigation.menu.html'
   require 'marionette'
 
   class MainNavigationMenuView extends Backbone.Marionette.ItemView
     template: "#tmpl-main-navigation-menu"
     className: "navbar"
+    
+    initialize: ->
+      @template = require 'text!../../templates/tmpl.main.navigation.menu.html'
 
     events:
       "click #main-admin": "adminClick"
@@ -18,5 +20,3 @@ define (require) ->
     homeClick: (e) ->
       e.preventDefault()
       app.vent.trigger "main"
-
-  MainNavigationMenuView

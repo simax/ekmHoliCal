@@ -4,7 +4,7 @@
 
   define(function(require) {
     var UserItemView;
-    UserItemView = (function(_super) {
+    return UserItemView = (function(_super) {
 
       __extends(UserItemView, _super);
 
@@ -38,7 +38,6 @@
       return UserItemView;
 
     })(Backbone.Marionette.ItemView);
-    return UserItemView;
   });
 
 }).call(this);

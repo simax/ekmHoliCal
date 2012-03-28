@@ -20,13 +20,18 @@
 
       main_navigation_menu:   'templates/tmpl.main.navigation.menu'
       main_region:            'templates/tmpl.main.region'
+      
       user_grid_header:       'templates/tmpl.user.grid.header'
       user_item:              'templates/tmpl.user.item'
       user_maintenance:       'templates/tmpl.user.maintenance'
       user_navigation:        'templates/tmpl.user.navigation'
       user_layout:            'templates/tmpl.users.layout'
+      
+      department_grid_header: 'templates/tmpl.department.grid.header'
+      department_item:        'templates/tmpl.department.item'
       department_maintenance: 'templates/tmpl.department.maintenance'
-
+      department_navigation:  'templates/tmpl.department.navigation'
+      department_layout:      'templates/tmpl.department.layout'
 
   require [
       "require",

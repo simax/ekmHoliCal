@@ -13,4 +13,3 @@ define (require) ->
 			@on 'validated', (isValid, model, attrs) ->
 				Utils.showValidationErrors()
 
-	Department 
