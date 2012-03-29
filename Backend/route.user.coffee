@@ -17,7 +17,7 @@ class UserSchemaBuilder
 		# Register a entity Mongo collection
 		@Model = @mongoose.model 'Users', @UserSchema
 
-		con = @mongoose.connect 'mongodb://localhost:8124/ekmHoliCal'
+		con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
 
 
 class UserRoutes

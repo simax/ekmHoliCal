@@ -34,7 +34,7 @@
         }
       });
       this.Model = this.mongoose.model('Users', this.UserSchema);
-      con = this.mongoose.connect('mongodb://localhost:8124/ekmHoliCal');
+      con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');
     }
 
     return UserSchemaBuilder;

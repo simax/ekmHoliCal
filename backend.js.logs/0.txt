@@ -1,0 +1,35 @@
+{ [MongoError: E11001 duplicate key on update]
+  name: 'MongoError',
+  err: 'E11001 duplicate key on update',
+  code: 11001,
+  n: 0,
+  connectionId: 12,
+  ok: 1 }
+{ [MongoError: E11001 duplicate key on update]
+  name: 'MongoError',
+  err: 'E11001 duplicate key on update',
+  code: 11001,
+  n: 0,
+  connectionId: 12,
+  ok: 1 }
+{ [MongoError: E11001 duplicate key on update]
+  name: 'MongoError',
+  err: 'E11001 duplicate key on update',
+  code: 11001,
+  n: 0,
+  connectionId: 12,
+  ok: 1 }
+{ [MongoError: E11001 duplicate key on update]
+  name: 'MongoError',
+  err: 'E11001 duplicate key on update',
+  code: 11001,
+  n: 0,
+  connectionId: 12,
+  ok: 1 }
+{ [MongoError: E11001 duplicate key on update]
+  name: 'MongoError',
+  err: 'E11001 duplicate key on update',
+  code: 11001,
+  n: 0,
+  connectionId: 12,
+  ok: 1 }

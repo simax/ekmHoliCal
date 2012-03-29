@@ -1,27 +1,38 @@
-define (require) ->
+(function() {
+  var __hasProp = Object.prototype.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  DepartmentItemView = require '../../scripts/views/view.department.item.js'
+  define(function(require) {
+    var DepartmentItemView, departmentListView;
+    DepartmentItemView = require('../../scripts/views/view.department.item.js');
+    return departmentListView = (function(_super) {
 
-  class DepartmentListView extends Backbone.Marionette.CollectionView
-    itemView: DepartmentItemView
-    tagName: "table"
-    className: "table table-striped table-bordered"
-    id: "department-list"  
+      __extends(departmentListView, _super);
 
-    render: ->
-      @$el.html ""  
-      @appendHtml @$el, $("script#tmpl-department-grid-header").tmpl() 
-      @collection.each(@addChildView)
-      @appendHtml @$el, "</tbody></table>"  
+      function departmentListView() {
+        departmentListView.__super__.constructor.apply(this, arguments);
+      }
 
-      if(@onShow) 
-        @onShow()
-      @
-    
-    # onShow: ->
-    #   $("#department-list").dataTable
-    #     sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-    #     sPaginationType: "bootstrap"
-    #     oLanguage:
-    #       sLengthMenu: "_MENU_ records per page"      
+      departmentListView.prototype.itemView = DepartmentItemView;
 
+      departmentListView.prototype.tagName = "table";
+
+      departmentListView.prototype.className = "table table-striped table-bordered";
+
+      departmentListView.prototype.id = "department-list";
+
+      departmentListView.prototype.render = function() {
+        this.$el.html("");
+        this.appendHtml(this.$el, $("script#tmpl-department-grid-header").tmpl());
+        this.collection.each(this.addChildView);
+        this.appendHtml(this.$el, "</tbody></table>");
+        if (this.onShow) this.onShow();
+        return this;
+      };
+
+      return departmentListView;
+
+    })(Backbone.Marionette.CollectionView);
+  });
+
+}).call(this);

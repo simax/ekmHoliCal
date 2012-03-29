@@ -8,7 +8,6 @@ define (require) ->
 
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
   
-
   class UserRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/users/create": "adminUsersCreate"

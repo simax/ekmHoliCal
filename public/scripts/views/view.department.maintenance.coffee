@@ -1,18 +1,20 @@
 define (require) ->
   
-  # require 'text!../templates/tmpl.department.maintenance.html'
+  Backbone.ModelBinding = require 'modelbinding'
+  require 'jqueryUI'
+  require 'jqueryQtip'
+
+  Utils = require '../../scripts/Utils.js' 
 
   class DepartmentMaintenanceView extends Backbone.Marionette.ItemView
-    template: "#tmpl-department-maintenance"
     className: "row"
     
-    onShow: ->
-      Backbone.ModelBinding.bind(@)  
-      Backbone.Validation.bind(@, forceUpdate: true) 
+    initialize: ->
+      @template = require '../../scripts/text!department_maintenance.html'
 
     events:
       "click #cancel-button": "cancel"
-      "submit #user-create": "save"
+      "submit #department-create": "save"
 
     save: (e) ->
       e.preventDefault()
@@ -20,10 +22,20 @@ define (require) ->
       console.log "Is model valid:" + modelValid
 
       if modelValid
-        @model.save()  
-        app.vent.trigger "main:admin"      
+        if @model.isNew() 
+          res = @collection.create(@model, {wait: true}) 
+        else
+          @model.save(
+            @model.attributes, 
+            error: -> 
+              alert "Error saving !!!" 
+          )
+        app.vent.trigger "main:admin:departments"      
 
     cancel: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin"
-    
+      app.vent.trigger "main:admin:departments"
+
+    onShow: ->
+      Backbone.ModelBinding.bind(@)  
+      Backbone.Validation.bind(@, forceUpdate: true) 

@@ -15,9 +15,9 @@
 
       function UserMaintenanceView() {
         this.close = __bind(this.close, this);
-        this.onShow = __bind(this.onShow, this);
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
+        this.onShow = __bind(this.onShow, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
 
@@ -32,41 +32,6 @@
         "click #cancel-button": "cancel",
         "submit #user-create": "save",
         "focus #startdate": "showDatePicker"
-      };
-
-      UserMaintenanceView.prototype.getGravatarURL = function() {
-        return "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(this.model.get("email"));
-      };
-
-      UserMaintenanceView.prototype.SetGravatarImage = function() {
-        return $("#user-gravatar").attr("src", this.getGravatarURL());
-      };
-
-      UserMaintenanceView.prototype.onShow = function() {
-        Backbone.ModelBinding.bind(this);
-        Backbone.Validation.bind(this, {
-          forceUpdate: true
-        });
-        return this.SetGravatarImage();
-      };
-
-      UserMaintenanceView.prototype.showDatePicker = function() {
-        return $('#startdate').datepicker({
-          constrainedInput: true,
-          dateFormat: 'dd/mm/yy',
-          changeMonth: true,
-          changeYear: true,
-          showButtonPanel: true
-        });
-      };
-
-      UserMaintenanceView.prototype.hideDatePicker = function() {
-        return $('#startdate').datepicker('hide');
-      };
-
-      UserMaintenanceView.prototype.close = function() {
-        this.hideDatePicker();
-        return UserMaintenanceView.__super__.close.apply(this, arguments);
       };
 
       UserMaintenanceView.prototype.save = function(e) {
@@ -89,6 +54,41 @@
       UserMaintenanceView.prototype.cancel = function(e) {
         e.preventDefault();
         return app.vent.trigger("main:admin:users");
+      };
+
+      UserMaintenanceView.prototype.onShow = function() {
+        Backbone.ModelBinding.bind(this);
+        Backbone.Validation.bind(this, {
+          forceUpdate: true
+        });
+        return this.SetGravatarImage();
+      };
+
+      UserMaintenanceView.prototype.getGravatarURL = function() {
+        return "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(this.model.get("email"));
+      };
+
+      UserMaintenanceView.prototype.SetGravatarImage = function() {
+        return $("#user-gravatar").attr("src", this.getGravatarURL());
+      };
+
+      UserMaintenanceView.prototype.showDatePicker = function() {
+        return $('#startdate').datepicker({
+          constrainedInput: true,
+          dateFormat: 'dd/mm/yy',
+          changeMonth: true,
+          changeYear: true,
+          showButtonPanel: true
+        });
+      };
+
+      UserMaintenanceView.prototype.hideDatePicker = function() {
+        return $('#startdate').datepicker('hide');
+      };
+
+      UserMaintenanceView.prototype.close = function() {
+        this.hideDatePicker();
+        return UserMaintenanceView.__super__.close.apply(this, arguments);
       };
 
       return UserMaintenanceView;

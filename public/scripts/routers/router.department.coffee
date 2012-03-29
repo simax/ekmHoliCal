@@ -1,4 +1,12 @@
 define (require) ->
+
+  Departments = require '../../scripts/collections/collection.departments.js'
+  Department = require '../../scripts/models/model.department.js'
+
+  departments = new Departments()
+  departments.fetch()
+
+  DepartmentMaintenanceView = require '../../scripts/views/view.department.maintenance.js'
  
   class DepartmentRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
@@ -7,20 +15,20 @@ define (require) ->
 
   class DepartmentController  
     adminDepartmentsCreate: () ->
-      userMaintenanceView = new @DepartmentMaintenanceView
-        collection: @departments
-        model: new @Department()
+      departmentMaintenanceView = new DepartmentMaintenanceView
+        collection: departments
+        model: new Department()
 
-      @mainRegion.show(departmentMaintenanceView)
+      app.mainRegion.show(departmentMaintenanceView)
 
     adminDepartmentsEdit: (id) ->
       console.log "id: " + id
-      departmentMaintenanceView = new @DepartmentMaintenanceView
-        collection: @departments
-        model: @departments.get(id)
+      departmentMaintenanceView = new DepartmentMaintenanceView
+        collection: departments
+        model: departments.get(id)
 
-      @mainRegion.show(departmentMaintenanceView)
+      app.mainRegion.show(departmentMaintenanceView)
 
-DepartmentRouter: DepartmentRouter
-DepartmentController: DepartmentController
+  DepartmentRouter: DepartmentRouter
+  DepartmentController: DepartmentController
 

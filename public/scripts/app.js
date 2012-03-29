@@ -3,9 +3,10 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Application, MainNavigationMenuView, routeMain, routeUser;
+    var Application, MainNavigationMenuView, routeDepartment, routeMain, routeUser;
     routeMain = require('../scripts/routers/router.main.js');
     routeUser = require('../scripts/routers/router.user.js');
+    routeDepartment = require('../scripts/routers/router.department.js');
     MainNavigationMenuView = require('../scripts/views/view.main.navigation');
     Application = (function(_super) {
 
@@ -31,8 +32,11 @@
       app.mainRouter = new routeMain.MainRouter({
         controller: new routeMain.MainController
       });
-      return app.userRouter = new routeUser.UserRouter({
+      app.userRouter = new routeUser.UserRouter({
         controller: new routeUser.UserController
+      });
+      return app.departmentRouter = new routeDepartment.DepartmentRouter({
+        controller: new routeDepartment.DepartmentController
       });
     });
     app.bind("initialize:after", function() {
@@ -51,6 +55,9 @@
     app.vent.on("main:admin:users", function() {
       return app.userRouter.navigate("admin/users", true);
     });
+    app.vent.on("main:admin:departments", function() {
+      return app.departmentRouter.navigate("admin/departments", true);
+    });
     app.vent.on("admin:users:create", function() {
       return app.userRouter.navigate("admin/users/create", true);
     });
@@ -58,10 +65,10 @@
       return app.userRouter.navigate("admin/users/edit/" + id, true);
     });
     app.vent.on("admin:departments:create", function() {
-      return app.userRouter.navigate("admin/departments/create", true);
+      return app.departmentRouter.navigate("admin/departments/create", true);
     });
     app.vent.on("admin:departments:edit", function(id) {
-      return app.userRouter.navigate("admin/departments/edit/" + id, true);
+      return app.departmentRouter.navigate("admin/departments/edit/" + id, true);
     });
     app.start();
   });

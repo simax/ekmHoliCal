@@ -9,10 +9,16 @@
       this.mongoose = require('mongoose');
       this.schema = this.mongoose.Schema;
       this.DepartmentSchema = new this.schema({
-        'name': String
+        'name': {
+          type: String,
+          required: true,
+          index: {
+            unique: true
+          }
+        }
       });
       this.Model = this.mongoose.model('Departments', this.DepartmentSchema);
-      con = this.mongoose.connect('mongodb://localhost:8124/ekmHoliCal');
+      con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');
     }
 
     return DepartmentSchemaBuilder;
@@ -34,11 +40,14 @@
       var entity;
       entity = new this.Model;
       this.modelBind(entity, req);
-      entity.save(function(err) {
-        if (err) console.log(err);
-        if (err) return res.send(err);
+      return entity.save(function(err) {
+        if (err) {
+          console.log(err);
+          return res.send(err);
+        } else {
+          return res.send(entity);
+        }
       });
-      return res.send(entity);
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
@@ -58,12 +67,15 @@
     DepartmentRoutes.prototype.put = function(req, res) {
       var _this = this;
       return this.Model.findById(req.params.id, function(err, entity) {
-        if (err) res.send(err);
         _this.modelBind(entity, req);
-        entity.save(function(err) {
-          if (err) return res.send(err);
+        return entity.save(function(err) {
+          if (err) {
+            console.log(err);
+            return res.send(err);
+          } else {
+            return res.send(entity);
+          }
         });
-        return res.send(entity);
       });
     };
 

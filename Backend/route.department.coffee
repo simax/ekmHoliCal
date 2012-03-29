@@ -6,12 +6,12 @@ class DepartmentSchemaBuilder
 		@schema = @mongoose.Schema
 
 		@DepartmentSchema = new @schema
-			'name': String
+			'name': { type: String, required: true, index: { unique: true } }
 
 		# Register a departments Mongo collection
 		@Model = @mongoose.model 'Departments', @DepartmentSchema
 
-		con = @mongoose.connect 'mongodb://localhost:8124/ekmHoliCal'
+		con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
 
 
 class DepartmentRoutes
@@ -25,9 +25,11 @@ class DepartmentRoutes
 		entity = new @Model
 		@modelBind(entity, req)
 		entity.save (err) ->
-			console.log err if err
-			res.send(err) if err 
-		res.send(entity)		
+			if err 
+				console.log err 
+				res.send(err) 
+			else
+				res.send(entity)		
  
 	getall: (req, res) =>
 		res.contentType 'application/json' 
@@ -41,11 +43,13 @@ class DepartmentRoutes
 
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
-			res.send(err) if err 
 			@modelBind entity, req
 			entity.save (err) ->
-				res.send(err) if err 
-			res.send(entity)		
+				if err 
+					console.log err 
+					res.send(err) 
+				else
+					res.send(entity)		
  
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
