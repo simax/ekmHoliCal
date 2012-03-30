@@ -18,6 +18,7 @@
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
         this.onShow = __bind(this.onShow, this);
+        this.initialize = __bind(this.initialize, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
 
@@ -40,13 +41,11 @@
         modelValid = this.model.isValid(true);
         console.log("Is model valid:" + modelValid);
         if (modelValid) {
-          if (this.model.isNew()) {
-            this.collection.create(this.model, {
-              wait: true
-            });
-          } else {
-            this.model.save();
-          }
+          this.model.save(this.model.attributes, {
+            error: function(model, res) {
+              return alert(res.responseText);
+            }
+          });
           return app.vent.trigger("main:admin:users");
         }
       };

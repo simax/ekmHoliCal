@@ -4,12 +4,13 @@ class UserSchemaBuilder
 
 		@mongoose = require 'mongoose'
 		@schema = @mongoose.Schema
+		@ObjectId = @schema.ObjectId
 
 		@UserSchema = new @schema
 		 	'firstname': { type: String, required: true }, 
 		 	'lastname': { type: String, required: true }, 
 		 	'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
-		 	'department': String,
+		 	'departmentId': @ObjectId,
 		 	'startdate': String,
 		 	'enddate': String,
 		 	'active': { type: Boolean, default: true } 
@@ -25,15 +26,11 @@ class UserRoutes
 	constructor: ->
 		@Model = new UserSchemaBuilder().Model
 
-	# User routes
-
 	post: (req, res) =>
 		entity = new @Model
 		@modelBind(entity, req)
-		entity.save (err) ->
-			console.log err if err
-			res.send(err) if err 
-		res.send(entity)		
+		entity.save (err) =>
+			@save(entity, res, err)
  
 	getall: (req, res) =>
 		res.contentType 'application/json' 
@@ -47,11 +44,9 @@ class UserRoutes
 
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
-			res.send(err) if err 
 			@modelBind entity, req
-			entity.save (err) ->
-				res.send(err) if err 
-			res.send(entity)		
+			entity.save (err) =>
+ 				@save(entity, res, err)
  
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
@@ -67,5 +62,15 @@ class UserRoutes
 		entity.startdate = req.body.startdate
 		entity.enddate = ""
 		entity.active = req.body.active
+
+	save: (entity, res, err) -> 
+		if err 
+			console.log err 
+			if err.code = 1101
+				res.send("Already exists", 400) 
+				return
+			res.send("Unable to process request", 500) 
+		else
+			res.send(entity)	
 
 module.exports = new UserRoutes()

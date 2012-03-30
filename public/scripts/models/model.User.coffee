@@ -3,6 +3,12 @@ define (require) ->
 	Utils = require '../../scripts/Utils.js' 
 
 	class User extends Backbone.Model
+		initialize: =>
+	    @departments = @options.departments
+	    
+		url: =>
+			if @id then '/ekmHoliCal/api/users/' + @id else '/ekmHoliCal/api/users'
+
 		idAttribute: "_id"
 		validation: 
 			firstname:
@@ -15,7 +21,7 @@ define (require) ->
 				required: true
 				pattern: 'email'
 				msg: 'A valid email address is required'
-			department:
+			departmentId:
 				required: true
 				msg: 'A department is required'
 		

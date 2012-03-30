@@ -6,6 +6,10 @@ define (require) ->
   users = new Users()
   users.fetch()
 
+  Departments = require '../../scripts/collections/collection.departments.js'
+  departments = new Departments()
+  departments.fetch()
+
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
   
   class UserRouter extends Backbone.Marionette.AppRouter
@@ -17,7 +21,7 @@ define (require) ->
     adminUsersCreate: () ->
       userMaintenanceView = new UserMaintenanceView
         collection: users
-        model: new User()
+        model: new User(departments: departments)
 
       app.mainRegion.show(userMaintenanceView)
 
@@ -25,6 +29,7 @@ define (require) ->
       userMaintenanceView = new UserMaintenanceView
         collection: users
         model: users.get(id)
+        departments: departments
 
       app.mainRegion.show(userMaintenanceView)
 

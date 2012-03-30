@@ -19,17 +19,11 @@ class DepartmentRoutes
 	constructor: ->
 		@Model = new DepartmentSchemaBuilder().Model
 
-	# User routes
-
 	post: (req, res) =>
 		entity = new @Model
 		@modelBind(entity, req)
-		entity.save (err) ->
-			if err 
-				console.log err 
-				res.send(err) 
-			else
-				res.send(entity)		
+		entity.save (err) =>
+			@save(entity, res, err)
  
 	getall: (req, res) =>
 		res.contentType 'application/json' 
@@ -44,13 +38,9 @@ class DepartmentRoutes
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
 			@modelBind entity, req
-			entity.save (err) ->
-				if err 
-					console.log err 
-					res.send(err) 
-				else
-					res.send(entity)		
- 
+			entity.save (err) =>
+ 				@save(entity, res, err)
+
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
 			entity.remove()
@@ -58,5 +48,15 @@ class DepartmentRoutes
 
 	modelBind: (entity, req) =>
 		entity.name = req.body.name
+
+	save: (entity, res, err) -> 
+		if err 
+			console.log err 
+			if err.code = 1101
+				res.send("Already exists", 400) 
+				return
+			res.send("Unable to process request", 500) 
+		else
+			res.send(entity)		
 
 module.exports = new DepartmentRoutes()

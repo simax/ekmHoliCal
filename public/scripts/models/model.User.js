@@ -1,5 +1,6 @@
 (function() {
-  var __hasProp = Object.prototype.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
@@ -10,8 +11,22 @@
       __extends(User, _super);
 
       function User() {
+        this.url = __bind(this.url, this);
+        this.initialize = __bind(this.initialize, this);
         User.__super__.constructor.apply(this, arguments);
       }
+
+      User.prototype.initialize = function() {
+        return this.departments = this.options.departments;
+      };
+
+      User.prototype.url = function() {
+        if (this.id) {
+          return '/ekmHoliCal/api/users/' + this.id;
+        } else {
+          return '/ekmHoliCal/api/users';
+        }
+      };
 
       User.prototype.idAttribute = "_id";
 
@@ -29,7 +44,7 @@
           pattern: 'email',
           msg: 'A valid email address is required'
         },
-        department: {
+        departmentId: {
           required: true,
           msg: 'A department is required'
         }

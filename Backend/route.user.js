@@ -8,6 +8,7 @@
       var con;
       this.mongoose = require('mongoose');
       this.schema = this.mongoose.Schema;
+      this.ObjectId = this.schema.ObjectId;
       this.UserSchema = new this.schema({
         'firstname': {
           type: String,
@@ -25,7 +26,7 @@
           },
           validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
         },
-        'department': String,
+        'departmentId': this.ObjectId,
         'startdate': String,
         'enddate': String,
         'active': {
@@ -53,14 +54,13 @@
     }
 
     UserRoutes.prototype.post = function(req, res) {
-      var entity;
+      var entity,
+        _this = this;
       entity = new this.Model;
       this.modelBind(entity, req);
-      entity.save(function(err) {
-        if (err) console.log(err);
-        if (err) return res.send(err);
+      return entity.save(function(err) {
+        return _this.save(entity, res, err);
       });
-      return res.send(entity);
     };
 
     UserRoutes.prototype.getall = function(req, res) {
@@ -80,12 +80,10 @@
     UserRoutes.prototype.put = function(req, res) {
       var _this = this;
       return this.Model.findById(req.params.id, function(err, entity) {
-        if (err) res.send(err);
         _this.modelBind(entity, req);
-        entity.save(function(err) {
-          if (err) return res.send(err);
+        return entity.save(function(err) {
+          return _this.save(entity, res, err);
         });
-        return res.send(entity);
       });
     };
 
@@ -105,6 +103,19 @@
       entity.startdate = req.body.startdate;
       entity.enddate = "";
       return entity.active = req.body.active;
+    };
+
+    UserRoutes.prototype.save = function(entity, res, err) {
+      if (err) {
+        console.log(err);
+        if (err.code = 1101) {
+          res.send("Already exists", 400);
+          return;
+        }
+        return res.send("Unable to process request", 500);
+      } else {
+        return res.send(entity);
+      }
     };
 
     return UserRoutes;

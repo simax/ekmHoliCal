@@ -9,7 +9,7 @@ define (require) ->
   class UserMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
 
-    initialize: ->
+    initialize: =>
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
 
@@ -24,10 +24,11 @@ define (require) ->
       console.log "Is model valid:" + modelValid
 
       if modelValid
-        if @model.isNew() 
-          @collection.create(@model, {wait: true}) 
-        else
-          @model.save()  
+        @model.save(
+          @model.attributes,
+          error: (model, res) -> 
+            alert res.responseText
+        )
         app.vent.trigger "main:admin:users"      
 
     cancel: (e) ->
@@ -59,5 +60,3 @@ define (require) ->
     close: =>
       @hideDatePicker()
       super
-
-

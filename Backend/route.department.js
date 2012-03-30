@@ -37,16 +37,12 @@
     }
 
     DepartmentRoutes.prototype.post = function(req, res) {
-      var entity;
+      var entity,
+        _this = this;
       entity = new this.Model;
       this.modelBind(entity, req);
       return entity.save(function(err) {
-        if (err) {
-          console.log(err);
-          return res.send(err);
-        } else {
-          return res.send(entity);
-        }
+        return _this.save(entity, res, err);
       });
     };
 
@@ -69,12 +65,7 @@
       return this.Model.findById(req.params.id, function(err, entity) {
         _this.modelBind(entity, req);
         return entity.save(function(err) {
-          if (err) {
-            console.log(err);
-            return res.send(err);
-          } else {
-            return res.send(entity);
-          }
+          return _this.save(entity, res, err);
         });
       });
     };
@@ -88,6 +79,19 @@
 
     DepartmentRoutes.prototype.modelBind = function(entity, req) {
       return entity.name = req.body.name;
+    };
+
+    DepartmentRoutes.prototype.save = function(entity, res, err) {
+      if (err) {
+        console.log(err);
+        if (err.code = 1101) {
+          res.send("Already exists", 400);
+          return;
+        }
+        return res.send("Unable to process request", 500);
+      } else {
+        return res.send(entity);
+      }
     };
 
     return DepartmentRoutes;

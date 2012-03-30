@@ -22,14 +22,11 @@ define (require) ->
       console.log "Is model valid:" + modelValid
 
       if modelValid
-        if @model.isNew() 
-          res = @collection.create(@model, {wait: true}) 
-        else
-          @model.save(
-            @model.attributes, 
-            error: -> 
-              alert "Error saving !!!" 
-          )
+        @model.save(
+          @model.attributes,
+          error: (model, res) -> 
+            alert res.responseText
+        )
         app.vent.trigger "main:admin:departments"      
 
     cancel: (e) ->

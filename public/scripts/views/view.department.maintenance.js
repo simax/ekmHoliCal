@@ -28,22 +28,16 @@
       };
 
       DepartmentMaintenanceView.prototype.save = function(e) {
-        var modelValid, res;
+        var modelValid;
         e.preventDefault();
         modelValid = this.model.isValid(true);
         console.log("Is model valid:" + modelValid);
         if (modelValid) {
-          if (this.model.isNew()) {
-            res = this.collection.create(this.model, {
-              wait: true
-            });
-          } else {
-            this.model.save(this.model.attributes, {
-              error: function() {
-                return alert("Error saving !!!");
-              }
-            });
-          }
+          this.model.save(this.model.attributes, {
+            error: function(model, res) {
+              return alert(res.responseText);
+            }
+          });
           return app.vent.trigger("main:admin:departments");
         }
       };

@@ -3,11 +3,14 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var User, UserController, UserMaintenanceView, UserRouter, Users, users;
+    var Departments, User, UserController, UserMaintenanceView, UserRouter, Users, departments, users;
     Users = require('../../scripts/collections/collection.users.js');
     User = require('../../scripts/models/model.user.js');
     users = new Users();
     users.fetch();
+    Departments = require('../../scripts/collections/collection.departments.js');
+    departments = new Departments();
+    departments.fetch();
     UserMaintenanceView = require('../../scripts/views/view.user.maintenance.js');
     UserRouter = (function(_super) {
 
@@ -33,7 +36,9 @@
         var userMaintenanceView;
         userMaintenanceView = new UserMaintenanceView({
           collection: users,
-          model: new User()
+          model: new User({
+            departments: departments
+          })
         });
         return app.mainRegion.show(userMaintenanceView);
       };
@@ -42,7 +47,8 @@
         var userMaintenanceView;
         userMaintenanceView = new UserMaintenanceView({
           collection: users,
-          model: users.get(id)
+          model: users.get(id),
+          departments: departments
         });
         return app.mainRegion.show(userMaintenanceView);
       };
