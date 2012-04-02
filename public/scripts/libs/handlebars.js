@@ -1,7 +1,7 @@
 // lib/handlebars/base.js
 var Handlebars = {};
 
-Handlebars.VERSION = "1.0.beta.6";
+Handlebars.VERSION = "1.0.beta.5";
 
 Handlebars.helpers  = {};
 Handlebars.partials = {};
@@ -999,13 +999,13 @@ Handlebars.JavaScriptCompiler = function() {};
     // PUBLIC API: You can override these methods in a subclass to provide
     // alternative compiled forms for name lookup and buffering semantics
     nameLookup: function(parent, name, type) {
-			if (/^[0-9]+$/.test(name)) {
+            if (/^[0-9]+$/.test(name)) {
         return parent + "[" + name + "]";
       } else if (JavaScriptCompiler.isValidJavaScriptVariableName(name)) {
-	    	return parent + "." + name;
-			}
-			else {
-				return parent + "['" + name + "']";
+            return parent + "." + name;
+            }
+            else {
+                return parent + "['" + name + "']";
       }
     },
 
@@ -1090,12 +1090,6 @@ Handlebars.JavaScriptCompiler = function() {};
 
     preamble: function() {
       var out = [];
-
-      // this register will disambiguate helper lookup from finding a function in
-      // a context. This is necessary for mustache compatibility, which requires
-      // that context functions in blocks are evaluated by blockHelperMissing, and
-      // then proceed as if the resulting value was provided to blockHelperMissing.
-      this.useRegister('foundHelper');
 
       if (!this.isChild) {
         var namespace = this.namespace;
@@ -1209,8 +1203,10 @@ Handlebars.JavaScriptCompiler = function() {};
         } else if (isScoped || this.options.knownHelpersOnly) {
           toPush = topStack + " = " + this.nameLookup('depth' + this.lastContext, name, 'context');
         } else {
-          this.register('foundHelper', this.nameLookup('helpers', name, 'helper'));
-          toPush = topStack + " = foundHelper || " + this.nameLookup('depth' + this.lastContext, name, 'context');
+          toPush =  topStack + " = "
+              + this.nameLookup('helpers', name, 'helper')
+              + " || "
+              + this.nameLookup('depth' + this.lastContext, name, 'context');
         }
 
         toPush += ';';
@@ -1223,7 +1219,7 @@ Handlebars.JavaScriptCompiler = function() {};
     lookup: function(name) {
       var topStack = this.topStack();
       this.source.push(topStack + " = (" + topStack + " === null || " + topStack + " === undefined || " + topStack + " === false ? " +
- 				topStack + " : " + this.nameLookup(topStack, name, 'context') + ");");
+                topStack + " : " + this.nameLookup(topStack, name, 'context') + ");");
     },
 
     pushStringParam: function(string) {
@@ -1305,10 +1301,10 @@ Handlebars.JavaScriptCompiler = function() {};
 
       params.push(stringOptions);
 
-      this.populateCall(params, id, helperId || id, fn, program !== '{}');
+      this.populateCall(params, id, helperId || id, fn);
     },
 
-    populateCall: function(params, id, helperId, fn, program) {
+    populateCall: function(params, id, helperId, fn) {
       var paramString = ["depth0"].concat(params).join(", ");
       var helperMissingString = ["depth0"].concat(helperId).concat(params).join(", ");
 
@@ -1318,8 +1314,7 @@ Handlebars.JavaScriptCompiler = function() {};
         this.source.push(nextStack + " = " + id + ".call(" + paramString + ");");
       } else {
         this.context.aliases.functionType = '"function"';
-        var condition = program ? "foundHelper && " : ""
-        this.source.push("if(" + condition + "typeof " + id + " === functionType) { " + nextStack + " = " + id + ".call(" + paramString + "); }");
+        this.source.push("if(typeof " + id + " === functionType) { " + nextStack + " = " + id + ".call(" + paramString + "); }");
       }
       fn.call(this, nextStack, helperMissingString, id);
       this.usingKnownHelper = false;
@@ -1423,23 +1418,9 @@ Handlebars.JavaScriptCompiler = function() {};
     }
   };
 
-  var reservedWords = (
-    "break else new var" +
-    " case finally return void" +
-    " catch for switch while" +
-    " continue function this with" +
-    " default if throw" +
-    " delete in try" +
-    " do instanceof typeof" +
-    " abstract enum int short" +
-    " boolean export interface static" +
-    " byte extends long super" +
-    " char final native synchronized" +
-    " class float package throws" +
-    " const goto private transient" +
-    " debugger implements protected volatile" +
-    " double import public let yield"
-  ).split(" ");
+  var reservedWords = ("break case catch continue default delete do else finally " +
+                       "for function if in instanceof new return switch this throw " +
+                       "try typeof var void while with null true false").split(" ");
 
   var compilerWords = JavaScriptCompiler.RESERVED_WORDS = {};
 
@@ -1447,12 +1428,12 @@ Handlebars.JavaScriptCompiler = function() {};
     compilerWords[reservedWords[i]] = true;
   }
 
-	JavaScriptCompiler.isValidJavaScriptVariableName = function(name) {
-		if(!JavaScriptCompiler.RESERVED_WORDS[name] && /^[a-zA-Z_$][0-9a-zA-Z_$]+$/.test(name)) {
-			return true;
-		}
-		return false;
-	}
+    JavaScriptCompiler.isValidJavaScriptVariableName = function(name) {
+        if(!JavaScriptCompiler.RESERVED_WORDS[name] && /^[a-zA-Z_$][0-9a-zA-Z_$]+$/.test(name)) {
+            return true;
+        }
+        return false;
+    }
 
 })(Handlebars.Compiler, Handlebars.JavaScriptCompiler);
 

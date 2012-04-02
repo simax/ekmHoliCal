@@ -10,9 +10,11 @@ define (require) ->
 
     render: ->
       @$el.html ""  
-      @appendHtml @$el, $("script#tmpl-user-grid-header").tmpl() 
+      template = Handlebars.compile($('script#tmpl-user-grid-header').html())
+
+      # @appendHtml @$el, Handlebars.compile($('script#tmpl-user-grid-header').html())() 
       @collection.each(@addChildView)
-      @appendHtml @$el, "</tbody></table>"  
+      # @appendHtml @$el, "</tbody></table>"  
 
       if(@onShow) 
         @onShow()

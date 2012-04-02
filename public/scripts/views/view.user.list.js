@@ -22,10 +22,10 @@
       UserListView.prototype.id = "user-list";
 
       UserListView.prototype.render = function() {
+        var template;
         this.$el.html("");
-        this.appendHtml(this.$el, $("script#tmpl-user-grid-header").tmpl());
+        template = Handlebars.compile($('script#tmpl-user-grid-header').html());
         this.collection.each(this.addChildView);
-        this.appendHtml(this.$el, "</tbody></table>");
         if (this.onShow) this.onShow();
         return this;
       };

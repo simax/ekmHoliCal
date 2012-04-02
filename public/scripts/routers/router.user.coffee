@@ -2,13 +2,7 @@ define (require) ->
 
   Users = require '../../scripts/collections/collection.users.js'
   User = require '../../scripts/models/model.user.js'
-
-  users = new Users()
-  users.fetch()
-
   Departments = require '../../scripts/collections/collection.departments.js'
-  departments = new Departments()
-  departments.fetch()
 
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
   
@@ -18,18 +12,26 @@ define (require) ->
       "admin/users/edit/:id": "adminUsersEdit"
 
   class UserController 
-    adminUsersCreate: () ->
+    initialize: =>
+      @users = new Users()
+      @users.fetch()
+      @departments = new Departments()
+      @departments.fetch()
+
+    adminUsersCreate: =>
+      @model = new User(departments: @departments)
       userMaintenanceView = new UserMaintenanceView
-        collection: users
-        model: new User(departments: departments)
+        collection: @users
+        model: @model
 
       app.mainRegion.show(userMaintenanceView)
 
-    adminUsersEdit: (id) ->
+    adminUsersEdit: (id) =>
+      @model = users.get(id)
+      @model.departments = @departments
       userMaintenanceView = new UserMaintenanceView
-        collection: users
-        model: users.get(id)
-        departments: departments
+        collection: @users
+        model: @model
 
       app.mainRegion.show(userMaintenanceView)
 

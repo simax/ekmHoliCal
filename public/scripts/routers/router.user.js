@@ -1,16 +1,13 @@
 (function() {
   var __hasProp = Object.prototype.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var Departments, User, UserController, UserMaintenanceView, UserRouter, Users, departments, users;
+    var Departments, User, UserController, UserMaintenanceView, UserRouter, Users;
     Users = require('../../scripts/collections/collection.users.js');
     User = require('../../scripts/models/model.user.js');
-    users = new Users();
-    users.fetch();
     Departments = require('../../scripts/collections/collection.departments.js');
-    departments = new Departments();
-    departments.fetch();
     UserMaintenanceView = require('../../scripts/views/view.user.maintenance.js');
     UserRouter = (function(_super) {
 
@@ -30,25 +27,38 @@
     })(Backbone.Marionette.AppRouter);
     UserController = (function() {
 
-      function UserController() {}
+      function UserController() {
+        this.adminUsersEdit = __bind(this.adminUsersEdit, this);
+        this.adminUsersCreate = __bind(this.adminUsersCreate, this);
+        this.initialize = __bind(this.initialize, this);
+      }
+
+      UserController.prototype.initialize = function() {
+        this.users = new Users();
+        this.users.fetch();
+        this.departments = new Departments();
+        return this.departments.fetch();
+      };
 
       UserController.prototype.adminUsersCreate = function() {
         var userMaintenanceView;
+        this.model = new User({
+          departments: this.departments
+        });
         userMaintenanceView = new UserMaintenanceView({
-          collection: users,
-          model: new User({
-            departments: departments
-          })
+          collection: this.users,
+          model: this.model
         });
         return app.mainRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
         var userMaintenanceView;
+        this.model = users.get(id);
+        this.model.departments = this.departments;
         userMaintenanceView = new UserMaintenanceView({
-          collection: users,
-          model: users.get(id),
-          departments: departments
+          collection: this.users,
+          model: this.model
         });
         return app.mainRegion.show(userMaintenanceView);
       };

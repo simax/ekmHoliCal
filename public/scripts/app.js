@@ -22,7 +22,7 @@
     window.app = !window.app ? new Application() : window.app;
     app.bind("initialize:before", function(options) {
       return Backbone.Marionette.ItemView.prototype.renderTemplate = function(template, data) {
-        return template.tmpl(data);
+        return Handlebars.compile(template.html())(data);
       };
     });
     app.addInitializer(function() {

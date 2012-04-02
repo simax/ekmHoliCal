@@ -1,4 +1,4 @@
-<script type="text/x-jquery-tmpl" id="tmpl-user-maintenance">
+<script type="text/x-handlebars-template" id="tmpl-user-maintenance">
 	<div class="span8">
 		<form id="user-create" class="form-horizontal">
 			<fieldset>
@@ -29,26 +29,17 @@
 					</div>
 				</div>	
 
-
-				<div class="control-group">			
-					<label class="control-label" for="x">Department count:</label>
-					<div class="controls">
-						<span name="${departments}" id="x" class="span3">${departments.length}</span>
-					</div>
-				</div>	
-
 				<div class="control-group">			
 					<label class="control-label" for="department">Department:</label>
 					<div class="controls">
-						<!-- <select name="departmentId" id="department"> -->
-							{{each departments}}
-							 xxx {{= value.key }}
-
-							{{/each}}	
-						<!-- </select> -->
+						<select name="departmentId" id="department">
+							{{#each departments}}
+							 <option value='{{this.id}}'>{{this.name}}</option>
+							{{/each}}
+						</select>
 					</div>	
 				</div>	
-		
+	
 				<div class="control-group">			
 					<label class="control-label" for="startdate">Start date:</label>
 					<div class="controls">
@@ -72,3 +63,4 @@
 		</form>
 	</div>	
 </script>
+

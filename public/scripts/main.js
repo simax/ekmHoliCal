@@ -4,7 +4,6 @@
     paths: {
       app: 'app',
       jquery: 'libs/jquery-1.7.1',
-      jqueryTmpl: 'libs/jquery.tmpl',
       jqueryUI: 'libs/jquery-ui-1.8.18.custom.min',
       underscore: 'libs/underscore.amd',
       order: 'libs/order',
@@ -33,6 +32,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "order!jqueryTmpl", "order!marionette", "order!validation", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "order!handlebars", "order!marionette", "order!validation", "app"]);
 
 }).call(this);
