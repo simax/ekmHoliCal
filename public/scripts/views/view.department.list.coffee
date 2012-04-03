@@ -10,7 +10,7 @@ define (require) ->
 
     render: ->
       @$el.html ""  
-      @appendHtml @$el, $("script#tmpl-department-grid-header").tmpl() 
+      @appendHtml @$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html())
       @collection.each(@addChildView)
       @appendHtml @$el, "</tbody></table>"  
 

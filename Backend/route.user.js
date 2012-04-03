@@ -26,7 +26,7 @@
           },
           validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
         },
-        'departmentId': this.ObjectId,
+        'departmentId': String,
         'startdate': String,
         'enddate': String,
         'active': {
@@ -95,11 +95,10 @@
     };
 
     UserRoutes.prototype.modelBind = function(entity, req) {
-      console.log("req.body.firstname: " + req.body.firstname);
       entity.firstname = req.body.firstname;
       entity.lastname = req.body.lastname;
       entity.email = req.body.email;
-      entity.department = req.body.department;
+      entity.departmentId = req.body.departmentId;
       entity.startdate = req.body.startdate;
       entity.enddate = "";
       return entity.active = req.body.active;

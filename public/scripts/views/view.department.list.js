@@ -23,7 +23,7 @@
 
       departmentListView.prototype.render = function() {
         this.$el.html("");
-        this.appendHtml(this.$el, $("script#tmpl-department-grid-header").tmpl());
+        this.appendHtml(this.$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html()));
         this.collection.each(this.addChildView);
         this.appendHtml(this.$el, "</tbody></table>");
         if (this.onShow) this.onShow();

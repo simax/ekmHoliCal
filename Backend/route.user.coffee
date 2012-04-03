@@ -10,7 +10,7 @@ class UserSchemaBuilder
 		 	'firstname': { type: String, required: true }, 
 		 	'lastname': { type: String, required: true }, 
 		 	'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
-		 	'departmentId': @ObjectId,
+		 	'departmentId': String,
 		 	'startdate': String,
 		 	'enddate': String,
 		 	'active': { type: Boolean, default: true } 
@@ -54,11 +54,10 @@ class UserRoutes
 			res.send(204)
 
 	modelBind: (entity, req) =>
-		console.log "req.body.firstname: " + req.body.firstname
 		entity.firstname = req.body.firstname
 		entity.lastname = req.body.lastname
 		entity.email = req.body.email
-		entity.department = req.body.department
+		entity.departmentId = req.body.departmentId 
 		entity.startdate = req.body.startdate
 		entity.enddate = ""
 		entity.active = req.body.active

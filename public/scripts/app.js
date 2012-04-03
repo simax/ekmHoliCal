@@ -1,5 +1,6 @@
 (function() {
-  var __hasProp = Object.prototype.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
@@ -13,8 +14,31 @@
       __extends(Application, _super);
 
       function Application() {
+        this.fetchAppData = __bind(this.fetchAppData, this);
         Application.__super__.constructor.apply(this, arguments);
       }
+
+      Application.prototype.fetchAppData = function() {
+        var Departments, Users;
+        Users = require('../../scripts/collections/collection.users.js');
+        Departments = require('../../scripts/collections/collection.departments.js');
+        this.users = new Users();
+        this.users.fetch();
+        this.departments = new Departments();
+        this.departments.comparator = function(model) {
+          return model.get('name');
+        };
+        return this.departments.fetch({
+          success: function(collection, response) {
+            collection.add({
+              name: ''
+            }, {
+              silent: true
+            });
+            return collection.sort();
+          }
+        });
+      };
 
       return Application;
 
@@ -27,6 +51,7 @@
     });
     app.addInitializer(function() {
       var mainNavMenuView;
+      this.fetchAppData();
       mainNavMenuView = new MainNavigationMenuView();
       app.mainNavigationMenuRegion.show(mainNavMenuView);
       app.mainRouter = new routeMain.MainRouter({
@@ -70,7 +95,7 @@
     app.vent.on("admin:departments:edit", function(id) {
       return app.departmentRouter.navigate("admin/departments/edit/" + id, true);
     });
-    app.start();
+    return app.start();
   });
 
 }).call(this);

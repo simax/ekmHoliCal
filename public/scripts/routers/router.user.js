@@ -30,23 +30,14 @@
       function UserController() {
         this.adminUsersEdit = __bind(this.adminUsersEdit, this);
         this.adminUsersCreate = __bind(this.adminUsersCreate, this);
-        this.initialize = __bind(this.initialize, this);
       }
-
-      UserController.prototype.initialize = function() {
-        this.users = new Users();
-        this.users.fetch();
-        this.departments = new Departments();
-        return this.departments.fetch();
-      };
 
       UserController.prototype.adminUsersCreate = function() {
         var userMaintenanceView;
         this.model = new User({
-          departments: this.departments
+          departments: app.departments.toJSON()
         });
         userMaintenanceView = new UserMaintenanceView({
-          collection: this.users,
           model: this.model
         });
         return app.mainRegion.show(userMaintenanceView);
@@ -54,10 +45,9 @@
 
       UserController.prototype.adminUsersEdit = function(id) {
         var userMaintenanceView;
-        this.model = users.get(id);
-        this.model.departments = this.departments;
+        this.model = app.users.get(id);
+        this.model.attributes.departments = app.departments.toJSON();
         userMaintenanceView = new UserMaintenanceView({
-          collection: this.users,
           model: this.model
         });
         return app.mainRegion.show(userMaintenanceView);

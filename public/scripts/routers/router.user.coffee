@@ -12,25 +12,19 @@ define (require) ->
       "admin/users/edit/:id": "adminUsersEdit"
 
   class UserController 
-    initialize: =>
-      @users = new Users()
-      @users.fetch()
-      @departments = new Departments()
-      @departments.fetch()
 
     adminUsersCreate: =>
-      @model = new User(departments: @departments)
+      @model = new User(departments: app.departments.toJSON())
       userMaintenanceView = new UserMaintenanceView
-        collection: @users
         model: @model
 
       app.mainRegion.show(userMaintenanceView)
 
     adminUsersEdit: (id) =>
-      @model = users.get(id)
-      @model.departments = @departments
+      @model = app.users.get(id)
+      @model.attributes.departments = app.departments.toJSON()
       userMaintenanceView = new UserMaintenanceView
-        collection: @users
+        # collection: @users
         model: @model
 
       app.mainRegion.show(userMaintenanceView)
