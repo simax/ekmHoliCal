@@ -28,29 +28,54 @@
     UserController = (function() {
 
       function UserController() {
+        this.fetchViewData = __bind(this.fetchViewData, this);
         this.adminUsersEdit = __bind(this.adminUsersEdit, this);
         this.adminUsersCreate = __bind(this.adminUsersCreate, this);
       }
 
       UserController.prototype.adminUsersCreate = function() {
-        var userMaintenanceView;
-        this.model = new User({
-          departments: app.departments.toJSON()
+        var fetchData,
+          _this = this;
+        fetchData = this.fetchViewData;
+        return fetchData().done(function() {
+          var userMaintenanceView;
+          _this.model = new User();
+          userMaintenanceView = new UserMaintenanceView({
+            model: _this.model
+          });
+          return app.mainRegion.show(userMaintenanceView);
         });
-        userMaintenanceView = new UserMaintenanceView({
-          model: this.model
-        });
-        return app.mainRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var userMaintenanceView;
-        this.model = app.users.get(id);
-        this.model.attributes.departments = app.departments.toJSON();
-        userMaintenanceView = new UserMaintenanceView({
-          model: this.model
+        var fetchData,
+          _this = this;
+        fetchData = this.fetchViewData;
+        return fetchData().done(function() {
+          var userMaintenanceView;
+          _this.model = _this.users.get(id);
+          userMaintenanceView = new UserMaintenanceView({
+            model: _this.model
+          });
+          return app.mainRegion.show(userMaintenanceView);
         });
-        return app.mainRegion.show(userMaintenanceView);
+      };
+
+      UserController.prototype.fetchViewData = function() {
+        var dfd,
+          _this = this;
+        dfd = $.Deferred();
+        Users = require('../../scripts/collections/collection.users.js');
+        this.users = new Users();
+        this.users.fetch({
+          success: function() {
+            return dfd.resolve();
+          },
+          error: function() {
+            return dfd.reject();
+          }
+        });
+        return dfd.promise();
       };
 
       return UserController;

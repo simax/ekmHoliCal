@@ -12,7 +12,7 @@ define (require) ->
       "click .active-status": "toggleActivation"
 
     toggleActivation: (e) ->
-      alert JSON.stringify @model.get("active")
+      alert @model.get("active")
 
     edit: (e) ->
       id = @model.id

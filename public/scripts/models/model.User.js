@@ -17,7 +17,9 @@
       }
 
       User.prototype.initialize = function() {
-        return this.departments = this.options.departments;
+        return this.on('validated', function(isValid, model, attrs) {
+          return Utils.showValidationErrors();
+        });
       };
 
       User.prototype.url = function() {
@@ -48,12 +50,6 @@
           required: true,
           msg: 'A department is required'
         }
-      };
-
-      User.prototype.initialize = function() {
-        return this.on('validated', function(isValid, model, attrs) {
-          return Utils.showValidationErrors();
-        });
       };
 
       return User;

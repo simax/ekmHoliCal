@@ -4,16 +4,18 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var UserMaintenanceView, Utils;
+    var Departments, UserMaintenanceView, Utils;
     Backbone.ModelBinding = require('modelbinding');
     require('jqueryUI');
     require('jqueryQtip');
     Utils = require('../../scripts/Utils.js');
+    Departments = require('../../scripts/collections/collection.departments.js');
     return UserMaintenanceView = (function(_super) {
 
       __extends(UserMaintenanceView, _super);
 
       function UserMaintenanceView() {
+        this.fetchDepartments = __bind(this.fetchDepartments, this);
         this.close = __bind(this.close, this);
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
@@ -26,7 +28,8 @@
 
       UserMaintenanceView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_maintenance.html');
-        return this.model.on('change:email', this.SetGravatarImage, this);
+        this.model.on('change:email', this.SetGravatarImage, this);
+        return this.fetchDepartments();
       };
 
       UserMaintenanceView.prototype.events = {
@@ -88,6 +91,33 @@
       UserMaintenanceView.prototype.close = function() {
         this.hideDatePicker();
         return UserMaintenanceView.__super__.close.apply(this, arguments);
+      };
+
+      UserMaintenanceView.prototype.fetchDepartments = function() {
+        var currentDepartmentId, deps, me,
+          _this = this;
+        me = this;
+        currentDepartmentId = this.model.attributes.departmentId ? this.model.attributes.departmentId : "";
+        deps = me.model.attributes.departments;
+        deps = new Departments();
+        deps.comparator = function(model) {
+          return model.get('name');
+        };
+        return deps.fetch({
+          success: function(collection, response) {
+            collection.add({
+              name: '',
+              silent: true
+            });
+            collection.sort();
+            deps = collection.toJSON();
+            me.model.set({
+              departmentId: currentDepartmentId,
+              silent: true
+            });
+            return me.render();
+          }
+        });
       };
 
       return UserMaintenanceView;

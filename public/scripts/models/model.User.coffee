@@ -3,8 +3,8 @@ define (require) ->
 	Utils = require '../../scripts/Utils.js' 
 
 	class User extends Backbone.Model
-		initialize: =>
-	    @departments = @options.departments
+		initialize: =>				
+			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
 	    
 		url: =>
 			if @id then '/ekmHoliCal/api/users/' + @id else '/ekmHoliCal/api/users'
@@ -25,6 +25,4 @@ define (require) ->
 				required: true
 				msg: 'A department is required'
 		
-		initialize: ->				
-			@on 'validated', (isValid, model, attrs) ->
-				Utils.showValidationErrors()
+

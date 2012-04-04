@@ -8,19 +8,6 @@ define (require) ->
   MainNavigationMenuView = require '../scripts/views/view.main.navigation'
 
   class Application extends Backbone.Marionette.Application
-    fetchAppData: () =>
-      Users = require '../../scripts/collections/collection.users.js'
-      Departments = require '../../scripts/collections/collection.departments.js'
-
-      @users = new Users()
-      @users.fetch()
-      @departments = new Departments()
-      @departments.comparator = (model) -> model.get('name')
-      @departments.fetch(
-        success: (collection, response) ->  
-          collection.add {name: ''}, {silent: true}
-          collection.sort()
-      )
 
   window.app = if not window.app then new Application() else window.app        
 
@@ -28,9 +15,6 @@ define (require) ->
     Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> Handlebars.compile(template.html())(data) # (template, data) -> template.tmpl(data) 
 
   app.addInitializer () ->
-
-    @fetchAppData()
-
     mainNavMenuView = new MainNavigationMenuView()
     app.mainNavigationMenuRegion.show(mainNavMenuView)
 
@@ -49,10 +33,14 @@ define (require) ->
   app.vent.on "main:home", () -> app.mainRouter.navigate("", true)
   app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
   app.vent.on "main:admin:users", () -> app.userRouter.navigate("admin/users", true)
+
   app.vent.on "main:admin:departments", () -> app.departmentRouter.navigate("admin/departments", true)
 
   app.vent.on "admin:users:create", () -> app.userRouter.navigate("admin/users/create", true)
-  app.vent.on "admin:users:edit", (id) -> app.userRouter.navigate("admin/users/edit/" + id, true)
+  
+  app.vent.on "admin:users:edit", (id) -> 
+    new routeUser.UserController().adminUsersEdit(id)
+    app.userRouter.navigate("admin/users/edit/" + id, false)
 
   app.vent.on "admin:departments:create", () -> app.departmentRouter.navigate("admin/departments/create", true)
   app.vent.on "admin:departments:edit", (id) -> app.departmentRouter.navigate("admin/departments/edit/" + id, true)

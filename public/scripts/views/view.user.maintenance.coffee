@@ -5,6 +5,7 @@ define (require) ->
   require 'jqueryQtip'
 
   Utils = require '../../scripts/Utils.js' 
+  Departments = require '../../scripts/collections/collection.departments.js'
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
@@ -12,6 +13,7 @@ define (require) ->
     initialize: =>
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
+      @fetchDepartments()
 
     events:
       "click #cancel-button": "cancel"
@@ -60,3 +62,18 @@ define (require) ->
     close: =>
       @hideDatePicker()
       super
+
+    fetchDepartments: =>
+      me = @
+      currentDepartmentId = if @model.attributes.departmentId then @model.attributes.departmentId else ""
+      deps = me.model.attributes.departments
+
+      deps = new Departments()
+      deps.comparator = (model) -> model.get('name')
+      deps.fetch
+        success: (collection, response) =>  
+          collection.add(name: '', silent: true)
+          collection.sort()
+          deps = collection.toJSON()
+          me.model.set(departmentId: currentDepartmentId, silent: true) 
+          me.render()

@@ -26,7 +26,7 @@
       };
 
       UserItemView.prototype.toggleActivation = function(e) {
-        return alert(JSON.stringify(this.model.get("active")));
+        return alert(this.model.get("active"));
       };
 
       UserItemView.prototype.edit = function(e) {
