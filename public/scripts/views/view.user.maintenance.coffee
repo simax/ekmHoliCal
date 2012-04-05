@@ -66,14 +66,15 @@ define (require) ->
     fetchDepartments: =>
       me = @
       currentDepartmentId = if @model.attributes.departmentId then @model.attributes.departmentId else ""
-      deps = me.model.attributes.departments
-
       deps = new Departments()
-      deps.comparator = (model) -> model.get('name')
       deps.fetch
         success: (collection, response) =>  
-          collection.add(name: '', silent: true)
+          collection.comparator = (model) -> model.get('name')
+          collection.add({name: ''}, {silent: true})
           collection.sort()
-          deps = collection.toJSON()
-          me.model.set(departmentId: currentDepartmentId, silent: true) 
+          me.model.attributes.departments = collection.toJSON()
+          me.model.set({departmentId: currentDepartmentId}, {silent: true}) 
           me.render()
+          me.onShow()
+          return
+      return        

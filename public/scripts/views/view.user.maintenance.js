@@ -98,24 +98,26 @@
           _this = this;
         me = this;
         currentDepartmentId = this.model.attributes.departmentId ? this.model.attributes.departmentId : "";
-        deps = me.model.attributes.departments;
         deps = new Departments();
-        deps.comparator = function(model) {
-          return model.get('name');
-        };
-        return deps.fetch({
+        deps.fetch({
           success: function(collection, response) {
+            collection.comparator = function(model) {
+              return model.get('name');
+            };
             collection.add({
-              name: '',
+              name: ''
+            }, {
               silent: true
             });
             collection.sort();
-            deps = collection.toJSON();
+            me.model.attributes.departments = collection.toJSON();
             me.model.set({
-              departmentId: currentDepartmentId,
+              departmentId: currentDepartmentId
+            }, {
               silent: true
             });
-            return me.render();
+            me.render();
+            me.onShow();
           }
         });
       };
