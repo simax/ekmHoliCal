@@ -14,12 +14,17 @@ define (require) ->
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
       @fetchDepartments()
+      @on 'departments:fetched', @refresh, @
 
     events:
       "click #cancel-button": "cancel"
       "submit #user-create": "save"
       "focus #startdate": "showDatePicker"
 
+    refresh: =>
+      @render()
+      @onShow()
+ 
     save: (e) ->
       e.preventDefault()
       modelValid = @model.isValid(true)
@@ -69,12 +74,9 @@ define (require) ->
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
-          collection.comparator = (model) -> model.get('name')
           collection.add({name: ''}, {silent: true})
+          collection.comparator = (model) -> model.get('name')
           collection.sort()
           me.model.attributes.departments = collection.toJSON()
           me.model.set({departmentId: currentDepartmentId}, {silent: true}) 
-          me.render()
-          me.onShow()
-          return
-      return        
+          @trigger "departments:fetched"  

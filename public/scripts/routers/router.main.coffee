@@ -5,7 +5,7 @@ define (require) ->
   UsersLayoutView = require '../../scripts/views/view.users.layout.js'
   UserNavigationView = require '../../scripts/views/view.user.navigation.menu.js'
   UserListView = require '../../scripts/views/view.user.list.js'
-  Users = require '../../scripts/collections/collection.users'
+  Users = require '../../scripts/collections/collection.users.js'
 
   DepartmentsLayoutView = require '../../scripts/views/view.departments.layout.js'
   DepartmentNavigationView = require '../../scripts/views/view.department.navigation.menu.js'
@@ -29,10 +29,11 @@ define (require) ->
 
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 
-      users = new Users()  
-      users.fetch()
-      userListView = new UserListView(collection: users)
+      app.data.users = new Users()  
+      app.data.users.fetch()
+      userListView = new UserListView(collection: app.data.users)
       usersLayoutView.listRegion.show(userListView)
+
 
     adminDepartments: () ->
       departmentsLayoutView = new DepartmentsLayoutView

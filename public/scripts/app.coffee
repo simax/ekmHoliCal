@@ -12,9 +12,10 @@ define (require) ->
   window.app = if not window.app then new Application() else window.app        
 
   app.bind "initialize:before", (options) ->
-    Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> Handlebars.compile(template.html())(data) # (template, data) -> template.tmpl(data) 
+    Backbone.Marionette.ItemView.prototype.renderTemplate = (template, data) -> Handlebars.compile(template.html())(data) 
 
   app.addInitializer () ->
+    app.data = {}
     mainNavMenuView = new MainNavigationMenuView()
     app.mainNavigationMenuRegion.show(mainNavMenuView)
 

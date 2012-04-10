@@ -1,23 +1,8 @@
-class DepartmentSchemaBuilder
-
-	constructor: ->
-
-		@mongoose = require 'mongoose'
-		@schema = @mongoose.Schema
-
-		@DepartmentSchema = new @schema
-			'name': { type: String, required: true, index: { unique: true } }
-
-		# Register a departments Mongo collection
-		@Model = @mongoose.model 'Departments', @DepartmentSchema
-
-		con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
-
-
 class DepartmentRoutes
 
 	constructor: ->
-		@Model = new DepartmentSchemaBuilder().Model
+		Schemas = require './schemas'
+		@Model = new Schemas.DepartmentSchemaBuilder().Model
 
 	post: (req, res) =>
 		entity = new @Model
@@ -59,4 +44,4 @@ class DepartmentRoutes
 		else
 			res.send(entity)		
 
-module.exports = new DepartmentRoutes()
+exports.DepartmentRoutes = DepartmentRoutes

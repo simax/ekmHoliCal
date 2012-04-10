@@ -1,29 +1,6 @@
 (function() {
-  var DepartmentRoutes, DepartmentSchemaBuilder,
+  var DepartmentRoutes,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-
-  DepartmentSchemaBuilder = (function() {
-
-    function DepartmentSchemaBuilder() {
-      var con;
-      this.mongoose = require('mongoose');
-      this.schema = this.mongoose.Schema;
-      this.DepartmentSchema = new this.schema({
-        'name': {
-          type: String,
-          required: true,
-          index: {
-            unique: true
-          }
-        }
-      });
-      this.Model = this.mongoose.model('Departments', this.DepartmentSchema);
-      con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');
-    }
-
-    return DepartmentSchemaBuilder;
-
-  })();
 
   DepartmentRoutes = (function() {
 
@@ -33,7 +10,10 @@
       this.put = __bind(this.put, this);
       this.get = __bind(this.get, this);
       this.getall = __bind(this.getall, this);
-      this.post = __bind(this.post, this);      this.Model = new DepartmentSchemaBuilder().Model;
+      this.post = __bind(this.post, this);
+      var Schemas;
+      Schemas = require('./schemas');
+      this.Model = new Schemas.DepartmentSchemaBuilder().Model;
     }
 
     DepartmentRoutes.prototype.post = function(req, res) {
@@ -98,6 +78,6 @@
 
   })();
 
-  module.exports = new DepartmentRoutes();
+  exports.DepartmentRoutes = DepartmentRoutes;
 
 }).call(this);

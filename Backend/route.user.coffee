@@ -1,47 +1,47 @@
-class UserSchemaBuilder
-
-	constructor: ->
-
-		@mongoose = require 'mongoose'
-		@schema = @mongoose.Schema
-		@ObjectId = @schema.ObjectId
-
-		@UserSchema = new @schema
-		 	'firstname': { type: String, required: true }, 
-		 	'lastname': { type: String, required: true }, 
-		 	'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
-		 	'departmentId': String,
-		 	'startdate': String,
-		 	'enddate': String,
-		 	'active': { type: Boolean, default: true } 
-		 
-		# Register a entity Mongo collection
-		@Model = @mongoose.model 'Users', @UserSchema
-
-		con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
-
-
 class UserRoutes
 
 	constructor: ->
-		@Model = new UserSchemaBuilder().Model
+		@Schemas = require './schemas'
+		@DepartmentModel = new @Schemas.DepartmentSchemaBuilder().Model
+		@Model = new @Schemas.UserSchemaBuilder().Model
 
 	post: (req, res) =>
 		entity = new @Model
-		@modelBind(entity, req)
-		entity.save (err) =>
-			@save(entity, res, err)
- 
+		# @modelBind(entity, req)
+		# entity.save (err) =>
+		# 	@save(entity, res, err)
+		@DepartmentModel
+		.findById(req.body.departmentId)
+		.run (err, dept) =>
+			entity.firstname = req.body.firstname
+			entity.lastname = req.body.lastname
+			entity.email = req.body.email
+			entity.department = dept
+			entity.startdate = req.body.startdate
+			entity.enddate = ""
+			entity.active = req.body.active
+			entity.save (err) =>
+				@save(entity, res, err)
+
 	getall: (req, res) =>
 		res.contentType 'application/json' 
-		@Model.find (err, entity) ->
-			res.send(entity)
+		@Model
+			.find()
+			# .populate('department')
+			.run (err, entity) ->
+				# console.log "Department name: " + entity.department
+				res.send(entity)
 
 	get: (req, res) =>
-		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
-		@Model.findById req.params.id, (err, entity) ->
+		@Model
+		.findById(req.params.id)
+		# .populate('department')
+		.run (err, entity) ->
+			console.log entity
+			# console.log "entity.department.name: " + entity.department.name
+			console.log err 
 			res.send(entity)
-
+				
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
 			@modelBind entity, req
@@ -54,13 +54,16 @@ class UserRoutes
 			res.send(204)
 
 	modelBind: (entity, req) =>
-		entity.firstname = req.body.firstname
-		entity.lastname = req.body.lastname
-		entity.email = req.body.email
-		entity.departmentId = req.body.departmentId 
-		entity.startdate = req.body.startdate
-		entity.enddate = ""
-		entity.active = req.body.active
+		@DepartmentModel
+			.findById(req.body.departmentId)
+			.run (err, dept) =>
+				entity.firstname = req.body.firstname
+				entity.lastname = req.body.lastname
+				entity.email = req.body.email
+				entity.department = dept
+				entity.startdate = req.body.startdate
+				entity.enddate = ""
+				entity.active = req.body.active
 
 	save: (entity, res, err) -> 
 		if err 
@@ -72,4 +75,4 @@ class UserRoutes
 		else
 			res.send(entity)	
 
-module.exports = new UserRoutes()
+exports.UserRoutes = UserRoutes

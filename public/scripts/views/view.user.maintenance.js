@@ -20,6 +20,7 @@
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
         this.onShow = __bind(this.onShow, this);
+        this.refresh = __bind(this.refresh, this);
         this.initialize = __bind(this.initialize, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
@@ -29,13 +30,19 @@
       UserMaintenanceView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_maintenance.html');
         this.model.on('change:email', this.SetGravatarImage, this);
-        return this.fetchDepartments();
+        this.fetchDepartments();
+        return this.on('departments:fetched', this.refresh, this);
       };
 
       UserMaintenanceView.prototype.events = {
         "click #cancel-button": "cancel",
         "submit #user-create": "save",
         "focus #startdate": "showDatePicker"
+      };
+
+      UserMaintenanceView.prototype.refresh = function() {
+        this.render();
+        return this.onShow();
       };
 
       UserMaintenanceView.prototype.save = function(e) {
@@ -99,16 +106,16 @@
         me = this;
         currentDepartmentId = this.model.attributes.departmentId ? this.model.attributes.departmentId : "";
         deps = new Departments();
-        deps.fetch({
+        return deps.fetch({
           success: function(collection, response) {
-            collection.comparator = function(model) {
-              return model.get('name');
-            };
             collection.add({
               name: ''
             }, {
               silent: true
             });
+            collection.comparator = function(model) {
+              return model.get('name');
+            };
             collection.sort();
             me.model.attributes.departments = collection.toJSON();
             me.model.set({
@@ -116,8 +123,7 @@
             }, {
               silent: true
             });
-            me.render();
-            me.onShow();
+            return _this.trigger("departments:fetched");
           }
         });
       };

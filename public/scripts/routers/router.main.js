@@ -8,7 +8,7 @@
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
     UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');
     UserListView = require('../../scripts/views/view.user.list.js');
-    Users = require('../../scripts/collections/collection.users');
+    Users = require('../../scripts/collections/collection.users.js');
     DepartmentsLayoutView = require('../../scripts/views/view.departments.layout.js');
     DepartmentNavigationView = require('../../scripts/views/view.department.navigation.menu.js');
     DepartmentListView = require('../../scripts/views/view.department.list.js');
@@ -41,14 +41,14 @@
       };
 
       MainController.prototype.adminUsers = function() {
-        var userListView, users, usersLayoutView;
+        var userListView, usersLayoutView;
         usersLayoutView = new UsersLayoutView;
         app.mainRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
-        users = new Users();
-        users.fetch();
+        app.data.users = new Users();
+        app.data.users.fetch();
         userListView = new UserListView({
-          collection: users
+          collection: app.data.users
         });
         return usersLayoutView.listRegion.show(userListView);
       };

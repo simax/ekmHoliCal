@@ -14,32 +14,16 @@ define (require) ->
   class UserController 
 
     adminUsersCreate: =>
-      fetchData = @fetchViewData
-      fetchData().done =>
-        @model = new User()
-        userMaintenanceView = new UserMaintenanceView
-          model: @model
-        app.mainRegion.show(userMaintenanceView)
+      model = new User()
+      userMaintenanceView = new UserMaintenanceView
+        model: model
+      app.mainRegion.show(userMaintenanceView)
 
     adminUsersEdit: (id) =>
-      fetchData = @fetchViewData
-      fetchData().done =>
-        @model = @users.get(id)
-        userMaintenanceView = new UserMaintenanceView
-          model: @model
-        app.mainRegion.show(userMaintenanceView)
-
-    fetchViewData: =>
-      dfd = $.Deferred()
-      Users = require '../../scripts/collections/collection.users.js'
-      @users = new Users()
-      @users.fetch
-        success: =>
-          dfd.resolve()
-        error: =>
-          dfd.reject()      
-      
-      dfd.promise()
+      model = app.data.users.get(id)
+      userMaintenanceView = new UserMaintenanceView
+        model: model
+      app.mainRegion.show(userMaintenanceView)
 
   UserRouter: UserRouter
   UserController: UserController

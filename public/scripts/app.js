@@ -27,6 +27,7 @@
     });
     app.addInitializer(function() {
       var mainNavMenuView;
+      app.data = {};
       mainNavMenuView = new MainNavigationMenuView();
       app.mainNavigationMenuRegion.show(mainNavMenuView);
       app.mainRouter = new routeMain.MainRouter({

@@ -1,13 +1,17 @@
 (function() {
-  var backend, basePath, departmentroutes, express, userroutes, _ref;
+  var backend, basePath, departmentroutes, express, userroutes, _departmentroutes, _ref, _userroutes;
 
   require('express-namespace');
 
   express = require('express');
 
-  userroutes = require('./backend/route.user');
+  _userroutes = require('./backend/route.user');
 
-  departmentroutes = require('./backend/route.department');
+  userroutes = new _userroutes.UserRoutes();
+
+  _departmentroutes = require('./backend/route.department');
+
+  departmentroutes = new _departmentroutes.DepartmentRoutes();
 
   backend = (_ref = global.backend) != null ? _ref : express.createServer().listen(process.env.PORT);
 
