@@ -35,11 +35,11 @@ class UserRoutes
 	get: (req, res) =>
 		@Model
 		.findById(req.params.id)
-		# .populate('department')
+		.populate('department')
 		.run (err, entity) ->
-			console.log entity
-			# console.log "entity.department.name: " + entity.department.name
-			console.log err 
+			# console.log entity
+			console.log "entity.department.name: " + entity.department.name
+			# console.log err 
 			res.send(entity)
 				
 	put: (req, res) =>

@@ -16,7 +16,7 @@
           }
         }
       });
-      this.Model = this.mongoose.model('Departments', this.DepartmentSchema);
+      this.Model = this.mongoose.model('departments', this.DepartmentSchema);
       con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');
     }
 
@@ -51,7 +51,7 @@
         },
         'department': {
           type: this.schema.ObjectId,
-          ref: 'Department'
+          ref: 'departments'
         },
         'startdate': String,
         'enddate': String,
@@ -60,7 +60,7 @@
           "default": true
         }
       });
-      this.Model = this.mongoose.model('Users', this.UserSchema);
+      this.Model = this.mongoose.model('users', this.UserSchema);
       con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');
     }
 

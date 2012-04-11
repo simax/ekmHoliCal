@@ -9,7 +9,7 @@ class DepartmentSchemaBuilder
       'name': { type: String, required: true, index: { unique: true } }
 
     # Register a departments Mongo collection
-    @Model = @mongoose.model 'Departments', @DepartmentSchema
+    @Model = @mongoose.model 'departments', @DepartmentSchema
 
     con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
 
@@ -27,13 +27,13 @@ class UserSchemaBuilder
       'lastname': { type: String, required: true }, 
       'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
       # 'departmentId': String,
-      'department': { type: @schema.ObjectId, ref: 'Department' }
+      'department': { type: @schema.ObjectId, ref: 'departments' }
       'startdate': String,
       'enddate': String,
       'active': { type: Boolean, default: true } 
      
     # Register a users Mongo collection
-    @Model = @mongoose.model 'Users', @UserSchema
+    @Model = @mongoose.model 'users', @UserSchema
 
     con = @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
 

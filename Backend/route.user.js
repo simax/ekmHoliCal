@@ -41,9 +41,8 @@
     };
 
     UserRoutes.prototype.get = function(req, res) {
-      return this.Model.findById(req.params.id).run(function(err, entity) {
-        console.log(entity);
-        console.log(err);
+      return this.Model.findById(req.params.id).populate('department').run(function(err, entity) {
+        console.log("entity.department.name: " + entity.department.name);
         return res.send(entity);
       });
     };
