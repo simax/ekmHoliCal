@@ -104,7 +104,8 @@
         var currentDepartmentId, deps, me,
           _this = this;
         me = this;
-        currentDepartmentId = this.model.attributes.departmentId ? this.model.attributes.departmentId : "";
+        Need(a(better(way in accessing(the(department._id)))));
+        currentDepartmentId = this.model.toJSON().department._id ? this.model.toJSON().department._id : "";
         deps = new Departments();
         return deps.fetch({
           success: function(collection, response) {

@@ -27,9 +27,8 @@ class UserRoutes
 		res.contentType 'application/json' 
 		@Model
 			.find()
-			# .populate('department')
+			.populate('department')
 			.run (err, entity) ->
-				# console.log "Department name: " + entity.department
 				res.send(entity)
 
 	get: (req, res) =>
@@ -37,9 +36,6 @@ class UserRoutes
 		.findById(req.params.id)
 		.populate('department')
 		.run (err, entity) ->
-			# console.log entity
-			console.log "entity.department.name: " + entity.department.name
-			# console.log err 
 			res.send(entity)
 				
 	put: (req, res) =>

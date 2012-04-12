@@ -70,7 +70,8 @@ define (require) ->
 
     fetchDepartments: =>
       me = @
-      currentDepartmentId = if @model.attributes.departmentId then @model.attributes.departmentId else ""
+      Need a better way of accessing the department._id
+      currentDepartmentId = if @model.toJSON().department._id then @model.toJSON().department._id else ""
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
