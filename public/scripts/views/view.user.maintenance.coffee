@@ -32,7 +32,7 @@ define (require) ->
 
       if modelValid
         @model.save(
-          @model.attributes,
+          @model.toJSON(),
           error: (model, res) -> 
             alert res.responseText
         )
@@ -70,8 +70,8 @@ define (require) ->
 
     fetchDepartments: =>
       me = @
-      Need a better way of accessing the department._id
-      currentDepartmentId = if @model.toJSON().department._id then @model.toJSON().department._id else ""
+      # Need a better way of accessing the department._id
+      currentDepartmentId = if @model.toJSON().department then @model.toJSON().department._id else ""
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  

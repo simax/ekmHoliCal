@@ -5,23 +5,17 @@ class UserRoutes
 		@DepartmentModel = new @Schemas.DepartmentSchemaBuilder().Model
 		@Model = new @Schemas.UserSchemaBuilder().Model
 
+	put: (req, res) =>
+		@Model.findById req.params.id, (err, entity) =>
+			@modelBind entity, req
+			entity.save (err) =>
+ 				@save(entity, res, err)
+
 	post: (req, res) =>
 		entity = new @Model
-		# @modelBind(entity, req)
-		# entity.save (err) =>
-		# 	@save(entity, res, err)
-		@DepartmentModel
-		.findById(req.body.departmentId)
-		.run (err, dept) =>
-			entity.firstname = req.body.firstname
-			entity.lastname = req.body.lastname
-			entity.email = req.body.email
-			entity.department = dept
-			entity.startdate = req.body.startdate
-			entity.enddate = ""
-			entity.active = req.body.active
-			entity.save (err) =>
-				@save(entity, res, err)
+		@modelBind(entity, req)
+		entity.save (err) =>
+			@save(entity, res, err)
 
 	getall: (req, res) =>
 		res.contentType 'application/json' 
@@ -38,28 +32,23 @@ class UserRoutes
 		.run (err, entity) ->
 			res.send(entity)
 				
-	put: (req, res) =>
-		@Model.findById req.params.id, (err, entity) =>
-			@modelBind entity, req
-			entity.save (err) =>
- 				@save(entity, res, err)
- 
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
 			entity.remove()
 			res.send(204)
 
 	modelBind: (entity, req) =>
+		entity.firstname = req.body.firstname
+		entity.lastname = req.body.lastname
+		entity.email = req.body.email
+		entity.startdate = req.body.startdate
+		entity.enddate = ""
+		entity.active = req.body.active
+		entity.department = req.body.departmentId
 		@DepartmentModel
 			.findById(req.body.departmentId)
 			.run (err, dept) =>
-				entity.firstname = req.body.firstname
-				entity.lastname = req.body.lastname
-				entity.email = req.body.email
 				entity.department = dept
-				entity.startdate = req.body.startdate
-				entity.enddate = ""
-				entity.active = req.body.active
 
 	save: (entity, res, err) -> 
 		if err 

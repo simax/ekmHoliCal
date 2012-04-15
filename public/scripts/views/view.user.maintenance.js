@@ -51,7 +51,7 @@
         modelValid = this.model.isValid(true);
         console.log("Is model valid:" + modelValid);
         if (modelValid) {
-          this.model.save(this.model.attributes, {
+          this.model.save(this.model.toJSON(), {
             error: function(model, res) {
               return alert(res.responseText);
             }
@@ -104,8 +104,7 @@
         var currentDepartmentId, deps, me,
           _this = this;
         me = this;
-        Need(a(better(way in accessing(the(department._id)))));
-        currentDepartmentId = this.model.toJSON().department._id ? this.model.toJSON().department._id : "";
+        currentDepartmentId = this.model.toJSON().department ? this.model.toJSON().department._id : "";
         deps = new Departments();
         return deps.fetch({
           success: function(collection, response) {
