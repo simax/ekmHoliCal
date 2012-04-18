@@ -29,6 +29,7 @@ define (require) ->
 
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 
+      console.log "adminUsers"
       app.data.users = new Users()  
       app.data.users.fetch()
       userListView = new UserListView(collection: app.data.users)

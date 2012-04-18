@@ -20,10 +20,15 @@ define (require) ->
       app.mainRegion.show(userMaintenanceView)
 
     adminUsersEdit: (id) =>
-      model = app.data.users.get(id)
-      userMaintenanceView = new UserMaintenanceView
-        model: model
-      app.mainRegion.show(userMaintenanceView)
-
+      console.log "adminUsersEdit"
+      app.data.users = new Users()
+      app.data.users.fetch
+        success: (collection, response)=>
+          model = collection.get(id)
+          userMaintenanceView = new UserMaintenanceView
+            model: model
+          app.mainRegion.show(userMaintenanceView)
+      
+        
   UserRouter: UserRouter
   UserController: UserController

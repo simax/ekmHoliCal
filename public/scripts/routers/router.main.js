@@ -45,6 +45,7 @@
         usersLayoutView = new UsersLayoutView;
         app.mainRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
+        console.log("adminUsers");
         app.data.users = new Users();
         app.data.users.fetch();
         userListView = new UserListView({

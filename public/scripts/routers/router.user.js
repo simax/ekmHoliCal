@@ -42,12 +42,19 @@
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var model, userMaintenanceView;
-        model = app.data.users.get(id);
-        userMaintenanceView = new UserMaintenanceView({
-          model: model
+        var _this = this;
+        console.log("adminUsersEdit");
+        app.data.users = new Users();
+        return app.data.users.fetch({
+          success: function(collection, response) {
+            var model, userMaintenanceView;
+            model = collection.get(id);
+            userMaintenanceView = new UserMaintenanceView({
+              model: model
+            });
+            return app.mainRegion.show(userMaintenanceView);
+          }
         });
-        return app.mainRegion.show(userMaintenanceView);
       };
 
       return UserController;

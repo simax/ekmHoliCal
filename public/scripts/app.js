@@ -63,8 +63,7 @@
       return app.userRouter.navigate("admin/users/create", true);
     });
     app.vent.on("admin:users:edit", function(id) {
-      new routeUser.UserController().adminUsersEdit(id);
-      return app.userRouter.navigate("admin/users/edit/" + id, false);
+      return app.userRouter.navigate("admin/users/edit/" + id, true);
     });
     app.vent.on("admin:departments:create", function() {
       return app.departmentRouter.navigate("admin/departments/create", true);

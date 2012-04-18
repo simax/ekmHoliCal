@@ -39,9 +39,7 @@ define (require) ->
 
   app.vent.on "admin:users:create", () -> app.userRouter.navigate("admin/users/create", true)
   
-  app.vent.on "admin:users:edit", (id) -> 
-    new routeUser.UserController().adminUsersEdit(id)
-    app.userRouter.navigate("admin/users/edit/" + id, false)
+  app.vent.on "admin:users:edit", (id) -> app.userRouter.navigate("admin/users/edit/" + id, true)
 
   app.vent.on "admin:departments:create", () -> app.departmentRouter.navigate("admin/departments/create", true)
   app.vent.on "admin:departments:edit", (id) -> app.departmentRouter.navigate("admin/departments/edit/" + id, true)
