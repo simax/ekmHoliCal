@@ -23,7 +23,7 @@
 
       return DepartmentsLayoutView;
 
-    })(Backbone.Marionette.CompositeRegion);
+    })(Backbone.Marionette.Layout);
   });
 
 }).call(this);

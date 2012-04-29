@@ -25,6 +25,7 @@ define (require) ->
 
     adminUsers: () ->
       usersLayoutView = new UsersLayoutView
+      usersLayoutView.render()
       app.mainRegion.show(usersLayoutView)      
 
       usersLayoutView.navigationRegion.show(new UserNavigationView)
@@ -38,6 +39,7 @@ define (require) ->
 
     adminDepartments: () ->
       departmentsLayoutView = new DepartmentsLayoutView
+      departmentsLayoutView.render()
       app.mainRegion.show(departmentsLayoutView)      
 
       departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView)

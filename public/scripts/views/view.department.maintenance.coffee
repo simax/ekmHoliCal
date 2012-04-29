@@ -1,6 +1,5 @@
 define (require) ->
   
-  Backbone.ModelBinding = require 'modelbinding'
   require 'jqueryUI'
   require 'jqueryQtip'
 
@@ -10,6 +9,7 @@ define (require) ->
     className: "row"
     
     initialize: ->
+      @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!department_maintenance.html'
 
     events:
@@ -33,6 +33,9 @@ define (require) ->
       e.preventDefault()
       app.vent.trigger "main:admin:departments"
 
-    onShow: ->
-      Backbone.ModelBinding.bind(@)  
+    onShow: =>
+      @modelBinder.bind(@model, @el)  
       Backbone.Validation.bind(@, forceUpdate: true) 
+
+    onClose: =>
+      @modelBinder.unbind()  

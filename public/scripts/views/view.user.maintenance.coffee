@@ -1,6 +1,5 @@
 define (require) ->
   
-  Backbone.ModelBinding = require 'modelbinding'
   require 'jqueryUI'
   require 'jqueryQtip'
 
@@ -11,6 +10,7 @@ define (require) ->
     className: "row"
 
     initialize: =>
+      @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
       @fetchDepartments()
@@ -24,7 +24,7 @@ define (require) ->
     refresh: =>
       @render()
       @onShow()
- 
+
     save: (e) ->
       e.preventDefault()
       modelValid = @model.isValid(true)
@@ -43,7 +43,8 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      Backbone.ModelBinding.bind(@)  
+      console.log "@el: " + @el
+      @modelBinder.bind(@model, @el)  
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
       
@@ -81,3 +82,6 @@ define (require) ->
           me.model.attributes.departments = collection.toJSON()
           me.model.set({departmentId: currentDepartmentId}, {silent: true}) 
           @trigger "departments:fetched"  
+
+    onClose: =>
+      @modelBinder.unbind()        

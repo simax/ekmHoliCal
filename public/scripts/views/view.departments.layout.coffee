@@ -1,6 +1,6 @@
 define (require) ->
 
-  class DepartmentsLayoutView extends Backbone.Marionette.CompositeRegion
+  class DepartmentsLayoutView extends Backbone.Marionette.Layout
 
     initialize: ->
       @template = require 'text!../../templates/tmpl.departments.layout.html'

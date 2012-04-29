@@ -9,8 +9,8 @@
       backbone:               'libs/backbone.amd'
       handlebars:             'libs/handlebars'
       bootstrap:              'libs/bootstrap/js/bootstrap'
-      marionette:             'libs/backbone.marionette'
-      modelbinding:           'libs/backbone.modelbinding'
+      marionette:             'libs/backbone.marionette.amd'
+      modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
       jqueryQtip:             'libs/jquery.qtip'
       utils:                  'utils'
@@ -37,8 +37,9 @@
       "jquery",
       "underscore",  
       "backbone",
+      "marionette",
       "order!handlebars",
-      "order!marionette",
+      "order!modelbinder",
       "order!validation",
       "app"
   ]

@@ -5,7 +5,6 @@
 
   define(function(require) {
     var Departments, UserMaintenanceView, Utils;
-    Backbone.ModelBinding = require('modelbinding');
     require('jqueryUI');
     require('jqueryQtip');
     Utils = require('../../scripts/Utils.js');
@@ -15,6 +14,7 @@
       __extends(UserMaintenanceView, _super);
 
       function UserMaintenanceView() {
+        this.onClose = __bind(this.onClose, this);
         this.fetchDepartments = __bind(this.fetchDepartments, this);
         this.close = __bind(this.close, this);
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
@@ -28,6 +28,7 @@
       UserMaintenanceView.prototype.className = "row";
 
       UserMaintenanceView.prototype.initialize = function() {
+        this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.model.on('change:email', this.SetGravatarImage, this);
         this.fetchDepartments();
@@ -66,7 +67,8 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
-        Backbone.ModelBinding.bind(this);
+        console.log("@el: " + this.el);
+        this.modelBinder.bind(this.model, this.el);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
@@ -126,6 +128,10 @@
             return _this.trigger("departments:fetched");
           }
         });
+      };
+
+      UserMaintenanceView.prototype.onClose = function() {
+        return this.modelBinder.unbind();
       };
 
       return UserMaintenanceView;

@@ -23,7 +23,7 @@
 
       return UsersLayoutView;
 
-    })(Backbone.Marionette.CompositeRegion);
+    })(Backbone.Marionette.Layout);
   });
 
 }).call(this);

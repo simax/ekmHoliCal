@@ -1,6 +1,6 @@
 define (require) ->
 
-  class UsersLayoutView extends Backbone.Marionette.CompositeRegion
+  class UsersLayoutView extends Backbone.Marionette.Layout
 
     initialize: ->
       @template = require 'text!../../templates/tmpl.users.layout.html'

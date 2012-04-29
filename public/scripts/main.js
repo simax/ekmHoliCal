@@ -10,8 +10,8 @@
       backbone: 'libs/backbone.amd',
       handlebars: 'libs/handlebars',
       bootstrap: 'libs/bootstrap/js/bootstrap',
-      marionette: 'libs/backbone.marionette',
-      modelbinding: 'libs/backbone.modelbinding',
+      marionette: 'libs/backbone.marionette.amd',
+      modelbinder: 'libs/backbone.modelbinder',
       validation: 'libs/backbone.validation',
       jqueryQtip: 'libs/jquery.qtip',
       utils: 'utils',
@@ -32,6 +32,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "order!handlebars", "order!marionette", "order!validation", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "marionette", "order!handlebars", "order!modelbinder", "order!validation", "app"]);
 
 }).call(this);

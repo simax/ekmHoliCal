@@ -43,6 +43,7 @@
       MainController.prototype.adminUsers = function() {
         var userListView, usersLayoutView;
         usersLayoutView = new UsersLayoutView;
+        usersLayoutView.render();
         app.mainRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
         console.log("adminUsers");
@@ -57,6 +58,7 @@
       MainController.prototype.adminDepartments = function() {
         var departmentListView, departments, departmentsLayoutView;
         departmentsLayoutView = new DepartmentsLayoutView;
+        departmentsLayoutView.render();
         app.mainRegion.show(departmentsLayoutView);
         departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView);
         departments = new Departments();
