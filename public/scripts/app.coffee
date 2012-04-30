@@ -12,7 +12,12 @@ define (require) ->
   window.app = if not window.app then new Application() else window.app        
 
   app.bind "initialize:before", (options) ->
-    Backbone.Marionette.Renderer.renderTemplate = (template, data) -> Handlebars.compile($(template).html())(data) 
+    Backbone.Marionette.TemplateCache.loadTemplate = 
+        (template, callback) => 
+          compiledTemplate = Handlebars.compile($(template).html()) 
+          callback.call(@, compiledTemplate)
+
+    Backbone.Marionette.Renderer.renderTemplate = (template, data) -> template(data) 
 
   app.addInitializer () ->
     app.data = {}

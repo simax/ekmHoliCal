@@ -21,15 +21,6 @@
 
       departmentListView.prototype.id = "department-list";
 
-      departmentListView.prototype.render = function() {
-        this.$el.html("");
-        this.appendHtml(this.$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html()));
-        this.collection.each(this.addChildView);
-        this.appendHtml(this.$el, "</tbody></table>");
-        if (this.onShow) this.onShow();
-        return this;
-      };
-
       return departmentListView;
 
     })(Backbone.Marionette.CollectionView);

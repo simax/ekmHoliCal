@@ -21,8 +21,14 @@
     })(Backbone.Marionette.Application);
     window.app = !window.app ? new Application() : window.app;
     app.bind("initialize:before", function(options) {
+      var _this = this;
+      Backbone.Marionette.TemplateCache.loadTemplate = function(template, callback) {
+        var compiledTemplate;
+        compiledTemplate = Handlebars.compile($(template).html());
+        return callback.call(_this, compiledTemplate);
+      };
       return Backbone.Marionette.Renderer.renderTemplate = function(template, data) {
-        return Handlebars.compile($(template).html())(data);
+        return template(data);
       };
     });
     app.addInitializer(function() {

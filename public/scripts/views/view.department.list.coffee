@@ -8,15 +8,15 @@ define (require) ->
     className: "table table-striped table-bordered"
     id: "department-list"  
 
-    render: ->
-      @$el.html ""  
-      @appendHtml @$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html())
-      @collection.each(@addChildView)
-      @appendHtml @$el, "</tbody></table>"  
+    # render: ->
+    #   @$el.html ""  
+    #   @appendHtml @$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html())
+    #   @collection.each(@addChildView)
+    #   @appendHtml @$el, "</tbody></table>"  
 
-      if(@onShow) 
-        @onShow()
-      @
+    #   if(@onShow) 
+    #     @onShow()
+    #   @
     
     # onShow: ->
     #   $("#department-list").dataTable
