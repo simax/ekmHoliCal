@@ -15,7 +15,7 @@ define (require) ->
 
     adminClick: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin:users"
+      app.vent.trigger "main:admin"
 
     homeClick: (e) ->
       e.preventDefault()

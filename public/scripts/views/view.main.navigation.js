@@ -28,7 +28,7 @@
 
       MainNavigationMenuView.prototype.adminClick = function(e) {
         e.preventDefault();
-        return app.vent.trigger("main:admin:users");
+        return app.vent.trigger("main:admin");
       };
 
       MainNavigationMenuView.prototype.homeClick = function(e) {

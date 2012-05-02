@@ -51,7 +51,7 @@
     });
     app.addRegions({
       mainNavigationMenuRegion: "#main-navigation-menu",
-      mainRegion: "#main-region"
+      mainRegion: "#main-content-region"
     });
     app.vent.on("main:home", function() {
       return app.mainRouter.navigate("", true);
@@ -62,14 +62,14 @@
     app.vent.on("main:admin:users", function() {
       return app.userRouter.navigate("admin/users", true);
     });
-    app.vent.on("main:admin:departments", function() {
-      return app.departmentRouter.navigate("admin/departments", true);
-    });
     app.vent.on("admin:users:create", function() {
       return app.userRouter.navigate("admin/users/create", true);
     });
     app.vent.on("admin:users:edit", function(id) {
       return app.userRouter.navigate("admin/users/edit/" + id, true);
+    });
+    app.vent.on("main:admin:departments", function() {
+      return app.departmentRouter.navigate("admin/departments", true);
     });
     app.vent.on("admin:departments:create", function() {
       return app.departmentRouter.navigate("admin/departments/create", true);

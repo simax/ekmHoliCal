@@ -13,7 +13,7 @@
       }
 
       MainView.prototype.initialize = function() {
-        return this.template = require('text!../../templates/tmpl.main.region.html');
+        return this.template = require('text!../../templates/tmpl.main.content.region.html');
       };
 
       return MainView;

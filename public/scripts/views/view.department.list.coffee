@@ -8,20 +8,21 @@ define (require) ->
     className: "table table-striped table-bordered"
     id: "department-list"  
 
-    # render: ->
-    #   @$el.html ""  
-    #   @appendHtml @$el, Handlebars.compile($(require('../../scripts/text!department_grid_header.html')).html())
-    #   @collection.each(@addChildView)
-    #   @appendHtml @$el, "</tbody></table>"  
+    initialize: =>
+      @onRenderCalled = 0
+      @gridHeader = require '../../scripts/text!department_grid_header.html'
 
-    #   if(@onShow) 
-    #     @onShow()
-    #   @
+    beforeRender: =>
+      return if @before_render_fired?  
+      @before_render_fired = true
+      @$el.prepend @gridHeader      
     
-    # onShow: ->
-    #   $("#department-list").dataTable
-    #     sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-    #     sPaginationType: "bootstrap"
-    #     oLanguage:
-    #       sLengthMenu: "_MENU_ records per page"      
+    onRender: =>
+      @onRenderCalled += 1  
+      return if @onRenderCalled < 2  
 
+      $("#department-list").dataTable
+        sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+        sPaginationType: "bootstrap"
+        oLanguage:
+          sLengthMenu: "_MENU_ records per page"      

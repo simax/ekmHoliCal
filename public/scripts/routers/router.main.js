@@ -3,16 +3,10 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var DepartmentListView, DepartmentNavigationView, Departments, DepartmentsLayoutView, MainController, MainRouter, MainView, UserListView, UserNavigationView, Users, UsersLayoutView;
+    var AdminLayoutView, AdminNavigationView, MainController, MainRouter, MainView;
     MainView = require('../../scripts/views/view.main.js');
-    UsersLayoutView = require('../../scripts/views/view.users.layout.js');
-    UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');
-    UserListView = require('../../scripts/views/view.user.list.js');
-    Users = require('../../scripts/collections/collection.users.js');
-    DepartmentsLayoutView = require('../../scripts/views/view.departments.layout.js');
-    DepartmentNavigationView = require('../../scripts/views/view.department.navigation.menu.js');
-    DepartmentListView = require('../../scripts/views/view.department.list.js');
-    Departments = require('../../scripts/collections/collection.departments');
+    AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
+    AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     MainRouter = (function(_super) {
 
       __extends(MainRouter, _super);
@@ -23,8 +17,7 @@
 
       MainRouter.prototype.appRoutes = {
         "": "home",
-        "admin/users": "adminUsers",
-        "admin/departments": "adminDepartments"
+        "admin": "admin"
       };
 
       return MainRouter;
@@ -40,33 +33,11 @@
         return app.mainRegion.show(mainView);
       };
 
-      MainController.prototype.adminUsers = function() {
-        var userListView, usersLayoutView;
-        usersLayoutView = new UsersLayoutView;
-        usersLayoutView.render();
-        app.mainRegion.show(usersLayoutView);
-        usersLayoutView.navigationRegion.show(new UserNavigationView);
-        console.log("adminUsers");
-        app.data.users = new Users();
-        app.data.users.fetch();
-        userListView = new UserListView({
-          collection: app.data.users
-        });
-        return usersLayoutView.listRegion.show(userListView);
-      };
-
-      MainController.prototype.adminDepartments = function() {
-        var departmentListView, departments, departmentsLayoutView;
-        departmentsLayoutView = new DepartmentsLayoutView;
-        departmentsLayoutView.render();
-        app.mainRegion.show(departmentsLayoutView);
-        departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView);
-        departments = new Departments();
-        departments.fetch();
-        departmentListView = new DepartmentListView({
-          collection: departments
-        });
-        return departmentsLayoutView.listRegion.show(departmentListView);
+      MainController.prototype.admin = function() {
+        this.adminLayoutView = new AdminLayoutView;
+        this.adminLayoutView.render();
+        app.mainRegion.show(this.adminLayoutView);
+        return this.adminLayoutView.navigationRegion.show(new AdminNavigationView);
       };
 
       return MainController;

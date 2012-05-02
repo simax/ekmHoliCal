@@ -1,54 +1,27 @@
 define (require) ->
 
   MainView = require '../../scripts/views/view.main.js'
-  
-  UsersLayoutView = require '../../scripts/views/view.users.layout.js'
-  UserNavigationView = require '../../scripts/views/view.user.navigation.menu.js'
-  UserListView = require '../../scripts/views/view.user.list.js'
-  Users = require '../../scripts/collections/collection.users.js'
 
-  DepartmentsLayoutView = require '../../scripts/views/view.departments.layout.js'
-  DepartmentNavigationView = require '../../scripts/views/view.department.navigation.menu.js'
-  DepartmentListView = require '../../scripts/views/view.department.list.js'
-  Departments = require '../../scripts/collections/collection.departments'
+  AdminLayoutView = require '../../scripts/views/view.admin.layout.js'
+  AdminNavigationView = require '../../scripts/views/view.admin.navigation.menu.js'
 
   class MainRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "": "home",
-      "admin/users": "adminUsers"
-      "admin/departments": "adminDepartments"
+      "admin": "admin",
 
   class MainController 
-    home: () ->
+
+    home: ->
       mainView = new MainView
       app.mainRegion.show(mainView)       
 
-    adminUsers: () ->
-      usersLayoutView = new UsersLayoutView
-      usersLayoutView.render()
-      app.mainRegion.show(usersLayoutView)      
-
-      usersLayoutView.navigationRegion.show(new UserNavigationView)
-
-      console.log "adminUsers"
-      app.data.users = new Users()  
-      app.data.users.fetch()
-      userListView = new UserListView(collection: app.data.users)
-      usersLayoutView.listRegion.show(userListView)
-
-
-    adminDepartments: () ->
-      departmentsLayoutView = new DepartmentsLayoutView
-      departmentsLayoutView.render()
-      app.mainRegion.show(departmentsLayoutView)      
-
-      departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView)
-
-      departments = new Departments()  
-      departments.fetch()
-      departmentListView = new DepartmentListView(collection: departments)
-      departmentsLayoutView.listRegion.show(departmentListView)
-
+    admin: ->
+      # app.vent.trigger "main:admin:users"
+      @adminLayoutView = new AdminLayoutView
+      @adminLayoutView.render()
+      app.mainRegion.show(@adminLayoutView)
+      @adminLayoutView.navigationRegion.show(new AdminNavigationView)
 
   MainRouter: MainRouter
   MainController: MainController

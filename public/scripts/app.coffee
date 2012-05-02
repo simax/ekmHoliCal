@@ -34,18 +34,16 @@ define (require) ->
 
   app.addRegions 
     mainNavigationMenuRegion: "#main-navigation-menu",
-    mainRegion: "#main-region"
+    mainRegion: "#main-content-region"
 
   app.vent.on "main:home", () -> app.mainRouter.navigate("", true)
   app.vent.on "main:admin", () -> app.mainRouter.navigate("admin", true)
+
   app.vent.on "main:admin:users", () -> app.userRouter.navigate("admin/users", true)
-
-  app.vent.on "main:admin:departments", () -> app.departmentRouter.navigate("admin/departments", true)
-
   app.vent.on "admin:users:create", () -> app.userRouter.navigate("admin/users/create", true)
-  
   app.vent.on "admin:users:edit", (id) -> app.userRouter.navigate("admin/users/edit/" + id, true)
 
+  app.vent.on "main:admin:departments", () -> app.departmentRouter.navigate("admin/departments", true)
   app.vent.on "admin:departments:create", () -> app.departmentRouter.navigate("admin/departments/create", true)
   app.vent.on "admin:departments:edit", (id) -> app.departmentRouter.navigate("admin/departments/edit/" + id, true)
 

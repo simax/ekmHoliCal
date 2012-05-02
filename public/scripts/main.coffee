@@ -17,9 +17,12 @@
       jqueryDatatables:       'libs/datatables/jquery.dataTables'
       DT_bootstrap:           'libs/datatables/DT_bootstrap'
 
-      main_navigation_menu:   'templates/tmpl.main.navigation.menu'
-      main_region:            'templates/tmpl.main.region'
-      
+      # main_navigation_menu:   'templates/tmpl.main.navigation.menu'
+      # main_content_region:    'templates/tmpl.main.content.region'
+
+      admin_navigation:       'templates/tmpl.admin.navigation'
+      admin_layout:           'templates/tmpl.admin.layout'
+
       user_grid_header:       'templates/tmpl.user.grid.header'
       user_item:              'templates/tmpl.user.item'
       user_maintenance:       'templates/tmpl.user.maintenance'
@@ -41,5 +44,9 @@
       "order!handlebars",
       "order!modelbinder",
       "order!validation",
+      
+      "order!jqueryDatatables",
+      "order!DT_bootstrap",
+
       "app"
   ]
