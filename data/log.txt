@@ -1,0 +1,588 @@
+Creating service ekmHoliCalDB.
+Service creation successful.
+Service can be started from the command line via 'net start "ekmHoliCalDB"'.
+Setting service login credentials. User: .\simon
+Sat May 05 16:05:58 dbexit: 
+Sat May 05 16:05:58 shutdown: going to close listening sockets...
+Sat May 05 16:05:58 shutdown: going to flush diaglog...
+Sat May 05 16:05:58 shutdown: going to close sockets...
+Sat May 05 16:05:58 shutdown: waiting for fs preallocator...
+Sat May 05 16:05:58 shutdown: closing all files...
+Sat May 05 16:05:58 closeAllFiles() finished
+Sat May 05 16:05:58 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Creating service ekmHoliCalDB.
+Service creation successful.
+Service can be started from the command line via 'net start "ekmHoliCalDB"'.
+Setting service login credentials. User: .\simon
+Sat May 05 16:09:29 dbexit: 
+Sat May 05 16:09:29 shutdown: going to close listening sockets...
+Sat May 05 16:09:29 shutdown: going to flush diaglog...
+Sat May 05 16:09:29 shutdown: going to close sockets...
+Sat May 05 16:09:29 shutdown: waiting for fs preallocator...
+Sat May 05 16:09:29 shutdown: closing all files...
+Sat May 05 16:09:29 closeAllFiles() finished
+Sat May 05 16:09:29 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Creating service ekmHoliCalDB.
+Service creation successful.
+Service can be started from the command line via 'net start "ekmHoliCalDB"'.
+Setting service login credentials. User: .\simon
+Sat May 05 16:14:02 dbexit: 
+Sat May 05 16:14:02 shutdown: going to close listening sockets...
+Sat May 05 16:14:02 shutdown: going to flush diaglog...
+Sat May 05 16:14:02 shutdown: going to close sockets...
+Sat May 05 16:14:02 shutdown: waiting for fs preallocator...
+Sat May 05 16:14:02 shutdown: closing all files...
+Sat May 05 16:14:02 closeAllFiles() finished
+Sat May 05 16:14:02 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+There is already a service named ekmHoliCalDB. Aborting
+Sat May 05 16:15:39 dbexit: 
+Sat May 05 16:15:39 shutdown: going to close listening sockets...
+Sat May 05 16:15:39 shutdown: going to flush diaglog...
+Sat May 05 16:15:39 shutdown: going to close sockets...
+Sat May 05 16:15:39 shutdown: waiting for fs preallocator...
+Sat May 05 16:15:39 shutdown: closing all files...
+Sat May 05 16:15:39 closeAllFiles() finished
+Sat May 05 16:15:39 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Creating service ekmHoliCalDB.
+Service creation successful.
+Service can be started from the command line via 'net start "ekmHoliCalDB"'.
+Setting service login credentials. User: .\simon
+Sat May 05 16:16:22 dbexit: 
+Sat May 05 16:16:22 shutdown: going to close listening sockets...
+Sat May 05 16:16:22 shutdown: going to flush diaglog...
+Sat May 05 16:16:22 shutdown: going to close sockets...
+Sat May 05 16:16:22 shutdown: waiting for fs preallocator...
+Sat May 05 16:16:22 shutdown: closing all files...
+Sat May 05 16:16:22 closeAllFiles() finished
+Sat May 05 16:16:22 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Sat May 05 16:16:44 [initandlisten] MongoDB starting : pid=984 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Sat May 05 16:16:44 [initandlisten] 
+Sat May 05 16:16:44 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Sat May 05 16:16:44 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Sat May 05 16:16:44 [initandlisten] **       with --journal, the limit is lower
+Sat May 05 16:16:44 [initandlisten] 
+Sat May 05 16:16:44 [initandlisten] db version v2.0.2, pdfile version 4.5
+Sat May 05 16:16:44 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Sat May 05 16:16:44 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Sat May 05 16:16:44 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Sat May 05 16:16:44 [initandlisten] waiting for connections on port 8120
+Sat May 05 16:16:44 [websvr] admin web console waiting for connections on port 9120
+Sat May 05 16:17:44 [clientcursormon] mem (MB) res:15 virt:54 mapped:0
+Sat May 05 16:19:23 [initandlisten] connection accepted from 127.0.0.1:50717 #1
+Sat May 05 16:19:56 [conn1] assertion 13297 db already exists with different case other: [ekmHoliCal] me [ekmholical] ns:ekmholical.departments query:{}
+Sat May 05 16:20:44 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Sat May 05 16:21:47 shutdown: going to close listening sockets...
+Sat May 05 16:21:47 closing listening socket: 424
+Sat May 05 16:21:47 closing listening socket: 428
+Sat May 05 16:21:47 shutdown: going to flush diaglog...
+Sat May 05 16:21:47 shutdown: going to close sockets...
+Sat May 05 16:21:47 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Sat May 05 16:21:47 [websvr] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Sat May 05 16:21:47 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Sat May 05 16:21:47 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Sat May 05 16:21:47 [initandlisten] now exiting
+Sat May 05 16:21:47 dbexit: 
+Sat May 05 16:21:47 [initandlisten] shutdown: going to close listening sockets...
+Sat May 05 16:21:47 [initandlisten] shutdown: going to flush diaglog...
+Sat May 05 16:21:47 [initandlisten] shutdown: going to close sockets...
+Sat May 05 16:21:47 [initandlisten] shutdown: waiting for fs preallocator...
+Sat May 05 16:21:47 [initandlisten] shutdown: closing all files...
+Sat May 05 16:21:47 [initandlisten] closeAllFiles() finished
+Sat May 05 16:21:47 [initandlisten] shutdown: removing fs lock...
+Sat May 05 16:21:47 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Creating service ekmHoliCalDB.
+Service creation successful.
+Service can be started from the command line via 'net start "ekmHoliCalDB"'.
+Setting service login credentials. User: .\simon
+Sun May 06 12:54:30 dbexit: 
+Sun May 06 12:54:30 shutdown: going to close listening sockets...
+Sun May 06 12:54:30 shutdown: going to flush diaglog...
+Sun May 06 12:54:30 shutdown: going to close sockets...
+Sun May 06 12:54:30 shutdown: waiting for fs preallocator...
+Sun May 06 12:54:30 shutdown: closing all files...
+Sun May 06 12:54:30 closeAllFiles() finished
+Sun May 06 12:54:30 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Sun May 06 12:54:39 [initandlisten] MongoDB starting : pid=5248 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Sun May 06 12:54:39 [initandlisten] 
+Sun May 06 12:54:39 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Sun May 06 12:54:39 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Sun May 06 12:54:39 [initandlisten] **       with --journal, the limit is lower
+Sun May 06 12:54:39 [initandlisten] 
+Sun May 06 12:54:39 [initandlisten] db version v2.0.2, pdfile version 4.5
+Sun May 06 12:54:39 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Sun May 06 12:54:39 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Sun May 06 12:54:39 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Sun May 06 12:54:40 [initandlisten] waiting for connections on port 8120
+Sun May 06 12:54:40 [websvr] admin web console waiting for connections on port 9120
+Sun May 06 12:55:24 CTRL_SHUTDOWN_EVENT signal (ignored)
+Sun May 06 12:55:24 shutdown: going to close listening sockets...
+Sun May 06 12:55:24 closing listening socket: 428
+Sun May 06 12:55:24 closing listening socket: 432
+Sun May 06 12:55:24 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Sun May 06 12:55:24 [websvr] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Sun May 06 12:55:24 shutdown: going to flush diaglog...
+Sun May 06 12:55:24 shutdown: going to close sockets...
+Sun May 06 12:55:24 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Sun May 06 12:55:24 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Sun May 06 12:55:24 [initandlisten] now exiting
+Sun May 06 12:55:24 dbexit: 
+Sun May 06 12:55:24 [initandlisten] shutdown: going to close listening sockets...
+Sun May 06 12:55:24 [initandlisten] shutdown: going to flush diaglog...
+Sun May 06 12:55:24 [initandlisten] shutdown: going to close sockets...
+Sun May 06 12:55:24 shutdown: waiting for fs preallocator...
+Sun May 06 12:55:24 shutdown: closing all files...
+Sun May 06 12:55:24 closeAllFiles() finished
+Sun May 06 12:55:24 shutdown: removing fs lock...
+Sun May 06 12:55:24 [initandlisten] shutdown: waiting for fs preallocator...
+Sun May 06 12:55:24 [initandlisten] shutdown: closing all files...
+Sun May 06 12:55:24 [initandlisten] closeAllFiles() finished
+Sun May 06 12:55:24 [initandlisten] shutdown: removing fs lock...
+Sun May 06 12:55:24 [initandlisten] couldn't remove fs lock 0
+Sun May 06 12:55:24 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Mon May 07 01:03:40 [initandlisten] MongoDB starting : pid=616 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Mon May 07 01:03:40 [initandlisten] 
+Mon May 07 01:03:40 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Mon May 07 01:03:40 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Mon May 07 01:03:40 [initandlisten] **       with --journal, the limit is lower
+Mon May 07 01:03:40 [initandlisten] 
+Mon May 07 01:03:40 [initandlisten] db version v2.0.2, pdfile version 4.5
+Mon May 07 01:03:40 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Mon May 07 01:03:40 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Mon May 07 01:03:40 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Mon May 07 01:03:40 [initandlisten] waiting for connections on port 8120
+Mon May 07 01:03:40 [websvr] admin web console waiting for connections on port 9120
+Mon May 07 01:04:40 [clientcursormon] mem (MB) res:15 virt:54 mapped:0
+Mon May 07 01:10:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:15:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:20:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:25:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:30:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:35:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:40:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:45:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:50:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 01:55:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:00:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:05:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:10:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:15:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:20:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:25:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:30:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:35:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:40:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:45:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:50:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 02:55:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:00:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:05:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:10:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:15:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:20:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:25:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:30:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:35:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:40:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:45:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:50:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 03:55:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:00:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:05:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:10:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:15:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:20:40 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 04:24:36 CTRL_SHUTDOWN_EVENT signal (ignored)
+Mon May 07 04:24:36 shutdown: going to close listening sockets...
+Mon May 07 04:24:36 closing listening socket: 420
+Mon May 07 04:24:36 closing listening socket: 428
+Mon May 07 04:24:36 shutdown: going to flush diaglog...
+Mon May 07 04:24:36 shutdown: going to close sockets...
+Mon May 07 04:24:36 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 04:24:36 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 04:24:36 shutdown: waiting for fs preallocator...
+Mon May 07 04:24:36 shutdown: closing all files...
+Mon May 07 04:24:36 closeAllFiles() finished
+Mon May 07 04:24:36 shutdown: removing fs lock...
+Mon May 07 04:24:36 [websvr] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 04:24:36 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 04:24:36 [initandlisten] now exiting
+Mon May 07 04:24:36 dbexit: 
+Mon May 07 04:24:36 [initandlisten] shutdown: going to close listening sockets...
+Mon May 07 04:24:36 [initandlisten] shutdown: going to flush diaglog...
+Mon May 07 04:24:36 [initandlisten] shutdown: going to close sockets...
+Mon May 07 04:24:36 [initandlisten] shutdown: waiting for fs preallocator...
+Mon May 07 04:24:36 [initandlisten] shutdown: closing all files...
+Mon May 07 04:24:36 [initandlisten] closeAllFiles() finished
+Mon May 07 04:24:36 [initandlisten] shutdown: removing fs lock...
+Mon May 07 04:24:36 [initandlisten] couldn't remove fs lock 0
+Mon May 07 04:24:36 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Mon May 07 13:01:49 [initandlisten] MongoDB starting : pid=616 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Mon May 07 13:01:49 [initandlisten] 
+Mon May 07 13:01:49 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Mon May 07 13:01:49 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Mon May 07 13:01:49 [initandlisten] **       with --journal, the limit is lower
+Mon May 07 13:01:49 [initandlisten] 
+Mon May 07 13:01:49 [initandlisten] db version v2.0.2, pdfile version 4.5
+Mon May 07 13:01:49 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Mon May 07 13:01:49 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Mon May 07 13:01:49 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Mon May 07 13:01:49 [initandlisten] waiting for connections on port 8120
+Mon May 07 13:01:49 [websvr] admin web console waiting for connections on port 9120
+Mon May 07 13:02:49 [clientcursormon] mem (MB) res:15 virt:54 mapped:0
+Mon May 07 13:07:49 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:12:49 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:17:49 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:22:49 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:27:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:32:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:37:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:42:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:47:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:52:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 13:57:51 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:02:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:07:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:12:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:17:54 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:22:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:27:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:32:56 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:37:57 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:42:57 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:47:58 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:52:59 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 14:57:59 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:03:00 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:08:01 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:13:02 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:18:02 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:23:03 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:28:04 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:33:04 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:38:05 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:43:06 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:48:06 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:53:07 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 15:58:08 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:03:08 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:08:09 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:13:10 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:18:11 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:23:11 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Mon May 07 16:27:14 [initandlisten] connection accepted from 127.0.0.1:49236 #1
+Mon May 07 16:28:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:33:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:38:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:43:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:48:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:48:13 [conn1] end connection 127.0.0.1:49236
+Mon May 07 16:53:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 16:58:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:03:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:08:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:13:12 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:18:13 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:23:13 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:28:13 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:33:14 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:38:14 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:43:15 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:48:16 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:53:16 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 17:58:17 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:03:18 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:08:18 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:13:19 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:18:20 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:23:21 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:28:21 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:33:22 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:38:23 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:43:23 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:48:24 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:53:25 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 18:57:13 [initandlisten] connection accepted from 127.0.0.1:50506 #2
+Mon May 07 18:58:25 [clientcursormon] mem (MB) res:31 virt:134 mapped:80
+Mon May 07 19:03:25 [clientcursormon] mem (MB) res:31 virt:134 mapped:80
+Mon May 07 19:08:25 [clientcursormon] mem (MB) res:31 virt:134 mapped:80
+Mon May 07 19:13:25 [clientcursormon] mem (MB) res:31 virt:134 mapped:80
+Mon May 07 19:18:13 [conn2] end connection 127.0.0.1:50506
+Mon May 07 19:18:25 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:23:25 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:28:25 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:33:25 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:38:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:43:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:48:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:53:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 19:58:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:03:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:08:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:13:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:18:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:23:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:28:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:33:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:38:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:43:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:48:26 [clientcursormon] mem (MB) res:31 virt:133 mapped:80
+Mon May 07 20:50:56 CTRL_SHUTDOWN_EVENT signal (ignored)
+Mon May 07 20:50:56 shutdown: going to close listening sockets...
+Mon May 07 20:50:56 closing listening socket: 420
+Mon May 07 20:50:56 closing listening socket: 428
+Mon May 07 20:50:56 shutdown: going to flush diaglog...
+Mon May 07 20:50:56 shutdown: going to close sockets...
+Mon May 07 20:50:56 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 20:50:56 [websvr] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 20:50:56 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 20:50:56 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Mon May 07 20:50:56 [initandlisten] now exiting
+Mon May 07 20:50:56 dbexit: 
+Mon May 07 20:50:56 [initandlisten] shutdown: going to close listening sockets...
+Mon May 07 20:50:56 [initandlisten] shutdown: going to flush diaglog...
+Mon May 07 20:50:56 [initandlisten] shutdown: going to close sockets...
+Mon May 07 20:50:56 shutdown: waiting for fs preallocator...
+Mon May 07 20:50:56 shutdown: closing all files...
+Mon May 07 20:50:56 [initandlisten] shutdown: waiting for fs preallocator...
+Mon May 07 20:50:56 [initandlisten] shutdown: closing all files...
+Mon May 07 20:50:56 [initandlisten] warning closingAllFiles=1
+
+Mon May 07 20:50:56 [initandlisten] shutdown: removing fs lock...
+Mon May 07 20:50:56 dbexit: really exiting now
+Mon May 07 20:50:56 closeAllFiles() finished
+Mon May 07 20:50:56 shutdown: removing fs lock...
+Mon May 07 20:50:56 couldn't remove fs lock 0
+
+
+***** SERVER RESTARTED *****
+
+
+Tue May 08 18:17:31 [initandlisten] MongoDB starting : pid=596 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Tue May 08 18:17:31 [initandlisten] 
+Tue May 08 18:17:31 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Tue May 08 18:17:31 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Tue May 08 18:17:31 [initandlisten] **       with --journal, the limit is lower
+Tue May 08 18:17:31 [initandlisten] 
+Tue May 08 18:17:31 [initandlisten] db version v2.0.2, pdfile version 4.5
+Tue May 08 18:17:31 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Tue May 08 18:17:31 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Tue May 08 18:17:31 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Tue May 08 18:17:32 [websvr] admin web console waiting for connections on port 9120
+Tue May 08 18:17:32 [initandlisten] waiting for connections on port 8120
+Tue May 08 18:18:32 [clientcursormon] mem (MB) res:15 virt:54 mapped:0
+Tue May 08 18:23:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:28:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:33:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:38:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:43:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:48:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:53:32 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 18:58:33 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:03:33 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:08:34 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:13:35 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:18:35 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:23:36 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:28:37 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:33:37 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:38:38 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:43:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:48:39 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:53:40 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 19:58:41 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:03:41 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:08:42 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:13:43 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:18:44 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:23:44 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:28:45 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:33:46 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:38:46 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:43:47 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:48:48 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:53:48 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 20:58:49 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:03:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:08:50 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:13:51 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:18:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:23:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:28:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:33:54 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:38:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:43:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:48:56 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:53:57 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 21:58:57 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:03:58 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:08:59 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:13:59 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:19:00 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:24:01 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:29:02 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:34:02 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Tue May 08 22:37:46 CTRL_SHUTDOWN_EVENT signal (ignored)
+Tue May 08 22:37:46 shutdown: going to close listening sockets...
+Tue May 08 22:37:46 closing listening socket: 420
+Tue May 08 22:37:46 closing listening socket: 428
+Tue May 08 22:37:46 shutdown: going to flush diaglog...
+Tue May 08 22:37:46 shutdown: going to close sockets...
+Tue May 08 22:37:46 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Tue May 08 22:37:46 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Tue May 08 22:37:46 shutdown: waiting for fs preallocator...
+Tue May 08 22:37:46 shutdown: closing all files...
+Tue May 08 22:37:46 closeAllFiles() finished
+Tue May 08 22:37:46 shutdown: removing fs lock...
+Tue May 08 22:37:46 [websvr] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Tue May 08 22:37:46 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Tue May 08 22:37:46 [initandlisten] now exiting
+Tue May 08 22:37:46 dbexit: 
+Tue May 08 22:37:46 [initandlisten] shutdown: going to close listening sockets...
+Tue May 08 22:37:46 [initandlisten] shutdown: going to flush diaglog...
+Tue May 08 22:37:46 [initandlisten] shutdown: going to close sockets...
+Tue May 08 22:37:46 [initandlisten] shutdown: waiting for fs preallocator...
+Tue May 08 22:37:46 [initandlisten] shutdown: closing all files...
+Tue May 08 22:37:46 [initandlisten] closeAllFiles() finished
+Tue May 08 22:37:46 [initandlisten] shutdown: removing fs lock...
+Tue May 08 22:37:46 [initandlisten] couldn't remove fs lock 0
+Tue May 08 22:37:46 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Wed May 09 20:44:06 [initandlisten] MongoDB starting : pid=1156 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Wed May 09 20:44:06 [initandlisten] 
+Wed May 09 20:44:06 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Wed May 09 20:44:06 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Wed May 09 20:44:06 [initandlisten] **       with --journal, the limit is lower
+Wed May 09 20:44:06 [initandlisten] 
+Wed May 09 20:44:06 [initandlisten] db version v2.0.2, pdfile version 4.5
+Wed May 09 20:44:06 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Wed May 09 20:44:06 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Wed May 09 20:44:06 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Wed May 09 20:44:21 [initandlisten] waiting for connections on port 8120
+Wed May 09 20:44:21 [websvr] admin web console waiting for connections on port 9120
+Wed May 09 20:45:21 [clientcursormon] mem (MB) res:15 virt:53 mapped:0
+Wed May 09 20:50:21 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Wed May 09 20:55:21 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Wed May 09 21:00:21 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Wed May 09 21:05:21 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Wed May 09 21:10:21 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Wed May 09 21:11:57 CTRL_SHUTDOWN_EVENT signal (ignored)
+Wed May 09 21:11:57 shutdown: going to close listening sockets...
+Wed May 09 21:11:57 closing listening socket: 424
+Wed May 09 21:11:57 closing listening socket: 428
+Wed May 09 21:11:57 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Wed May 09 21:11:57 [websvr] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Wed May 09 21:11:57 shutdown: going to flush diaglog...
+Wed May 09 21:11:57 shutdown: going to close sockets...
+Wed May 09 21:11:57 shutdown: waiting for fs preallocator...
+Wed May 09 21:11:57 shutdown: closing all files...
+Wed May 09 21:11:57 closeAllFiles() finished
+Wed May 09 21:11:57 shutdown: removing fs lock...
+Wed May 09 21:11:57 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Wed May 09 21:11:57 [initandlisten] now exiting
+Wed May 09 21:11:57 dbexit: 
+Wed May 09 21:11:57 [initandlisten] shutdown: going to close listening sockets...
+Wed May 09 21:11:57 [initandlisten] shutdown: going to flush diaglog...
+Wed May 09 21:11:57 [initandlisten] shutdown: going to close sockets...
+Wed May 09 21:11:57 [initandlisten] shutdown: waiting for fs preallocator...
+Wed May 09 21:11:57 [initandlisten] shutdown: closing all files...
+Wed May 09 21:11:57 [initandlisten] closeAllFiles() finished
+Wed May 09 21:11:57 [initandlisten] shutdown: removing fs lock...
+Wed May 09 21:11:57 [initandlisten] couldn't remove fs lock 0
+Wed May 09 21:11:57 dbexit: really exiting now
+
+
+***** SERVER RESTARTED *****
+
+
+Thu May 10 05:49:50 [initandlisten] MongoDB starting : pid=1120 port=8120 dbpath=c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal 32-bit host=Simon-PC
+Thu May 10 05:49:50 [initandlisten] 
+Thu May 10 05:49:50 [initandlisten] ** NOTE: when using MongoDB 32 bit, you are limited to about 2 gigabytes of data
+Thu May 10 05:49:50 [initandlisten] **       see http://blog.mongodb.org/post/137788967/32-bit-limitations
+Thu May 10 05:49:50 [initandlisten] **       with --journal, the limit is lower
+Thu May 10 05:49:50 [initandlisten] 
+Thu May 10 05:49:50 [initandlisten] db version v2.0.2, pdfile version 4.5
+Thu May 10 05:49:50 [initandlisten] git version: 514b122d308928517f5841888ceaa4246a7f18e3
+Thu May 10 05:49:50 [initandlisten] build info: windows (5, 1, 2600, 2, 'Service Pack 3') BOOST_LIB_VERSION=1_42
+Thu May 10 05:49:50 [initandlisten] options: { dbpath: "c:\inetpub\wwwroot\ekmholical\data\ekmHoliCal", logappend: true, logpath: "c:\inetpub\wwwroot\ekmHoliCal\data\log.txt", port: 8120, service: true }
+Thu May 10 05:49:52 [websvr] admin web console waiting for connections on port 9120
+Thu May 10 05:49:52 [initandlisten] waiting for connections on port 8120
+Thu May 10 05:50:52 [clientcursormon] mem (MB) res:15 virt:54 mapped:0
+Thu May 10 05:55:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:00:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:05:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:10:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:15:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:20:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:25:52 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:30:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:35:53 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:40:54 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:45:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:50:55 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:55:56 [clientcursormon] mem (MB) res:15 virt:52 mapped:0
+Thu May 10 06:57:10 shutdown: going to close listening sockets...
+Thu May 10 06:57:10 closing listening socket: 420
+Thu May 10 06:57:10 closing listening socket: 428
+Thu May 10 06:57:10 [initandlisten] Listener: accept() returns -1 errno:10038 An operation was attempted on something that is not a socket.
+Thu May 10 06:57:10 [initandlisten] select() failure: ret=-1 errno:10038 An operation was attempted on something that is not a socket.
+Thu May 10 06:57:10 [initandlisten] now exiting
+Thu May 10 06:57:10 dbexit: 
+Thu May 10 06:57:10 [initandlisten] shutdown: going to close listening sockets...
+Thu May 10 06:57:10 [initandlisten] shutdown: going to flush diaglog...
+Thu May 10 06:57:10 [initandlisten] shutdown: going to close sockets...
+Thu May 10 06:57:10 shutdown: going to flush diaglog...
+Thu May 10 06:57:10 shutdown: going to close sockets...
+Thu May 10 06:57:10 [initandlisten] shutdown: waiting for fs preallocator...
+Thu May 10 06:57:10 [initandlisten] shutdown: closing all files...
+Thu May 10 06:57:10 [initandlisten] closeAllFiles() finished
+Thu May 10 06:57:10 [initandlisten] shutdown: removing fs lock...
+Thu May 10 06:57:10 dbexit: really exiting now
