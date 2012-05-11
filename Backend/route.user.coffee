@@ -44,9 +44,9 @@ class UserRoutes
 		entity.startdate = req.body.startdate
 		entity.enddate = ""
 		entity.active = req.body.active
-		entity.department = req.body.departmentId
+		entity.department = req.body.department
 		@DepartmentModel
-			.findById(req.body.departmentId)
+			.findById(req.body.department.id)
 			.run (err, dept) =>
 				entity.department = dept
 

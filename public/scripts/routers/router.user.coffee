@@ -50,7 +50,7 @@ define (require) ->
       console.log "adminUsersEdit"
       app.data.users = new Users()
       app.data.users.fetch
-        success: (collection, response)=>
+        success: (collection, response) =>
           model = collection.get(id)
           userMaintenanceView = new UserMaintenanceView
             model: model

@@ -8,13 +8,16 @@ define (require) ->
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
-
+    
     initialize: =>
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
-      @fetchDepartments()
+      
       @on 'departments:fetched', @refresh, @
+      @fetchDepartments()
+
+      @model.on 'change', @ModelChanged, @
 
     events:
       "click #cancel-button": "cancel"
@@ -24,6 +27,12 @@ define (require) ->
     refresh: =>
       @render()
       @onShow()
+
+    ModelChanged: =>
+      # console.log "firstname: " + "[" + @model.get("firstname") + "]"   
+      # console.log "lastname: " + "[" + @model.get("lastname") + "]"   
+      # console.log "departmentId: " + "[" + @model.get("departmentId") + "]"   
+      console.log @model
 
     save: (e) ->
       e.preventDefault()
@@ -43,10 +52,10 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      console.log "@el: " + @el
       @modelBinder.bind(@model, @el)  
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
+      @ModelChanged()
       
     getGravatarURL: =>
       "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(@model.get("email"))
@@ -71,16 +80,15 @@ define (require) ->
 
     fetchDepartments: =>
       me = @
-      # Need a better way of accessing the department._id
-      currentDepartmentId = if @model.toJSON().department then @model.toJSON().department._id else ""
+      # currentDepartmentId = @model.get("department")._id if @model.get("department")
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
           collection.add({name: ''}, {silent: true})
           collection.comparator = (model) -> model.get('name')
           collection.sort()
-          me.model.attributes.departments = collection.toJSON()
-          me.model.set({departmentId: currentDepartmentId}, {silent: true}) 
+          me.model.set({departments: collection.toJSON()})
+          # me.model.set({departmentId: currentDepartmentId}, {silent: true})   
           @trigger "departments:fetched"  
 
     onClose: =>

@@ -20,6 +20,7 @@
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
         this.onShow = __bind(this.onShow, this);
+        this.ModelChanged = __bind(this.ModelChanged, this);
         this.refresh = __bind(this.refresh, this);
         this.initialize = __bind(this.initialize, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
@@ -31,8 +32,9 @@
         this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.model.on('change:email', this.SetGravatarImage, this);
+        this.on('departments:fetched', this.refresh, this);
         this.fetchDepartments();
-        return this.on('departments:fetched', this.refresh, this);
+        return this.model.on('change', this.ModelChanged, this);
       };
 
       UserMaintenanceView.prototype.events = {
@@ -44,6 +46,10 @@
       UserMaintenanceView.prototype.refresh = function() {
         this.render();
         return this.onShow();
+      };
+
+      UserMaintenanceView.prototype.ModelChanged = function() {
+        return console.log(this.model);
       };
 
       UserMaintenanceView.prototype.save = function(e) {
@@ -67,12 +73,12 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
-        console.log("@el: " + this.el);
         this.modelBinder.bind(this.model, this.el);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
-        return this.SetGravatarImage();
+        this.SetGravatarImage();
+        return this.ModelChanged();
       };
 
       UserMaintenanceView.prototype.getGravatarURL = function() {
@@ -103,10 +109,9 @@
       };
 
       UserMaintenanceView.prototype.fetchDepartments = function() {
-        var currentDepartmentId, deps, me,
+        var deps, me,
           _this = this;
         me = this;
-        currentDepartmentId = this.model.toJSON().department ? this.model.toJSON().department._id : "";
         deps = new Departments();
         return deps.fetch({
           success: function(collection, response) {
@@ -119,11 +124,8 @@
               return model.get('name');
             };
             collection.sort();
-            me.model.attributes.departments = collection.toJSON();
             me.model.set({
-              departmentId: currentDepartmentId
-            }, {
-              silent: true
+              departments: collection.toJSON()
             });
             return _this.trigger("departments:fetched");
           }

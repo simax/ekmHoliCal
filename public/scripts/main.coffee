@@ -12,13 +12,12 @@
       marionette:             'libs/backbone.marionette.amd'
       modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
+      relational:             'libs/backbone-relational'
       jqueryQtip:             'libs/jquery.qtip'
-      utils:                  'utils'
       jqueryDatatables:       'libs/datatables/jquery.dataTables'
       DT_bootstrap:           'libs/datatables/DT_bootstrap'
 
-      # main_navigation_menu:   'templates/tmpl.main.navigation.menu'
-      # main_content_region:    'templates/tmpl.main.content.region'
+      utils:                  'utils'
 
       admin_navigation:       'templates/tmpl.admin.navigation'
       admin_layout:           'templates/tmpl.admin.layout'
@@ -44,6 +43,7 @@
       "order!handlebars",
       "order!modelbinder",
       "order!validation",
+      "order!relational",
       
       "order!jqueryDatatables",
       "order!DT_bootstrap",

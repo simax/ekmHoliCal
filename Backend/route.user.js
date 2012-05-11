@@ -63,8 +63,8 @@
       entity.startdate = req.body.startdate;
       entity.enddate = "";
       entity.active = req.body.active;
-      entity.department = req.body.departmentId;
-      return this.DepartmentModel.findById(req.body.departmentId).run(function(err, dept) {
+      entity.department = req.body.department;
+      return this.DepartmentModel.findById(req.body.department.id).run(function(err, dept) {
         return entity.department = dept;
       });
     };
