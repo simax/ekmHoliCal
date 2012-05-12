@@ -26,7 +26,6 @@ class UserSchemaBuilder
       'firstname': { type: String, required: true }, 
       'lastname': { type: String, required: true }, 
       'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
-      # 'departmentId': String,
       'department': { type: @schema.ObjectId, ref: 'departments' }
       'startdate': String,
       'enddate': String,
