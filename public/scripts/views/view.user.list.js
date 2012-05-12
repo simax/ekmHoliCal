@@ -11,8 +11,7 @@
       __extends(UserListView, _super);
 
       function UserListView() {
-        this.onRender = __bind(this.onRender, this);
-        this.beforeRender = __bind(this.beforeRender, this);
+        this.appendHtml = __bind(this.appendHtml, this);
         this.initialize = __bind(this.initialize, this);
         UserListView.__super__.constructor.apply(this, arguments);
       }
@@ -27,30 +26,16 @@
 
       UserListView.prototype.initialize = function() {
         this.onRenderCalled = 0;
-        return this.gridHeader = require('../../scripts/text!user_grid_header.html');
+        return this.template = require('../../scripts/text!user_grid_header.html');
       };
 
-      UserListView.prototype.beforeRender = function() {
-        if (this.before_render_fired != null) return;
-        this.before_render_fired = true;
-        return this.$el.prepend(this.gridHeader);
-      };
-
-      UserListView.prototype.onRender = function() {
-        this.onRenderCalled += 1;
-        if (this.onRenderCalled < 2) return;
-        return $("#user-list").dataTable({
-          sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-          sPaginationType: "bootstrap",
-          oLanguage: {
-            sLengthMenu: "_MENU_ records per page"
-          }
-        });
+      UserListView.prototype.appendHtml = function(collectionView, itemView) {
+        return collectionView.$("tbody").append(itemView.el);
       };
 
       return UserListView;
 
-    })(Backbone.Marionette.CollectionView);
+    })(Backbone.Marionette.CompositeView);
   });
 
 }).call(this);

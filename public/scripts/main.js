@@ -13,10 +13,11 @@
       marionette: 'libs/backbone.marionette.amd',
       modelbinder: 'libs/backbone.modelbinder',
       validation: 'libs/backbone.validation',
+      relational: 'libs/backbone-relational',
       jqueryQtip: 'libs/jquery.qtip',
-      utils: 'utils',
       jqueryDatatables: 'libs/datatables/jquery.dataTables',
       DT_bootstrap: 'libs/datatables/DT_bootstrap',
+      utils: 'utils',
       admin_navigation: 'templates/tmpl.admin.navigation',
       admin_layout: 'templates/tmpl.admin.layout',
       user_grid_header: 'templates/tmpl.user.grid.header',
@@ -32,6 +33,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "marionette", "order!handlebars", "order!modelbinder", "order!validation", "order!jqueryDatatables", "order!DT_bootstrap", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "marionette", "order!handlebars", "order!modelbinder", "order!validation", "order!relational", "order!jqueryDatatables", "order!DT_bootstrap", "app"]);
 
 }).call(this);

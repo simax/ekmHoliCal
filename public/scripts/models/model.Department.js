@@ -11,17 +11,11 @@
       __extends(Department, _super);
 
       function Department() {
-        this.url = __bind(this.url, this);
+        this.initialize = __bind(this.initialize, this);
         Department.__super__.constructor.apply(this, arguments);
       }
 
-      Department.prototype.url = function() {
-        if (this.id) {
-          return '/ekmHoliCal/api/departments/' + this.id;
-        } else {
-          return '/ekmHoliCal/api/departments';
-        }
-      };
+      Department.prototype.urlRoot = '/ekmHoliCal/api/departments/';
 
       Department.prototype.idAttribute = "_id";
 
@@ -40,7 +34,7 @@
 
       return Department;
 
-    })(Backbone.Model);
+    })(Backbone.RelationalModel);
   });
 
 }).call(this);

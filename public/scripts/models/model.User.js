@@ -11,7 +11,6 @@
       __extends(User, _super);
 
       function User() {
-        this.url = __bind(this.url, this);
         this.initialize = __bind(this.initialize, this);
         User.__super__.constructor.apply(this, arguments);
       }
@@ -22,13 +21,7 @@
         });
       };
 
-      User.prototype.url = function() {
-        if (this.id) {
-          return '/ekmHoliCal/api/users/' + this.id;
-        } else {
-          return '/ekmHoliCal/api/users';
-        }
-      };
+      User.prototype.urlRoot = '/ekmHoliCal/api/users/';
 
       User.prototype.idAttribute = "_id";
 
@@ -46,15 +39,27 @@
           pattern: 'email',
           msg: 'A valid email address is required'
         },
-        departmentId: {
+        department: {
           required: true,
           msg: 'A department is required'
         }
       };
 
+      User.prototype.relations = [
+        {
+          type: Backbone.HasOne,
+          key: 'department',
+          relatedModel: 'Department',
+          reverseRelation: {
+            key: 'user',
+            includeInJSON: '_id'
+          }
+        }
+      ];
+
       return User;
 
-    })(Backbone.Model);
+    })(Backbone.RelationalModel);
   });
 
 }).call(this);
