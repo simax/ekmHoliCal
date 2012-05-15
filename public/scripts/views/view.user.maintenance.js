@@ -29,12 +29,16 @@
       UserMaintenanceView.prototype.className = "row";
 
       UserMaintenanceView.prototype.initialize = function() {
+        var _this = this;
+        this.fetchDepartments();
         this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.model.on('change:email', this.SetGravatarImage, this);
         this.on('departments:fetched', this.refresh, this);
-        this.fetchDepartments();
-        return this.model.on('change', this.ModelChanged, this);
+        this.model.on('change', this.ModelChanged, this);
+        return this.model.on('change:department._id', function(model, newDepartment) {
+          return console.log(newDepartment);
+        });
       };
 
       UserMaintenanceView.prototype.events = {
@@ -73,7 +77,17 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
-        this.modelBinder.bind(this.model, this.el);
+        var bindings, col;
+        col = this.model.get("departments");
+        bindings = {
+          firstname: '[name=firstname]',
+          lastname: '[name=lastname]',
+          email: '[name=email]',
+          startdate: '[name=startdate]',
+          active: '[name=active]',
+          'department._id': '[name=department]'
+        };
+        this.modelBinder.bind(this.model, this.el, bindings);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });

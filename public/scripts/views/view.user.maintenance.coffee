@@ -10,14 +10,23 @@ define (require) ->
     className: "row"
     
     initialize: =>
+      @fetchDepartments()
+
+      # deps = new Backbone.Collection({model:Backbone.Model})
+      # deps.add({_id:'0', name:''})
+      # deps.add({_id:'4f75f7992939b8f4023d39f5', name:'Design'})
+      # deps.add({_id:'4f75f7912939b8f4023d39f4', name:'Development'})
+
+      # @model.set({departments: deps, {silent: true}) 
+
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_maintenance.html'
       @model.on 'change:email', @SetGravatarImage, @
       
       @on 'departments:fetched', @refresh, @
-      @fetchDepartments()
 
       @model.on 'change', @ModelChanged, @
+      @model.on 'change:department._id', (model, newDepartment) => console.log newDepartment
 
     events:
       "click #cancel-button": "cancel"
@@ -52,7 +61,18 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      @modelBinder.bind(@model, @el)  
+      col = @model.get("departments")
+      bindings = 
+        firstname: '[name=firstname]'
+        lastname: '[name=lastname]'
+        email: '[name=email]'
+        startdate: '[name=startdate]'
+        active: '[name=active]'
+        'department._id' : '[name=department]' 
+        # department: 
+        #   selector: '[name=department]', converter: new Backbone.ModelBinder.CollectionConverter(col).convert
+      
+      @modelBinder.bind(@model, @el, bindings)  
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
       @ModelChanged()
@@ -81,6 +101,7 @@ define (require) ->
     fetchDepartments: =>
       me = @
       # currentDepartmentId = @model.get("department")._id if @model.get("department")
+      # currentDepartment = @model.get("department") 
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
@@ -88,7 +109,7 @@ define (require) ->
           collection.comparator = (model) -> model.get('name')
           collection.sort()
           me.model.set({departments: collection.toJSON()})
-          # me.model.set({departmentId: currentDepartmentId}, {silent: true})   
+          # me.model.set({department: currentDepartment}, {silent: true})   
           @trigger "departments:fetched"  
 
     onClose: =>
