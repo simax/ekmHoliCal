@@ -35,9 +35,8 @@
         this.template = require('../../scripts/text!user_maintenance.html');
         this.model.on('change:email', this.SetGravatarImage, this);
         this.on('departments:fetched', this.refresh, this);
-        this.model.on('change', this.ModelChanged, this);
-        return this.model.on('change:department._id', function(model, newDepartment) {
-          return console.log(newDepartment);
+        return this.model.on('change:department', function(model, newDepartment) {
+          return console.log("Department changed:" + newDepartment);
         });
       };
 
@@ -85,14 +84,13 @@
           email: '[name=email]',
           startdate: '[name=startdate]',
           active: '[name=active]',
-          'department._id': '[name=department]'
+          'department': '[name=department]'
         };
         this.modelBinder.bind(this.model, this.el, bindings);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
-        this.SetGravatarImage();
-        return this.ModelChanged();
+        return this.SetGravatarImage();
       };
 
       UserMaintenanceView.prototype.getGravatarURL = function() {
@@ -123,9 +121,11 @@
       };
 
       UserMaintenanceView.prototype.fetchDepartments = function() {
-        var deps, me,
+        var currentDepartment, deps, me,
           _this = this;
         me = this;
+        currentDepartment = this.model.get("department");
+        console.log("currentDepartment: " + currentDepartment.get("id"));
         deps = new Departments();
         return deps.fetch({
           success: function(collection, response) {
@@ -140,6 +140,10 @@
             collection.sort();
             me.model.set({
               departments: collection.toJSON()
+            });
+            console.log("Changing department");
+            me.model.set({
+              department: currentDepartment.get("id")
             });
             return _this.trigger("departments:fetched");
           }

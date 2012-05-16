@@ -2,7 +2,7 @@ define (require) ->
 	
 	Utils = require '../../scripts/Utils.js' 
 
-	class User extends Backbone.NestedModel
+	class User extends Backbone.RelationalModel
 
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
@@ -24,18 +24,14 @@ define (require) ->
 				required: true
 				pattern: 'email'
 				msg: 'A valid email address is required'
-			# department:
-			# 	required: true
-			# 	msg: 'A department is required'
 			department:
 				required: true
 				msg: 'A department is required'
 
-		# relations: [
-		# 	type:	Backbone.HasOne
-		# 	key:	'department'
-		# 	relatedModel: 'Department'
-		# 	reverseRelation:
-		# 		key: 'user'
-		# 		includeInJSON: '_id'
-		# 	]	
+		relations: [
+			type:	Backbone.HasOne
+			key:	'department'
+			relatedModel: 'Department'
+			createModels: true
+			includeInJSON: Backbone.Model::idAttribute
+		]	
