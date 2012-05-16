@@ -12,7 +12,7 @@
       marionette:             'libs/backbone.marionette.amd'
       modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
-      relational:             'libs/backbone-relational'
+      nested:                 'libs/backbone-nested'
       jqueryQtip:             'libs/jquery.qtip'
       jqueryDatatables:       'libs/datatables/jquery.dataTables'
       DT_bootstrap:           'libs/datatables/DT_bootstrap'
@@ -43,7 +43,7 @@
       "order!handlebars",
       "order!modelbinder",
       "order!validation",
-      "order!relational",
+      "order!nested",
       
       "order!jqueryDatatables",
       "order!DT_bootstrap",

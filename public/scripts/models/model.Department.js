@@ -34,7 +34,7 @@
 
       return Department;
 
-    })(Backbone.RelationalModel);
+    })(Backbone.NestedModel);
   });
 
 }).call(this);

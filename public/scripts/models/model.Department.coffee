@@ -2,10 +2,7 @@ define (require) ->
 	
 	Utils = require '../../scripts/Utils.js' 
 
-	class Department extends Backbone.RelationalModel
-		# url: =>
-		# 	if @id then '/ekmHoliCal/api/departments/' + @id else '/ekmHoliCal/api/departments'
-
+	class Department extends Backbone.NestedModel
 		urlRoot: '/ekmHoliCal/api/departments/'	
 
 		idAttribute: "_id"
