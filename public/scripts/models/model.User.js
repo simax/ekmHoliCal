@@ -50,8 +50,7 @@
           type: Backbone.HasOne,
           key: 'department',
           relatedModel: 'Department',
-          createModels: true,
-          includeInJSON: Backbone.Model.prototype.idAttribute
+          includeInJSON: '_id'
         }
       ];
 

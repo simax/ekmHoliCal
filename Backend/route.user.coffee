@@ -23,6 +23,7 @@ class UserRoutes
 			.find()
 			.populate('department')
 			.run (err, entity) ->
+				console.log entity
 				res.send(entity)
 
 	get: (req, res) =>

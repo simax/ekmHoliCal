@@ -15,6 +15,12 @@
         Department.__super__.constructor.apply(this, arguments);
       }
 
+      Department.prototype.initialize = function() {
+        return this.on('validated', function(isValid, model, attrs) {
+          return Utils.showValidationErrors();
+        });
+      };
+
       Department.prototype.urlRoot = '/ekmHoliCal/api/departments/';
 
       Department.prototype.idAttribute = "_id";
@@ -26,11 +32,14 @@
         }
       };
 
-      Department.prototype.initialize = function() {
-        return this.on('validated', function(isValid, model, attrs) {
-          return Utils.showValidationErrors();
-        });
-      };
+      Department.prototype.relations = [
+        {
+          type: Backbone.HasOne,
+          key: 'user',
+          relatedModel: 'User',
+          includeInJSON: '_id'
+        }
+      ];
 
       return Department;
 

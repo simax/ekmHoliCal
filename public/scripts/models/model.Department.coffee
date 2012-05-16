@@ -3,6 +3,11 @@ define (require) ->
 	Utils = require '../../scripts/Utils.js' 
 
 	class Department extends Backbone.RelationalModel
+		
+		initialize: =>				
+			@on 'validated', (isValid, model, attrs) ->
+				Utils.showValidationErrors()
+
 		urlRoot: '/ekmHoliCal/api/departments/'	
 
 		idAttribute: "_id"
@@ -11,6 +16,11 @@ define (require) ->
 				required: true
 				msg: 'A department name is required'
 		
-		initialize: =>				
-			@on 'validated', (isValid, model, attrs) ->
-				Utils.showValidationErrors()
+		relations: [
+			type:	Backbone.HasOne
+			key:	'user'
+			relatedModel: 'User'
+			includeInJSON: '_id'
+		]	
+
+	# new Department
