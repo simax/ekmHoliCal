@@ -9,7 +9,7 @@ userroutes = new _userroutes.UserRoutes()
 _departmentroutes = require './backend/route.department'
 departmentroutes = new _departmentroutes.DepartmentRoutes()
 
-backend = global.backend ? express.createServer().listen process.env.PORT
+backend = module.exports = global.backend ? express.createServer().listen process.env.PORT
 
 basePath = '/ekmHoliCal'
  

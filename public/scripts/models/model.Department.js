@@ -6,7 +6,7 @@
   define(function(require) {
     var Department, Utils;
     Utils = require('../../scripts/Utils.js');
-    return Department = (function(_super) {
+    Department = (function(_super) {
 
       __extends(Department, _super);
 
@@ -37,13 +37,20 @@
           type: Backbone.HasOne,
           key: 'user',
           relatedModel: 'User',
-          includeInJSON: '_id'
+          includeInJSON: '_id',
+          createModels: true,
+          reverseRelation: {
+            type: Backbone.HasOne,
+            key: 'department'
+          }
         }
       ];
 
       return Department;
 
     })(Backbone.RelationalModel);
+    Department.setup();
+    return Department;
   });
 
 }).call(this);

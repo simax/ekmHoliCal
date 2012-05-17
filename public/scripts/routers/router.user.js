@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Departments, User, UserController, UserListView, UserMaintenanceView, UserNavigationView, UserRouter, Users, UsersLayoutView;
+    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserController, UserListView, UserMaintenanceView, UserNavigationView, UserRouter, Users, UsersLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
@@ -13,6 +13,7 @@
     Users = require('../../scripts/collections/collection.users.js');
     User = require('../../scripts/models/model.user.js');
     Departments = require('../../scripts/collections/collection.departments.js');
+    Department = require('../../scripts/models/model.department.js');
     UserMaintenanceView = require('../../scripts/views/view.user.maintenance.js');
     UserRouter = (function(_super) {
 

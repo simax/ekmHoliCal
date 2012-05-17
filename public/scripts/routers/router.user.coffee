@@ -10,9 +10,10 @@ define (require) ->
   Users = require '../../scripts/collections/collection.users.js'
   User = require '../../scripts/models/model.user.js'
   Departments = require '../../scripts/collections/collection.departments.js'
+  Department = require '../../scripts/models/model.department.js'
 
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
-  
+
   class UserRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/users": "adminUsers"
@@ -20,6 +21,7 @@ define (require) ->
       "admin/users/edit/:id": "adminUsersEdit"
 
   class UserController 
+
     showAdminLayout: =>
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()

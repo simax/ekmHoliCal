@@ -5,8 +5,7 @@ define (require) ->
 	class Department extends Backbone.RelationalModel
 		
 		initialize: =>				
-			@on 'validated', (isValid, model, attrs) ->
-				Utils.showValidationErrors()
+			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
 
 		urlRoot: '/ekmHoliCal/api/departments/'	
 
@@ -21,6 +20,11 @@ define (require) ->
 			key:	'user'
 			relatedModel: 'User'
 			includeInJSON: '_id'
+			createModels: true
+			reverseRelation:
+				type: Backbone.HasOne
+				key: 'department'		
 		]	
 
-	# new Department
+	Department.setup()
+	Department

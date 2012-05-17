@@ -11,8 +11,8 @@ define (require) ->
 		# 	if @id then '/ekmHoliCal/api/users/' + @id else '/ekmHoliCal/api/users'
 
 		urlRoot: '/ekmHoliCal/api/users/'
-
 		idAttribute: "_id"
+
 		validation: 
 			firstname:
 				required: true
@@ -33,6 +33,11 @@ define (require) ->
 			key:	'department'
 			relatedModel: 'Department'
 			includeInJSON: '_id'
+			createModels: true
+			reverseRelation:
+				type: Backbone.HasOne
+				key: 'user'			
 		]	
 
-	# new User
+	User.setup()
+	User
