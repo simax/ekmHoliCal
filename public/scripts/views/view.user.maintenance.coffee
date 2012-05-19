@@ -95,7 +95,7 @@ define (require) ->
       me = @
       # currentDepartmentId = @model.get("department")._id if @model.get("department")
       currentDepartment = @model.get("department") 
-      console.log "currentDepartment: "  + currentDepartment.get("id")
+      # console.log "currentDepartment: "  + currentDepartment.get("id")
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
@@ -104,8 +104,8 @@ define (require) ->
           collection.sort()
           me.model.set({departments: collection.toJSON()})
           console.log "Changing department"
-          me.model.set({department: currentDepartment.get("id")})   
+          # me.model.set({department: currentDepartment.get("id")})   
           @trigger "departments:fetched"  
 
     onClose: =>
-      @modelBinder.unbind()        
+      @modelBinder.unbind()     

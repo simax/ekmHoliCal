@@ -32,20 +32,6 @@
         }
       };
 
-      Department.prototype.relations = [
-        {
-          type: Backbone.HasOne,
-          key: 'user',
-          relatedModel: 'User',
-          includeInJSON: '_id',
-          createModels: true,
-          reverseRelation: {
-            type: Backbone.HasOne,
-            key: 'department'
-          }
-        }
-      ];
-
       return Department;
 
     })(Backbone.RelationalModel);

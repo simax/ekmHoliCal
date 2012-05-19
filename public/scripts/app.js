@@ -3,11 +3,46 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Application, MainNavigationMenuView, routeDepartment, routeMain, routeUser;
+    var Application, MainModel, MainNavigationMenuView, NestedModel, mm, nm, routeDepartment, routeMain, routeUser;
     routeMain = require('../scripts/routers/router.main.js');
     routeUser = require('../scripts/routers/router.user.js');
     routeDepartment = require('../scripts/routers/router.department.js');
     MainNavigationMenuView = require('../scripts/views/view.main.navigation');
+
+    NestedModel = Backbone.RelationalModel.extend({
+      defaults: {
+          Description: 'A NestedModel description'
+      }
+    });
+
+    MainModel = Backbone.RelationalModel.extend({
+
+      defaults: {
+        Description: 'A MainModel description',
+        StartDate: null
+      },
+
+      relations: [
+        {
+          type: Backbone.HasOne,
+          key: 'nestedmodel',
+          relatedModel: 'NestedModel',
+          includeInJSON: '_id',
+          reverseRelation: {
+            type: Backbone.HasOne,
+            key: 'mainmodel'
+          }
+        }
+      ]
+
+    });
+    
+    nm = new NestedModel();
+    mm = new MainModel({nestedmodel: nm});
+    console.log(mm.get("nestedmodel").get("mainmodel").get("Description"));
+    return ;
+
+
     Application = (function(_super) {
 
       __extends(Application, _super);

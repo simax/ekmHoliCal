@@ -15,16 +15,15 @@ define (require) ->
 				required: true
 				msg: 'A department name is required'
 		
-		relations: [
-			type:	Backbone.HasOne
-			key:	'user'
-			relatedModel: 'User'
-			includeInJSON: '_id'
-			createModels: true
-			reverseRelation:
-				type: Backbone.HasOne
-				key: 'department'		
-		]	
+		# relations: [
+		# 	type:	Backbone.HasOne
+		# 	key:	'user'
+		# 	relatedModel: 'User'
+		# 	includeInJSON: '_id'
+		# 	reverseRelation:
+		# 		type: Backbone.HasOne
+		# 		key: 'department'		
+		# ]	
 
 	Department.setup()
 	Department

@@ -4,8 +4,72 @@ define (require) ->
   routeUser = require '../scripts/routers/router.user.js'
   routeDepartment = require '../scripts/routers/router.department.js'
 
-
   MainNavigationMenuView = require '../scripts/views/view.main.navigation'
+
+
+    # NestedModel = Backbone.RelationalModel.extend({
+    #   defaults: {
+    #       Description: 'A NestedModel description'
+    #   }
+    # });
+
+    # MainModel = Backbone.RelationalModel.extend({
+
+    #   defaults: {
+    #     Description: 'A MainModel description',
+    #     StartDate: null
+    #   },
+
+    #   relations: [
+    #     {
+    #       type: Backbone.HasOne,
+    #       key: 'nested_model',
+    #       relatedModel: 'NestedModel',
+    #       includeInJSON: '_id',
+    #       reverseRelation: {
+    #         type: Backbone.HasOne,
+    #         key: 'mainmodel'
+    #       }
+    #     }
+    #   ]
+
+    # });
+    
+    # nm = new NestedModel();
+    # mm = new MainModel({nested_model: nm});
+    # console.log(mm.get("nested_model").get("mainmodel").get("Description"));
+    # return ;
+
+  class NestedModel extends Backbone.RelationalModel
+    defaults:
+     Description: 'A nested model'
+
+  NestedModel.setup()
+  # window.NestedModel = new NestedModel()
+
+
+  class MainModel extends Backbone.RelationalModel
+    # defaults:
+    #  Description: 'A MainModel description'
+    #  StartDate: null
+
+    relations: [
+      type: Backbone.HasOne
+      key:  'nestedmodel'
+      relatedModel: 'NestedModel'
+      includeInJSON: '_id'
+      reverseRelation:
+        type: Backbone.HasOne
+        includeInJSON: '_id'
+        key: 'mainmodel'   
+    ]
+
+  MainModel.setup()     
+
+  nm = new NestedModel()
+  mm = new MainModel(nestedmodel: nm)
+  console.log mm.get("nestedmodel").get("mainmodel").get("Description")
+  return 
 
   class Application extends Backbone.Marionette.Application
 

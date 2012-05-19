@@ -125,7 +125,6 @@
           _this = this;
         me = this;
         currentDepartment = this.model.get("department");
-        console.log("currentDepartment: " + currentDepartment.get("id"));
         deps = new Departments();
         return deps.fetch({
           success: function(collection, response) {
@@ -142,9 +141,6 @@
               departments: collection.toJSON()
             });
             console.log("Changing department");
-            me.model.set({
-              department: currentDepartment.get("id")
-            });
             return _this.trigger("departments:fetched");
           }
         });
