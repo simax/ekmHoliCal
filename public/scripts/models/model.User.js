@@ -6,6 +6,8 @@
   define(function(require) {
     var User, Utils;
     Utils = require('../../scripts/Utils.js');
+    if (window.app == null) window.app = new Backbone.Marionette.Application();
+    require('../../scripts/models/model.Department.js');
     User = (function(_super) {
 
       __extends(User, _super);
@@ -49,8 +51,8 @@
         {
           type: Backbone.HasOne,
           key: 'department',
-          relatedModel: 'Department',
-          includeInJSON: '_id',
+          relatedModel: 'app.Department',
+          includeInJSON: User.idAttribute,
           reverseRelation: {
             type: Backbone.HasOne,
             key: 'user'
@@ -61,8 +63,9 @@
       return User;
 
     })(Backbone.RelationalModel);
-    User.setup();
-    return User;
+    app.User = User;
+    app.User.setup();
+    return app.User;
   });
 
 }).call(this);

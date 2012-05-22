@@ -6,6 +6,7 @@
   define(function(require) {
     var Department, Utils;
     Utils = require('../../scripts/Utils.js');
+    if (window.app == null) window.app = new Backbone.Marionette.Application();
     Department = (function(_super) {
 
       __extends(Department, _super);
@@ -35,8 +36,9 @@
       return Department;
 
     })(Backbone.RelationalModel);
-    Department.setup();
-    return Department;
+    app.Department = Department;
+    app.Department.setup();
+    return app.Department;
   });
 
 }).call(this);

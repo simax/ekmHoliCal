@@ -1,6 +1,7 @@
 define (require) ->
 	
 	Utils = require '../../scripts/Utils.js' 
+	window.app = new Backbone.Marionette.Application() unless window.app?  
 
 	class Department extends Backbone.RelationalModel
 		
@@ -14,16 +15,8 @@ define (require) ->
 			name:
 				required: true
 				msg: 'A department name is required'
-		
-		# relations: [
-		# 	type:	Backbone.HasOne
-		# 	key:	'user'
-		# 	relatedModel: 'User'
-		# 	includeInJSON: '_id'
-		# 	reverseRelation:
-		# 		type: Backbone.HasOne
-		# 		key: 'department'		
-		# ]	
 
-	Department.setup()
-	Department
+
+	app.Department = Department
+	app.Department.setup()
+	return app.Department

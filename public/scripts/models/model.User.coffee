@@ -1,6 +1,9 @@
 define (require) ->
-	
+
 	Utils = require '../../scripts/Utils.js' 
+	window.app = new Backbone.Marionette.Application() unless window.app?
+
+	require '../../scripts/models/model.Department.js'
 
 	class User extends Backbone.RelationalModel
 
@@ -31,12 +34,14 @@ define (require) ->
 		relations: [
 			type:	Backbone.HasOne
 			key:	'department'
-			relatedModel: 'Department'
-			includeInJSON: '_id'
+			relatedModel: 'app.Department'
+			includeInJSON: @idAttribute
 			reverseRelation:
 				type: Backbone.HasOne
 				key: 'user'			
 		]	
 
-	User.setup()
-	User
+
+	app.User = User
+	app.User.setup()
+	return app.User

@@ -18,8 +18,7 @@ define (require) ->
       
       @on 'departments:fetched', @refresh, @
 
-      # @model.on 'change', @ModelChanged, @
-      @model.on 'change:department', (model, newDepartment) => console.log "Department changed:" + newDepartment
+      # @model.on 'change:department', (model, newDepartment) => console.log "Department changed:" + newDepartment
 
     events:
       "click #cancel-button": "cancel"
@@ -61,7 +60,7 @@ define (require) ->
         email: '[name=email]'
         startdate: '[name=startdate]'
         active: '[name=active]'
-        'department' : '[name=department]' 
+        'department._id' : '[name=department]' 
         # department: 
         #   selector: '[name=department]', converter: new Backbone.ModelBinder.CollectionConverter(col).convert
       
@@ -93,9 +92,9 @@ define (require) ->
 
     fetchDepartments: =>
       me = @
-      # currentDepartmentId = @model.get("department")._id if @model.get("department")
       currentDepartment = @model.get("department") 
-      # console.log "currentDepartment: "  + currentDepartment.get("id")
+      console.log "currentDepartment id: "  + currentDepartment.get("_id") if currentDepartment?
+      console.log "currentDepartment name: "  + currentDepartment.get("name") if currentDepartment?
       deps = new Departments()
       deps.fetch
         success: (collection, response) =>  
@@ -104,7 +103,7 @@ define (require) ->
           collection.sort()
           me.model.set({departments: collection.toJSON()})
           console.log "Changing department"
-          # me.model.set({department: currentDepartment.get("id")})   
+          me.model.get("department").set({_id: currentDepartment.get("_id")}) if currentDepartment?
           @trigger "departments:fetched"  
 
     onClose: =>
