@@ -13,7 +13,7 @@
 
   departmentroutes = new _departmentroutes.DepartmentRoutes();
 
-  backend = module.exports = (_ref = global.backend) != null ? _ref : express.createServer().listen(process.env.PORT);
+  backend = module.exports = (_ref = global.backend) != null ? _ref : express.createServer().listen(1234);
 
   basePath = '/ekmHoliCal';
 

@@ -21,8 +21,8 @@
       DepartmentMaintenanceView.prototype.className = "row";
 
       DepartmentMaintenanceView.prototype.initialize = function() {
-        this.modelBinder = new Backbone.ModelBinder();
-        return this.template = require('../../scripts/text!department_maintenance.html');
+        this.template = require('../../scripts/text!department_maintenance.html');
+        return this.viewModel = kb.viewModel(this.model);
       };
 
       DepartmentMaintenanceView.prototype.events = {
@@ -51,15 +51,14 @@
       };
 
       DepartmentMaintenanceView.prototype.onShow = function() {
-        this.modelBinder.bind(this.model, this.el);
+        ko.applyBindings(this.viewModel, this.el);
+        console.log("model name: " + this.viewModel.name());
         return Backbone.Validation.bind(this, {
           forceUpdate: true
         });
       };
 
-      DepartmentMaintenanceView.prototype.onClose = function() {
-        return this.modelBinder.unbind();
-      };
+      DepartmentMaintenanceView.prototype.onClose = function() {};
 
       return DepartmentMaintenanceView;
 

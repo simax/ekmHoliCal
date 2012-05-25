@@ -58,6 +58,5 @@ define (require) ->
             model: model
           @adminLayoutView.contentRegion.show(userMaintenanceView)      
       
-        
   UserRouter: UserRouter
   UserController: UserController

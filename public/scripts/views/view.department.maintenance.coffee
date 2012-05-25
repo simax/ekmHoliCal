@@ -9,8 +9,9 @@ define (require) ->
     className: "row"
     
     initialize: ->
-      @modelBinder = new Backbone.ModelBinder()
+      # @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!department_maintenance.html'
+      @viewModel = kb.viewModel(@model)
 
     events:
       "click #cancel-button": "cancel"
@@ -34,8 +35,10 @@ define (require) ->
       app.vent.trigger "main:admin:departments"
 
     onShow: =>
-      @modelBinder.bind(@model, @el)  
+      ko.applyBindings(@viewModel, @el)
+      console.log "model name: " + @viewModel.name()
+      # @modelBinder.bind(@model, @el)  
       Backbone.Validation.bind(@, forceUpdate: true) 
 
     onClose: =>
-      @modelBinder.unbind()  
+      # @modelBinder.unbind()  

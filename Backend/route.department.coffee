@@ -11,7 +11,7 @@ class DepartmentRoutes
 			@save(entity, res, err)
  
 	getall: (req, res) =>
-		res.contentType 'application/json' 
+		res.contentType 'application/json'
 		@Model.find (err, entity) ->
 			res.send(entity)
 

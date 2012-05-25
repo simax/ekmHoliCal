@@ -9,7 +9,7 @@ userroutes = new _userroutes.UserRoutes()
 _departmentroutes = require './backend/route.department'
 departmentroutes = new _departmentroutes.DepartmentRoutes()
 
-backend = module.exports = global.backend ? express.createServer().listen process.env.PORT
+backend = module.exports = global.backend ? express.createServer().listen 1234
 
 basePath = '/ekmHoliCal'
  
@@ -22,11 +22,10 @@ backend.configure ->
 	backend.set 'views', __dirname  + '/public'
 	backend.set 'view engine', 'html'
 	backend.set 'view options', layout: false
-	# backend.use express.logger()
 	backend.use express.bodyParser()
 	backend.use backend.router
 	backend.use express.static(__dirname + '/public')
-
+  
 
 # API Routes
 
