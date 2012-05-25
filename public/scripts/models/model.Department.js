@@ -16,6 +16,10 @@
         Department.__super__.constructor.apply(this, arguments);
       }
 
+      Department.prototype.defaults = {
+        name: ""
+      };
+
       Department.prototype.initialize = function() {
         return this.on('validated', function(isValid, model, attrs) {
           return Utils.showValidationErrors();

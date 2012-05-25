@@ -1,4 +1,4 @@
-<script type="text/x-handlebars-template" id="tmpl-user-maintenance">
+<script type="text/x-knockback-template" id="tmpl-user-maintenance">
 	<div class="span8">
 		<form id="user-create" class="form-horizontal">
 			<fieldset>
@@ -11,46 +11,42 @@
 				<div class="control-group">			
 					<label class="control-label" for="firstname">First name:</label>
 					<div class="controls">
-						<input name="firstname" id="firstname" type="text" />
+						<input data-bind="value: firstname" name="firstname" id="firstname" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="lastname">Last name:</label>
 					<div class="controls">
-						<input name="lastname" id="lastname" type="text" />
+						<input data-bind="value: lastname" name="lastname" id="lastname" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="email">Email:</label>
 					<div class="controls">
-						<input name="email" id="email" class="span3" type="text" placeholder="EKM email address" />
+						<input data-bind="value: email" name="email" id="email" class="span3" type="text" placeholder="EKM email address" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="department">Department:</label>
 					<div class="controls">
-						<select id="department" name="department">
-							{{#each departments}}
-							 <option value='{{this._id}}'>{{this.name}}</option>
-							{{/each}}
-						</select>
+						<select data-bind:="options: departments" id="department" name="department"></select>
 					</div>	
 				</div>	
 
 				<div class="control-group">			
-					<label class="control-label" for="startdate">Start date:</label>
+					<label class="control-label" for="enddate">End date:</label>
 					<div class="controls">
-						<input name="startdate" id="startdate" class="span2" type="text" />
+						<input data-bind="value: enddate" name="enddate" id="enddate" class="span2" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="active">Active:</label>
 					<div class="controls">
-						<input name="active" id="active" type="checkbox" />
+						<input data-bind="checked: active" name="active" id="active" type="checkbox" />
 					</div>
 				</div>	
 

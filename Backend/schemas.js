@@ -53,8 +53,8 @@
           type: this.schema.ObjectId,
           ref: 'departments'
         },
-        'startdate': String,
-        'enddate': String,
+        'EndDate': String,
+        'EndDate': String,
         'active': {
           type: Boolean,
           "default": true

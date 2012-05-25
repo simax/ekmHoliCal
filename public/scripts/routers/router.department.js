@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Department, DepartmentController, DepartmentListView, DepartmentMaintenanceView, DepartmentNavigationView, DepartmentRouter, Departments, DepartmentsLayoutView, departments;
+    var AdminLayoutView, AdminNavigationView, Department, DepartmentController, DepartmentListView, DepartmentMaintenanceView, DepartmentNavigationView, DepartmentRouter, Departments, DepartmentsLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     DepartmentsLayoutView = require('../../scripts/views/view.departments.layout.js');
@@ -12,8 +12,6 @@
     DepartmentListView = require('../../scripts/views/view.department.list.js');
     Departments = require('../../scripts/collections/collection.departments.js');
     Department = require('../../scripts/models/model.department.js');
-    departments = new Departments();
-    departments.fetch();
     DepartmentMaintenanceView = require('../../scripts/views/view.department.maintenance.js');
     DepartmentRouter = (function(_super) {
 
@@ -35,6 +33,9 @@
     DepartmentController = (function() {
 
       function DepartmentController() {
+        this.adminDepartmentsEdit = __bind(this.adminDepartmentsEdit, this);
+        this.adminDepartmentsCreate = __bind(this.adminDepartmentsCreate, this);
+        this.adminDepartments = __bind(this.adminDepartments, this);
         this.showAdminLayout = __bind(this.showAdminLayout, this);
       }
 
@@ -46,7 +47,7 @@
       };
 
       DepartmentController.prototype.adminDepartments = function() {
-        var departmentListView, departmentsLayoutView;
+        var departmentListView, departments, departmentsLayoutView;
         this.showAdminLayout();
         departmentsLayoutView = new DepartmentsLayoutView;
         departmentsLayoutView.render();
@@ -61,20 +62,21 @@
       };
 
       DepartmentController.prototype.adminDepartmentsCreate = function() {
-        var departmentMaintenanceView;
+        var departmentMaintenanceView, model;
+        model = new Department();
         departmentMaintenanceView = new DepartmentMaintenanceView({
-          collection: departments,
-          model: new Department()
+          model: model,
+          viewModel: kb.viewModel(model)
         });
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);
       };
 
       DepartmentController.prototype.adminDepartmentsEdit = function(id) {
-        var departmentMaintenanceView;
-        console.log("id: " + id);
+        var departmentMaintenanceView, model;
+        model = departments.get(id);
         departmentMaintenanceView = new DepartmentMaintenanceView({
-          collection: departments,
-          model: departments.get(id)
+          model: model,
+          viewModel: kb.viewModel(model)
         });
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);
       };

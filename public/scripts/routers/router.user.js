@@ -37,6 +37,7 @@
       function UserController() {
         this.adminUsersEdit = __bind(this.adminUsersEdit, this);
         this.adminUsersCreate = __bind(this.adminUsersCreate, this);
+        this.adminUsers = __bind(this.adminUsers, this);
         this.showAdminLayout = __bind(this.showAdminLayout, this);
       }
 
@@ -48,43 +49,38 @@
       };
 
       UserController.prototype.adminUsers = function() {
-        var userListView;
+        var userListView, usersLayoutView;
         this.showAdminLayout();
-        this.usersLayoutView = new UsersLayoutView;
-        this.usersLayoutView.render();
-        this.adminLayoutView.contentRegion.show(this.usersLayoutView);
-        this.usersLayoutView.navigationRegion.show(new UserNavigationView);
-        app.data.users = new Users();
-        app.data.users.fetch();
+        usersLayoutView = new UsersLayoutView;
+        usersLayoutView.render();
+        this.adminLayoutView.contentRegion.show(usersLayoutView);
+        usersLayoutView.navigationRegion.show(new UserNavigationView);
+        this.users = new Users();
+        this.users.fetch();
         userListView = new UserListView({
-          collection: app.data.users
+          collection: this.users
         });
-        return this.usersLayoutView.listRegion.show(userListView);
+        return usersLayoutView.listRegion.show(userListView);
       };
 
       UserController.prototype.adminUsersCreate = function() {
         var model, userMaintenanceView;
         model = new User();
         userMaintenanceView = new UserMaintenanceView({
-          model: model
+          model: model,
+          viewModel: kb.viewModel(model)
         });
         return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var _this = this;
-        console.log("adminUsersEdit");
-        app.data.users = new Users();
-        return app.data.users.fetch({
-          success: function(collection, response) {
-            var model, userMaintenanceView;
-            model = collection.get(id);
-            userMaintenanceView = new UserMaintenanceView({
-              model: model
-            });
-            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
-          }
+        var model, userMaintenanceView;
+        model = this.users.get(id);
+        userMaintenanceView = new UserMaintenanceView({
+          model: model,
+          viewModel: kb.viewModel(model)
         });
+        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       return UserController;

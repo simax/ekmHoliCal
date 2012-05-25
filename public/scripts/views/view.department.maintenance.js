@@ -15,14 +15,15 @@
       function DepartmentMaintenanceView() {
         this.onClose = __bind(this.onClose, this);
         this.onShow = __bind(this.onShow, this);
+        this.initialize = __bind(this.initialize, this);
         DepartmentMaintenanceView.__super__.constructor.apply(this, arguments);
       }
 
       DepartmentMaintenanceView.prototype.className = "row";
 
       DepartmentMaintenanceView.prototype.initialize = function() {
-        this.template = require('../../scripts/text!department_maintenance.html');
-        return this.viewModel = kb.viewModel(this.model);
+        this.viewModel = this.options.viewModel;
+        return this.template = require('../../scripts/text!department_maintenance.html');
       };
 
       DepartmentMaintenanceView.prototype.events = {

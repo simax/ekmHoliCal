@@ -14,6 +14,7 @@ define (require) ->
 
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
 
+
   class UserRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/users": "adminUsers"
@@ -21,42 +22,40 @@ define (require) ->
       "admin/users/edit/:id": "adminUsersEdit"
 
   class UserController 
-
     showAdminLayout: =>
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()
       app.mainRegion.show(@adminLayoutView)
       @adminLayoutView.navigationRegion.show(new AdminNavigationView)
 
-    adminUsers: ->
+    adminUsers: =>
       @showAdminLayout()
-      @usersLayoutView = new UsersLayoutView
-      @usersLayoutView.render()
-      @adminLayoutView.contentRegion.show(@usersLayoutView)      
+      usersLayoutView = new UsersLayoutView
+      usersLayoutView.render()
+      @adminLayoutView.contentRegion.show(usersLayoutView)      
 
-      @usersLayoutView.navigationRegion.show(new UserNavigationView)
+      usersLayoutView.navigationRegion.show(new UserNavigationView)
 
-      app.data.users = new Users()  
-      app.data.users.fetch()
-      userListView = new UserListView(collection: app.data.users)
-      @usersLayoutView.listRegion.show(userListView)
-
+      @users = new Users()  
+      @users.fetch()
+      userListView = new UserListView(collection: @users)
+      usersLayoutView.listRegion.show(userListView)
+ 
     adminUsersCreate: =>
       model = new User()
       userMaintenanceView = new UserMaintenanceView
         model: model
+        viewModel: kb.viewModel(model)
+
       @adminLayoutView.contentRegion.show(userMaintenanceView)      
 
-
     adminUsersEdit: (id) =>
-      console.log "adminUsersEdit"
-      app.data.users = new Users()
-      app.data.users.fetch
-        success: (collection, response) =>
-          model = collection.get(id)
-          userMaintenanceView = new UserMaintenanceView
-            model: model
-          @adminLayoutView.contentRegion.show(userMaintenanceView)      
+      model = @users.get(id)
+      userMaintenanceView = new UserMaintenanceView
+        model: model
+        viewModel: kb.viewModel(model)
+
+      @adminLayoutView.contentRegion.show(userMaintenanceView)      
       
   UserRouter: UserRouter
   UserController: UserController

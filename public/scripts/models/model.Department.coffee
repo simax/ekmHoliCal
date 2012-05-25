@@ -5,6 +5,9 @@ define (require) ->
 
 	class Department extends Backbone.RelationalModel
 		
+		defaults:
+			name: ""
+
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
 

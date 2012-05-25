@@ -60,8 +60,8 @@
       entity.firstname = req.body.firstname;
       entity.lastname = req.body.lastname;
       entity.email = req.body.email;
-      entity.startdate = req.body.startdate;
-      entity.enddate = "";
+      entity.EndDate = req.body.EndDate;
+      entity.EndDate = "";
       entity.active = req.body.active;
       entity.department = req.body.department;
       return this.DepartmentModel.findById(req.body.department.id).run(function(err, dept) {

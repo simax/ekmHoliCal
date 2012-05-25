@@ -10,11 +10,9 @@ define (require) ->
   Departments = require '../../scripts/collections/collection.departments.js'
   Department = require '../../scripts/models/model.department.js'
 
-  departments = new Departments()
-  departments.fetch()
-
   DepartmentMaintenanceView = require '../../scripts/views/view.department.maintenance.js'
  
+  
   class DepartmentRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/departments": "adminDepartments"
@@ -28,7 +26,7 @@ define (require) ->
       app.mainRegion.show(@adminLayoutView)
       @adminLayoutView.navigationRegion.show(new AdminNavigationView)
 
-    adminDepartments: ->
+    adminDepartments: =>
       @showAdminLayout()
       departmentsLayoutView = new DepartmentsLayoutView
       departmentsLayoutView.render()
@@ -41,17 +39,20 @@ define (require) ->
       departmentListView = new DepartmentListView(collection: departments)
       departmentsLayoutView.listRegion.show(departmentListView)
 
-    adminDepartmentsCreate: () ->
+    adminDepartmentsCreate: () =>
+      model = new Department()
       departmentMaintenanceView = new DepartmentMaintenanceView
-        collection: departments
-        model: new Department()
+        model: model
+        viewModel: kb.viewModel(model)
+
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
 
-    adminDepartmentsEdit: (id) ->
-      console.log "id: " + id
+    adminDepartmentsEdit: (id) =>
+      model = departments.get(id)
       departmentMaintenanceView = new DepartmentMaintenanceView
-        collection: departments
-        model: departments.get(id)
+        model: model
+        viewModel: kb.viewModel(model)
+
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
       
   DepartmentRouter: DepartmentRouter

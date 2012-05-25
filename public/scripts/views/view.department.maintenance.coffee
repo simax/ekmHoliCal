@@ -8,10 +8,9 @@ define (require) ->
   class DepartmentMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
     
-    initialize: ->
-      # @modelBinder = new Backbone.ModelBinder()
+    initialize: =>
+      @viewModel = @options.viewModel 
       @template = require '../../scripts/text!department_maintenance.html'
-      @viewModel = kb.viewModel(@model)
 
     events:
       "click #cancel-button": "cancel"
@@ -37,7 +36,6 @@ define (require) ->
     onShow: =>
       ko.applyBindings(@viewModel, @el)
       console.log "model name: " + @viewModel.name()
-      # @modelBinder.bind(@model, @el)  
       Backbone.Validation.bind(@, forceUpdate: true) 
 
     onClose: =>
