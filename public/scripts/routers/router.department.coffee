@@ -34,9 +34,13 @@ define (require) ->
 
       departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView)
 
-      departments = new Departments()  
-      departments.fetch()
-      departmentListView = new DepartmentListView(collection: departments)
+      @departments = new Departments()
+      @departments.fetch()
+
+      departmentListView = new DepartmentListView
+        collection: @departments
+        viewModel: kb.viewModel(@departments)
+      
       departmentsLayoutView.listRegion.show(departmentListView)
 
     adminDepartmentsCreate: () =>
@@ -48,7 +52,7 @@ define (require) ->
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
 
     adminDepartmentsEdit: (id) =>
-      model = departments.get(id)
+      model = @departments.get(id)
       departmentMaintenanceView = new DepartmentMaintenanceView
         model: model
         viewModel: kb.viewModel(model)

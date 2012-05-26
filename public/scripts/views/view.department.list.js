@@ -25,7 +25,6 @@
       departmentListView.prototype.id = "department-list";
 
       departmentListView.prototype.initialize = function() {
-        this.onRenderCalled = 0;
         return this.template = require('../../scripts/text!department_grid_header.html');
       };
 

@@ -23,6 +23,15 @@
         });
       };
 
+      User.prototype.defaults = {
+        department: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        active: false,
+        enddate: ""
+      };
+
       User.prototype.urlRoot = '/ekmHoliCal/api/users/';
 
       User.prototype.idAttribute = "_id";

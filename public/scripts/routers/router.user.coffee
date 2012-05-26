@@ -43,6 +43,10 @@ define (require) ->
  
     adminUsersCreate: =>
       model = new User()
+      model.set 
+        departments: new Departments()
+      
+      model.departments.fetch()
       userMaintenanceView = new UserMaintenanceView
         model: model
         viewModel: kb.viewModel(model)
@@ -51,11 +55,17 @@ define (require) ->
 
     adminUsersEdit: (id) =>
       model = @users.get(id)
-      userMaintenanceView = new UserMaintenanceView
-        model: model
-        viewModel: kb.viewModel(model)
+      deps = new Departments()
+      deps.fetch 
+        success: =>
+          model.set 
+            departments: deps
 
-      @adminLayoutView.contentRegion.show(userMaintenanceView)      
+          userMaintenanceView = new UserMaintenanceView
+            model: model
+            viewModel: kb.viewModel(model)
+
+          @adminLayoutView.contentRegion.show(userMaintenanceView)      
       
   UserRouter: UserRouter
   UserController: UserController

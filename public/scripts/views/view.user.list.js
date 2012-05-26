@@ -25,7 +25,6 @@
       UserListView.prototype.id = "user-list";
 
       UserListView.prototype.initialize = function() {
-        this.onRenderCalled = 0;
         return this.template = require('../../scripts/text!user_grid_header.html');
       };
 

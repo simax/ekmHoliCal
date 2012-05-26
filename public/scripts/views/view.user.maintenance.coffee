@@ -14,7 +14,7 @@ define (require) ->
       @template = require '../../scripts/text!user_maintenance.html'
 
       @model.on 'change:email', @SetGravatarImage, @
-      # @on 'departments:fetched', @refresh, @
+      # @on 'reset:departments', @refresh, @
 
       # @model.on 'change:department', (model, newDepartment) => console.log "Department changed:" + newDepartment
 

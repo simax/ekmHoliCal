@@ -21,9 +21,8 @@ class UserRoutes
 		res.contentType 'application/json' 
 		@Model
 			.find()
-			.populate('department')
+			# .populate('department')
 			.run (err, entity) ->
-				# console.log "zzzzzzzzzzzzzzzzzzzzzzzz" 
 				res.send(entity)
 
 	get: (req, res) =>

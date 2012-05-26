@@ -66,6 +66,10 @@
       UserController.prototype.adminUsersCreate = function() {
         var model, userMaintenanceView;
         model = new User();
+        model.set({
+          departments: new Departments()
+        });
+        model.departments.fetch();
         userMaintenanceView = new UserMaintenanceView({
           model: model,
           viewModel: kb.viewModel(model)
@@ -74,13 +78,23 @@
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var model, userMaintenanceView;
+        var deps, model,
+          _this = this;
         model = this.users.get(id);
-        userMaintenanceView = new UserMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+        deps = new Departments();
+        return deps.fetch({
+          success: function() {
+            var userMaintenanceView;
+            model.set({
+              departments: deps
+            });
+            userMaintenanceView = new UserMaintenanceView({
+              model: model,
+              viewModel: kb.viewModel(model)
+            });
+            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
+          }
         });
-        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       return UserController;

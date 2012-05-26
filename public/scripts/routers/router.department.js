@@ -47,16 +47,17 @@
       };
 
       DepartmentController.prototype.adminDepartments = function() {
-        var departmentListView, departments, departmentsLayoutView;
+        var departmentListView, departmentsLayoutView;
         this.showAdminLayout();
         departmentsLayoutView = new DepartmentsLayoutView;
         departmentsLayoutView.render();
         this.adminLayoutView.contentRegion.show(departmentsLayoutView);
         departmentsLayoutView.navigationRegion.show(new DepartmentNavigationView);
-        departments = new Departments();
-        departments.fetch();
+        this.departments = new Departments();
+        this.departments.fetch();
         departmentListView = new DepartmentListView({
-          collection: departments
+          collection: this.departments,
+          viewModel: kb.viewModel(this.departments)
         });
         return departmentsLayoutView.listRegion.show(departmentListView);
       };
@@ -73,7 +74,7 @@
 
       DepartmentController.prototype.adminDepartmentsEdit = function(id) {
         var departmentMaintenanceView, model;
-        model = departments.get(id);
+        model = this.departments.get(id);
         departmentMaintenanceView = new DepartmentMaintenanceView({
           model: model,
           viewModel: kb.viewModel(model)

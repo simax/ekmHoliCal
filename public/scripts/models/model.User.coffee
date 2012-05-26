@@ -10,8 +10,13 @@ define (require) ->
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
 	    
-		# url: =>
-		# 	if @id then '/ekmHoliCal/api/users/' + @id else '/ekmHoliCal/api/users'
+		defaults:
+			department: ""
+			firstname: ""
+			lastname: ""
+			email: ""
+			active: false
+			enddate: ""
 
 		urlRoot: '/ekmHoliCal/api/users/'
 		idAttribute: "_id"

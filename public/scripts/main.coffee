@@ -11,7 +11,6 @@
       handlebars:             'libs/handlebars'
       bootstrap:              'libs/bootstrap/js/bootstrap'
       marionette:             'libs/backbone.marionette.amd'
-      modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
       relational:             'libs/backbone-relational'
       knockout:               'libs/knockout-2.0.0.debug'      
@@ -36,7 +35,7 @@
       department_maintenance: 'templates/tmpl.department.maintenance'
       department_navigation:  'templates/tmpl.department.navigation'
       department_layout:      'templates/tmpl.department.layout'
-
+ 
   require [
       "require",
       "jquery",
@@ -44,7 +43,6 @@
       "backbone",
       "marionette",
       "order!handlebars",
-      "order!modelbinder",
       "order!validation",
       "order!relational",
       "order!knockout",
