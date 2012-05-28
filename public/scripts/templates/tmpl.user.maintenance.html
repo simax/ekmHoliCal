@@ -32,14 +32,14 @@
 				<div class="control-group">			
 					<label class="control-label" for="department">Department:</label>
 					<div class="controls">
-						<select data-bind="options: departments, value: department._id, optionsValue: '_id', optionsText: 'name'" id="department" name="department"></select>
+						<select data-bind="options: departments, value: department()._id, optionsValue: '_id', optionsText: 'name', optionsCaption: ' '" id="department" name="department"></select>
 					</div>	
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="depid">Department id</label>
 					<div class="controls">
-						<span data-bind="text: department._id" name="depid" id="depid" class="span2" type="text" />
+						<span data-bind="text: department()._id" name="depid" id="depid" class="span2" type="text" />
 					</div>
 				</div>	
 

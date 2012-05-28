@@ -37,7 +37,7 @@
 
     UserRoutes.prototype.getall = function(req, res) {
       res.contentType('application/json');
-      return this.Model.find().run(function(err, entity) {
+      return this.Model.find().populate('department').run(function(err, entity) {
         return res.send(entity);
       });
     };
@@ -56,17 +56,12 @@
     };
 
     UserRoutes.prototype.modelBind = function(entity, req) {
-      var _this = this;
       entity.firstname = req.body.firstname;
       entity.lastname = req.body.lastname;
       entity.email = req.body.email;
-      entity.EndDate = req.body.EndDate;
-      entity.EndDate = "";
+      entity.enddate = req.body.enddate;
       entity.active = req.body.active;
-      entity.department = req.body.department;
-      return this.DepartmentModel.findById(req.body.department.id).run(function(err, dept) {
-        return entity.department = dept;
-      });
+      return entity.department = req.body.department._id;
     };
 
     UserRoutes.prototype.save = function(entity, res, err) {

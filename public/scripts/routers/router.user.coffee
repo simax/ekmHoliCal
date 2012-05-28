@@ -37,21 +37,24 @@ define (require) ->
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 
       @users = new Users()  
-      @users.fetch()
-      userListView = new UserListView(collection: @users)
-      usersLayoutView.listRegion.show(userListView)
+      @users.fetch
+        success: =>
+          userListView = new UserListView(collection: @users)
+          usersLayoutView.listRegion.show(userListView)
  
     adminUsersCreate: =>
       model = new User()
+      deps = new Departments()
       model.set 
-        departments: new Departments()
+        departments: deps
       
-      model.departments.fetch()
-      userMaintenanceView = new UserMaintenanceView
-        model: model
-        viewModel: kb.viewModel(model)
+      deps.fetch
+        success: =>
+          userMaintenanceView = new UserMaintenanceView
+            model: model
+            viewModel: kb.viewModel(model)
 
-      @adminLayoutView.contentRegion.show(userMaintenanceView)      
+          @adminLayoutView.contentRegion.show(userMaintenanceView)      
 
     adminUsersEdit: (id) =>
       model = @users.get(id)

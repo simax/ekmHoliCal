@@ -17,7 +17,7 @@ define (require) ->
   # MainModel = Backbone.RelationalModel.extend({
   #   defaults: {
   #     Description: 'A MainModel description',
-  #     EndDate: null
+  #     enddate: null
   #   },
 
   #   relations: [{
@@ -46,7 +46,7 @@ define (require) ->
   # class MainModel extends Backbone.RelationalModel
   #   defaults:
   #    Description: 'A MainModel description'
-  #    EndDate: null
+  #    enddate: null
 
   #   relations: [
   #     type: Backbone.HasOne

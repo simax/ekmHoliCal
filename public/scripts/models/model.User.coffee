@@ -15,7 +15,7 @@ define (require) ->
 			firstname: ""
 			lastname: ""
 			email: ""
-			active: false
+			active: true
 			enddate: ""
 
 		urlRoot: '/ekmHoliCal/api/users/'

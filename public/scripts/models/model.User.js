@@ -28,7 +28,7 @@
         firstname: "",
         lastname: "",
         email: "",
-        active: false,
+        active: true,
         enddate: ""
       };
 

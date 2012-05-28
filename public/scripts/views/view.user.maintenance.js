@@ -45,6 +45,7 @@
       UserMaintenanceView.prototype.save = function(e) {
         var modelValid;
         e.preventDefault();
+        this.model = this.viewModel.model();
         modelValid = this.model.isValid(true);
         console.log("Is model valid:" + modelValid);
         if (modelValid) {
@@ -64,9 +65,6 @@
 
       UserMaintenanceView.prototype.onShow = function() {
         ko.applyBindings(this.viewModel, this.el);
-        Backbone.Validation.bind(this, {
-          forceUpdate: true
-        });
         return this.SetGravatarImage();
       };
 

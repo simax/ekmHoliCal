@@ -27,8 +27,8 @@ class UserSchemaBuilder
       'lastname': { type: String, required: true }, 
       'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
       'department': { type: @schema.ObjectId, ref: 'departments' }
-      'EndDate': String,
-      'EndDate': String,
+      'enddate': String,
+      'enddate': String,
       'active': { type: Boolean, default: true } 
      
     # Register a users Mongo collection

@@ -21,7 +21,7 @@ class UserRoutes
 		res.contentType 'application/json' 
 		@Model
 			.find()
-			# .populate('department')
+			.populate('department')
 			.run (err, entity) ->
 				res.send(entity)
 
@@ -41,14 +41,13 @@ class UserRoutes
 		entity.firstname = req.body.firstname
 		entity.lastname = req.body.lastname
 		entity.email = req.body.email
-		entity.EndDate = req.body.EndDate
-		entity.EndDate = ""
+		entity.enddate = req.body.enddate
 		entity.active = req.body.active
-		entity.department = req.body.department
-		@DepartmentModel
-			.findById(req.body.department.id)
-			.run (err, dept) =>
-				entity.department = dept
+		entity.department = req.body.department._id
+		# @DepartmentModel
+		# 	.findById(req.body.department.id)
+		# 	.run (err, dept) =>
+		# 		entity.department = dept
 
 	save: (entity, res, err) -> 
 		if err 

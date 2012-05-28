@@ -49,32 +49,43 @@
       };
 
       UserController.prototype.adminUsers = function() {
-        var userListView, usersLayoutView;
+        var usersLayoutView,
+          _this = this;
         this.showAdminLayout();
         usersLayoutView = new UsersLayoutView;
         usersLayoutView.render();
         this.adminLayoutView.contentRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
         this.users = new Users();
-        this.users.fetch();
-        userListView = new UserListView({
-          collection: this.users
+        return this.users.fetch({
+          success: function() {
+            var userListView;
+            userListView = new UserListView({
+              collection: _this.users
+            });
+            return usersLayoutView.listRegion.show(userListView);
+          }
         });
-        return usersLayoutView.listRegion.show(userListView);
       };
 
       UserController.prototype.adminUsersCreate = function() {
-        var model, userMaintenanceView;
+        var deps, model,
+          _this = this;
         model = new User();
+        deps = new Departments();
         model.set({
-          departments: new Departments()
+          departments: deps
         });
-        model.departments.fetch();
-        userMaintenanceView = new UserMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+        return deps.fetch({
+          success: function() {
+            var userMaintenanceView;
+            userMaintenanceView = new UserMaintenanceView({
+              model: model,
+              viewModel: kb.viewModel(model)
+            });
+            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
+          }
         });
-        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {

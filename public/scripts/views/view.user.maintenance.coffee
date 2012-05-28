@@ -30,6 +30,8 @@ define (require) ->
 
     save: (e) ->
       e.preventDefault()
+      @model = @viewModel.model()
+
       modelValid = @model.isValid(true)
       console.log "Is model valid:" + modelValid
 
@@ -47,7 +49,7 @@ define (require) ->
 
     onShow: =>
       ko.applyBindings(@viewModel, @el)
-      Backbone.Validation.bind(@, forceUpdate: true) 
+      # Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
      
     getGravatarURL: =>
@@ -71,18 +73,4 @@ define (require) ->
       @hideDatePicker()
       super
 
-    # fetchDepartments: =>
-    #   me = @
-    #   currentDepartment = @model.get("department") 
-    #   console.log "currentDepartment id: "  + currentDepartment.get("_id") if currentDepartment?
-    #   console.log "currentDepartment name: "  + currentDepartment.get("name") if currentDepartment?
-    #   deps = new Departments()
-    #   deps.fetch
-    #     success: (collection, response) =>  
-    #       collection.add({name: ''}, {silent: true})
-    #       collection.comparator = (model) -> model.get('name')
-    #       collection.sort()
-    #       me.model.set({departments: collection.toJSON()})
-    #       console.log "Changing department"
-    #       me.model.get("department").set({_id: currentDepartment.get("_id")}) if currentDepartment?
-    #       @trigger "departments:fetched"  
+
