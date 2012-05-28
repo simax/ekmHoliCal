@@ -65,6 +65,9 @@
 
       UserMaintenanceView.prototype.onShow = function() {
         ko.applyBindings(this.viewModel, this.el);
+        Backbone.Validation.bind(this, {
+          forceUpdate: true
+        });
         return this.SetGravatarImage();
       };
 

@@ -6,6 +6,7 @@ define (require) ->
 	class Department extends Backbone.RelationalModel
 		
 		defaults:
+			_id: ""
 			name: ""
 
 		initialize: =>				

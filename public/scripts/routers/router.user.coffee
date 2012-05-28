@@ -44,6 +44,7 @@ define (require) ->
  
     adminUsersCreate: =>
       model = new User()
+      model.set("department", new Department())
       deps = new Departments()
       model.set 
         departments: deps

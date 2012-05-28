@@ -61,7 +61,7 @@
           type: Backbone.HasOne,
           key: 'department',
           relatedModel: 'app.Department',
-          includeInJSON: User.idAttribute,
+          includeInJSON: "_id",
           reverseRelation: {
             type: Backbone.HasOne,
             key: 'user'

@@ -72,6 +72,7 @@
         var deps, model,
           _this = this;
         model = new User();
+        model.set("department", new Department());
         deps = new Departments();
         model.set({
           departments: deps

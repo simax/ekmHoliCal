@@ -49,7 +49,7 @@ define (require) ->
 
     onShow: =>
       ko.applyBindings(@viewModel, @el)
-      # Backbone.Validation.bind(@, forceUpdate: true) 
+      Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
      
     getGravatarURL: =>

@@ -40,7 +40,7 @@ define (require) ->
 			type:	Backbone.HasOne
 			key:	'department'
 			relatedModel: 'app.Department'
-			includeInJSON: @idAttribute
+			includeInJSON: "_id"
 			reverseRelation:
 				type: Backbone.HasOne
 				key: 'user'			
