@@ -8,16 +8,26 @@ class UserRoutes
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
 			@modelBind entity, req
+			# @DepartmentModel
+			# 	.findById(req.body.department)
+			# 	.run (err, dept) =>
+			# 		entity.department = dept
 			entity.save (err) =>
- 				@save(entity, res, err)
+				@save(entity, res, err)
 
 	post: (req, res) =>
+		console.log "req.body.department: " + req.body.department
 		entity = new @Model
 		@modelBind(entity, req)
+		# @DepartmentModel
+		# 	.findById(req.body.department)
+		# 	.run (err, dept) =>
+		# 		entity.department = dept
 		entity.save (err) =>
 			@save(entity, res, err)
 
 	getall: (req, res) =>
+		console.log "Getall"
 		res.contentType 'application/json' 
 		@Model
 			.find()
@@ -43,11 +53,7 @@ class UserRoutes
 		entity.email = req.body.email
 		entity.enddate = req.body.enddate
 		entity.active = req.body.active
-		entity.department = req.body.department._id
-		# @DepartmentModel
-		# 	.findById(req.body.department.id)
-		# 	.run (err, dept) =>
-		# 		entity.department = dept
+		entity.department = req.body.department
 
 	save: (entity, res, err) -> 
 		if err 

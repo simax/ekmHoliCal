@@ -46,7 +46,6 @@ define (require) ->
 				key: 'user'			
 		]	
 
-
 	app.User = User
 	app.User.setup()
 	return app.User

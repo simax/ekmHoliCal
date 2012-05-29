@@ -28,6 +28,7 @@
     UserRoutes.prototype.post = function(req, res) {
       var entity,
         _this = this;
+      console.log("req.body.department: " + req.body.department);
       entity = new this.Model;
       this.modelBind(entity, req);
       return entity.save(function(err) {
@@ -36,6 +37,7 @@
     };
 
     UserRoutes.prototype.getall = function(req, res) {
+      console.log("Getall");
       res.contentType('application/json');
       return this.Model.find().populate('department').run(function(err, entity) {
         return res.send(entity);
@@ -61,7 +63,7 @@
       entity.email = req.body.email;
       entity.enddate = req.body.enddate;
       entity.active = req.body.active;
-      return entity.department = req.body.department._id;
+      return entity.department = req.body.department;
     };
 
     UserRoutes.prototype.save = function(entity, res, err) {

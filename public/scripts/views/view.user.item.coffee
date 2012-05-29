@@ -18,3 +18,6 @@ define (require) ->
       id = @model.id
       app.vent.trigger "admin:users:edit", id  
     
+    # renderHtml: (data) =>
+    #   viewModel = kb.viewModel(@model)
+    #   ko.applyBindings(viewModel, @el)

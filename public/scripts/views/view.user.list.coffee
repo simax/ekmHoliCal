@@ -12,4 +12,4 @@ define (require) ->
       @template = require '../../scripts/text!user_grid_header.html'
 
     appendHtml: (collectionView, itemView ) =>
-      collectionView.$("tbody").append(itemView.el)    
+      collectionView.$("tbody").append(itemView.el)

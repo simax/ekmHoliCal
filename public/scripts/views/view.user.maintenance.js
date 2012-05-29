@@ -43,19 +43,16 @@
       };
 
       UserMaintenanceView.prototype.save = function(e) {
-        var modelValid;
+        var x;
         e.preventDefault();
         this.model = this.viewModel.model();
-        modelValid = this.model.isValid(true);
-        console.log("Is model valid:" + modelValid);
-        if (modelValid) {
-          this.model.save(this.model.toJSON(), {
-            error: function(model, res) {
-              return alert(res.responseText);
-            }
-          });
-          return app.vent.trigger("main:admin:users");
-        }
+        x = this.model.toJSON();
+        this.model.save(this.model.toJSON(), {
+          error: function(model, res) {
+            return alert(res.responseText);
+          }
+        });
+        return app.vent.trigger("main:admin:users");
       };
 
       UserMaintenanceView.prototype.cancel = function(e) {
@@ -65,9 +62,6 @@
 
       UserMaintenanceView.prototype.onShow = function() {
         ko.applyBindings(this.viewModel, this.el);
-        Backbone.Validation.bind(this, {
-          forceUpdate: true
-        });
         return this.SetGravatarImage();
       };
 

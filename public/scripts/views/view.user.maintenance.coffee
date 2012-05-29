@@ -32,16 +32,18 @@ define (require) ->
       e.preventDefault()
       @model = @viewModel.model()
 
-      modelValid = @model.isValid(true)
-      console.log "Is model valid:" + modelValid
+      # modelValid = @model.isValid(true)
+      # console.log "Is model valid:" + modelValid
 
-      if modelValid
-        @model.save(
-          @model.toJSON(),
-          error: (model, res) -> 
-            alert res.responseText
-        )
-        app.vent.trigger "main:admin:users"      
+      x = @model.toJSON()
+      
+      # if modelValid
+      @model.save(
+        @model.toJSON(),
+        error: (model, res) -> 
+          alert res.responseText
+      )
+      app.vent.trigger "main:admin:users"      
 
     cancel: (e) ->
       e.preventDefault()
@@ -49,7 +51,7 @@ define (require) ->
 
     onShow: =>
       ko.applyBindings(@viewModel, @el)
-      Backbone.Validation.bind(@, forceUpdate: true) 
+      # Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
      
     getGravatarURL: =>
