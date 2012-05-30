@@ -37,10 +37,11 @@ define (require) ->
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 
       @users = new Users()  
-      @users.fetch
-        success: =>
-          userListView = new UserListView(collection: @users)
-          usersLayoutView.listRegion.show(userListView)
+      @users.fetch()
+        # success: =>
+      userListView = new UserListView(collection: @users)
+      usersLayoutView.listRegion.show(userListView)
+
  
     adminUsersCreate: =>
       model = new User()

@@ -13,3 +13,17 @@ define (require) ->
 
     appendHtml: (collectionView, itemView ) =>
       collectionView.$("tbody").append(itemView.el)
+
+  # class UserListView extends Backbone.View
+  #   # itemView: UserItemView
+  #   tagName: "table"
+  #   className: "table table-striped table-bordered"
+  #   id: "user-list"  
+
+  #   initialize: =>
+  #     @template = require '../../scripts/text!user_grid_header.html'
+  #     @collection.on("reset", @render, @)
+
+  #   render: =>  
+  #     x = @collection  
+  #     return @

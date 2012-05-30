@@ -49,23 +49,18 @@
       };
 
       UserController.prototype.adminUsers = function() {
-        var usersLayoutView,
-          _this = this;
+        var userListView, usersLayoutView;
         this.showAdminLayout();
         usersLayoutView = new UsersLayoutView;
         usersLayoutView.render();
         this.adminLayoutView.contentRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
         this.users = new Users();
-        return this.users.fetch({
-          success: function() {
-            var userListView;
-            userListView = new UserListView({
-              collection: _this.users
-            });
-            return usersLayoutView.listRegion.show(userListView);
-          }
+        this.users.fetch();
+        userListView = new UserListView({
+          collection: this.users
         });
+        return usersLayoutView.listRegion.show(userListView);
       };
 
       UserController.prototype.adminUsersCreate = function() {
