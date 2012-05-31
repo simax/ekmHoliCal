@@ -17,7 +17,6 @@
       }
 
       Department.prototype.defaults = {
-        _id: "",
         name: ""
       };
 
