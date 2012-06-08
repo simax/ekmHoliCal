@@ -1,6 +1,6 @@
 <script type="text/x-knockback-template" id="tmpl-user-maintenance">
 	<div class="span8">
-		<form id="user-create" class="form-horizontal">
+		<form id="user-maintenance" class="form-horizontal">
 			<fieldset>
 
 				<div class="control-group">	
@@ -30,18 +30,20 @@
 				</div>	
 
 				<div class="control-group">			
-					<label class="control-label" for="department">Department:</label>
+					<label class="control-label" for="departmentId">Department:</label>
 					<div class="controls">
-						<select data-bind="options: departments, value: department()._id, optionsValue: '_id', optionsText: 'name', optionsCaption: ' '" id="department" name="department"></select>
+						<select data-bind="options: departments, value: departmentId, optionsValue: '_id', optionsText: 'name', optionsCaption: ' '" id="departmentId" name="departmentId"></select>
 					</div>	
 				</div>	
 
+<!--
 				<div class="control-group">			
 					<label class="control-label" for="depid">Department id</label>
 					<div class="controls">
-						<span data-bind="text: department()._id" name="depid" id="depid" class="span2" type="text" />
+						<span data-bind="text: departmentId" name="depid" id="depid" class="span2" type="text" />
 					</div>
 				</div>	
+-->
 
 				<div class="control-group">			
 					<label class="control-label" for="enddate">End date:</label>

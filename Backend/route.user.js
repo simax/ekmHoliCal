@@ -28,7 +28,6 @@
     UserRoutes.prototype.post = function(req, res) {
       var entity,
         _this = this;
-      console.log("req.body.department: " + req.body.department);
       entity = new this.Model;
       this.modelBind(entity, req);
       return entity.save(function(err) {
@@ -37,15 +36,14 @@
     };
 
     UserRoutes.prototype.getall = function(req, res) {
-      console.log("Getall");
       res.contentType('application/json');
-      return this.Model.find().populate('department').run(function(err, entity) {
+      return this.Model.find().run(function(err, entity) {
         return res.send(entity);
       });
     };
 
     UserRoutes.prototype.get = function(req, res) {
-      return this.Model.findById(req.params.id).populate('department').run(function(err, entity) {
+      return this.Model.findById(req.params.id).run(function(err, entity) {
         return res.send(entity);
       });
     };
@@ -63,14 +61,14 @@
       entity.email = req.body.email;
       entity.enddate = req.body.enddate;
       entity.active = req.body.active;
-      return entity.department = req.body.department;
+      return entity.departmentId = req.body.departmentId;
     };
 
     UserRoutes.prototype.save = function(entity, res, err) {
       if (err) {
         console.log(err);
         if (err.code = 1101) {
-          res.send("Already exists", 400);
+          res.send("Unable to save", 400);
           return;
         }
         return res.send("Unable to process request", 500);

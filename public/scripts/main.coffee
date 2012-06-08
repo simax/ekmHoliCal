@@ -12,7 +12,6 @@
       bootstrap:              'libs/bootstrap/js/bootstrap'
       marionette:             'libs/backbone.marionette.amd'
       validation:             'libs/backbone.validation'
-      relational:             'libs/backbone-relational'
       knockout:               'libs/knockout-2.0.0.debug'      
       knockback:              'libs/knockback'
       jqueryQtip:             'libs/jquery.qtip'
@@ -41,10 +40,9 @@
       "jquery",
       "underscore",  
       "backbone",
-      "marionette",
+      "order!marionette",
       "order!handlebars",
       "order!validation",
-      "order!relational",
       "order!knockout",
       "order!knockback",
       

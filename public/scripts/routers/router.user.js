@@ -64,44 +64,38 @@
       };
 
       UserController.prototype.adminUsersCreate = function() {
-        var deps, model,
-          _this = this;
+        var deps, model, userMaintenanceView;
         model = new User();
-        model.set("department", new Department());
         deps = new Departments();
         model.set({
           departments: deps
         });
-        return deps.fetch({
-          success: function() {
-            var userMaintenanceView;
-            userMaintenanceView = new UserMaintenanceView({
-              model: model,
-              viewModel: kb.viewModel(model)
-            });
-            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
-          }
+        deps.fetch();
+        userMaintenanceView = new UserMaintenanceView({
+          model: model,
+          viewModel: kb.viewModel(model)
         });
+        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var deps, model,
-          _this = this;
-        model = this.users.get(id);
+        var deps, model, userMaintenanceView;
+        if (this.users != null) {
+          model = this.users.get(id);
+        } else {
+          model = new User();
+          model.fetch();
+        }
         deps = new Departments();
-        return deps.fetch({
-          success: function() {
-            var userMaintenanceView;
-            model.set({
-              departments: deps
-            });
-            userMaintenanceView = new UserMaintenanceView({
-              model: model,
-              viewModel: kb.viewModel(model)
-            });
-            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
-          }
+        model.set({
+          departments: deps
         });
+        deps.fetch();
+        userMaintenanceView = new UserMaintenanceView({
+          model: model,
+          viewModel: kb.viewModel(model)
+        });
+        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       return UserController;

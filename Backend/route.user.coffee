@@ -8,37 +8,25 @@ class UserRoutes
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
 			@modelBind entity, req
-			# @DepartmentModel
-			# 	.findById(req.body.department)
-			# 	.run (err, dept) =>
-			# 		entity.department = dept
 			entity.save (err) =>
 				@save(entity, res, err)
 
 	post: (req, res) =>
-		console.log "req.body.department: " + req.body.department
-		entity = new @Model
+		entity = new @Model  
 		@modelBind(entity, req)
-		# @DepartmentModel
-		# 	.findById(req.body.department)
-		# 	.run (err, dept) =>
-		# 		entity.department = dept
 		entity.save (err) =>
 			@save(entity, res, err)
-
-	getall: (req, res) =>
-		console.log "Getall"
-		res.contentType 'application/json' 
-		@Model
-			.find()
-			.populate('department')
+ 
+	getall: (req, res) => 
+		res.contentType 'application/json'
+		@Model 
+			.find() 
 			.run (err, entity) ->
 				res.send(entity)
-
-	get: (req, res) =>
+ 
+	get: (req, res) => 
 		@Model
 		.findById(req.params.id)
-		.populate('department')
 		.run (err, entity) ->
 			res.send(entity)
 				
@@ -53,13 +41,13 @@ class UserRoutes
 		entity.email = req.body.email
 		entity.enddate = req.body.enddate
 		entity.active = req.body.active
-		entity.department = req.body.department
+		entity.departmentId = req.body.departmentId
 
 	save: (entity, res, err) -> 
 		if err 
 			console.log err 
 			if err.code = 1101
-				res.send("Already exists", 400) 
+				res.send("Unable to save", 400) 
 				return
 			res.send("Unable to process request", 500) 
 		else

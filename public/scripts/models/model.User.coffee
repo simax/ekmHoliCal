@@ -5,18 +5,18 @@ define (require) ->
 
 	require '../../scripts/models/model.Department.js'
 
-	class User extends Backbone.RelationalModel
+	class app.User extends Backbone.Model
 
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
-	    
+
 		defaults:
-			department: ""
 			firstname: ""
 			lastname: ""
 			email: ""
 			active: true
 			enddate: ""
+			departmentId: ""
 
 		urlRoot: '/ekmHoliCal/api/users/'
 		idAttribute: "_id"
@@ -32,20 +32,8 @@ define (require) ->
 				required: true
 				pattern: 'email'
 				msg: 'A valid email address is required'
-			department:
+			departmentId:
 				required: true
 				msg: 'A department is required'
 
-		relations: [
-			type:	Backbone.HasOne
-			key:	'department'
-			relatedModel: 'app.Department'
-			includeInJSON: "_id"
-			reverseRelation:
-				type: Backbone.HasOne
-				key: 'user'			
-		]	
-
-	app.User = User
-	app.User.setup()
-	return app.User
+	

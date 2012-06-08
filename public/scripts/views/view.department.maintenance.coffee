@@ -38,5 +38,3 @@ define (require) ->
       console.log "model name: " + @viewModel.name()
       Backbone.Validation.bind(@, forceUpdate: true) 
 
-    onClose: =>
-      # @modelBinder.unbind()  

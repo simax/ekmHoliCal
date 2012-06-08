@@ -10,40 +10,37 @@ define (require) ->
     className: "row"
     
     initialize: =>
-      @viewModel = @options.viewModel 
       @template = require '../../scripts/text!user_maintenance.html'
+      @viewModel = @options.viewModel 
+
+      @initialDepartmentId = @model.get("departmentId") 
 
       @model.on 'change:email', @SetGravatarImage, @
-      # @on 'reset:departments', @refresh, @
-
-      # @model.on 'change:department', (model, newDepartment) => console.log "Department changed:" + newDepartment
-
+      @model.get("departments").on 'reset', @departmentsLoaded, @
 
     events:
       "click #cancel-button": "cancel"
-      "submit #user-create": "save"
+      "submit #user-maintenance": "save"
       "focus #enddate": "showDatePicker"
 
+    departmentsLoaded: =>
+      @model.set("departmentId", @initialDepartmentId) if @model.get("_id")? 
+      
     refresh: =>
       @render()
       @onShow()
 
     save: (e) ->
       e.preventDefault()
-      @model = @viewModel.model()
+      modelValid = @model.isValid(true)
 
-      # modelValid = @model.isValid(true)
-      # console.log "Is model valid:" + modelValid
-
-      x = @model.toJSON()
-      
-      # if modelValid
-      @model.save(
-        @model.toJSON(),
-        error: (model, res) -> 
-          alert res.responseText
-      )
-      app.vent.trigger "main:admin:users"      
+      if modelValid
+        @model.save(
+          @model.toJSON(),
+          error: (model, res) -> 
+            alert res.responseText
+        )
+        app.vent.trigger "main:admin:users"      
 
     cancel: (e) ->
       e.preventDefault()
@@ -51,7 +48,7 @@ define (require) ->
 
     onShow: =>
       ko.applyBindings(@viewModel, @el)
-      # Backbone.Validation.bind(@, forceUpdate: true) 
+      Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
      
     getGravatarURL: =>
@@ -74,5 +71,3 @@ define (require) ->
     close: =>
       @hideDatePicker()
       super
-
-

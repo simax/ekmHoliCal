@@ -27,11 +27,10 @@
   UserSchemaBuilder = (function() {
 
     function UserSchemaBuilder() {
-      var Department, con;
+      var con;
       this.mongoose = require('mongoose');
       this.schema = this.mongoose.Schema;
       this.ObjectId = this.schema.ObjectId;
-      Department = new DepartmentSchemaBuilder().Model;
       this.UserSchema = new this.schema({
         'firstname': {
           type: String,
@@ -49,9 +48,12 @@
           },
           validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
         },
-        'department': {
-          type: this.schema.ObjectId,
-          ref: 'departments'
+        'departmentId': {
+          type: {
+            String: {
+              required: true
+            }
+          }
         },
         'enddate': String,
         'enddate': String,

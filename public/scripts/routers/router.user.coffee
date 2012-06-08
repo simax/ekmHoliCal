@@ -22,6 +22,7 @@ define (require) ->
       "admin/users/edit/:id": "adminUsersEdit"
 
   class UserController 
+    
     showAdminLayout: =>
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()
@@ -38,39 +39,39 @@ define (require) ->
 
       @users = new Users()  
       @users.fetch()
-        # success: =>
       userListView = new UserListView(collection: @users)
       usersLayoutView.listRegion.show(userListView)
 
- 
     adminUsersCreate: =>
       model = new User()
-      model.set("department", new Department())
       deps = new Departments()
       model.set 
         departments: deps
+      deps.fetch()
       
-      deps.fetch
-        success: =>
-          userMaintenanceView = new UserMaintenanceView
-            model: model
-            viewModel: kb.viewModel(model)
+      userMaintenanceView = new UserMaintenanceView
+        model: model
+        viewModel: kb.viewModel(model)
 
-          @adminLayoutView.contentRegion.show(userMaintenanceView)      
+      @adminLayoutView.contentRegion.show(userMaintenanceView)      
 
     adminUsersEdit: (id) =>
-      model = @users.get(id)
+      if @users?  
+        model = @users.get(id) 
+      else 
+        model = new User()
+        model.fetch()
+      
       deps = new Departments()
-      deps.fetch 
-        success: =>
-          model.set 
-            departments: deps
+      model.set 
+        departments: deps
+      deps.fetch()
 
-          userMaintenanceView = new UserMaintenanceView
-            model: model
-            viewModel: kb.viewModel(model)
+      userMaintenanceView = new UserMaintenanceView
+        model: model
+        viewModel: kb.viewModel(model)
 
-          @adminLayoutView.contentRegion.show(userMaintenanceView)      
+      @adminLayoutView.contentRegion.show(userMaintenanceView)      
       
   UserRouter: UserRouter
   UserController: UserController

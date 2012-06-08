@@ -4,11 +4,11 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var User, Utils;
+    var Utils;
     Utils = require('../../scripts/Utils.js');
     if (window.app == null) window.app = new Backbone.Marionette.Application();
     require('../../scripts/models/model.Department.js');
-    User = (function(_super) {
+    return app.User = (function(_super) {
 
       __extends(User, _super);
 
@@ -24,12 +24,12 @@
       };
 
       User.prototype.defaults = {
-        department: "",
         firstname: "",
         lastname: "",
         email: "",
         active: true,
-        enddate: ""
+        enddate: "",
+        departmentId: ""
       };
 
       User.prototype.urlRoot = '/ekmHoliCal/api/users/';
@@ -50,31 +50,15 @@
           pattern: 'email',
           msg: 'A valid email address is required'
         },
-        department: {
+        departmentId: {
           required: true,
           msg: 'A department is required'
         }
       };
 
-      User.prototype.relations = [
-        {
-          type: Backbone.HasOne,
-          key: 'department',
-          relatedModel: 'app.Department',
-          includeInJSON: "_id",
-          reverseRelation: {
-            type: Backbone.HasOne,
-            key: 'user'
-          }
-        }
-      ];
-
       return User;
 
-    })(Backbone.RelationalModel);
-    app.User = User;
-    app.User.setup();
-    return app.User;
+    })(Backbone.Model);
   });
 
 }).call(this);

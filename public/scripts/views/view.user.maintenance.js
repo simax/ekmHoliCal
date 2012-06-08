@@ -19,6 +19,7 @@
         this.getGravatarURL = __bind(this.getGravatarURL, this);
         this.onShow = __bind(this.onShow, this);
         this.refresh = __bind(this.refresh, this);
+        this.departmentsLoaded = __bind(this.departmentsLoaded, this);
         this.initialize = __bind(this.initialize, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
@@ -26,15 +27,23 @@
       UserMaintenanceView.prototype.className = "row";
 
       UserMaintenanceView.prototype.initialize = function() {
-        this.viewModel = this.options.viewModel;
         this.template = require('../../scripts/text!user_maintenance.html');
-        return this.model.on('change:email', this.SetGravatarImage, this);
+        this.viewModel = this.options.viewModel;
+        this.initialDepartmentId = this.model.get("departmentId");
+        this.model.on('change:email', this.SetGravatarImage, this);
+        return this.model.get("departments").on('reset', this.departmentsLoaded, this);
       };
 
       UserMaintenanceView.prototype.events = {
         "click #cancel-button": "cancel",
-        "submit #user-create": "save",
+        "submit #user-maintenance": "save",
         "focus #enddate": "showDatePicker"
+      };
+
+      UserMaintenanceView.prototype.departmentsLoaded = function() {
+        if (this.model.get("_id") != null) {
+          return this.model.set("departmentId", this.initialDepartmentId);
+        }
       };
 
       UserMaintenanceView.prototype.refresh = function() {
@@ -43,16 +52,17 @@
       };
 
       UserMaintenanceView.prototype.save = function(e) {
-        var x;
+        var modelValid;
         e.preventDefault();
-        this.model = this.viewModel.model();
-        x = this.model.toJSON();
-        this.model.save(this.model.toJSON(), {
-          error: function(model, res) {
-            return alert(res.responseText);
-          }
-        });
-        return app.vent.trigger("main:admin:users");
+        modelValid = this.model.isValid(true);
+        if (modelValid) {
+          this.model.save(this.model.toJSON(), {
+            error: function(model, res) {
+              return alert(res.responseText);
+            }
+          });
+          return app.vent.trigger("main:admin:users");
+        }
       };
 
       UserMaintenanceView.prototype.cancel = function(e) {
@@ -62,6 +72,9 @@
 
       UserMaintenanceView.prototype.onShow = function() {
         ko.applyBindings(this.viewModel, this.el);
+        Backbone.Validation.bind(this, {
+          forceUpdate: true
+        });
         return this.SetGravatarImage();
       };
 

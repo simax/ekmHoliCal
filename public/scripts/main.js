@@ -12,7 +12,6 @@
       bootstrap: 'libs/bootstrap/js/bootstrap',
       marionette: 'libs/backbone.marionette.amd',
       validation: 'libs/backbone.validation',
-      relational: 'libs/backbone-relational',
       knockout: 'libs/knockout-2.0.0.debug',
       knockback: 'libs/knockback',
       jqueryQtip: 'libs/jquery.qtip',
@@ -34,6 +33,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "marionette", "order!handlebars", "order!validation", "order!relational", "order!knockout", "order!knockback", "order!jqueryDatatables", "order!DT_bootstrap", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "order!marionette", "order!handlebars", "order!validation", "order!knockout", "order!knockback", "order!jqueryDatatables", "order!DT_bootstrap", "app"]);
 
 }).call(this);

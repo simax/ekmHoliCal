@@ -13,7 +13,6 @@
       __extends(DepartmentMaintenanceView, _super);
 
       function DepartmentMaintenanceView() {
-        this.onClose = __bind(this.onClose, this);
         this.onShow = __bind(this.onShow, this);
         this.initialize = __bind(this.initialize, this);
         DepartmentMaintenanceView.__super__.constructor.apply(this, arguments);
@@ -58,8 +57,6 @@
           forceUpdate: true
         });
       };
-
-      DepartmentMaintenanceView.prototype.onClose = function() {};
 
       return DepartmentMaintenanceView;
 
