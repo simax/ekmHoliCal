@@ -1,5 +1,7 @@
 define (require) ->
 
+  window.app = new Backbone.Marionette.Application() unless window.app?
+
   class UserItemView extends Backbone.Marionette.ItemView
     template: "#tmpl-user-item"
     tagName: "tr"
@@ -14,10 +16,6 @@ define (require) ->
     toggleActivation: (e) ->
       alert @model.get("active")
 
-    edit: (e) ->
-      id = @model.id
-      app.vent.trigger "admin:users:edit", id  
-    
-    # renderHtml: (data) =>
-    #   viewModel = kb.viewModel(@model)
-    #   ko.applyBindings(viewModel, @el)
+    edit: ->
+      new app.UserController().adminUsersEdit(@model.id)
+      Backbone.history.navigate("admin/users/edit/" + @model.id)

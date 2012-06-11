@@ -4,6 +4,7 @@
 
   define(function(require) {
     var UserNavigationView;
+    if (window.app == null) window.app = new Backbone.Marionette.Application();
     return UserNavigationView = (function(_super) {
 
       __extends(UserNavigationView, _super);
@@ -24,7 +25,8 @@
 
       UserNavigationView.prototype.create = function(e) {
         e.preventDefault();
-        return app.vent.trigger("admin:users:create");
+        new app.UserController().adminUsersCreate();
+        return Backbone.history.navigate("admin/users/create/");
       };
 
       return UserNavigationView;

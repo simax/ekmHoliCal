@@ -4,6 +4,7 @@
 
   define(function(require) {
     var UserItemView;
+    if (window.app == null) window.app = new Backbone.Marionette.Application();
     return UserItemView = (function(_super) {
 
       __extends(UserItemView, _super);
@@ -29,10 +30,9 @@
         return alert(this.model.get("active"));
       };
 
-      UserItemView.prototype.edit = function(e) {
-        var id;
-        id = this.model.id;
-        return app.vent.trigger("admin:users:edit", id);
+      UserItemView.prototype.edit = function() {
+        new app.UserController().adminUsersEdit(this.model.id);
+        return Backbone.history.navigate("admin/users/edit/" + this.model.id);
       };
 
       return UserItemView;

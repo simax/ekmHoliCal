@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Department, DepartmentController, DepartmentListView, DepartmentMaintenanceView, DepartmentNavigationView, DepartmentRouter, Departments, DepartmentsLayoutView;
+    var AdminLayoutView, AdminNavigationView, Department, DepartmentListView, DepartmentMaintenanceView, DepartmentNavigationView, Departments, DepartmentsLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     DepartmentsLayoutView = require('../../scripts/views/view.departments.layout.js');
@@ -13,7 +13,7 @@
     Departments = require('../../scripts/collections/collection.departments.js');
     Department = require('../../scripts/models/model.department.js');
     DepartmentMaintenanceView = require('../../scripts/views/view.department.maintenance.js');
-    DepartmentRouter = (function(_super) {
+    app.DepartmentRouter = (function(_super) {
 
       __extends(DepartmentRouter, _super);
 
@@ -30,19 +30,25 @@
       return DepartmentRouter;
 
     })(Backbone.Marionette.AppRouter);
-    DepartmentController = (function() {
+    app.DepartmentController = (function() {
 
       function DepartmentController() {
+        this.editDepartment = __bind(this.editDepartment, this);
         this.adminDepartmentsEdit = __bind(this.adminDepartmentsEdit, this);
         this.adminDepartmentsCreate = __bind(this.adminDepartmentsCreate, this);
         this.adminDepartments = __bind(this.adminDepartments, this);
         this.showAdminLayout = __bind(this.showAdminLayout, this);
+        this.setupLayout = __bind(this.setupLayout, this);
       }
 
-      DepartmentController.prototype.showAdminLayout = function() {
+      DepartmentController.prototype.setupLayout = function() {
         this.adminLayoutView = new AdminLayoutView;
         this.adminLayoutView.render();
-        app.mainRegion.show(this.adminLayoutView);
+        return app.mainRegion.show(this.adminLayoutView);
+      };
+
+      DepartmentController.prototype.showAdminLayout = function() {
+        this.setupLayout();
         return this.adminLayoutView.navigationRegion.show(new AdminNavigationView);
       };
 
@@ -69,16 +75,34 @@
           model: model,
           viewModel: kb.viewModel(model)
         });
+        this.setupLayout();
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);
       };
 
       DepartmentController.prototype.adminDepartmentsEdit = function(id) {
+        var model,
+          _this = this;
+        if (this.departments != null) {
+          model = this.departments.get(id);
+          return this.editDepartment(id);
+        } else {
+          this.departments = new Departments();
+          return this.departments.fetch({
+            success: function() {
+              return _this.editDepartment(id);
+            }
+          });
+        }
+      };
+
+      DepartmentController.prototype.editDepartment = function(id) {
         var departmentMaintenanceView, model;
         model = this.departments.get(id);
         departmentMaintenanceView = new DepartmentMaintenanceView({
           model: model,
           viewModel: kb.viewModel(model)
         });
+        this.setupLayout();
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);
       };
 
@@ -86,8 +110,8 @@
 
     })();
     return {
-      DepartmentRouter: DepartmentRouter,
-      DepartmentController: DepartmentController
+      DepartmentRouter: app.DepartmentRouter,
+      DepartmentController: app.DepartmentController
     };
   });
 

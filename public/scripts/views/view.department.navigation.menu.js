@@ -24,7 +24,8 @@
 
       DepartmentNavigationView.prototype.create = function(e) {
         e.preventDefault();
-        return app.vent.trigger("admin:departments:create");
+        new app.DepartmentController().adminDepartmentsCreate();
+        return Backbone.history.navigate("admin/users/create/");
       };
 
       return DepartmentNavigationView;

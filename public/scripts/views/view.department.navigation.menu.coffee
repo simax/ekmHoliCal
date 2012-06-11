@@ -11,4 +11,5 @@ define (require) ->
 
     create: (e) ->
       e.preventDefault()
-      app.vent.trigger "admin:departments:create"
+      new app.DepartmentController().adminDepartmentsCreate()
+      Backbone.history.navigate("admin/users/create/")

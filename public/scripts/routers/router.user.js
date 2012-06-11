@@ -4,7 +4,7 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserController, UserListView, UserMaintenanceView, UserNavigationView, UserRouter, Users, UsersLayoutView;
+    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserListView, UserMaintenanceView, UserNavigationView, Users, UsersLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
@@ -15,7 +15,8 @@
     Departments = require('../../scripts/collections/collection.departments.js');
     Department = require('../../scripts/models/model.department.js');
     UserMaintenanceView = require('../../scripts/views/view.user.maintenance.js');
-    UserRouter = (function(_super) {
+    if (window.app == null) window.app = new Backbone.Marionette.Application();
+    app.UserRouter = (function(_super) {
 
       __extends(UserRouter, _super);
 
@@ -32,19 +33,25 @@
       return UserRouter;
 
     })(Backbone.Marionette.AppRouter);
-    UserController = (function() {
+    app.UserController = (function() {
 
       function UserController() {
+        this.editUser = __bind(this.editUser, this);
         this.adminUsersEdit = __bind(this.adminUsersEdit, this);
         this.adminUsersCreate = __bind(this.adminUsersCreate, this);
         this.adminUsers = __bind(this.adminUsers, this);
         this.showAdminLayout = __bind(this.showAdminLayout, this);
+        this.setupLayout = __bind(this.setupLayout, this);
       }
 
-      UserController.prototype.showAdminLayout = function() {
+      UserController.prototype.setupLayout = function() {
         this.adminLayoutView = new AdminLayoutView;
         this.adminLayoutView.render();
-        app.mainRegion.show(this.adminLayoutView);
+        return app.mainRegion.show(this.adminLayoutView);
+      };
+
+      UserController.prototype.showAdminLayout = function() {
+        this.setupLayout();
         return this.adminLayoutView.navigationRegion.show(new AdminNavigationView);
       };
 
@@ -75,17 +82,29 @@
           model: model,
           viewModel: kb.viewModel(model)
         });
+        this.setupLayout();
         return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
-        var deps, model, userMaintenanceView;
+        var model,
+          _this = this;
         if (this.users != null) {
           model = this.users.get(id);
+          return this.editUser(id);
         } else {
-          model = new User();
-          model.fetch();
+          this.users = new Users();
+          return this.users.fetch({
+            success: function() {
+              return _this.editUser(id);
+            }
+          });
         }
+      };
+
+      UserController.prototype.editUser = function(id) {
+        var deps, model, userMaintenanceView;
+        model = this.users.get(id);
         deps = new Departments();
         model.set({
           departments: deps
@@ -95,6 +114,7 @@
           model: model,
           viewModel: kb.viewModel(model)
         });
+        this.setupLayout();
         return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
@@ -102,8 +122,8 @@
 
     })();
     return {
-      UserRouter: UserRouter,
-      UserController: UserController
+      UserRouter: app.UserRouter,
+      UserController: app.UserController
     };
   });
 

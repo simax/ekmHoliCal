@@ -14,19 +14,23 @@ define (require) ->
 
   UserMaintenanceView = require '../../scripts/views/view.user.maintenance.js'
 
+  window.app = new Backbone.Marionette.Application() unless window.app?
 
-  class UserRouter extends Backbone.Marionette.AppRouter
+  class app.UserRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/users": "adminUsers"
       "admin/users/create": "adminUsersCreate"
       "admin/users/edit/:id": "adminUsersEdit"
 
-  class UserController 
-    
-    showAdminLayout: =>
+  class app.UserController 
+
+    setupLayout: =>
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()
       app.mainRegion.show(@adminLayoutView)
+
+    showAdminLayout: =>
+      @setupLayout()
       @adminLayoutView.navigationRegion.show(new AdminNavigationView)
 
     adminUsers: =>
@@ -45,33 +49,39 @@ define (require) ->
     adminUsersCreate: =>
       model = new User()
       deps = new Departments()
-      model.set 
-        departments: deps
+      model.set departments: deps
       deps.fetch()
       
       userMaintenanceView = new UserMaintenanceView
         model: model
         viewModel: kb.viewModel(model)
 
+      @setupLayout()
       @adminLayoutView.contentRegion.show(userMaintenanceView)      
 
     adminUsersEdit: (id) =>
       if @users?  
         model = @users.get(id) 
+        @editUser(id)
       else 
-        model = new User()
-        model.fetch()
-      
+        @users = new Users()
+        @users.fetch
+          success: =>
+            @editUser(id)
+
+    editUser: (id) =>
+      model = @users.get(id) 
       deps = new Departments()
-      model.set 
-        departments: deps
+      model.set departments: deps
       deps.fetch()
 
       userMaintenanceView = new UserMaintenanceView
         model: model
         viewModel: kb.viewModel(model)
 
+      @setupLayout()  
       @adminLayoutView.contentRegion.show(userMaintenanceView)      
-      
-  UserRouter: UserRouter
-  UserController: UserController
+        
+
+  UserRouter: app.UserRouter
+  UserController: app.UserController

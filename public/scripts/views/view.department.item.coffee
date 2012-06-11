@@ -1,5 +1,7 @@
 define (require) ->
 
+  window.app = new Backbone.Marionette.Application() unless window.app?
+
   class DepartmentItemView extends Backbone.Marionette.ItemView
     template: "#tmpl-department-item"
     tagName: "tr"
@@ -14,7 +16,6 @@ define (require) ->
     toggleActivation: (e) ->
       alert JSON.stringify @model.get("active")
 
-    edit: (e) ->
-      id = @model.id
-      app.vent.trigger "admin:departments:edit", id  
-    
+    edit: =>
+      new app.DepartmentController().adminDepartmentsEdit(@model.id)
+      Backbone.history.navigate("admin/departments/edit/" + @model.id)

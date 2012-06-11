@@ -1,5 +1,7 @@
 define (require) ->
 
+  window.app = new Backbone.Marionette.Application() unless window.app?
+
   class UserNavigationView extends Backbone.Marionette.ItemView
     className: "row" 
 
@@ -12,4 +14,5 @@ define (require) ->
 
     create: (e) ->
       e.preventDefault()
-      app.vent.trigger "admin:users:create"
+      new app.UserController().adminUsersCreate()
+      Backbone.history.navigate("admin/users/create/")

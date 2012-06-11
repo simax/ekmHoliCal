@@ -13,17 +13,20 @@ define (require) ->
   DepartmentMaintenanceView = require '../../scripts/views/view.department.maintenance.js'
  
   
-  class DepartmentRouter extends Backbone.Marionette.AppRouter
+  class app.DepartmentRouter extends Backbone.Marionette.AppRouter
     appRoutes: 
       "admin/departments": "adminDepartments"
       "admin/departments/create": "adminDepartmentsCreate"
       "admin/departments/edit/:id": "adminDepartmentsEdit"
 
-  class DepartmentController  
-    showAdminLayout: =>
+  class app.DepartmentController  
+    setupLayout: =>
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()
-      app.mainRegion.show(@adminLayoutView)
+      app.mainRegion.show(@adminLayoutView)      
+
+    showAdminLayout: =>
+      @setupLayout()
       @adminLayoutView.navigationRegion.show(new AdminNavigationView)
 
     adminDepartments: =>
@@ -49,16 +52,27 @@ define (require) ->
         model: model
         viewModel: kb.viewModel(model)
 
+      @setupLayout()   
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
 
     adminDepartmentsEdit: (id) =>
+      if @departments?  
+        model = @departments.get(id) 
+        @editDepartment(id)
+      else 
+        @departments = new Departments()
+        @departments.fetch
+          success: =>
+            @editDepartment(id)
+
+    editDepartment: (id) =>
       model = @departments.get(id)
       departmentMaintenanceView = new DepartmentMaintenanceView
         model: model
         viewModel: kb.viewModel(model)
 
+      @setupLayout()  
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
-      
-  DepartmentRouter: DepartmentRouter
-  DepartmentController: DepartmentController
 
+  DepartmentRouter: app.DepartmentRouter
+  DepartmentController: app.DepartmentController

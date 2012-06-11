@@ -5,4 +5,3 @@ define (require) ->
   class app.Users extends Backbone.Collection
     model: User 
     url: "/ekmHoliCal/api/users"
-
