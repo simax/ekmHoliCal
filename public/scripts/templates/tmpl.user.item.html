@@ -1,8 +1,14 @@
+
 <script type="text/x-knockback-template" id="tmpl-user-item">
-	<td>{{firstname}}</td> 
-	<td>{{lastname}}</td>
-	<td>{{email}}</td>
-  <td>{{department.name}}</td>
-	<td>{{departmentId}}</td>
-	<td><button type="button" class="btn edit"><i class="icon-edit"></i> Edit</button></td>
+
+  <div style="float: left; width:150px; height:150px; overflow: hidden; ">
+    <img class="edit" style="cursor: pointer; display: block; margin: auto; width: 100px; height: 100px; " data-bind="attr: { src: gravatar, title: fullname }" />
+    <span style="font-weight: bold; display: block; text-align: center; margin-left: auto; margin-right: auto; width: 150px;" data-bind="text: fullname"></span> 
+  </div>
+
 </script>
+
+
+<!--   
+
+-->

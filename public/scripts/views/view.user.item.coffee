@@ -1,13 +1,19 @@
 define (require) ->
 
+  Utils = require '../../scripts/Utils.js' 
   window.app = new Backbone.Marionette.Application() unless window.app?
 
   class UserItemView extends Backbone.Marionette.ItemView
     template: "#tmpl-user-item"
-    tagName: "tr"
 
     initialize: ->
       @template = require '../../scripts/text!user_item.html'
+      @buildViewModel()
+
+    buildViewModel: =>
+      @viewModel=kb.viewModel(@model)
+      @viewModel.fullname = kb.formattedObservable("{0} {1}", @viewModel.firstname, @viewModel.lastname )
+      @viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(@model.get("email")))
 
     events:
       "click .edit": "edit"
@@ -19,3 +25,9 @@ define (require) ->
     edit: ->
       new app.UserController().adminUsersEdit(@model.id)
       Backbone.history.navigate("admin/users/edit/" + @model.id)
+
+    render: =>
+      super
+      ko.applyBindings(@viewModel, @el)
+
+ 
