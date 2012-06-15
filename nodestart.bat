@@ -1,2 +1,2 @@
-supervisor -w Backend backend.js
+supervisor -w Server server.js
 
