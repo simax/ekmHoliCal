@@ -20,7 +20,7 @@
       utils: 'utils',
       admin_navigation: 'templates/tmpl.admin.navigation',
       admin_layout: 'templates/tmpl.admin.layout',
-      user_grid_header: 'templates/tmpl.user.grid.header',
+      user_department_header: 'templates/tmpl.user.department.header',
       user_item: 'templates/tmpl.user.item',
       user_maintenance: 'templates/tmpl.user.maintenance',
       user_navigation: 'templates/tmpl.user.navigation',

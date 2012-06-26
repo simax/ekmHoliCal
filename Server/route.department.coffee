@@ -1,8 +1,11 @@
+_und = require '../public/scripts/libs/underscore.js'
+
 class DepartmentRoutes
 
 	constructor: ->
-		Schemas = require './schemas'
-		@Model = new Schemas.DepartmentSchemaBuilder().Model
+		@Schemas = require './schemas'
+		@Model = new @Schemas.DepartmentSchemaBuilder().Model
+		@UserModel = new @Schemas.UserSchemaBuilder().Model
 
 	post: (req, res) =>
 		entity = new @Model
@@ -12,8 +15,31 @@ class DepartmentRoutes
  
 	getall: (req, res) =>
 		res.contentType 'application/json'
-		@Model.find (err, entity) ->
-			res.send(entity)
+		@Model
+				.find()
+				.populate('users')
+				.run (err, entity) ->
+					res.send(entity)
+
+		# @UserModel
+		# 	.find()		
+		# 	.run (err, entity) =>
+		# 		@users = entity
+		# 		@Model
+		# 			.find()
+		# 			.run (err, entity) =>
+		# 				@deps = _und.map entity, 
+		# 					(dept) => 
+		# 						@departmentId = dept._id
+		# 						@departmentUsers = _und.filter @users, 
+		# 							(user) => 
+		# 								# console.log user.departmentId.toString() + ":" + @departmentId.toString() #if user.departmentId == @departmentId
+		# 								user.departmentId.toString() == @departmentId.toString()
+		# 								# user #if user.departmentId == dept._id
+		# 						dept.users.push.apply(dept.users, @departmentUsers)
+		# 						dept.save()		
+		# 				res.send(@deps)
+
 
 	get: (req, res) =>
 		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id

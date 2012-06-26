@@ -30,4 +30,4 @@ define (require) ->
       super
       ko.applyBindings(@viewModel, @el)
 
- 
+

@@ -5,7 +5,7 @@
 
   request = require('request');
 
-  app = require('../../backend');
+  app = require('../../server');
 
   describe("My Suite Of Tests", function() {
     return describe("GET /api/users", function() {

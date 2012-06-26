@@ -14,7 +14,13 @@
           index: {
             unique: true
           }
-        }
+        },
+        'users': [
+          {
+            type: this.schema.ObjectId,
+            ref: 'users'
+          }
+        ]
       });
       this.Model = this.mongoose.model('departments', this.DepartmentSchema);
       con = this.mongoose.connect('mongodb://localhost:8120/ekmHoliCal');

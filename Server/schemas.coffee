@@ -7,6 +7,9 @@ class DepartmentSchemaBuilder
 
     @DepartmentSchema = new @schema
       'name': { type: String, required: true, index: { unique: true } }
+      'users': [{ type: @schema.ObjectId, ref: 'users'}]
+
+
 
     # Register a departments Mongo collection
     @Model = @mongoose.model 'departments', @DepartmentSchema

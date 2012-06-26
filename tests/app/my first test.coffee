@@ -2,7 +2,7 @@
 
 assert = require 'assert'
 request = require 'request'
-app = require '../../backend'
+app = require '../../server'
 
 describe "My Suite Of Tests", ->
   # describe "GET /", ->

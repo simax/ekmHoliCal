@@ -4,12 +4,12 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserListView, UserMaintenanceView, UserNavigationView, Users, UsersLayoutView;
+    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserCompositeView, UserMaintenanceView, UserNavigationView, Users, UsersLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
     UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');
-    UserListView = require('../../scripts/views/view.user.list.js');
+    UserCompositeView = require('../../scripts/views/view.user.list.js');
     Users = require('../../scripts/collections/collection.users.js');
     User = require('../../scripts/models/model.user.js');
     Departments = require('../../scripts/collections/collection.departments.js');
@@ -56,7 +56,7 @@
       };
 
       UserController.prototype.adminUsers = function() {
-        var userListView, usersLayoutView;
+        var userCompositeView, usersLayoutView;
         this.showAdminLayout();
         usersLayoutView = new UsersLayoutView;
         usersLayoutView.render();
@@ -64,10 +64,12 @@
         usersLayoutView.navigationRegion.show(new UserNavigationView);
         this.users = new Users();
         this.users.fetch();
-        userListView = new UserListView({
-          collection: this.users
+        userCompositeView = new UserCompositeView({
+          model: {
+            collection: this.users
+          }
         });
-        return usersLayoutView.listRegion.show(userListView);
+        return usersLayoutView.listRegion.show(userCompositeView);
       };
 
       UserController.prototype.adminUsersCreate = function() {

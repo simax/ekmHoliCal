@@ -5,7 +5,7 @@ define (require) ->
 
   UsersLayoutView = require '../../scripts/views/view.users.layout.js'
   UserNavigationView = require '../../scripts/views/view.user.navigation.menu.js'
-  UserListView = require '../../scripts/views/view.user.list.js'
+  UserCompositeView = require '../../scripts/views/view.user.list.js'
 
   Users = require '../../scripts/collections/collection.users.js'
   User = require '../../scripts/models/model.user.js'
@@ -43,8 +43,11 @@ define (require) ->
 
       @users = new Users()  
       @users.fetch()
-      userListView = new UserListView(collection: @users)
-      usersLayoutView.listRegion.show(userListView)
+      # userListView = new UserListView(collection: @users)
+      # usersLayoutView.listRegion.show(userListView)
+      userCompositeView = new UserCompositeView(model: collection: @users)
+      usersLayoutView.listRegion.show(userCompositeView)
+
 
     adminUsersCreate: =>
       model = new User()
