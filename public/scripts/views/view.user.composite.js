@@ -12,11 +12,15 @@
       __extends(UserCompositeView, _super);
 
       function UserCompositeView() {
+        this.render = __bind(this.render, this);
         this.buildViewModel = __bind(this.buildViewModel, this);
+        this.initialize = __bind(this.initialize, this);
         UserCompositeView.__super__.constructor.apply(this, arguments);
       }
 
       UserCompositeView.prototype.itemView = UserItemView;
+
+      UserCompositeView.prototype.itemViewContainer = '#users';
 
       UserCompositeView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_department_header.html');
@@ -25,6 +29,11 @@
 
       UserCompositeView.prototype.buildViewModel = function() {
         return this.viewModel = kb.viewModel(this.model);
+      };
+
+      UserCompositeView.prototype.render = function() {
+        UserCompositeView.__super__.render.apply(this, arguments);
+        return ko.applyBindings(this.viewModel, this.el);
       };
 
       return UserCompositeView;

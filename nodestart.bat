@@ -1,2 +1,1 @@
-supervisor -w server server.js
-
+supervisor -w Server server.js

@@ -7,9 +7,7 @@ class DepartmentSchemaBuilder
 
     @DepartmentSchema = new @schema
       'name': { type: String, required: true, index: { unique: true } }
-      'users': [{ type: @schema.ObjectId, ref: 'users'}]
-
-
+      'users' : [ {type: @schema.ObjectId, ref: 'users'} ]
 
     # Register a departments Mongo collection
     @Model = @mongoose.model 'departments', @DepartmentSchema
@@ -29,7 +27,6 @@ class UserSchemaBuilder
       'lastname': { type: String, required: true }, 
       'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
       'departmentId': { type: String: required: true }
-      'enddate': String,
       'enddate': String,
       'active': { type: Boolean, default: true } 
      

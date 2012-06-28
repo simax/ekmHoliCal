@@ -62,7 +62,6 @@
           }
         },
         'enddate': String,
-        'enddate': String,
         'active': {
           type: Boolean,
           "default": true

@@ -4,12 +4,12 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   define(function(require) {
-    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserCompositeView, UserMaintenanceView, UserNavigationView, Users, UsersLayoutView;
+    var AdminLayoutView, AdminNavigationView, Department, Departments, User, UserListView, UserMaintenanceView, UserNavigationView, Users, UsersLayoutView;
     AdminLayoutView = require('../../scripts/views/view.admin.layout.js');
     AdminNavigationView = require('../../scripts/views/view.admin.navigation.menu.js');
     UsersLayoutView = require('../../scripts/views/view.users.layout.js');
     UserNavigationView = require('../../scripts/views/view.user.navigation.menu.js');
-    UserCompositeView = require('../../scripts/views/view.user.list.js');
+    UserListView = require('../../scripts/views/view.user.list.js');
     Users = require('../../scripts/collections/collection.users.js');
     User = require('../../scripts/models/model.user.js');
     Departments = require('../../scripts/collections/collection.departments.js');
@@ -56,20 +56,18 @@
       };
 
       UserController.prototype.adminUsers = function() {
-        var userCompositeView, usersLayoutView;
+        var userListView, usersLayoutView;
         this.showAdminLayout();
         usersLayoutView = new UsersLayoutView;
         usersLayoutView.render();
         this.adminLayoutView.contentRegion.show(usersLayoutView);
         usersLayoutView.navigationRegion.show(new UserNavigationView);
-        this.users = new Users();
-        this.users.fetch();
-        userCompositeView = new UserCompositeView({
-          model: {
-            collection: this.users
-          }
+        this.usersInDepartments = new Departments();
+        this.usersInDepartments.fetch();
+        userListView = new UserListView({
+          collection: this.usersInDepartments
         });
-        return usersLayoutView.listRegion.show(userCompositeView);
+        return usersLayoutView.listRegion.show(userListView);
       };
 
       UserController.prototype.adminUsersCreate = function() {

@@ -1,8 +1,6 @@
 (function() {
-  var DepartmentRoutes, _und,
+  var DepartmentRoutes,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-
-  _und = require('../public/scripts/libs/underscore.js');
 
   DepartmentRoutes = (function() {
 
@@ -12,9 +10,10 @@
       this.put = __bind(this.put, this);
       this.get = __bind(this.get, this);
       this.getall = __bind(this.getall, this);
-      this.post = __bind(this.post, this);      this.Schemas = require('./schemas');
-      this.Model = new this.Schemas.DepartmentSchemaBuilder().Model;
-      this.UserModel = new this.Schemas.UserSchemaBuilder().Model;
+      this.post = __bind(this.post, this);
+      var Schemas;
+      Schemas = require('./schemas');
+      this.Model = new Schemas.DepartmentSchemaBuilder().Model;
     }
 
     DepartmentRoutes.prototype.post = function(req, res) {

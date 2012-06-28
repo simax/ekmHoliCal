@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+supervisor -w server server.js
+=======
+supervisor -w Server server.js
+>>>>>>> 789ffa252e06b8b66d907e5cdc65630802b272a2
+
