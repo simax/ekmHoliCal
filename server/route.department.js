@@ -27,7 +27,6 @@
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
-      res.contentType('application/json');
       return this.Model.find().populate('users').run(function(err, entity) {
         return res.send(entity);
       });

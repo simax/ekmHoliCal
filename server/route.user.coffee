@@ -18,7 +18,6 @@ class UserRoutes
 			@save(entity, res, err)
  
 	getall: (req, res) => 
-		res.contentType 'application/json'
 		@Model 
 			.find() 
 			.run (err, entity) ->

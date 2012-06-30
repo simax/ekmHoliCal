@@ -11,13 +11,12 @@ class DepartmentRoutes
 			@save(entity, res, err)
  
 	getall: (req, res) =>
-		res.contentType 'application/json'
 		@Model
 			.find()
 			.populate('users')
 			.run (err, entity) ->
 				res.send(entity)
-
+ 
 	get: (req, res) =>
 		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
 		@Model.findById req.params.id, (err, entity) ->

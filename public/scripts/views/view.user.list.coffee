@@ -6,11 +6,11 @@ define (require) ->
     itemView: UserCompositeView
     id: "user-list"  
 
-    # appendHtml: (collectionView, itemView, index) =>
-    #   itemModel = @collection.at(index)
-    #   itemView = new UserCompositeView
-    #     model: itemModel 
-    #     collection: itemModel.get("users")
+    appendHtml: (collectionView, itemView, index) =>
+      itemModel = @collection.at(index)
+      itemView = new UserCompositeView
+        model: itemModel 
+        collection: new Backbone.Collection itemModel.get("users")
             
-    #   collectionView.$el.append itemView.el
+      collectionView.$el.append itemView.el
   
