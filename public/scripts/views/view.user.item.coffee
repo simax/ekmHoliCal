@@ -8,6 +8,7 @@ define (require) ->
 
     initialize: ->
       @template = require '../../scripts/text!user_item.html'
+      @model.set "users", new Backbone.Collection @model.get("users")
       @buildViewModel()
 
     buildViewModel: =>

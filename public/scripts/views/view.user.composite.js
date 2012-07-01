@@ -4,7 +4,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var UserCompositeView, UserItemView;
+    var UserCompositeView, UserItemView, Utils;
+    Utils = require('../../scripts/Utils.js');
     UserItemView = require('../../scripts/views/view.user.item.js');
     if (window.app == null) window.app = new Backbone.Marionette.Application();
     return UserCompositeView = (function(_super) {
@@ -24,11 +25,14 @@
 
       UserCompositeView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_department_header.html');
+        this.collection = new Backbone.Collection(this.model.get("users"));
         return this.buildViewModel();
       };
 
       UserCompositeView.prototype.buildViewModel = function() {
-        return this.viewModel = kb.viewModel(this.model);
+        this.viewModel = kb.viewModel(this.model);
+        this.viewModel.fullname = kb.formattedObservable("{0} {1}", this.viewModel.firstname, this.viewModel.lastname);
+        return this.viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(this.model.get("email")));
       };
 
       UserCompositeView.prototype.render = function() {

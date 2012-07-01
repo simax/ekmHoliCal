@@ -21,6 +21,7 @@
 
       UserItemView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_item.html');
+        this.model.set("users", new Backbone.Collection(this.model.get("users")));
         return this.buildViewModel();
       };
 
