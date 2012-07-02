@@ -12,23 +12,17 @@
       __extends(UserItemView, _super);
 
       function UserItemView() {
-        this.render = __bind(this.render, this);
-        this.buildViewModel = __bind(this.buildViewModel, this);
+        this.onClose = __bind(this.onClose, this);
+        this.onShow = __bind(this.onShow, this);
         UserItemView.__super__.constructor.apply(this, arguments);
       }
 
       UserItemView.prototype.template = "#tmpl-user-item";
 
       UserItemView.prototype.initialize = function() {
+        this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_item.html');
-        this.model.set("users", new Backbone.Collection(this.model.get("users")));
-        return this.buildViewModel();
-      };
-
-      UserItemView.prototype.buildViewModel = function() {
-        this.viewModel = kb.viewModel(this.model);
-        this.viewModel.fullname = kb.formattedObservable("{0} {1}", this.viewModel.firstname, this.viewModel.lastname);
-        return this.viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(this.model.get("email")));
+        return this.model.set("users", new Backbone.Collection(this.model.get("users")));
       };
 
       UserItemView.prototype.events = {
@@ -45,9 +39,15 @@
         return Backbone.history.navigate("admin/users/edit/" + this.model.id);
       };
 
-      UserItemView.prototype.render = function() {
-        UserItemView.__super__.render.apply(this, arguments);
-        return ko.applyBindings(this.viewModel, this.el);
+      UserItemView.prototype.onShow = function() {
+        this.modelBinder.bind(this.model, this.el);
+        return Backbone.Validation.bind(this, {
+          forceUpdate: true
+        });
+      };
+
+      UserItemView.prototype.onClose = function() {
+        return this.modelBinder.unbind();
       };
 
       return UserItemView;

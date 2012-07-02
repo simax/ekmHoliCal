@@ -58,7 +58,7 @@ define (require) ->
       
       userMaintenanceView = new UserMaintenanceView
         model: model
-        viewModel: kb.viewModel(model)
+        # viewModel: kb.viewModel(model)
 
       @setupLayout()
       @adminLayoutView.contentRegion.show(userMaintenanceView)      
@@ -81,7 +81,7 @@ define (require) ->
 
       userMaintenanceView = new UserMaintenanceView
         model: model
-        viewModel: kb.viewModel(model)
+        # viewModel: kb.viewModel(model)
 
       @setupLayout()  
       @adminLayoutView.contentRegion.show(userMaintenanceView)      

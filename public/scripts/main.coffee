@@ -11,9 +11,8 @@
       handlebars:             'libs/handlebars'
       bootstrap:              'libs/bootstrap/js/bootstrap'
       marionette:             'libs/backbone.marionette.amd'
+      modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
-      knockout:               'libs/knockout-2.0.0.debug'      
-      knockback:              'libs/knockback'
       jqueryQtip:             'libs/jquery.qtip'
       jqueryDatatables:       'libs/datatables/jquery.dataTables'
       DT_bootstrap:           'libs/datatables/DT_bootstrap'
@@ -24,6 +23,7 @@
       admin_layout:           'templates/tmpl.admin.layout'
 
       user_department_header: 'templates/tmpl.user.department.header'
+      user_list_empty:        'templates/tmpl.user.list.empty'
       user_item:              'templates/tmpl.user.item'
       user_maintenance:       'templates/tmpl.user.maintenance'
       user_navigation:        'templates/tmpl.user.navigation'
@@ -42,9 +42,10 @@
       "backbone",
       "order!marionette",
       "order!handlebars",
+      "order!modelbinder",
       "order!validation",
-      "order!knockout",
-      "order!knockback",
+      # "order!knockout",
+      # "order!knockback",
       
       "order!jqueryDatatables",
       "order!DT_bootstrap",

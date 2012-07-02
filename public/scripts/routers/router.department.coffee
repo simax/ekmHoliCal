@@ -42,7 +42,7 @@ define (require) ->
 
       departmentListView = new DepartmentListView
         collection: @departments
-        viewModel: kb.viewModel(@departments)
+        # viewModel: kb.viewModel(@departments)
       
       departmentsLayoutView.listRegion.show(departmentListView)
 
@@ -50,7 +50,7 @@ define (require) ->
       model = new Department()
       departmentMaintenanceView = new DepartmentMaintenanceView
         model: model
-        viewModel: kb.viewModel(model)
+        # viewModel: kb.viewModel(model)
 
       @setupLayout()   
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   
@@ -69,7 +69,7 @@ define (require) ->
       model = @departments.get(id)
       departmentMaintenanceView = new DepartmentMaintenanceView
         model: model
-        viewModel: kb.viewModel(model)
+        # viewModel: kb.viewModel(model)
 
       @setupLayout()  
       @adminLayoutView.contentRegion.show(departmentMaintenanceView)   

@@ -47,7 +47,7 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      ko.applyBindings(@viewModel, @el)
+      # ko.applyBindings(@viewModel, @el)
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
      

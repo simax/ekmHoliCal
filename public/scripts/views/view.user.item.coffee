@@ -7,14 +7,9 @@ define (require) ->
     template: "#tmpl-user-item"
 
     initialize: ->
+      @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_item.html'
       @model.set "users", new Backbone.Collection @model.get("users")
-      @buildViewModel()
-
-    buildViewModel: =>
-      @viewModel=kb.viewModel(@model)
-      @viewModel.fullname = kb.formattedObservable("{0} {1}", @viewModel.firstname, @viewModel.lastname )
-      @viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(@model.get("email")))
 
     events:
       "click .edit": "edit"
@@ -27,8 +22,12 @@ define (require) ->
       new app.UserController().adminUsersEdit(@model.id)
       Backbone.history.navigate("admin/users/edit/" + @model.id)
 
-    render: =>
-      super
-      ko.applyBindings(@viewModel, @el)
+    onShow: =>
+      @modelBinder.bind(@model, @el) 
+      Backbone.Validation.bind(@, forceUpdate: true) 
+
+    onClose: =>
+      @modelBinder.unbind()  
+
 
 

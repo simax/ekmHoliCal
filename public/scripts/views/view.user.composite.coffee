@@ -11,18 +11,10 @@ define (require) ->
     initialize: =>
       @template = require '../../scripts/text!user_department_header.html'
       @collection = new Backbone.Collection @model.get("users") 
-      @buildViewModel()
+      @enhanceModel()
 
-    buildViewModel: =>
-      @viewModel=kb.viewModel(@model)
-      # Need to loop over users and create the following properties
-      @viewModel.fullname = kb.formattedObservable("{0} {1}", @viewModel.firstname, @viewModel.lastname )
-      @viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(@model.get("email")))
-  
-    render: =>
-      super
-      ko.applyBindings(@viewModel, @el)
-
-    # appendHtml: (collectionView, itemView) =>
-    #   collectionView.append(itemView.el)
-
+    enhanceModel: =>
+      _.each @collection.models, (user) => 
+        user.set "fullname", "#{user.get('firstname')} #{user.get('lastname')}"
+        user.set "gravatar", "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(user.get('email'))
+      return

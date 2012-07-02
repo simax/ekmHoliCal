@@ -13,8 +13,7 @@
       __extends(UserCompositeView, _super);
 
       function UserCompositeView() {
-        this.render = __bind(this.render, this);
-        this.buildViewModel = __bind(this.buildViewModel, this);
+        this.enhanceModel = __bind(this.enhanceModel, this);
         this.initialize = __bind(this.initialize, this);
         UserCompositeView.__super__.constructor.apply(this, arguments);
       }
@@ -26,18 +25,15 @@
       UserCompositeView.prototype.initialize = function() {
         this.template = require('../../scripts/text!user_department_header.html');
         this.collection = new Backbone.Collection(this.model.get("users"));
-        return this.buildViewModel();
+        return this.enhanceModel();
       };
 
-      UserCompositeView.prototype.buildViewModel = function() {
-        this.viewModel = kb.viewModel(this.model);
-        this.viewModel.fullname = kb.formattedObservable("{0} {1}", this.viewModel.firstname, this.viewModel.lastname);
-        return this.viewModel.gravatar = kb.formattedObservable("{0}{1}", "http://www.gravatar.com/avatar/", Utils.CreateMD5Hash(this.model.get("email")));
-      };
-
-      UserCompositeView.prototype.render = function() {
-        UserCompositeView.__super__.render.apply(this, arguments);
-        return ko.applyBindings(this.viewModel, this.el);
+      UserCompositeView.prototype.enhanceModel = function() {
+        var _this = this;
+        _.each(this.collection.models, function(user) {
+          user.set("fullname", "" + (user.get('firstname')) + " " + (user.get('lastname')));
+          return user.set("gravatar", "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(user.get('email')));
+        });
       };
 
       return UserCompositeView;

@@ -14,8 +14,10 @@
         compiledTemplate = Handlebars.compile($(template).html());
         return callback.call(_this, compiledTemplate);
       };
-      return Backbone.Marionette.Renderer.renderTemplate = function(template, data) {
-        return template(data);
+      return Backbone.Marionette.Renderer.render = function(template, data) {
+        var x;
+        x = Handlebars.compile($(template).html());
+        return x(data);
       };
     });
     app.addInitializer(function() {

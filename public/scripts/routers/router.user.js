@@ -79,8 +79,7 @@
         });
         deps.fetch();
         userMaintenanceView = new UserMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+          model: model
         });
         this.setupLayout();
         return this.adminLayoutView.contentRegion.show(userMaintenanceView);
@@ -111,8 +110,7 @@
         });
         deps.fetch();
         userMaintenanceView = new UserMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+          model: model
         });
         this.setupLayout();
         return this.adminLayoutView.contentRegion.show(userMaintenanceView);

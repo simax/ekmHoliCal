@@ -15,7 +15,11 @@ define (require) ->
           compiledTemplate = Handlebars.compile($(template).html()) 
           callback.call(@, compiledTemplate)
 
-    Backbone.Marionette.Renderer.renderTemplate = (template, data) -> template(data) 
+    Backbone.Marionette.Renderer.render = (template, data) ->
+      x = Handlebars.compile($(template).html())  
+      x data
+    
+    # Backbone.Marionette.Renderer.renderTemplate = (template, data) -> template(data) 
 
   app.addInitializer () ->
     app.data = {}

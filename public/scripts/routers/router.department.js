@@ -62,8 +62,7 @@
         this.departments = new Departments();
         this.departments.fetch();
         departmentListView = new DepartmentListView({
-          collection: this.departments,
-          viewModel: kb.viewModel(this.departments)
+          collection: this.departments
         });
         return departmentsLayoutView.listRegion.show(departmentListView);
       };
@@ -72,8 +71,7 @@
         var departmentMaintenanceView, model;
         model = new Department();
         departmentMaintenanceView = new DepartmentMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+          model: model
         });
         this.setupLayout();
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);
@@ -99,8 +97,7 @@
         var departmentMaintenanceView, model;
         model = this.departments.get(id);
         departmentMaintenanceView = new DepartmentMaintenanceView({
-          model: model,
-          viewModel: kb.viewModel(model)
+          model: model
         });
         this.setupLayout();
         return this.adminLayoutView.contentRegion.show(departmentMaintenanceView);

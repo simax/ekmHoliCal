@@ -13,6 +13,7 @@
       __extends(DepartmentMaintenanceView, _super);
 
       function DepartmentMaintenanceView() {
+        this.onClose = __bind(this.onClose, this);
         this.onShow = __bind(this.onShow, this);
         this.initialize = __bind(this.initialize, this);
         DepartmentMaintenanceView.__super__.constructor.apply(this, arguments);
@@ -21,7 +22,7 @@
       DepartmentMaintenanceView.prototype.className = "row";
 
       DepartmentMaintenanceView.prototype.initialize = function() {
-        this.viewModel = this.options.viewModel;
+        this.modelBinder = new Backbone.ModelBinder();
         return this.template = require('../../scripts/text!department_maintenance.html');
       };
 
@@ -51,11 +52,14 @@
       };
 
       DepartmentMaintenanceView.prototype.onShow = function() {
-        ko.applyBindings(this.viewModel, this.el);
-        console.log("model name: " + this.viewModel.name());
+        this.modelBinder.bind(this.model, this.el);
         return Backbone.Validation.bind(this, {
           forceUpdate: true
         });
+      };
+
+      DepartmentMaintenanceView.prototype.onClose = function() {
+        return this.modelBinder.unbind();
       };
 
       return DepartmentMaintenanceView;

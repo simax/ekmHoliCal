@@ -9,7 +9,7 @@ define (require) ->
     className: "row"
     
     initialize: =>
-      @viewModel = @options.viewModel 
+      @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!department_maintenance.html'
 
     events:
@@ -34,7 +34,8 @@ define (require) ->
       app.vent.trigger "main:admin:departments"
 
     onShow: =>
-      ko.applyBindings(@viewModel, @el)
-      console.log "model name: " + @viewModel.name()
+      @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
 
+    onClose: =>
+      @modelBinder.unbind()  

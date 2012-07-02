@@ -11,7 +11,6 @@
       __extends(departmentListView, _super);
 
       function departmentListView() {
-        this.appendHtml = __bind(this.appendHtml, this);
         this.initialize = __bind(this.initialize, this);
         departmentListView.__super__.constructor.apply(this, arguments);
       }
@@ -24,12 +23,10 @@
 
       departmentListView.prototype.id = "department-list";
 
+      departmentListView.prototype.itemViewContainer = "tbody";
+
       departmentListView.prototype.initialize = function() {
         return this.template = require('../../scripts/text!department_grid_header.html');
-      };
-
-      departmentListView.prototype.appendHtml = function(collectionView, itemView) {
-        return collectionView.$("tbody").append(itemView.el);
       };
 
       return departmentListView;

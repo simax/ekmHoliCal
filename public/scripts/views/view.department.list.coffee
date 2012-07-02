@@ -7,10 +7,9 @@ define (require) ->
     tagName: "table"
     className: "table table-striped table-bordered"
     id: "department-list"  
+    itemViewContainer: "tbody"
 
     initialize: =>
       @template = require '../../scripts/text!department_grid_header.html'
-
-    appendHtml: (collectionView, itemView ) =>
-      collectionView.$("tbody").append(itemView.el)     
+  
     
