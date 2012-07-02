@@ -15,9 +15,7 @@
         return callback.call(_this, compiledTemplate);
       };
       return Backbone.Marionette.Renderer.render = function(template, data) {
-        var x;
-        x = Handlebars.compile($(template).html());
-        return x(data);
+        return Handlebars.compile($(template).html())(data);
       };
     });
     app.addInitializer(function() {

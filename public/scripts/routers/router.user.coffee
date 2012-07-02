@@ -77,14 +77,13 @@ define (require) ->
       model = @users.get(id) 
       deps = new Departments()
       model.set departments: deps
-      deps.fetch()
+      deps.fetch
+        success: =>
+          userMaintenanceView = new UserMaintenanceView
+            model: model
 
-      userMaintenanceView = new UserMaintenanceView
-        model: model
-        # viewModel: kb.viewModel(model)
-
-      @setupLayout()  
-      @adminLayoutView.contentRegion.show(userMaintenanceView)      
+          @setupLayout()  
+          @adminLayoutView.contentRegion.show(userMaintenanceView)      
         
 
   UserRouter: app.UserRouter

@@ -35,8 +35,8 @@
       };
 
       UserItemView.prototype.edit = function() {
-        new app.UserController().adminUsersEdit(this.model.id);
-        return Backbone.history.navigate("admin/users/edit/" + this.model.id);
+        new app.UserController().adminUsersEdit(this.model.get("_id"));
+        return Backbone.history.navigate("admin/users/edit/" + this.model.get("_id"));
       };
 
       UserItemView.prototype.onShow = function() {

@@ -102,18 +102,23 @@
       };
 
       UserController.prototype.editUser = function(id) {
-        var deps, model, userMaintenanceView;
+        var deps, model,
+          _this = this;
         model = this.users.get(id);
         deps = new Departments();
         model.set({
           departments: deps
         });
-        deps.fetch();
-        userMaintenanceView = new UserMaintenanceView({
-          model: model
+        return deps.fetch({
+          success: function() {
+            var userMaintenanceView;
+            userMaintenanceView = new UserMaintenanceView({
+              model: model
+            });
+            _this.setupLayout();
+            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
+          }
         });
-        this.setupLayout();
-        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       return UserController;

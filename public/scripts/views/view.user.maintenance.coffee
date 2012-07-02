@@ -10,6 +10,7 @@ define (require) ->
     className: "row"
     
     initialize: =>
+      @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_maintenance.html'
       @viewModel = @options.viewModel 
 
@@ -47,10 +48,13 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      # ko.applyBindings(@viewModel, @el)
+      @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
-     
+    
+    onClose: =>
+      @modelBinder.unbind()   
+
     getGravatarURL: =>
       "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(@model.get("email"))
     

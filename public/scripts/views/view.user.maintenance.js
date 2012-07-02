@@ -17,6 +17,7 @@
         this.close = __bind(this.close, this);
         this.SetGravatarImage = __bind(this.SetGravatarImage, this);
         this.getGravatarURL = __bind(this.getGravatarURL, this);
+        this.onClose = __bind(this.onClose, this);
         this.onShow = __bind(this.onShow, this);
         this.refresh = __bind(this.refresh, this);
         this.departmentsLoaded = __bind(this.departmentsLoaded, this);
@@ -27,6 +28,7 @@
       UserMaintenanceView.prototype.className = "row";
 
       UserMaintenanceView.prototype.initialize = function() {
+        this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.viewModel = this.options.viewModel;
         this.initialDepartmentId = this.model.get("departmentId");
@@ -71,10 +73,15 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
+        this.modelBinder.bind(this.model, this.el);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
         return this.SetGravatarImage();
+      };
+
+      UserMaintenanceView.prototype.onClose = function() {
+        return this.modelBinder.unbind();
       };
 
       UserMaintenanceView.prototype.getGravatarURL = function() {

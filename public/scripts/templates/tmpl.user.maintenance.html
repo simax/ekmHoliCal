@@ -11,51 +11,46 @@
 				<div class="control-group">			
 					<label class="control-label" for="firstname">First name:</label>
 					<div class="controls">
-						<input data-bind="value: firstname" name="firstname" id="firstname" type="text" />
+						<input name="firstname" id="firstname" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="lastname">Last name:</label>
 					<div class="controls">
-						<input data-bind="value: lastname" name="lastname" id="lastname" type="text" />
+						<input name="lastname" id="lastname" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="email">Email:</label>
 					<div class="controls">
-						<input data-bind="value: email" name="email" id="email" class="span3" type="text" placeholder="EKM email address" />
+						<input name="email" id="email" class="span3" type="text" placeholder="EKM email address" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="departmentId">Department:</label>
 					<div class="controls">
-						<select data-bind="options: departments, value: departmentId, optionsValue: '_id', optionsText: 'name', optionsCaption: ' '" id="departmentId" name="departmentId"></select>
+						<select id="departmentId" name="departmentId">
+							{{#each departments.models}}
+							 <option value="{{this.attributes._id}}">{{this.attributes.name}}</option>
+							{{/each}}
+						</select>
 					</div>	
 				</div>	
-
-<!--
-				<div class="control-group">			
-					<label class="control-label" for="depid">Department id</label>
-					<div class="controls">
-						<span data-bind="text: departmentId" name="depid" id="depid" class="span2" type="text" />
-					</div>
-				</div>	
--->
 
 				<div class="control-group">			
 					<label class="control-label" for="enddate">End date:</label>
 					<div class="controls">
-						<input data-bind="value: enddate" name="enddate" id="enddate" class="span2" type="text" />
+						<input name="enddate" id="enddate" class="span2" type="text" />
 					</div>
 				</div>	
 
 				<div class="control-group">			
 					<label class="control-label" for="active">Active:</label>
 					<div class="controls">
-						<input data-bind="checked: active" name="active" id="active" type="checkbox" />
+						<input name="active" id="active" type="checkbox" />
 					</div>
 				</div>	
 
