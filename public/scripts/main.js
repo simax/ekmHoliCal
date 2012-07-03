@@ -14,8 +14,6 @@
       modelbinder: 'libs/backbone.modelbinder',
       validation: 'libs/backbone.validation',
       jqueryQtip: 'libs/jquery.qtip',
-      jqueryDatatables: 'libs/datatables/jquery.dataTables',
-      DT_bootstrap: 'libs/datatables/DT_bootstrap',
       utils: 'utils',
       admin_navigation: 'templates/tmpl.admin.navigation',
       admin_layout: 'templates/tmpl.admin.layout',
@@ -33,6 +31,6 @@
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "order!marionette", "order!handlebars", "order!modelbinder", "order!validation", "order!jqueryDatatables", "order!DT_bootstrap", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "order!marionette", "order!handlebars", "order!modelbinder", "order!validation", "app"]);
 
 }).call(this);

@@ -42,26 +42,22 @@ define (require) ->
       usersLayoutView.navigationRegion.show(new UserNavigationView)
 
       @usersInDepartments = new Departments()  
-      @usersInDepartments.fetch()
-      userListView = new UserListView(collection: @usersInDepartments)
-
-      usersLayoutView.listRegion.show(userListView)
-      # userCompositeView = new UserCompositeView(model: collection: @users)
-      # usersLayoutView.listRegion.show(userCompositeView)
-
+      @usersInDepartments.fetch
+        success: =>
+          userListView = new UserListView(collection: @usersInDepartments)
+          usersLayoutView.listRegion.show(userListView)
 
     adminUsersCreate: =>
       model = new User()
       deps = new Departments()
       model.set departments: deps
-      deps.fetch()
-      
-      userMaintenanceView = new UserMaintenanceView
-        model: model
-        # viewModel: kb.viewModel(model)
+      deps.fetch
+        success: =>
+          userMaintenanceView = new UserMaintenanceView
+            model: model
 
-      @setupLayout()
-      @adminLayoutView.contentRegion.show(userMaintenanceView)      
+          @setupLayout()
+          @adminLayoutView.contentRegion.show(userMaintenanceView)      
 
     adminUsersEdit: (id) =>
       if @users?  

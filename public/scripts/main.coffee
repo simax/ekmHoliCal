@@ -14,8 +14,6 @@
       modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
       jqueryQtip:             'libs/jquery.qtip'
-      jqueryDatatables:       'libs/datatables/jquery.dataTables'
-      DT_bootstrap:           'libs/datatables/DT_bootstrap'
 
       utils:                  'utils'
 
@@ -44,11 +42,6 @@
       "order!handlebars",
       "order!modelbinder",
       "order!validation",
-      # "order!knockout",
-      # "order!knockback",
-      
-      "order!jqueryDatatables",
-      "order!DT_bootstrap",
 
       "app"
   ]
