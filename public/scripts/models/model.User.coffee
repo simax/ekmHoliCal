@@ -1,11 +1,10 @@
 define (require) ->
 
 	Utils = require '../../scripts/Utils.js' 
-	window.app = new Backbone.Marionette.Application() unless window.app?
 
 	require '../../scripts/models/model.Department.js'
 
-	class app.User extends Backbone.Model
+	class User extends Backbone.Model
 
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()

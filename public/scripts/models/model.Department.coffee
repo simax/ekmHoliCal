@@ -1,9 +1,8 @@
 define (require) ->
 	
 	Utils = require '../../scripts/Utils.js' 
-	window.app = new Backbone.Marionette.Application() unless window.app?  
 
-	class app.Department extends Backbone.Model
+	class Department extends Backbone.Model
 		
 		defaults:
 			name: ""

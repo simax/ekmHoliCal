@@ -4,10 +4,9 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Utils;
+    var Department, Utils;
     Utils = require('../../scripts/Utils.js');
-    if (window.app == null) window.app = new Backbone.Marionette.Application();
-    return app.Department = (function(_super) {
+    return Department = (function(_super) {
 
       __extends(Department, _super);
 
