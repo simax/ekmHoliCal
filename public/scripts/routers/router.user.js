@@ -36,6 +36,7 @@
     app.UserController = (function() {
 
       function UserController() {
+        this.showUserMaintenance = __bind(this.showUserMaintenance, this);
         this.editUser = __bind(this.editUser, this);
         this.adminUsersEdit = __bind(this.adminUsersEdit, this);
         this.adminUsersCreate = __bind(this.adminUsersCreate, this);
@@ -76,23 +77,8 @@
       };
 
       UserController.prototype.adminUsersCreate = function() {
-        var deps, model,
-          _this = this;
-        model = new User();
-        deps = new Departments();
-        model.set({
-          departments: deps
-        });
-        return deps.fetch({
-          success: function() {
-            var userMaintenanceView;
-            userMaintenanceView = new UserMaintenanceView({
-              model: model
-            });
-            _this.setupLayout();
-            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
-          }
-        });
+        this.model = new User();
+        return this.showUserMaintenance();
       };
 
       UserController.prototype.adminUsersEdit = function(id) {
@@ -112,23 +98,22 @@
       };
 
       UserController.prototype.editUser = function(id) {
-        var deps, model,
-          _this = this;
-        model = this.users.get(id);
+        this.model = this.users.get(id);
+        return this.showUserMaintenance();
+      };
+
+      UserController.prototype.showUserMaintenance = function() {
+        var deps, userMaintenanceView;
         deps = new Departments();
-        model.set({
+        this.model.set({
           departments: deps
         });
-        return deps.fetch({
-          success: function() {
-            var userMaintenanceView;
-            userMaintenanceView = new UserMaintenanceView({
-              model: model
-            });
-            _this.setupLayout();
-            return _this.adminLayoutView.contentRegion.show(userMaintenanceView);
-          }
+        deps.fetch();
+        userMaintenanceView = new UserMaintenanceView({
+          model: this.model
         });
+        this.setupLayout();
+        return this.adminLayoutView.contentRegion.show(userMaintenanceView);
       };
 
       return UserController;

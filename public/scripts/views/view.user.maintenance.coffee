@@ -6,6 +6,7 @@ define (require) ->
 
   Utils = require '../../scripts/Utils.js' 
   Departments = require '../../scripts/collections/collection.departments.js'
+  Department = require '../../scripts/models/model.department.js'
 
   class UserMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
@@ -15,10 +16,9 @@ define (require) ->
       @template = require '../../scripts/text!user_maintenance.html'
       @viewModel = @options.viewModel 
 
-      @currentDepartmentId = @model.get("departmentId") 
-
       @model.on 'change:email', @SetGravatarImage, @
       @model.get("departments").on 'reset', @departmentsLoaded, @
+
 
     events:
       "click #cancel-button": "cancel"
@@ -26,7 +26,9 @@ define (require) ->
       "focus #enddate": "showDatePicker"
 
     departmentsLoaded: =>
-      @model.set("departmentId", @currentDepartmentId) if @model.isNew() 
+      @model.get("departments").unshift new Department()   
+      @refresh() 
+
       
     refresh: =>
       @render()
@@ -49,12 +51,11 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
-      $('#departmentId').select2
-        placeHolder: "Select a department"
-
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
+      $('#departmentId').select2
+        placeholder: "Select a department"
     
     onClose: =>
       @modelBinder.unbind()   

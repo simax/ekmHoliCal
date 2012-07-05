@@ -48,16 +48,8 @@ define (require) ->
           usersLayoutView.listRegion.show(userListView)
 
     adminUsersCreate: =>
-      model = new User()
-      deps = new Departments()
-      model.set departments: deps
-      deps.fetch
-        success: =>
-          userMaintenanceView = new UserMaintenanceView
-            model: model
-
-          @setupLayout()
-          @adminLayoutView.contentRegion.show(userMaintenanceView)      
+      @model = new User()
+      @showUserMaintenance()
 
     adminUsersEdit: (id) =>
       if @users?  
@@ -70,16 +62,19 @@ define (require) ->
             @editUser(id)
 
     editUser: (id) =>
-      model = @users.get(id) 
-      deps = new Departments()
-      model.set departments: deps
-      deps.fetch
-        success: =>
-          userMaintenanceView = new UserMaintenanceView
-            model: model
+      @model = @users.get(id) 
+      @showUserMaintenance()
 
-          @setupLayout()  
-          @adminLayoutView.contentRegion.show(userMaintenanceView)      
+    showUserMaintenance: =>  
+      deps = new Departments()
+      @model.set departments: deps
+      deps.fetch()
+
+      userMaintenanceView = new UserMaintenanceView
+        model: @model
+
+      @setupLayout()  
+      @adminLayoutView.contentRegion.show(userMaintenanceView)      
         
 
   UserRouter: app.UserRouter

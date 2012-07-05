@@ -4,12 +4,13 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Departments, UserMaintenanceView, Utils;
+    var Department, Departments, UserMaintenanceView, Utils;
     require('jqueryUI');
     require('jqueryQtip');
     require('select2');
     Utils = require('../../scripts/Utils.js');
     Departments = require('../../scripts/collections/collection.departments.js');
+    Department = require('../../scripts/models/model.department.js');
     return UserMaintenanceView = (function(_super) {
 
       __extends(UserMaintenanceView, _super);
@@ -32,7 +33,6 @@
         this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.viewModel = this.options.viewModel;
-        this.currentDepartmentId = this.model.get("departmentId");
         this.model.on('change:email', this.SetGravatarImage, this);
         return this.model.get("departments").on('reset', this.departmentsLoaded, this);
       };
@@ -44,9 +44,8 @@
       };
 
       UserMaintenanceView.prototype.departmentsLoaded = function() {
-        if (this.model.isNew()) {
-          return this.model.set("departmentId", this.currentDepartmentId);
-        }
+        this.model.get("departments").unshift(new Department());
+        return this.refresh();
       };
 
       UserMaintenanceView.prototype.refresh = function() {
@@ -74,14 +73,14 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
-        $('#departmentId').select2({
-          placeHolder: "Select a department"
-        });
         this.modelBinder.bind(this.model, this.el);
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
-        return this.SetGravatarImage();
+        this.SetGravatarImage();
+        return $('#departmentId').select2({
+          placeholder: "Select a department"
+        });
       };
 
       UserMaintenanceView.prototype.onClose = function() {
