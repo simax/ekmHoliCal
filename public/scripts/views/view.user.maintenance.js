@@ -7,6 +7,7 @@
     var Departments, UserMaintenanceView, Utils;
     require('jqueryUI');
     require('jqueryQtip');
+    require('select2');
     Utils = require('../../scripts/Utils.js');
     Departments = require('../../scripts/collections/collection.departments.js');
     return UserMaintenanceView = (function(_super) {
@@ -31,7 +32,7 @@
         this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
         this.viewModel = this.options.viewModel;
-        this.initialDepartmentId = this.model.get("departmentId");
+        this.currentDepartmentId = this.model.get("departmentId");
         this.model.on('change:email', this.SetGravatarImage, this);
         return this.model.get("departments").on('reset', this.departmentsLoaded, this);
       };
@@ -43,8 +44,8 @@
       };
 
       UserMaintenanceView.prototype.departmentsLoaded = function() {
-        if (this.model.get("_id") != null) {
-          return this.model.set("departmentId", this.initialDepartmentId);
+        if (this.model.isNew()) {
+          return this.model.set("departmentId", this.currentDepartmentId);
         }
       };
 
@@ -73,6 +74,9 @@
       };
 
       UserMaintenanceView.prototype.onShow = function() {
+        $('#departmentId').select2({
+          placeHolder: "Select a department"
+        });
         this.modelBinder.bind(this.model, this.el);
         Backbone.Validation.bind(this, {
           forceUpdate: true

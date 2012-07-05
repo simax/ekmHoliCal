@@ -14,6 +14,7 @@
       modelbinder: 'libs/backbone.modelbinder',
       validation: 'libs/backbone.validation',
       jqueryQtip: 'libs/jquery.qtip',
+      select2: 'libs/select2',
       utils: 'utils',
       admin_navigation: 'templates/tmpl.admin.navigation',
       admin_layout: 'templates/tmpl.admin.layout',

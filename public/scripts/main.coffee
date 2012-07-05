@@ -14,6 +14,7 @@
       modelbinder:            'libs/backbone.modelbinder'
       validation:             'libs/backbone.validation'
       jqueryQtip:             'libs/jquery.qtip'
+      select2:                'libs/select2'
 
       utils:                  'utils'
 

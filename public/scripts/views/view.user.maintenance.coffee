@@ -2,6 +2,7 @@ define (require) ->
   
   require 'jqueryUI'
   require 'jqueryQtip'
+  require 'select2'
 
   Utils = require '../../scripts/Utils.js' 
   Departments = require '../../scripts/collections/collection.departments.js'
@@ -14,7 +15,7 @@ define (require) ->
       @template = require '../../scripts/text!user_maintenance.html'
       @viewModel = @options.viewModel 
 
-      @initialDepartmentId = @model.get("departmentId") 
+      @currentDepartmentId = @model.get("departmentId") 
 
       @model.on 'change:email', @SetGravatarImage, @
       @model.get("departments").on 'reset', @departmentsLoaded, @
@@ -25,7 +26,7 @@ define (require) ->
       "focus #enddate": "showDatePicker"
 
     departmentsLoaded: =>
-      @model.set("departmentId", @initialDepartmentId) if @model.get("_id")? 
+      @model.set("departmentId", @currentDepartmentId) if @model.isNew() 
       
     refresh: =>
       @render()
@@ -48,6 +49,9 @@ define (require) ->
       app.vent.trigger "main:admin:users"
 
     onShow: =>
+      $('#departmentId').select2
+        placeHolder: "Select a department"
+
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
