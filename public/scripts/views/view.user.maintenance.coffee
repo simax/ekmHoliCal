@@ -54,8 +54,8 @@ define (require) ->
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
-      $('#departmentId').select2
-        placeholder: "Select a department"
+      # $('#departmentId').select2
+      #   placeholder: "Select a department"
     
     onClose: =>
       @modelBinder.unbind()   

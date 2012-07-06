@@ -77,10 +77,7 @@
         Backbone.Validation.bind(this, {
           forceUpdate: true
         });
-        this.SetGravatarImage();
-        return $('#departmentId').select2({
-          placeholder: "Select a department"
-        });
+        return this.SetGravatarImage();
       };
 
       UserMaintenanceView.prototype.onClose = function() {
