@@ -10,9 +10,7 @@
       this.get = __bind(this.get, this);
       this.getall = __bind(this.getall, this);
       this.post = __bind(this.post, this);
-      this.put = __bind(this.put, this);      this.Schemas = require('./schemas');
-      this.DepartmentModel = new this.Schemas.DepartmentSchemaBuilder().Model;
-      this.Model = new this.Schemas.UserSchemaBuilder().Model;
+      this.put = __bind(this.put, this);
     }
 
     UserRoutes.prototype.put = function(req, res) {
@@ -36,8 +34,14 @@
     };
 
     UserRoutes.prototype.getall = function(req, res) {
-      return this.Model.find().run(function(err, entity) {
-        return res.send(entity);
+      var db;
+      db = global.dbmanager.getDb();
+      return db.collection("departments", function(err, collection) {
+        if (err) console.log(err);
+        if (err) re.send(err);
+        return collection.find().toArray(function(err, docs) {
+          return res.send(docs);
+        });
       });
     };
 

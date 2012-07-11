@@ -1,9 +1,18 @@
 class UserRoutes
 
 	constructor: ->
-		@Schemas = require './schemas'
-		@DepartmentModel = new @Schemas.DepartmentSchemaBuilder().Model
-		@Model = new @Schemas.UserSchemaBuilder().Model
+		# @Schemas = require './schemas'
+		# @DepartmentModel = new @Schemas.DepartmentSchemaBuilder().Model
+		# @Model = new @Schemas.UserSchemaBuilder().Model
+
+		# @mongo = require("mongodb")
+		# @Db = @mongo.Db
+		# @Connection = @mongo.Connection
+		# @Server = @mongo.Server
+
+		# @server = new @Server 'localhost', 8120
+		# @db = new @Db 'ekmHoliCal', @server
+
 
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
@@ -18,11 +27,21 @@ class UserRoutes
 			@save(entity, res, err)
  
 	getall: (req, res) => 
-		@Model 
-			.find() 
-			.run (err, entity) ->
-				res.send(entity)
- 
+		# @Model 
+		# 	.find() 
+		# 	.run (err, entity) ->
+		# 		res.send(entity)
+ 		# @db.open (err, db) ->
+			# console.log err if err
+			# console.log "db:" + db		
+		db = global.dbmanager.getDb()
+		db.collection "departments", (err, collection) ->
+			console.log err	if err	
+			re.send err if err
+			collection.find().toArray (err, docs) ->
+				res.send docs
+
+
 	get: (req, res) => 
 		@Model
 		.findById(req.params.id)

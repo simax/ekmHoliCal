@@ -1,2 +1,2 @@
-mongod --dbpath c:\inetpub\wwwroot\ekmHoliCal\data\ekmHoliCal --port 8120
+mongod --dbpath c:\inetpub\wwwroot\ekmHoliCal\data --port 8120
 pause

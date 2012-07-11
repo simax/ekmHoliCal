@@ -1,8 +1,21 @@
+
 class DepartmentRoutes
 
 	constructor: ->
-		Schemas = require './schemas'
-		@Model = new Schemas.DepartmentSchemaBuilder().Model
+		
+		# Schemas = require './schemas'
+		# @Model = new Schemas.DepartmentSchemaBuilder().Model
+
+		# @mongo = require("mongodb")
+		# @Db = @mongo.Db
+		# @Connection = @mongo.Connection
+		# @Server = @mongo.Server
+
+		# @server = new @Server 'localhost', 8120
+		# @db = new @Db 'ekmHoliCal', @server
+		# @db.open (err, db) ->
+		# 	console.log err if err
+		# 	console.log "db:" + db	
 
 	post: (req, res) =>
 		entity = new @Model
@@ -11,16 +24,25 @@ class DepartmentRoutes
 			@save(entity, res, err)
  
 	getall: (req, res) =>
-		@Model
-			.find()
-			.populate('users')
-			.run (err, entity) ->
-				res.send(entity)
- 
+		# server.db.open (err, db) ->
+		# 	console.log err if err
+		# 	console.log "db:" + db	
+		db = global.dbmanager.getDb()
+		db.collection "departments", (err, collection) ->
+			console.log err	if err	
+			re.send err if err
+			collection.find().toArray (err, docs) ->
+				res.send docs
+
 	get: (req, res) =>
-		console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
-		@Model.findById req.params.id, (err, entity) ->
-			res.send(entity)
+		# console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
+		# @Model.findById req.params.id, (err, entity) ->
+		# 	res.send(entity)
+		db = global.dbmanager.getDb()
+		db.collection("departments").findOne {"_id" : req.params.id }, (err, doc) =>
+			res.send err if err
+			res.send doc
+
 
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>

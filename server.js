@@ -1,5 +1,5 @@
 (function() {
-  var basePath, departmentroutes, express, server, userroutes, _departmentroutes, _ref, _userroutes;
+  var basePath, departmentroutes, express, server, userroutes, _dbmanager, _departmentroutes, _ref, _userroutes;
 
   require('express-namespace');
 
@@ -14,6 +14,10 @@
   departmentroutes = new _departmentroutes.DepartmentRoutes();
 
   server = module.exports = (_ref = global.server) != null ? _ref : express.createServer().listen(1234);
+
+  _dbmanager = require('./server/DbManager.js');
+
+  global.dbmanager = new _dbmanager.DbManager();
 
   basePath = '/ekmHoliCal';
 

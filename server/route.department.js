@@ -11,9 +11,6 @@
       this.get = __bind(this.get, this);
       this.getall = __bind(this.getall, this);
       this.post = __bind(this.post, this);
-      var Schemas;
-      Schemas = require('./schemas');
-      this.Model = new Schemas.DepartmentSchemaBuilder().Model;
     }
 
     DepartmentRoutes.prototype.post = function(req, res) {
@@ -27,15 +24,26 @@
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
-      return this.Model.find().populate('users').run(function(err, entity) {
-        return res.send(entity);
+      var db;
+      db = global.dbmanager.getDb();
+      return db.collection("departments", function(err, collection) {
+        if (err) console.log(err);
+        if (err) re.send(err);
+        return collection.find().toArray(function(err, docs) {
+          return res.send(docs);
+        });
       });
     };
 
     DepartmentRoutes.prototype.get = function(req, res) {
-      console.log("req.params.id: " + req.params.id + "req.body.id: " + req.body.id);
-      return this.Model.findById(req.params.id, function(err, entity) {
-        return res.send(entity);
+      var db,
+        _this = this;
+      db = global.dbmanager.getDb();
+      return db.collection("departments").findOne({
+        "_id": req.params.id
+      }, function(err, doc) {
+        if (err) res.send(err);
+        return res.send(doc);
       });
     };
 

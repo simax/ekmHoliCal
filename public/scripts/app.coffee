@@ -18,7 +18,6 @@ define (require) ->
     Backbone.Marionette.Renderer.render = (template, data) ->
       Handlebars.compile($(template).html()) data 
 
-
   app.addInitializer () ->
     app.data = {}
     mainNavMenuView = new MainNavigationMenuView()
