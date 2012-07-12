@@ -6,6 +6,13 @@
 
       function Utils() {}
 
+      Array.prototype.remove = function(e) {
+        var t, _ref;
+        if ((t = this.indexOf(e)) > -1) {
+          return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);
+        }
+      };
+
       Utils.showValidationErrors = function() {
         $(':not(.invalid)').qtip('destroy');
         return $('.invalid').qtip({

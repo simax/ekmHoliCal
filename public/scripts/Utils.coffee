@@ -1,6 +1,9 @@
 define (require) ->
 
   class Utils
+
+    Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
+    
     @showValidationErrors: ->
       $(':not(.invalid)').qtip('destroy')
       $('.invalid')

@@ -14,11 +14,17 @@ define (require) ->
     initialize: =>
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!user_maintenance.html'
-      @viewModel = @options.viewModel 
 
       @model.on 'change:email', @SetGravatarImage, @
       @model.get("departments").on 'reset', @departmentsLoaded, @
+      @model.on 'validated:invalid', @validationFailed, @
 
+
+    validationFailed: (model, attrs) =>
+      # Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
+      if _.indexOf attrs, "departmentId"
+        attrs.remove "departmentId"
+        $(".invalid").removeAttr('data-error').removeClass("invalid") 
 
     events:
       "click #cancel-button": "cancel"

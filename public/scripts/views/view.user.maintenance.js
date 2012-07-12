@@ -23,6 +23,7 @@
         this.onShow = __bind(this.onShow, this);
         this.refresh = __bind(this.refresh, this);
         this.departmentsLoaded = __bind(this.departmentsLoaded, this);
+        this.validationFailed = __bind(this.validationFailed, this);
         this.initialize = __bind(this.initialize, this);
         UserMaintenanceView.__super__.constructor.apply(this, arguments);
       }
@@ -32,9 +33,16 @@
       UserMaintenanceView.prototype.initialize = function() {
         this.modelBinder = new Backbone.ModelBinder();
         this.template = require('../../scripts/text!user_maintenance.html');
-        this.viewModel = this.options.viewModel;
         this.model.on('change:email', this.SetGravatarImage, this);
-        return this.model.get("departments").on('reset', this.departmentsLoaded, this);
+        this.model.get("departments").on('reset', this.departmentsLoaded, this);
+        return this.model.on('validated:invalid', this.validationFailed, this);
+      };
+
+      UserMaintenanceView.prototype.validationFailed = function(model, attrs) {
+        if (_.indexOf(attrs, "departmentId")) {
+          attrs.remove("departmentId");
+          return $(".invalid").removeAttr('data-error').removeClass("invalid");
+        }
       };
 
       UserMaintenanceView.prototype.events = {
