@@ -30,8 +30,6 @@
 
   })();
 
-  exports.DbManager = DbManager;
-
-  exports.DbManager.getDb = DbManager.getDb;
+  module.exports = new DbManager().getDb();
 
 }).call(this);

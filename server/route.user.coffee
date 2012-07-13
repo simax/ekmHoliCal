@@ -1,3 +1,5 @@
+db = require './DbManager.js'
+
 class UserRoutes
 
 	constructor: ->
@@ -34,7 +36,7 @@ class UserRoutes
  		# @db.open (err, db) ->
 			# console.log err if err
 			# console.log "db:" + db		
-		db = global.dbmanager.getDb()
+		# db = global.dbmanager.getDb()
 		db.collection "departments", (err, collection) ->
 			console.log err	if err	
 			re.send err if err
@@ -47,7 +49,7 @@ class UserRoutes
 		.findById(req.params.id)
 		.run (err, entity) ->
 			res.send(entity)
-				
+			
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
 			entity.remove()

@@ -11,11 +11,6 @@ departmentroutes = new _departmentroutes.DepartmentRoutes()
 
 server = module.exports = global.server ? express.createServer().listen 1234
 
-# Data access
-_dbmanager = require './server/DbManager.js'
-global.dbmanager = new _dbmanager.DbManager()
-
-# dbmanager.open 
 
 basePath = '/ekmHoliCal'
  

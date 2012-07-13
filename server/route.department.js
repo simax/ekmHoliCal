@@ -1,6 +1,8 @@
 (function() {
-  var DepartmentRoutes,
+  var DepartmentRoutes, db,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  db = require('./DbManager.js');
 
   DepartmentRoutes = (function() {
 
@@ -24,8 +26,6 @@
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
-      var db;
-      db = global.dbmanager.getDb();
       return db.collection("departments", function(err, collection) {
         if (err) console.log(err);
         if (err) re.send(err);
@@ -36,9 +36,7 @@
     };
 
     DepartmentRoutes.prototype.get = function(req, res) {
-      var db,
-        _this = this;
-      db = global.dbmanager.getDb();
+      var _this = this;
       return db.collection("departments").findOne({
         "_id": req.params.id
       }, function(err, doc) {

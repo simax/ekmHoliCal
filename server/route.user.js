@@ -1,6 +1,8 @@
 (function() {
-  var UserRoutes,
+  var UserRoutes, db,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  db = require('./DbManager.js');
 
   UserRoutes = (function() {
 
@@ -34,8 +36,6 @@
     };
 
     UserRoutes.prototype.getall = function(req, res) {
-      var db;
-      db = global.dbmanager.getDb();
       return db.collection("departments", function(err, collection) {
         if (err) console.log(err);
         if (err) re.send(err);

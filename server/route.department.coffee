@@ -1,3 +1,4 @@
+db = require './DbManager.js'
 
 class DepartmentRoutes
 
@@ -27,7 +28,7 @@ class DepartmentRoutes
 		# server.db.open (err, db) ->
 		# 	console.log err if err
 		# 	console.log "db:" + db	
-		db = global.dbmanager.getDb()
+		# db = global.dbmanager.getDb()
 		db.collection "departments", (err, collection) ->
 			console.log err	if err	
 			re.send err if err
@@ -38,7 +39,7 @@ class DepartmentRoutes
 		# console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
 		# @Model.findById req.params.id, (err, entity) ->
 		# 	res.send(entity)
-		db = global.dbmanager.getDb()
+		
 		db.collection("departments").findOne {"_id" : req.params.id }, (err, doc) =>
 			res.send err if err
 			res.send doc

@@ -9,6 +9,8 @@ define (require) ->
 
   window.app = if not window.app then new Backbone.Marionette.Application() else window.app        
 
+  Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
+
   app.bind "initialize:before", (options) ->
     Backbone.Marionette.TemplateCache.loadTemplate = 
         (template, callback) => 

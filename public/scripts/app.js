@@ -7,6 +7,12 @@
     routeDepartment = require('../scripts/routers/router.department.js');
     MainNavigationMenuView = require('../scripts/views/view.main.navigation');
     window.app = !window.app ? new Backbone.Marionette.Application() : window.app;
+    Array.prototype.remove = function(e) {
+      var t, _ref;
+      if ((t = this.indexOf(e)) > -1) {
+        return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);
+      }
+    };
     app.bind("initialize:before", function(options) {
       var _this = this;
       Backbone.Marionette.TemplateCache.loadTemplate = function(template, callback) {
