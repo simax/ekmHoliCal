@@ -13,7 +13,7 @@ server = module.exports = global.server ? express.createServer().listen 1234
 
 
 basePath = '/ekmHoliCal'
- 
+
 server.configure ->
 	server.register 'html',
 		compile: (str, options) ->

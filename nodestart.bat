@@ -1,1 +1,2 @@
-supervisor -w Server server.js
+rem supervisor -w Server server.js
+nodemon server.coffee

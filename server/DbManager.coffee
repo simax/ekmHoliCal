@@ -4,7 +4,6 @@ class DbManager
 
     @mongo = require("mongodb")
     @Db = @mongo.Db
-    @Connection = @mongo.Connection
     @Server = @mongo.Server
 
     @ServerOptions = 
@@ -15,7 +14,6 @@ class DbManager
     @db = new @Db 'ekmHoliCal', @server
     @db.open (err, db) =>
       @db = db
-
 
   getDb:=>    
     @db

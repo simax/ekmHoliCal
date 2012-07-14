@@ -19,8 +19,10 @@ define (require) ->
       alert @model.get("active")
 
     edit: ->
-      new app.UserController().adminUsersEdit(@model.get("_id"))
-      Backbone.history.navigate("admin/users/edit/" + @model.get("_id"))
+      deptid = @model.get("departmentId")
+      id = @model.get("id")
+      new app.UserController().adminUsersEdit(deptid, id)
+      Backbone.history.navigate("admin/department/" + @model.get("departmentId") + "/user/edit/" + @model.get("id"))
 
     onShow: =>
       @modelBinder.bind(@model, @el) 

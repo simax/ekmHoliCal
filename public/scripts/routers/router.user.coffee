@@ -20,7 +20,7 @@ define (require) ->
     appRoutes: 
       "admin/users": "adminUsers"
       "admin/users/create": "adminUsersCreate"
-      "admin/users/edit/:id": "adminUsersEdit"
+      "admin/department/:deptid/user/edit/:id": "adminUsersEdit"
 
   class app.UserController 
 
@@ -51,18 +51,21 @@ define (require) ->
       @model = new User()
       @showUserMaintenance()
 
-    adminUsersEdit: (id) =>
-      if @users?  
-        model = @users.get(id) 
-        @editUser(id)
+    adminUsersEdit: (deptid, id) =>
+      if @usersInDepartments?  
+        @editUser(deptid, id)
       else 
-        @users = new Users()
-        @users.fetch
+        @usersInDepartments = new Departments()
+        @usersInDepartments.fetch
           success: =>
-            @editUser(id)
+            @editUser(deptid, id)
 
-    editUser: (id) =>
-      @model = @users.get(id) 
+    editUser: (deptid, id) =>
+      # @model = @users.get(id) 
+      @model = @usersInDepartments.get(deptid)
+      @model.set users: new Backbone.Collection @model.get("users")
+      users = @model.get("users") 
+      @model = users.get(id)
       @showUserMaintenance()
 
     showUserMaintenance: =>  
