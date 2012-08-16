@@ -20,7 +20,8 @@ class DepartmentRoutes
 
 	post: (req, res) =>
 		entity = new @Model
-		@modelBind(entity, req)
+		# @modelBind(entity, req)
+		# console.log "req.body.name: " + req.body.name
 		entity.save (err) =>
 			@save(entity, res, err)
  
@@ -29,6 +30,7 @@ class DepartmentRoutes
 		# 	console.log err if err
 		# 	console.log "db:" + db	
 		# db = global.dbmanager.getDb()
+		# console.log "getting all departments"
 		db.collection "departments", (err, collection) ->
 			console.log err	if err	
 			re.send err if err

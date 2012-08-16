@@ -4,7 +4,7 @@ class DbManager
 
     @mongo = require("mongodb")
     @Db = @mongo.Db
-    @Server = @mongo.Server
+  @Server = @mongo.Serve
 
     @ServerOptions = 
       'auto_reconnect': true
