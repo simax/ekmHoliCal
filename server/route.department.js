@@ -19,17 +19,18 @@
       var entity,
         _this = this;
       entity = new this.Model;
-      this.modelBind(entity, req);
       return entity.save(function(err) {
         return _this.save(entity, res, err);
       });
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
+      console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQ");
       return db.collection("departments", function(err, collection) {
         if (err) console.log(err);
         if (err) re.send(err);
         return collection.find().toArray(function(err, docs) {
+          console.log("getting all departments");
           return res.send(docs);
         });
       });

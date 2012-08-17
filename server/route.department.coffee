@@ -30,13 +30,14 @@ class DepartmentRoutes
 		# 	console.log err if err
 		# 	console.log "db:" + db	
 		# db = global.dbmanager.getDb()
-		# console.log "getting all departments"
+		console.log "QQQQQQQQQQQQQQQQQQQQQQQQQQQ"
 		db.collection "departments", (err, collection) ->
-			console.log err	if err	
+			console.log err	if err	 
 			re.send err if err
 			collection.find().toArray (err, docs) ->
+				console.log("getting all departments")
 				res.send docs
-
+  
 	get: (req, res) =>
 		# console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
 		# @Model.findById req.params.id, (err, entity) ->
