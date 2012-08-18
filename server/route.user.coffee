@@ -1,20 +1,6 @@
 db = require './DbManager.js'
-
+ 
 class UserRoutes
-
-	constructor: ->
-		# @Schemas = require './schemas'
-		# @DepartmentModel = new @Schemas.DepartmentSchemaBuilder().Model
-		# @Model = new @Schemas.UserSchemaBuilder().Model
-
-		# @mongo = require("mongodb")
-		# @Db = @mongo.Db
-		# @Connection = @mongo.Connection
-		# @Server = @mongo.Server
-
-		# @server = new @Server 'localhost', 8120
-		# @db = new @Db 'ekmHoliCal', @server
-
 
 	put: (req, res) =>
 		@Model.findById req.params.id, (err, entity) =>
@@ -27,7 +13,7 @@ class UserRoutes
 		@modelBind(entity, req)
 		entity.save (err) =>
 			@save(entity, res, err)
- 
+  
 	getall: (req, res) => 
 		# @Model 
 		# 	.find() 

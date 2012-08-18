@@ -1,23 +1,7 @@
 db = require './DbManager.js'
 
 class DepartmentRoutes
-
-	constructor: ->
-		
-		# Schemas = require './schemas'
-		# @Model = new Schemas.DepartmentSchemaBuilder().Model
-
-		# @mongo = require("mongodb")
-		# @Db = @mongo.Db
-		# @Connection = @mongo.Connection
-		# @Server = @mongo.Server
-
-		# @server = new @Server 'localhost', 8120
-		# @db = new @Db 'ekmHoliCal', @server
-		# @db.open (err, db) ->
-		# 	console.log err if err
-		# 	console.log "db:" + db	
-
+  
 	post: (req, res) =>
 		entity = new @Model
 		# @modelBind(entity, req)
@@ -30,7 +14,6 @@ class DepartmentRoutes
 		# 	console.log err if err
 		# 	console.log "db:" + db	
 		# db = global.dbmanager.getDb()
-		console.log "QQQQQQQQQQQQQQQQQQQQQQQQQQQ"
 		db.collection "departments", (err, collection) ->
 			console.log err	if err	 
 			re.send err if err
