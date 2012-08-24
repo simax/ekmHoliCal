@@ -1,9 +1,9 @@
-db = require './DbManager.js'
+dbMan = require './DbManager'
+
 
 class DepartmentRoutes
   
 	post: (req, res) =>
-		entity = new @Model
 		# @modelBind(entity, req)
 		# console.log "req.body.name: " + req.body.name
 		entity.save (err) =>
@@ -14,11 +14,10 @@ class DepartmentRoutes
 		# 	console.log err if err
 		# 	console.log "db:" + db	
 		# db = global.dbmanager.getDb()
-		db.collection "departments", (err, collection) ->
+		dbMan.db.collection "departments", (err, collection) ->
 			console.log err	if err	 
 			re.send err if err
 			collection.find().toArray (err, docs) ->
-				console.log("getting all departments")
 				res.send docs
   
 	get: (req, res) =>
@@ -26,16 +25,18 @@ class DepartmentRoutes
 		# @Model.findById req.params.id, (err, entity) ->
 		# 	res.send(entity)
 		
-		db.collection("departments").findOne {"_id" : req.params.id }, (err, doc) =>
+		dbMan.db.collection("departments").find {"_id" : req.params.id }, (err, doc) =>
 			res.send err if err
 			res.send doc
 
 
 	put: (req, res) =>
-		@Model.findById req.params.id, (err, entity) =>
-			@modelBind entity, req
-			entity.save (err) =>
- 				@save(entity, res, err)
+		# entity = db.collection("departments").find({"_id" : req.body.id }).limit(1)
+		entity = {}
+		@modelBind entity, req
+		# console.log "id:" + req.body._id
+		# console.log "name:" + req.body.name
+		dbMan.db.collection("departments").update { "_id" : entity._id  }, entity, false
 
 	delete: (req, res) =>
 		@Model.findById req.params.id, (err, entity) ->
@@ -43,7 +44,9 @@ class DepartmentRoutes
 			res.send(204)
 
 	modelBind: (entity, req) =>
+		entity._id = new dbMan.ObjectID(req.body._id) 
 		entity.name = req.body.name
+		entity.users = req.body.users
 
 	save: (entity, res, err) -> 
 		if err 

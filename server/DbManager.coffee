@@ -4,7 +4,8 @@ class DbManager
 
     @mongo = require("mongodb")
     @Db = @mongo.Db
-  @Server = @mongo.Serve
+    @Server = @mongo.Server
+    @ObjectID = @mongo.ObjectID
 
     @ServerOptions = 
       'auto_reconnect': true
@@ -15,7 +16,10 @@ class DbManager
     @db.open (err, db) =>
       @db = db
 
-  getDb:=>    
+  db:=>    
     @db
 
-module.exports = new DbManager().getDb()
+  ObjectID: =>   
+    @ObjectID 
+
+module.exports = new DbManager()

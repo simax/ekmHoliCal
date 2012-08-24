@@ -5,12 +5,13 @@
   DbManager = (function() {
 
     function DbManager() {
-      this.getDb = __bind(this.getDb, this);
+      this.ObjectID = __bind(this.ObjectID, this);
+      this.db = __bind(this.db, this);
       var _this = this;
       this.mongo = require("mongodb");
       this.Db = this.mongo.Db;
-      this.Connection = this.mongo.Connection;
       this.Server = this.mongo.Server;
+      this.ObjectID = this.mongo.ObjectID;
       this.ServerOptions = {
         'auto_reconnect': true,
         'poolSize': 5
@@ -22,14 +23,18 @@
       });
     }
 
-    DbManager.prototype.getDb = function() {
+    DbManager.prototype.db = function() {
       return this.db;
+    };
+
+    DbManager.prototype.ObjectID = function() {
+      return this.ObjectID;
     };
 
     return DbManager;
 
   })();
 
-  module.exports = new DbManager().getDb();
+  module.exports = new DbManager();
 
 }).call(this);
