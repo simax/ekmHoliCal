@@ -1,8 +1,10 @@
 (function() {
-  var DepartmentRoutes, dbMan,
+  var DepartmentRoutes, db, dbMan,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   dbMan = require('./DbManager');
+
+  db = dbMan.db;
 
   DepartmentRoutes = (function() {
 
@@ -23,7 +25,7 @@
     };
 
     DepartmentRoutes.prototype.getall = function(req, res) {
-      return dbMan.db.collection("departments", function(err, collection) {
+      return db.collection("departments", function(err, collection) {
         if (err) console.log(err);
         if (err) re.send(err);
         return collection.find().toArray(function(err, docs) {
@@ -34,7 +36,7 @@
 
     DepartmentRoutes.prototype.get = function(req, res) {
       var _this = this;
-      return dbMan.db.collection("departments").find({
+      return db.collection("departments").find({
         "_id": req.params.id
       }, function(err, doc) {
         if (err) res.send(err);
@@ -46,7 +48,7 @@
       var entity;
       entity = {};
       this.modelBind(entity, req);
-      return dbMan.db.collection("departments").update({
+      return db.collection("departments").update({
         "_id": entity._id
       }, entity, false);
     };

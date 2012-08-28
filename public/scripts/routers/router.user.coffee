@@ -66,6 +66,7 @@ define (require) ->
       @model.set users: new Backbone.Collection @model.get("users")
       users = @model.get("users") 
       @model = users.get(id)
+      @model.urlRoot = '/ekmHoliCal/api/users/'
       @showUserMaintenance()
 
     showUserMaintenance: =>  

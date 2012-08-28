@@ -64,7 +64,7 @@
       UserMaintenanceView.prototype.save = function(e) {
         var modelValid;
         e.preventDefault();
-        modelValid = this.model.isValid(true);
+        modelValid = true;
         if (modelValid) {
           this.model.save(this.model.toJSON(), {
             error: function(model, res) {
@@ -82,9 +82,6 @@
 
       UserMaintenanceView.prototype.onShow = function() {
         this.modelBinder.bind(this.model, this.el);
-        Backbone.Validation.bind(this, {
-          forceUpdate: true
-        });
         this.SetGravatarImage();
         return $('#departmentId').select2({
           placeholder: "Select a department"

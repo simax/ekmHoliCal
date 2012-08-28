@@ -32,6 +32,7 @@ define (require) ->
       "focus #enddate": "showDatePicker"
 
     departmentsLoaded: =>
+      # add a blank departmrnt to the start of the departments collection
       @model.get("departments").unshift new Department()   
       @refresh() 
 
@@ -42,7 +43,7 @@ define (require) ->
 
     save: (e) ->
       e.preventDefault()
-      modelValid = @model.isValid(true)
+      modelValid = true # @model.isValid(true)
 
       if modelValid
         @model.save(
@@ -58,7 +59,7 @@ define (require) ->
 
     onShow: =>
       @modelBinder.bind(@model, @el) 
-      Backbone.Validation.bind(@, forceUpdate: true) 
+      # Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
       $('#departmentId').select2
         placeholder: "Select a department"

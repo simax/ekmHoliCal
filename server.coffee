@@ -41,8 +41,9 @@ server.namespace basePath, ->
 			server.get '/users/:id', userroutes.get
 			server.post '/users', userroutes.post
 			server.put '/users/:id', userroutes.put
-			server.delete '/users/:id', userroutes.delete
- 
+			server.delete '/users/:id', userroutes.delete 
+
+
 			# Department routes 		
 
 			server.get '/departments', departmentroutes.getall
