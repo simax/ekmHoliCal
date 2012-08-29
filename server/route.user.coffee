@@ -43,7 +43,7 @@ class UserRoutes
 						db.collection("departments").update({ "_id" : entity.departmentId, "$atomic" : "true" }, { $addToSet: { 'users' : entity } })
 					else
 						console.log "lastname : " + entity.lastname
-						db.collection("departments").update { "users._id" : entity.userid }, 
+						db.collection("departments").update { "users._id" : entity._id }, 
 							$set: {
 								"users.$.firstname" : entity.firstname, 
 								"users.$.lastname" : entity.lastname, 

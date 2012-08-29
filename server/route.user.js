@@ -80,7 +80,7 @@
             } else {
               console.log("lastname : " + entity.lastname);
               return db.collection("departments").update({
-                "users._id": entity.userid
+                "users._id": entity._id
               }, {
                 $set: {
                   "users.$.firstname": entity.firstname,
