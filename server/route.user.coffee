@@ -31,16 +31,16 @@ class UserRoutes
 		entity = {}
 		@modelBind entity, req
 
-		# console.dir entity
-		db.collection("departments").find({"users._id" : entity.userid}).limit(1).nextObject (err, doc) ->
+		db.collection("departments").find({"users._id" : entity._id}).limit(1).nextObject (err, doc) ->
 			return if err
 			_.each doc.users, (userdoc) ->
-				if userdoc._id.toString() is entity.userid 
+				if userdoc._id.toString() is req.body._id 
 					if userdoc.departmentId.toString() isnt entity.departmentId.toString()  
-						console.log "doc._id: " + doc._id
-						console.log "entity.departmentId: " + entity.departmentId
-						# db.collection("departments").update { "users._id" : entity.userid }, { $pull: { users: { "users._id" : entity.userid} } }
-						db.collection("departments").update { "_id" : entity.departmentid }, { $addToSet: { 'users' : entity } }
+						console.log "User id to move: " + userdoc._id
+						console.log "DepartmentId to move to: " + entity.departmentId
+						db.collection("departments").update({ "users._id" : entity._id, "$atomic" : "true" }, { $pull: { 'users' : { "_id" : entity._id } } })
+						delete entity._id	 
+						db.collection("departments").update({ "_id" : entity.departmentId, "$atomic" : "true" }, { $addToSet: { 'users' : entity } })
 					else
 						console.log "lastname : " + entity.lastname
 						db.collection("departments").update { "users._id" : entity.userid }, 
@@ -62,7 +62,6 @@ class UserRoutes
 			res.send(204)
 
 	modelBind: (entity, req) =>
-		entity.userid = req.body._id
 		entity._id = new dbMan.ObjectID(req.body._id)
 		entity.firstname = req.body.firstname
 		entity.lastname = req.body.lastname
