@@ -6,10 +6,13 @@ _ = require '../public/scripts/libs/underscore.amd.js'
 class UserRoutes
 
 	post: (req, res) =>
-		entity = new @Model  
-		@modelBind(entity, req)
-		entity.save (err) =>
-			@save(entity, res, err)
+		# entity = new @Model  
+		# @modelBind(entity, req)
+		# entity.save (err) =>
+		# 	@save(entity, res, err)
+		entity = {}
+		@modelBind entity, req
+		db.collection("departments").update({ "_id" : entity.departmentId, "$atomic" : "true" }, { $addToSet: { 'users' : entity } })
 
  
 	getall: (req, res) => 
@@ -39,7 +42,6 @@ class UserRoutes
 						console.log "User id to move: " + userdoc._id
 						console.log "DepartmentId to move to: " + entity.departmentId
 						db.collection("departments").update({ "users._id" : entity._id, "$atomic" : "true" }, { $pull: { 'users' : { "_id" : entity._id } } })
-						delete entity._id	 
 						db.collection("departments").update({ "_id" : entity.departmentId, "$atomic" : "true" }, { $addToSet: { 'users' : entity } })
 					else
 						console.log "lastname : " + entity.lastname

@@ -1,9 +1,11 @@
 
 <script type="text/x-handlebars-template" id="tmpl-user-item">
 
-  <div style="float: left; width:150px; height:150px; overflow: hidden; ">
+  <div class="user-container">
 
-    <img class="edit" style="cursor: pointer; display: block; margin: auto; width: 100px; height: 100px; " src = "{{gravatar}}", title = "{{fullname}}" />
+    <button class="btn-remove-user" ><i class="icon-remove"/></button>  
+
+    <img class="edit img-polaroid" style="margin-left: 35px;  cursor: pointer; width:100px; height:100px;" src = "{{gravatar}}", title = "{{fullname}}" />
     
     <span style="font-weight: bold; display: block; text-align: center; margin-left: auto; margin-right: auto; width: 150px;">{{fullname}}</span> 
 

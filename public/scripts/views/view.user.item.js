@@ -31,11 +31,18 @@
 
       UserItemView.prototype.events = {
         "click .edit": "edit",
-        "click .active-status": "toggleActivation"
+        "click .active-status": "toggleActivation",
+        "click .btn-remove-user": "removeUser"
       };
 
       UserItemView.prototype.toggleActivation = function(e) {
         return alert(this.model.get("active"));
+      };
+
+      UserItemView.prototype.removeUser = function(e) {
+        var remove;
+        remove = confirm("Remove " + (this.model.get('fullname')));
+        return this.model.get("users").remove(this.model);
       };
 
       UserItemView.prototype.edit = function() {

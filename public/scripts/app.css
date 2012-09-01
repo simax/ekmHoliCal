@@ -1,0 +1,15 @@
+.user-container {
+  float: left; 
+  width:180px; 
+  height:140px; 
+  overflow: hidden; 
+  margin: 10px; 
+  /* border: solid 1px red;  */
+}
+
+.user-container:hover .btn-remove-user { visibility: visible; }
+
+.btn-remove-user {
+  float:right; 
+  visibility:hidden; 
+}

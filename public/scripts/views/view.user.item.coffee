@@ -13,10 +13,16 @@ define (require) ->
 
     events:
       "click .edit": "edit"
-      "click .active-status": "toggleActivation"
+      "click .active-status":  "toggleActivation"
+      "click .btn-remove-user": "removeUser" 
 
     toggleActivation: (e) ->
       alert @model.get("active")
+
+    removeUser: (e) ->
+      remove = confirm("Remove #{@model.get('fullname')}")
+
+      @model.get("users").remove(@model)
 
     edit: ->
       deptid = @model.get("departmentId")
