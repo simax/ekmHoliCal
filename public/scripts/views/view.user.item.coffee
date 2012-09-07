@@ -21,8 +21,8 @@ define (require) ->
 
     removeUser: (e) ->
       remove = confirm("Remove #{@model.get('fullname')}")
-
-      @model.get("users").remove(@model)
+      @model.destroy()
+      # @model.get("users").remove(@model)
 
     edit: ->
       deptid = @model.get("departmentId")

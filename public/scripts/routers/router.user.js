@@ -102,6 +102,10 @@
           users: new Backbone.Collection(this.model.get("users"))
         });
         users = this.model.get("users");
+        users.on("remove", function(m, col) {
+          console.log("Model: " + m.get("lastname"));
+          return m.destroy();
+        });
         this.model = users.get(id);
         this.model.urlRoot = '/ekmHoliCal/api/users/';
         return this.showUserMaintenance();

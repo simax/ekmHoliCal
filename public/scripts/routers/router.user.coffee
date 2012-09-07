@@ -65,6 +65,10 @@ define (require) ->
       @model = @usersInDepartments.get(deptid)
       @model.set users: new Backbone.Collection @model.get("users")
       users = @model.get("users") 
+      users.on "remove", (m, col) ->
+        console.log "Model: " + m.get("lastname")
+        m.destroy()
+
       @model = users.get(id)
       @model.urlRoot = '/ekmHoliCal/api/users/'
       @showUserMaintenance()
