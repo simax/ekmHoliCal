@@ -17,11 +17,11 @@ describe "My Suite Of Tests", ->
   #   it "has a 'Admin' button ", ->  
   #     assert.ok /div class/.test(body)
   
-  # describe "GET /api/users", ->
+  # describe "GET /api/employees", ->
   #   response = null
   #   before (done)->
   #     options = 
-  #       uri: "http://localhost:1234/ekmholical/api/users"    
+  #       uri: "http://localhost:1234/ekmholical/api/employees"    
   #     request options, (err, _response, body) ->
   #       response = _response
   #       done()
@@ -29,13 +29,13 @@ describe "My Suite Of Tests", ->
   #   it "There is a response", ->  
   #     assert.ok response 
 
-  # describe "POST /api/users", ->
+  # describe "POST /api/employees", ->
   #   response = null
   #   before (done)->
   #     options = 
   #       method: "POST"
   #       json:true
-  #       uri: "http://localhost:1234/ekmholical/api/users"
+  #       uri: "http://localhost:1234/ekmholical/api/employees"
   #       "content-type": "application/json"
   #       body: JSON.stringify
   #         departmentId : "4fb3845f23ef714c0f000003"
@@ -63,7 +63,7 @@ describe "My Suite Of Tests", ->
         body: JSON.stringify
           _id : "4fb3845f23ef714c0f000003"
           name : "Design"
-          users:
+          employees:
             [
               "_id" : "4ff2db9649da545814000179",
               "_id" : "4ff709ff49da545814001412"

@@ -4,7 +4,7 @@ define (require) ->
 
 	require '../../scripts/models/model.Department.js'
 
-	class User extends Backbone.Model
+	class Employee extends Backbone.Model
 
 		initialize: =>				
 			@on 'validated', (isValid, model, attrs) -> Utils.showValidationErrors()
@@ -17,7 +17,7 @@ define (require) ->
 			enddate: ""
 			departmentId: ""
 
-		urlRoot: '/ekmHoliCal/api/users/'
+		urlRoot: '/ekmHoliCal/api/employees/'
 		idAttribute: "_id"
 
 		validation: 

@@ -8,6 +8,6 @@ define (require) ->
 
     parse: (resp, xhr) ->
       for deps in resp
-        for user in deps.users 
-          user.id = user._id
+        for employee in deps.employees 
+          employee.id = employee._id
       resp    

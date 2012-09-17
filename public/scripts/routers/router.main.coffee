@@ -17,7 +17,7 @@ define (require) ->
       app.mainRegion.show(mainView)       
 
     admin: ->
-      # app.vent.trigger "main:admin:users"
+      # app.vent.trigger "main:admin:employees"
       @adminLayoutView = new AdminLayoutView
       @adminLayoutView.render()
       app.mainRegion.show(@adminLayoutView)

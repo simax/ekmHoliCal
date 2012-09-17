@@ -11,4 +11,4 @@ define (require) ->
 
     create: (e) ->
       e.preventDefault()
-      app.vent.trigger "admin:users:create"
+      app.vent.trigger "admin:employees:create"

@@ -3,8 +3,8 @@ require 'express-namespace'
 
 express = require 'express'
 
-_userroutes = require './server/route.user'
-userroutes = new _userroutes.UserRoutes()
+_employeeroutes = require './server/route.employee'
+employeeroutes = new _employeeroutes.EmployeeRoutes()
 
 _departmentroutes = require './server/route.department'
 departmentroutes = new _departmentroutes.DepartmentRoutes()
@@ -12,6 +12,8 @@ departmentroutes = new _departmentroutes.DepartmentRoutes()
 server = module.exports = global.server ? express.createServer().listen 1234
 
 basePath = '/ekmHoliCal'
+
+# ds = new require('./server/datastore')
 
 server.configure ->
   server.register 'html',
@@ -27,20 +29,20 @@ server.configure ->
   server.use express.static(__dirname + '/public')
 
 # API Routes
-
+ 
 server.namespace basePath, ->
 
   server.get '/', (req, res, next) -> res.render 'index'
 
   server.namespace '/api', ->
 
-    # User routes
+    # Employee routes
     
-    server.get '/users', userroutes.getall
-    server.get '/users/:id', userroutes.get
-    server.post '/users', userroutes.post
-    server.put '/users/:id', userroutes.put
-    server.delete '/users/:id', userroutes.delete
+    server.get '/employees', employeeroutes.getall
+    server.get '/employees/:id', employeeroutes.get
+    server.post '/employees', employeeroutes.post
+    server.put '/employees/:id', employeeroutes.put
+    server.delete '/employees/:id', employeeroutes.delete
 
 
     # Department routes
@@ -50,3 +52,4 @@ server.namespace basePath, ->
     server.post '/departments', departmentroutes.post
     server.put '/departments/:id', departmentroutes.put
     server.delete '/departments/:id', departmentroutes.delete
+

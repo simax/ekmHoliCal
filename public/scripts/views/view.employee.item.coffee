@@ -3,32 +3,32 @@ define (require) ->
   Utils = require '../../scripts/Utils.js' 
   window.app = new Backbone.Marionette.Application() unless window.app?
 
-  class UserItemView extends Backbone.Marionette.ItemView
-    template: "#tmpl-user-item"
+  class EmployeeItemView extends Backbone.Marionette.ItemView
+    template: "#tmpl-employee-item"
 
     initialize: ->
       @modelBinder = new Backbone.ModelBinder()
-      @template = require '../../scripts/text!user_item.html'
-      @model.set "users", new Backbone.Collection @model.get("users")
+      @template = require '../../scripts/text!employee_item.html'
+      @model.set "employees", new Backbone.Collection @model.get("employees")
 
     events:
       "click .edit": "edit"
       "click .active-status":  "toggleActivation"
-      "click .btn-remove-user": "removeUser" 
+      "click .btn-remove-employee": "removeEmployee" 
 
     toggleActivation: (e) ->
       alert @model.get("active")
 
-    removeUser: (e) ->
+    removeEmployee: (e) ->
       remove = confirm("Remove #{@model.get('fullname')}")
       @model.destroy()
-      # @model.get("users").remove(@model)
+      # @model.get("employees").remove(@model)
 
     edit: ->
       deptid = @model.get("departmentId")
       id = @model.get("id")
-      new app.UserController().adminUsersEdit(deptid, id)
-      Backbone.history.navigate("admin/department/" + @model.get("departmentId") + "/user/edit/" + @model.get("id"))
+      new app.EmployeeController().adminEmployeesEdit(deptid, id)
+      Backbone.history.navigate("admin/department/" + @model.get("departmentId") + "/employee/edit/" + @model.get("id"))
 
     onShow: =>
       @modelBinder.bind(@model, @el) 

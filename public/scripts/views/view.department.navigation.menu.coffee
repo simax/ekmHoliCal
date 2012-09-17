@@ -12,4 +12,4 @@ define (require) ->
     create: (e) ->
       e.preventDefault()
       new app.DepartmentController().adminDepartmentsCreate()
-      Backbone.history.navigate("admin/users/create/")
+      Backbone.history.navigate("admin/employees/create/")
