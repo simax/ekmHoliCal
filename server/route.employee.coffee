@@ -1,17 +1,14 @@
 class EmployeeRoutes
 
   constructor: ->
-    @schemas = require('./schemas')
-    @schemas = new @schemas()
-    @Model =  @schemas.DepartmentSchemaModel
-
+    @Model = global.schemas.EmployeeSchemaModel
 
   put: (req, res) =>
     @Model.findById req.params.id, (err, entity) =>
       @modelBind entity, req
       entity.save (err) =>
         @save(entity, res, err)
-
+ 
   post: (req, res) =>
     entity = new @Model
     @modelBind(entity, req)
@@ -19,12 +16,10 @@ class EmployeeRoutes
       @save(entity, res, err)
  
   getall: (req, res) => 
-    
     res.contentType 'application/json'
-    @Model 
-      .find() 
-      .run (err, entity) ->
-        res.send(entity)
+    @Model.find().exec (err, data) -> 
+      res.send err if err
+      res.send data
  
   get: (req, res) => 
     @Model

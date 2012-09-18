@@ -1,7 +1,6 @@
 class Schemas
 
   constructor: ->
-
     @mongoose = require 'mongoose'
     @schema = @mongoose.Schema
 
@@ -20,7 +19,6 @@ class Schemas
       'employees' : [ @EmployeeSchema ]
      
     @DepartmentSchemaModel = @mongoose.model 'departments', @DepartmentSchema
-
-    @mongoose.connect 'mongodb://localhost:8120/ekmHoliCal'
+    @mongoose.connect('mongodb://localhost:8120/ekmHoliCal')
 
 module.exports = Schemas

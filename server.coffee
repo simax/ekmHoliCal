@@ -3,18 +3,19 @@ require 'express-namespace'
 
 express = require 'express'
 
-_employeeroutes = require './server/route.employee'
+_schemas = require('./server/schemas')
+global.schemas = new _schemas()
+
+_employeeroutes = require('./server/route.employee')
 employeeroutes = new _employeeroutes.EmployeeRoutes()
 
-_departmentroutes = require './server/route.department'
+_departmentroutes = require('./server/route.department')
 departmentroutes = new _departmentroutes.DepartmentRoutes()
 
 server = module.exports = global.server ? express.createServer().listen 1234
 
 basePath = '/ekmHoliCal'
-
-# ds = new require('./server/datastore')
-
+ 
 server.configure ->
   server.register 'html',
     compile: (str, options) ->
