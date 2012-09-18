@@ -4,25 +4,24 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var User, Utils;
+    var Employee, Utils;
     Utils = require('../../scripts/Utils.js');
-    require('../../scripts/models/model.Department.js');
-    return User = (function(_super) {
+    return Employee = (function(_super) {
 
-      __extends(User, _super);
+      __extends(Employee, _super);
 
-      function User() {
+      function Employee() {
         this.initialize = __bind(this.initialize, this);
-        User.__super__.constructor.apply(this, arguments);
+        Employee.__super__.constructor.apply(this, arguments);
       }
 
-      User.prototype.initialize = function() {
+      Employee.prototype.initialize = function() {
         return this.on('validated', function(isValid, model, attrs) {
           return Utils.showValidationErrors();
         });
       };
 
-      User.prototype.defaults = {
+      Employee.prototype.defaults = {
         firstname: "",
         lastname: "",
         email: "",
@@ -31,11 +30,11 @@
         departmentId: ""
       };
 
-      User.prototype.urlRoot = '/ekmHoliCal/api/users/';
+      Employee.prototype.urlRoot = '/ekmHoliCal/api/employees/';
 
-      User.prototype.idAttribute = "_id";
+      Employee.prototype.idAttribute = "_id";
 
-      User.prototype.validation = {
+      Employee.prototype.validation = {
         firstname: {
           required: true,
           msg: 'A first name is required'
@@ -55,7 +54,7 @@
         }
       };
 
-      return User;
+      return Employee;
 
     })(Backbone.Model);
   });

@@ -98,16 +98,12 @@
       EmployeeController.prototype.editEmployee = function(deptid, id) {
         var employees;
         this.model = this.employeesInDepartments.get(deptid);
-        this.model.set({
-          employees: new Backbone.Collection(this.model.get("employees"))
-        });
-        employees = this.model.get("employees");
+        employees = this.model.employees;
         employees.on("remove", function(m, col) {
           console.log("Model: " + m.get("lastname"));
           return m.destroy();
         });
         this.model = employees.get(id);
-        this.model.urlRoot = '/ekmHoliCal/api/employees/';
         return this.showEmployeeMaintenance();
       };
 

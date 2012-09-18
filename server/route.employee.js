@@ -10,15 +10,20 @@
       this.get = __bind(this.get, this);
       this.getall = __bind(this.getall, this);
       this.post = __bind(this.post, this);
-      this.put = __bind(this.put, this);      this.Model = global.schemas.EmployeeSchemaModel;
+      this.put = __bind(this.put, this);      this.Model = global.schemas.DepartmentSchemaModel;
     }
 
     EmployeeRoutes.prototype.put = function(req, res) {
       var _this = this;
-      return this.Model.findById(req.params.id, function(err, entity) {
+      return this.Model.findOne({
+        'employees._id': req.params.id
+      }, function(err, department) {
+        var entity;
+        entity = department.employees.id(req.params.id);
         _this.modelBind(entity, req);
-        return entity.save(function(err) {
-          return _this.save(entity, res, err);
+        return department.save(function(err) {
+          if (err) console.log(err);
+          return res.send(200);
         });
       });
     };
@@ -48,9 +53,16 @@
     };
 
     EmployeeRoutes.prototype["delete"] = function(req, res) {
-      return this.Model.findById(req.params.id, function(err, entity) {
-        entity.remove();
-        return res.send(204);
+      return this.Model.findOne({
+        'employees._id': req.params.id
+      }, function(err, entity) {
+        var _this = this;
+        entity.employees.id(req.params.id).remove();
+        console.log(entity);
+        return entity.save(function(err) {
+          if (err) console.log(err);
+          return res.send(204);
+        });
       });
     };
 
@@ -60,7 +72,7 @@
       entity.email = req.body.email;
       entity.enddate = req.body.enddate;
       entity.active = req.body.active;
-      return entity.departmentId = req.body.departmentId;
+      return entity.ModelId = req.body.ModelId;
     };
 
     EmployeeRoutes.prototype.save = function(entity, res, err) {

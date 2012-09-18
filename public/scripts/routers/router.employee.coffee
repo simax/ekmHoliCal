@@ -11,7 +11,7 @@ define (require) ->
   Employee = require '../../scripts/models/model.employee.js'
   Departments = require '../../scripts/collections/collection.departments.js'
   Department = require '../../scripts/models/model.department.js'
-
+ 
   EmployeeMaintenanceView = require '../../scripts/views/view.employee.maintenance.js'
 
   window.app = new Backbone.Marionette.Application() unless window.app?
@@ -61,19 +61,13 @@ define (require) ->
             @editEmployee(deptid, id)
 
     editEmployee: (deptid, id) =>
-      # @model = @employees.get(id) 
-      @model = @employeesInDepartments.get(deptid)
-      @model.set employees: new Backbone.Collection @model.get("employees")
-      employees = @model.get("employees") 
-      employees.on "remove", (m, col) ->
-        console.log "Model: " + m.get("lastname")
-        m.destroy()
-
-      @model = employees.get(id)
-      @model.urlRoot = '/ekmHoliCal/api/employees/'
+      @department = @employeesInDepartments.get(deptid)
+      employees = @department.employees
+      @model = department.employees.get(id)
       @showEmployeeMaintenance()
 
     showEmployeeMaintenance: =>  
+      # departments for dropdown
       deps = new Departments()
       @model.set departments: deps
       deps.fetch()

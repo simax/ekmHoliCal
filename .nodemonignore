@@ -6,3 +6,4 @@
 /aspnet_client/*
 /data/*
 /server.js/logs/*
+/public/scripts/*.css

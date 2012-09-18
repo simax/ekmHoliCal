@@ -21,8 +21,7 @@
 
       EmployeeItemView.prototype.initialize = function() {
         this.modelBinder = new Backbone.ModelBinder();
-        this.template = require('../../scripts/text!employee_item.html');
-        return this.model.set("employees", new Backbone.Collection(this.model.get("employees")));
+        return this.template = require('../../scripts/text!employee_item.html');
       };
 
       EmployeeItemView.prototype.events = {
@@ -38,6 +37,7 @@
       EmployeeItemView.prototype.removeEmployee = function(e) {
         var remove;
         remove = confirm("Remove " + (this.model.get('fullname')));
+        this.model.urlRoot = '/ekmHoliCal/api/employees';
         return this.model.destroy();
       };
 

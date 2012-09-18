@@ -1,13 +1,15 @@
 class EmployeeRoutes
 
   constructor: ->
-    @Model = global.schemas.EmployeeSchemaModel
+    @Model = global.schemas.DepartmentSchemaModel
 
   put: (req, res) =>
-    @Model.findById req.params.id, (err, entity) =>
-      @modelBind entity, req
-      entity.save (err) =>
-        @save(entity, res, err)
+    @Model.findOne { 'employees._id' : req.params.id}, (err, department) =>
+      entity = department.employees.id(req.params.id)
+      @modelBind(entity, req)
+      department.save (err) =>
+        console.log err if err
+        res.send(200)
  
   post: (req, res) =>
     entity = new @Model
@@ -28,9 +30,12 @@ class EmployeeRoutes
       res.send(entity)
         
   delete: (req, res) =>
-    @Model.findById req.params.id, (err, entity) ->
-      entity.remove()
-      res.send(204)
+    @Model.findOne { 'employees._id' : req.params.id}, (err, entity) ->
+      entity.employees.id(req.params.id).remove()
+      console.log entity
+      entity.save (err) =>
+        console.log err if err
+        res.send(204)
 
   modelBind: (entity, req) =>
     entity.firstname = req.body.firstname
@@ -38,7 +43,7 @@ class EmployeeRoutes
     entity.email = req.body.email
     entity.enddate = req.body.enddate
     entity.active = req.body.active
-    entity.departmentId = req.body.departmentId
+    entity.ModelId = req.body.ModelId
 
   save: (entity, res, err) -> 
     if err 

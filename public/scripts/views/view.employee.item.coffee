@@ -9,7 +9,7 @@ define (require) ->
     initialize: ->
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!employee_item.html'
-      @model.set "employees", new Backbone.Collection @model.get("employees")
+      # @model.set "employees", new Backbone.Collection @model.get("employees")
 
     events:
       "click .edit": "edit"
@@ -21,6 +21,7 @@ define (require) ->
 
     removeEmployee: (e) ->
       remove = confirm("Remove #{@model.get('fullname')}")
+      @model.urlRoot = '/ekmHoliCal/api/employees'
       @model.destroy()
       # @model.get("employees").remove(@model)
 

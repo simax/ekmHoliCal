@@ -6,7 +6,7 @@ class Schemas
 
     @EmployeeSchema = new @schema
       'firstname': { type: String, required: true }, 
-      'lastname': { type: String, required: true }, 
+      'lastname': { type: String }, 
       'email': { type: String, required: true, index: { unique: true }, validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/ },
       'departmentId': { type: String: required: true }
       'enddate': String,
