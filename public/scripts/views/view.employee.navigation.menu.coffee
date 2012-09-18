@@ -16,3 +16,4 @@ define (require) ->
       e.preventDefault()
       new app.EmployeeController().adminEmployeesCreate()
       Backbone.history.navigate("admin/employees/create/")
+ 

@@ -6,7 +6,7 @@ define (require) ->
 
   MainNavigationMenuView = require '../scripts/views/view.main.navigation'
 
-
+ 
   window.app = if not window.app then new Backbone.Marionette.Application() else window.app        
 
   Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1

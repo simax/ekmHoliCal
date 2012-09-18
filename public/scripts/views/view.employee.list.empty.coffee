@@ -7,3 +7,4 @@ define (require) ->
 
     initialize: ->
       @template = require '../../scripts/text!employee_list_empty.html'
+ 

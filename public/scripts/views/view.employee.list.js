@@ -3,24 +3,24 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var UserCompositeView, UserListEmptyView, UserListView;
-    UserCompositeView = require('../../scripts/views/view.user.composite.js');
-    UserListEmptyView = require('../../scripts/views/view.user.list.empty.js');
-    return UserListView = (function(_super) {
+    var EmployeeCompositeView, EmployeeListEmptyView, EmployeeListView;
+    EmployeeCompositeView = require('../../scripts/views/view.employee.composite.js');
+    EmployeeListEmptyView = require('../../scripts/views/view.employee.list.empty.js');
+    return EmployeeListView = (function(_super) {
 
-      __extends(UserListView, _super);
+      __extends(EmployeeListView, _super);
 
-      function UserListView() {
-        UserListView.__super__.constructor.apply(this, arguments);
+      function EmployeeListView() {
+        EmployeeListView.__super__.constructor.apply(this, arguments);
       }
 
-      UserListView.prototype.itemView = UserCompositeView;
+      EmployeeListView.prototype.itemView = EmployeeCompositeView;
 
-      UserListView.prototype.id = "user-list";
+      EmployeeListView.prototype.id = "employee-list";
 
-      UserListView.prototype.emptyView = UserListEmptyView;
+      EmployeeListView.prototype.emptyView = EmployeeListEmptyView;
 
-      return UserListView;
+      return EmployeeListView;
 
     })(Backbone.Marionette.CollectionView);
   });

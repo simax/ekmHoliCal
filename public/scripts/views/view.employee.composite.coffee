@@ -18,3 +18,4 @@ define (require) ->
         employee.set "fullname", "#{employee.get('firstname')} #{employee.get('lastname')}"
         employee.set "gravatar", "http://www.gravatar.com/avatar/" + Utils.CreateMD5Hash(employee.get('email'))
       return
+  

@@ -14,8 +14,6 @@ class DepartmentRoutes
     @Model.find().exec (err, data) -> 
       res.send err if err
       res.send data
-        # .run (err, entity) ->
-        
  
   get: (req, res) =>
     console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id

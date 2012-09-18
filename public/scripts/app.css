@@ -1,4 +1,4 @@
-.user-container {
+.employee-container {
   float: left; 
   width:180px; 
   height:140px; 
@@ -7,9 +7,9 @@
   /* border: solid 1px red;  */
 }
 
-.user-container:hover .btn-remove-user { visibility: visible; }
+.employee-container:hover .btn-remove-employee { visibility: visible; }
 
-.btn-remove-user {
+.btn-remove-employee {
   float:right; 
   visibility:hidden; 
 }

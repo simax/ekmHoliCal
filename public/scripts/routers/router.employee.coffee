@@ -3,7 +3,7 @@ define (require) ->
   AdminLayoutView = require '../../scripts/views/view.admin.layout.js'
   AdminNavigationView = require '../../scripts/views/view.admin.navigation.menu.js'
 
-  EmployeesLayoutView = require '../../scripts/views/view.employees.layout.js'
+  EmployeesLayoutView = require '../../scripts/views/view.employee.layout.js'
   EmployeeNavigationView = require '../../scripts/views/view.employee.navigation.menu.js'
   EmployeeListView = require '../../scripts/views/view.employee.list.js'
 

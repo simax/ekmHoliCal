@@ -16,7 +16,7 @@ define (require) ->
       "click .active-status":  "toggleActivation"
       "click .btn-remove-employee": "removeEmployee" 
 
-    toggleActivation: (e) ->
+    toggleActivation: (e) -> 
       alert @model.get("active")
 
     removeEmployee: (e) ->

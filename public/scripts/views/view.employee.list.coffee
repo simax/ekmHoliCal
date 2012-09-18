@@ -7,4 +7,4 @@ define (require) ->
     itemView: EmployeeCompositeView
     id: "employee-list"  
     emptyView: EmployeeListEmptyView
- 
+  

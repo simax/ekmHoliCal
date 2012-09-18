@@ -5,3 +5,4 @@ define (require) ->
   class Employees extends Backbone.Collection
     model: Employee 
     url: "/ekmHoliCal/api/employees"
+ 

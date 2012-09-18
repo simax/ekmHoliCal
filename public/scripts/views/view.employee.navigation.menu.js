@@ -3,33 +3,33 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var UserNavigationView;
+    var EmployeeNavigationView;
     if (window.app == null) window.app = new Backbone.Marionette.Application();
-    return UserNavigationView = (function(_super) {
+    return EmployeeNavigationView = (function(_super) {
 
-      __extends(UserNavigationView, _super);
+      __extends(EmployeeNavigationView, _super);
 
-      function UserNavigationView() {
-        UserNavigationView.__super__.constructor.apply(this, arguments);
+      function EmployeeNavigationView() {
+        EmployeeNavigationView.__super__.constructor.apply(this, arguments);
       }
 
-      UserNavigationView.prototype.className = "row";
+      EmployeeNavigationView.prototype.className = "row";
 
-      UserNavigationView.prototype.initialize = function() {
-        this.template = require('../../scripts/text!user_navigation.html');
+      EmployeeNavigationView.prototype.initialize = function() {
+        this.template = require('../../scripts/text!employee_navigation.html');
       };
 
-      UserNavigationView.prototype.events = {
+      EmployeeNavigationView.prototype.events = {
         "click #create": "create"
       };
 
-      UserNavigationView.prototype.create = function(e) {
+      EmployeeNavigationView.prototype.create = function(e) {
         e.preventDefault();
-        new app.UserController().adminUsersCreate();
-        return Backbone.history.navigate("admin/users/create/");
+        new app.EmployeeController().adminEmployeesCreate();
+        return Backbone.history.navigate("admin/employees/create/");
       };
 
-      return UserNavigationView;
+      return EmployeeNavigationView;
 
     })(Backbone.Marionette.ItemView);
   });

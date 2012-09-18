@@ -11,7 +11,7 @@ define (require) ->
   class EmployeeMaintenanceView extends Backbone.Marionette.ItemView
     className: "row"
     
-    initialize: =>
+    initialize: => 
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!employee_maintenance.html'
 
