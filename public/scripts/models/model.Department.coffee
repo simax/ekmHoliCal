@@ -16,10 +16,11 @@ define (require) ->
     idAttribute: "_id"
 
     validation: 
+      
       name:
         required: true
         msg: 'A department name is required'
-
+ 
     parse: (response) =>
       @employees = new Employees(response.employees)
       # delete response.employees

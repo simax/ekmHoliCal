@@ -48,8 +48,7 @@ define (require) ->
       if modelValid
         @model.save(
           @model.toJSON(),
-          error: (model, res) -> 
-            alert res.responseText
+          error: (model, res) -> alert "Error: " + res.responseText if res.responseText isnt "OK"
         )
         app.vent.trigger "main:admin:employees"      
 

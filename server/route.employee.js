@@ -19,22 +19,32 @@
         'employees._id': req.params.id
       }, function(err, department) {
         var entity;
+        if (err) res.send(err);
+        if (department == null) res.send(404);
         entity = department.employees.id(req.params.id);
         _this.modelBind(entity, req);
         return department.save(function(err) {
           if (err) console.log(err);
+          if (err) res.send(err);
           return res.send(200);
         });
       });
     };
 
     EmployeeRoutes.prototype.post = function(req, res) {
-      var entity,
-        _this = this;
-      entity = new this.Model;
-      this.modelBind(entity, req);
-      return entity.save(function(err) {
-        return _this.save(entity, res, err);
+      var _this = this;
+      return this.Model.findOne({
+        '_id': req.body.departmentId
+      }, function(err, department) {
+        var employee;
+        if (err) res.send(err);
+        if (department == null) res.send(404);
+        employee = new global.schemas.EmployeeSchemaModel();
+        _this.modelBind(employee, req);
+        department.employees.addToSet(employee);
+        return department.save(function(err) {
+          return _this.respond(employee, res, err);
+        });
       });
     };
 
@@ -60,8 +70,8 @@
         entity.employees.id(req.params.id).remove();
         console.log(entity);
         return entity.save(function(err) {
-          if (err) console.log(err);
-          return res.send(204);
+          if (err) res.send(err);
+          return res.send(200);
         });
       });
     };
@@ -72,10 +82,10 @@
       entity.email = req.body.email;
       entity.enddate = req.body.enddate;
       entity.active = req.body.active;
-      return entity.ModelId = req.body.ModelId;
+      return entity.departmentId = req.body.departmentId;
     };
 
-    EmployeeRoutes.prototype.save = function(entity, res, err) {
+    EmployeeRoutes.prototype.respond = function(entity, res, err) {
       if (err) {
         console.log(err);
         if (err.code = 1101) {

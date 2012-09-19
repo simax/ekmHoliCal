@@ -9,27 +9,32 @@
       this.EmployeeSchema = new this.schema({
         'firstname': {
           type: String,
-          required: true
+          required: true,
+          trim: true
         },
         'lastname': {
-          type: String
+          type: String,
+          required: true,
+          trim: true
         },
         'email': {
           type: String,
           required: true,
+          trim: true,
           index: {
             unique: true
           },
           validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
         },
         'departmentId': {
-          type: {
-            String: {
-              required: true
-            }
-          }
+          type: this.schema.ObjectId,
+          trim: true,
+          required: true
         },
-        'enddate': String,
+        'enddate': {
+          type: String,
+          trim: true
+        },
         'active': {
           type: Boolean,
           "default": true
@@ -40,6 +45,7 @@
         'name': {
           type: String,
           required: true,
+          trim: true,
           index: {
             unique: true
           }

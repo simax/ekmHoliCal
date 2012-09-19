@@ -13,17 +13,11 @@ define (require) ->
 
     events:
       "click .edit": "edit"
-      "click .active-status":  "toggleActivation"
       "click .btn-remove-employee": "removeEmployee" 
 
-    toggleActivation: (e) -> 
-      alert @model.get("active")
-
     removeEmployee: (e) ->
-      remove = confirm("Remove #{@model.get('fullname')}")
-      @model.urlRoot = '/ekmHoliCal/api/employees'
-      @model.destroy()
-      # @model.get("employees").remove(@model)
+      remove = confirm("Remove #{@model.get('fullname')}. Note: All #{@model.get('firstname')}'s details will be completeley removed")
+      @model.destroy() if remove
 
     edit: ->
       deptid = @model.get("departmentId")
@@ -37,6 +31,3 @@ define (require) ->
 
     onClose: =>
       @modelBinder.unbind()  
-
-
-

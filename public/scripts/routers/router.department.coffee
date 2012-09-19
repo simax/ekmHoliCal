@@ -11,7 +11,7 @@ define (require) ->
   Department = require '../../scripts/models/model.department.js'
 
   DepartmentMaintenanceView = require '../../scripts/views/view.department.maintenance.js'
- 
+  
   
   class app.DepartmentRouter extends Backbone.Marionette.AppRouter
     appRoutes: 

@@ -5,17 +5,25 @@ class EmployeeRoutes
 
   put: (req, res) =>
     @Model.findOne { 'employees._id' : req.params.id}, (err, department) =>
+      res.send(err) if err  
+      res.send(404) unless department?
       entity = department.employees.id(req.params.id)
       @modelBind(entity, req)
       department.save (err) =>
         console.log err if err
+        res.send(err) if err  
         res.send(200)
  
   post: (req, res) =>
-    entity = new @Model
-    @modelBind(entity, req)
-    entity.save (err) =>
-      @save(entity, res, err)
+    @Model.findOne { '_id' : req.body.departmentId}, (err, department) =>
+      res.send(err) if err  
+      res.send(404) unless department?
+
+      employee = new global.schemas.EmployeeSchemaModel()
+      @modelBind(employee, req)
+      department.employees.addToSet(employee)
+      department.save (err) =>
+        @respond(employee, res, err)
  
   getall: (req, res) => 
     res.contentType 'application/json'
@@ -34,8 +42,8 @@ class EmployeeRoutes
       entity.employees.id(req.params.id).remove()
       console.log entity
       entity.save (err) =>
-        console.log err if err
-        res.send(204)
+        res.send err if err
+        res.send(200)
 
   modelBind: (entity, req) =>
     entity.firstname = req.body.firstname
@@ -43,9 +51,9 @@ class EmployeeRoutes
     entity.email = req.body.email
     entity.enddate = req.body.enddate
     entity.active = req.body.active
-    entity.ModelId = req.body.ModelId
+    entity.departmentId = req.body.departmentId
 
-  save: (entity, res, err) -> 
+  respond: (entity, res, err) -> 
     if err 
       console.log err 
       if err.code = 1101
@@ -56,4 +64,3 @@ class EmployeeRoutes
       res.send(entity)  
 
 exports.EmployeeRoutes = EmployeeRoutes
-

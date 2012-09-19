@@ -26,19 +26,13 @@
 
       EmployeeItemView.prototype.events = {
         "click .edit": "edit",
-        "click .active-status": "toggleActivation",
         "click .btn-remove-employee": "removeEmployee"
-      };
-
-      EmployeeItemView.prototype.toggleActivation = function(e) {
-        return alert(this.model.get("active"));
       };
 
       EmployeeItemView.prototype.removeEmployee = function(e) {
         var remove;
-        remove = confirm("Remove " + (this.model.get('fullname')));
-        this.model.urlRoot = '/ekmHoliCal/api/employees';
-        return this.model.destroy();
+        remove = confirm("Remove " + (this.model.get('fullname')) + ". Note: All " + (this.model.get('firstname')) + "'s details will be completeley removed");
+        if (remove) return this.model.destroy();
       };
 
       EmployeeItemView.prototype.edit = function() {

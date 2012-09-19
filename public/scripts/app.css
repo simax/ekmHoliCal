@@ -8,8 +8,13 @@
 }
 
 .employee-container:hover .btn-remove-employee { visibility: visible; }
+.department-header:hover .btn-create-employee { visibility: visible; }
 
 .btn-remove-employee {
   float:right; 
+  visibility:hidden; 
+}
+
+.btn-create-employee {
   visibility:hidden; 
 }

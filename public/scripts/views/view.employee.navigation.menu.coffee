@@ -10,10 +10,10 @@ define (require) ->
       return	
 
     events:
-      "click #create": "create"
+      "click #create-department": "create"
 
     create: (e) ->
       e.preventDefault()
-      new app.EmployeeController().adminEmployeesCreate()
-      Backbone.history.navigate("admin/employees/create/")
+      new app.DepartmentController().adminDepartmentsCreate()
+      Backbone.history.navigate("admin/departments/create/")
  

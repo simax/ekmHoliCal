@@ -42,13 +42,13 @@
               return alert(res.responseText);
             }
           });
-          return app.vent.trigger("main:admin:departments");
+          return app.vent.trigger("main:admin:employees");
         }
       };
 
       DepartmentMaintenanceView.prototype.cancel = function(e) {
         e.preventDefault();
-        return app.vent.trigger("main:admin:departments");
+        return app.vent.trigger("main:admin:employees");
       };
 
       DepartmentMaintenanceView.prototype.onShow = function() {

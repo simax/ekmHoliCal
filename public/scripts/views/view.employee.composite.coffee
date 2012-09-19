@@ -10,8 +10,8 @@ define (require) ->
 
     initialize: =>
       @template = require '../../scripts/text!employee_department_header.html'
-      @collection = new Backbone.Collection @model.get("employees") 
-      @enhanceModel()
+      @collection = @model.employees  
+      @enhanceModel()  
 
     enhanceModel: =>
       _.each @collection.models, (employee) => 

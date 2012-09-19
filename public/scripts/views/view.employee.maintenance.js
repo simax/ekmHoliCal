@@ -68,7 +68,9 @@
         if (modelValid) {
           this.model.save(this.model.toJSON(), {
             error: function(model, res) {
-              return alert(res.responseText);
+              if (res.responseText !== "OK") {
+                return alert("Error: " + res.responseText);
+              }
             }
           });
           return app.vent.trigger("main:admin:employees");

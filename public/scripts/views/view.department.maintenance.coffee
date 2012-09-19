@@ -27,11 +27,11 @@ define (require) ->
           error: (model, res) -> 
             alert res.responseText
         )
-        app.vent.trigger "main:admin:departments"      
+        app.vent.trigger "main:admin:employees"      
 
     cancel: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin:departments"
+      app.vent.trigger "main:admin:employees"
 
     onShow: =>
       @modelBinder.bind(@model, @el) 

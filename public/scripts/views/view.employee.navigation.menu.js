@@ -20,13 +20,13 @@
       };
 
       EmployeeNavigationView.prototype.events = {
-        "click #create": "create"
+        "click #create-department": "create"
       };
 
       EmployeeNavigationView.prototype.create = function(e) {
         e.preventDefault();
-        new app.EmployeeController().adminEmployeesCreate();
-        return Backbone.history.navigate("admin/employees/create/");
+        new app.DepartmentController().adminDepartmentsCreate();
+        return Backbone.history.navigate("admin/departments/create/");
       };
 
       return EmployeeNavigationView;

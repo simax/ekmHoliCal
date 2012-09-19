@@ -24,7 +24,7 @@
 
       EmployeeCompositeView.prototype.initialize = function() {
         this.template = require('../../scripts/text!employee_department_header.html');
-        this.collection = new Backbone.Collection(this.model.get("employees"));
+        this.collection = this.model.employees;
         return this.enhanceModel();
       };
 
