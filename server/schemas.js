@@ -21,9 +21,7 @@
           type: String,
           required: true,
           trim: true,
-          index: {
-            unique: true
-          },
+          index: true,
           validate: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
         },
         'departmentId': {
