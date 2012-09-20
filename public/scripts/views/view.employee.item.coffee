@@ -1,5 +1,7 @@
 define (require) ->
 
+  removeEmployeeModal = require '../../scripts/views/view.employee.remove.modal.js'
+
   Utils = require '../../scripts/Utils.js' 
   window.app = new Backbone.Marionette.Application() unless window.app?
 
@@ -9,15 +11,18 @@ define (require) ->
     initialize: ->
       @modelBinder = new Backbone.ModelBinder()
       @template = require '../../scripts/text!employee_item.html'
-      # @model.set "employees", new Backbone.Collection @model.get("employees")
 
     events:
       "click .edit": "edit"
-      "click .btn-remove-employee": "removeEmployee" 
+      "click .btn-remove-employee": "showRemoveEmployeeModal" 
 
-    removeEmployee: (e) ->
-      remove = confirm("Remove #{@model.get('fullname')}. Note: All #{@model.get('firstname')}'s details will be completeley removed")
-      @model.destroy() if remove
+    showRemoveEmployeeModal: (e) =>
+      removeModal = new removeEmployeeModal model: @model
+      removeModal.render()
+      # alert "Remove #{@model.get('fullname')}."
+      
+      # remove = false;
+      # remove = confirm("Remove #{@model.get('fullname')}. Note: All #{@model.get('firstname')}'s details will be completeley removed")
 
     edit: ->
       deptid = @model.get("departmentId")
@@ -25,7 +30,7 @@ define (require) ->
       new app.EmployeeController().adminEmployeesEdit(deptid, id)
       Backbone.history.navigate("admin/department/" + @model.get("departmentId") + "/employee/edit/" + @model.get("id"))
 
-    onShow: =>
+    onRender: =>
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
 

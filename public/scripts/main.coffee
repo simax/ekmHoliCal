@@ -27,6 +27,7 @@
       employee_maintenance:       'templates/tmpl.employee.maintenance'
       employee_navigation:        'templates/tmpl.employee.navigation'
       employee_layout:            'templates/tmpl.employees.layout'
+      employee_remove_modal:      'templates/tmpl.employee.remove.modal'
        
       department_grid_header: 'templates/tmpl.department.grid.header'
       department_item:        'templates/tmpl.department.item'

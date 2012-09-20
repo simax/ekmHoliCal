@@ -4,7 +4,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var EmployeeItemView, Utils;
+    var EmployeeItemView, Utils, removeEmployeeModal;
+    removeEmployeeModal = require('../../scripts/views/view.employee.remove.modal.js');
     Utils = require('../../scripts/Utils.js');
     if (window.app == null) window.app = new Backbone.Marionette.Application();
     return EmployeeItemView = (function(_super) {
@@ -13,7 +14,8 @@
 
       function EmployeeItemView() {
         this.onClose = __bind(this.onClose, this);
-        this.onShow = __bind(this.onShow, this);
+        this.onRender = __bind(this.onRender, this);
+        this.showRemoveEmployeeModal = __bind(this.showRemoveEmployeeModal, this);
         EmployeeItemView.__super__.constructor.apply(this, arguments);
       }
 
@@ -26,13 +28,15 @@
 
       EmployeeItemView.prototype.events = {
         "click .edit": "edit",
-        "click .btn-remove-employee": "removeEmployee"
+        "click .btn-remove-employee": "showRemoveEmployeeModal"
       };
 
-      EmployeeItemView.prototype.removeEmployee = function(e) {
-        var remove;
-        remove = confirm("Remove " + (this.model.get('fullname')) + ". Note: All " + (this.model.get('firstname')) + "'s details will be completeley removed");
-        if (remove) return this.model.destroy();
+      EmployeeItemView.prototype.showRemoveEmployeeModal = function(e) {
+        var removeModal;
+        removeModal = new removeEmployeeModal({
+          model: this.model
+        });
+        return removeModal.render();
       };
 
       EmployeeItemView.prototype.edit = function() {
@@ -43,7 +47,7 @@
         return Backbone.history.navigate("admin/department/" + this.model.get("departmentId") + "/employee/edit/" + this.model.get("id"));
       };
 
-      EmployeeItemView.prototype.onShow = function() {
+      EmployeeItemView.prototype.onRender = function() {
         this.modelBinder.bind(this.model, this.el);
         return Backbone.Validation.bind(this, {
           forceUpdate: true
