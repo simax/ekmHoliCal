@@ -1,7 +1,9 @@
 (function() {
 
   define(function(require) {
-    var MainNavigationMenuView, routeDepartment, routeEmployee, routeMain;
+    var AdminLayoutView, AdminNavigationView, MainNavigationMenuView, routeDepartment, routeEmployee, routeMain;
+    AdminLayoutView = require('../scripts/views/view.admin.layout.js');
+    AdminNavigationView = require('../scripts/views/view.admin.navigation.menu.js');
     routeMain = require('../scripts/routers/router.main.js');
     routeEmployee = require('../scripts/routers/router.employee.js');
     routeDepartment = require('../scripts/routers/router.department.js');
@@ -26,9 +28,15 @@
     });
     app.addInitializer(function() {
       var mainNavMenuView;
-      app.data = {};
+      app.addAdminLayout = function() {
+        app.adminLayoutView = new AdminLayoutView();
+        app.mainRegion.show(app.adminLayoutView);
+        app.adminLayoutView.render();
+        return app.adminLayoutView.navigationRegion.show(new AdminNavigationView);
+      };
       mainNavMenuView = new MainNavigationMenuView();
       app.mainNavigationMenuRegion.show(mainNavMenuView);
+      app.addAdminLayout();
       app.mainRouter = new routeMain.MainRouter({
         controller: new routeMain.MainController
       });

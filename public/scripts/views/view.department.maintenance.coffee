@@ -27,13 +27,13 @@ define (require) ->
           error: (model, res) -> 
             alert res.responseText
         )
-        app.vent.trigger "main:admin:employees"      
+        app.vent.trigger "main:admin:departments"      
 
     cancel: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin:employees"
+      app.vent.trigger "main:admin:departments"
 
-    onShow: =>
+    onRender: =>
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
 

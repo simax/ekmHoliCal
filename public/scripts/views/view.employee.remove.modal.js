@@ -12,12 +12,10 @@
 
       function EmployeeRemoveModalView() {
         this.onClose = __bind(this.onClose, this);
-        this.onRender = __bind(this.onRender, this);
+        this.onShow = __bind(this.onShow, this);
         this.removeEmployee = __bind(this.removeEmployee, this);
         EmployeeRemoveModalView.__super__.constructor.apply(this, arguments);
       }
-
-      EmployeeRemoveModalView.prototype.template = "#tmpl-employee-remove-modal";
 
       EmployeeRemoveModalView.prototype.initialize = function() {
         this.modelBinder = new Backbone.ModelBinder();
@@ -25,14 +23,15 @@
       };
 
       EmployeeRemoveModalView.prototype.events = {
-        "click .remove-confirmed": "removeEmployee"
+        "click #remove-confirmed": "removeEmployee"
       };
 
       EmployeeRemoveModalView.prototype.removeEmployee = function(e) {
-        return alert("Remove " + (this.model.get('fullname')) + ".");
+        this.model.destroy();
+        return $('#removeModal').modal('hide');
       };
 
-      EmployeeRemoveModalView.prototype.onRender = function() {
+      EmployeeRemoveModalView.prototype.onShow = function() {
         this.modelBinder.bind(this.model, this.el);
         return $('#removeModal').modal('show');
       };

@@ -1,8 +1,5 @@
 define (require) ->
  
-  AdminLayoutView = require '../../scripts/views/view.admin.layout.js'
-  AdminNavigationView = require '../../scripts/views/view.admin.navigation.menu.js'
-
   EmployeesLayoutView = require '../../scripts/views/view.employee.layout.js'
   EmployeeNavigationView = require '../../scripts/views/view.employee.navigation.menu.js'
   EmployeeListView = require '../../scripts/views/view.employee.list.js'
@@ -13,6 +10,7 @@ define (require) ->
   Department = require '../../scripts/models/model.department.js'
  
   EmployeeMaintenanceView = require '../../scripts/views/view.employee.maintenance.js'
+  EmployeeRemoveModalView = require '../../scripts/views/view.employee.remove.modal.js'
 
   window.app = new Backbone.Marionette.Application() unless window.app?
 
@@ -24,34 +22,25 @@ define (require) ->
 
   class app.EmployeeController 
 
-    setupLayout: =>
-      @adminLayoutView = new AdminLayoutView
-      @adminLayoutView.render()
-      app.mainRegion.show(@adminLayoutView)
-
-    showAdminLayout: =>
-      @setupLayout()
-      @adminLayoutView.navigationRegion.show(new AdminNavigationView)
-
     adminEmployees: =>
-      @showAdminLayout()
-      employeesLayoutView = new EmployeesLayoutView
-      employeesLayoutView.render()
-      @adminLayoutView.contentRegion.show(employeesLayoutView)      
+      app.addAdminLayout()
+      app.employeesLayoutView = new EmployeesLayoutView()
 
-      employeesLayoutView.navigationRegion.show(new EmployeeNavigationView)
+      app.adminLayoutView.contentRegion.show(app.employeesLayoutView)      
+      app.employeesLayoutView.navigationRegion.show(new EmployeeNavigationView)
 
       @employeesInDepartments = new Departments()  
       @employeesInDepartments.fetch
         success: =>
           employeeListView = new EmployeeListView(collection: @employeesInDepartments)
-          employeesLayoutView.listRegion.show(employeeListView)
+          app.employeesLayoutView.listRegion.show(employeeListView)
 
     adminEmployeesCreate: =>
       @model = new Employee()
       @showEmployeeMaintenance()
 
     adminEmployeesEdit: (deptid, id) =>
+      app.adminLayoutView.navigationRegion.close()
       if @employeesInDepartments?  
         @editEmployee(deptid, id)
       else 
@@ -61,10 +50,30 @@ define (require) ->
             @editEmployee(deptid, id)
 
     editEmployee: (deptid, id) =>
-      @department = @employeesInDepartments.get(deptid)
-      employees = @department.employees
-      @model = department.employees.get(id)
+      @setModel deptid, id
       @showEmployeeMaintenance()
+
+    adminEmployeesRemove: (deptid, id) =>
+      if @employeesInDepartments?  
+        @removeEmployee(deptid, id)
+      else 
+        @employeesInDepartments = new Departments()
+        @employeesInDepartments.fetch
+          success: =>
+            @removeEmployee(deptid, id)  
+
+
+    removeEmployee: (deptid, id) =>  
+      @setModel deptid, id
+
+      removeModalView = new EmployeeRemoveModalView(model: @model)
+      # employeesLayoutView = new EmployeesLayoutView
+      # employeesLayoutView.render()
+
+      # app.adminLayoutView.contentRegion.show(employeesLayoutView)      
+
+      
+  
 
     showEmployeeMaintenance: =>  
       # departments for dropdown
@@ -72,12 +81,16 @@ define (require) ->
       @model.set departments: deps
       deps.fetch()
 
-      employeeMaintenanceView = new EmployeeMaintenanceView
-        model: @model
+      employeeMaintenanceView = new EmployeeMaintenanceView(model: @model)
 
-      @setupLayout()  
-      @adminLayoutView.contentRegion.show(employeeMaintenanceView)      
+      app.adminLayoutView.contentRegion.show(employeeMaintenanceView)      
         
+    setModel: (deptid, id) => 
+      @department = @employeesInDepartments.get(deptid)
+      employees = @department.employees
+      @model = @department.employees.get(id)
+  
+
 
   EmployeeRouter: app.EmployeeRouter
   EmployeeController: app.EmployeeController

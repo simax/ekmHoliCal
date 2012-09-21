@@ -1,12 +1,12 @@
 define (require) ->
 
-  removeEmployeeModal = require '../../scripts/views/view.employee.remove.modal.js'
+  EmployeeRemoveModalView = require '../../scripts/views/view.employee.remove.modal.js'
 
   Utils = require '../../scripts/Utils.js' 
   window.app = new Backbone.Marionette.Application() unless window.app?
 
   class EmployeeItemView extends Backbone.Marionette.ItemView
-    template: "#tmpl-employee-item"
+    # template: "#tmpl-employee-item"
 
     initialize: ->
       @modelBinder = new Backbone.ModelBinder()
@@ -17,12 +17,9 @@ define (require) ->
       "click .btn-remove-employee": "showRemoveEmployeeModal" 
 
     showRemoveEmployeeModal: (e) =>
-      removeModal = new removeEmployeeModal model: @model
-      removeModal.render()
-      # alert "Remove #{@model.get('fullname')}."
+      removeModalView = new EmployeeRemoveModalView(model: @model)
+      app.employeesLayoutView.removeRegion.show(removeModalView)
       
-      # remove = false;
-      # remove = confirm("Remove #{@model.get('fullname')}. Note: All #{@model.get('firstname')}'s details will be completeley removed")
 
     edit: ->
       deptid = @model.get("departmentId")
@@ -30,7 +27,7 @@ define (require) ->
       new app.EmployeeController().adminEmployeesEdit(deptid, id)
       Backbone.history.navigate("admin/department/" + @model.get("departmentId") + "/employee/edit/" + @model.get("id"))
 
-    onRender: =>
+    onShow: =>
       @modelBinder.bind(@model, @el) 
       Backbone.Validation.bind(@, forceUpdate: true) 
 

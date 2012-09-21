@@ -14,7 +14,7 @@
 
       function DepartmentMaintenanceView() {
         this.onClose = __bind(this.onClose, this);
-        this.onShow = __bind(this.onShow, this);
+        this.onRender = __bind(this.onRender, this);
         this.initialize = __bind(this.initialize, this);
         DepartmentMaintenanceView.__super__.constructor.apply(this, arguments);
       }
@@ -42,16 +42,16 @@
               return alert(res.responseText);
             }
           });
-          return app.vent.trigger("main:admin:employees");
+          return app.vent.trigger("main:admin:departments");
         }
       };
 
       DepartmentMaintenanceView.prototype.cancel = function(e) {
         e.preventDefault();
-        return app.vent.trigger("main:admin:employees");
+        return app.vent.trigger("main:admin:departments");
       };
 
-      DepartmentMaintenanceView.prototype.onShow = function() {
+      DepartmentMaintenanceView.prototype.onRender = function() {
         this.modelBinder.bind(this.model, this.el);
         return Backbone.Validation.bind(this, {
           forceUpdate: true

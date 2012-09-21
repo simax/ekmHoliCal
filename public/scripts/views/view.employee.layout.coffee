@@ -7,4 +7,5 @@ define (require) ->
 
     regions:
       navigationRegion: "#employee-navigation-region"
-      listRegion: "#employee-list-region" 
+      listRegion: "#employee-list-region"
+      removeRegion: "#employee-remove-region" 
