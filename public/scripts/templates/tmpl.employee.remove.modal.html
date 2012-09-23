@@ -1,14 +1,13 @@
 <script type="text/x-handlebars-template" id="tmpl-employee-remove-modal">
 
-  <p>This is the employee removal view</p>
-
   <div class="modal hide slide fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="removeModalLabel" aria-hidden="true" >
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="removeModalLabel">Remove {{fullname}}</h3>
+      <h3 id="removeModalLabel">{{fullname}}</h3>
     </div>
-    <div class="modal-body">
-      <p><b>Note: </b>Removing an employee will permanently destroy all details of the employee.</p>
+    <div class="modal-body alert alert-error">
+      <img class="img-polaroid pull-left" style="margin-left: 15px; margin-right: 15px; width:50px; height:50px;" src = "{{gravatar}}", title = "{{fullname}}" />
+      <b>Note: </b>Removing an employee will permanently destroy all details of the employee.
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

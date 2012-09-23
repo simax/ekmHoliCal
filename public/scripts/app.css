@@ -4,7 +4,32 @@
   height:140px; 
   overflow: hidden; 
   margin: 10px; 
-  /* border: solid 1px red;  */
+  /* border: solid 1px red;  */ 
+}
+
+.expander {
+  cursor: pointer;
+}
+
+.employees-container {
+  /* background-color: #D9EDF7; */
+  margin-bottom:40px;
+}
+
+.employee-image {
+  margin-left: 35px;  
+  cursor: pointer; 
+  width:100px; 
+  height:100px;
+}
+
+.department-header {
+  margin-bottom:5px;
+}
+
+.employee-container:hover .employee-image {
+  width:105px; 
+  height:105px;
 }
 
 .employee-container:hover .btn-remove-employee { visibility: visible; }

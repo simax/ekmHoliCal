@@ -1,12 +1,15 @@
 <script type="text/x-handlebars-template" id="tmpl-employee-department-header">
-  
-  <div class="department-header alert alert-info" style="clear: both; " >
-    {{name}}
-    <button id="create-employee" type="button" class="btn-create-employee btn btn-primary" ><i class="icon-user"></i> Add employee »</button> 
-  </div> 
-  
-  <div id="employees"></div>
+  <div class="department-header well" style="clear: both; padding-right:10px;" >
+    <i class="icon-home"></i>
+    <b>{{name}}</b>
 
+    <img class="edit pull-right expander" style="margin-top:-7px; margin-left: 20px;" src = "../../../images/collapse.png", title = "expand-collapse" />
+
+    <button class="pull-right btn btn-small btn-primary add-employee" style="margin-top:-2px;" type="button"><i class="icon-user"/>Add employee</button>
+  </div> 
+
+  <div id="employees" style="overflow: hidden" class="well well-large employees-container"></div>
+ 
 </script>
 
  

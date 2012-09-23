@@ -40,7 +40,7 @@ define (require) ->
       @showEmployeeMaintenance()
 
     adminEmployeesEdit: (deptid, id) =>
-      app.adminLayoutView.navigationRegion.close()
+      # app.adminLayoutView.navigationRegion.close()
       if @employeesInDepartments?  
         @editEmployee(deptid, id)
       else 
