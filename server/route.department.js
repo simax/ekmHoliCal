@@ -25,7 +25,9 @@
 
     DepartmentRoutes.prototype.getall = function(req, res) {
       res.contentType('application/json');
-      return this.Model.find().exec(function(err, data) {
+      return this.Model.find().sort({
+        'name': 'asc'
+      }).exec(function(err, data) {
         if (err) res.send(err);
         return res.send(data);
       });

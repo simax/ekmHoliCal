@@ -79,11 +79,14 @@
 
       EmployeeMaintenanceView.prototype.cancel = function(e) {
         e.preventDefault();
-        return app.vent.trigger("main:admin:employees");
+        return window.history.back();
       };
 
       EmployeeMaintenanceView.prototype.onShow = function() {
         this.modelBinder.bind(this.model, this.el);
+        Backbone.Validation.bind(this, {
+          forceUpdate: true
+        });
         this.SetGravatarImage();
         return $('#departmentId').select2({
           placeholder: "Select a department"

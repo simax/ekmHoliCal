@@ -31,7 +31,8 @@ define (require) ->
 
     cancel: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin:departments"
+      window.history.back()
+      # app.vent.trigger "main:admin:departments"
 
     onRender: =>
       @modelBinder.bind(@model, @el) 

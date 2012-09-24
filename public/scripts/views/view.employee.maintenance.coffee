@@ -21,7 +21,6 @@ define (require) ->
 
 
     validationFailed: (model, attrs) =>
-      # Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
       if _.indexOf attrs, "departmentId"
         attrs.remove "departmentId"
         $(".invalid").removeAttr('data-error').removeClass("invalid") 
@@ -54,11 +53,11 @@ define (require) ->
 
     cancel: (e) ->
       e.preventDefault()
-      app.vent.trigger "main:admin:employees"
+      window.history.back()
 
     onShow: =>
       @modelBinder.bind(@model, @el) 
-      # Backbone.Validation.bind(@, forceUpdate: true) 
+      Backbone.Validation.bind(@, forceUpdate: true) 
       @SetGravatarImage()
       $('#departmentId').select2
         placeholder: "Select a department"

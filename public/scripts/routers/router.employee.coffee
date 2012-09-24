@@ -35,8 +35,9 @@ define (require) ->
           employeeListView = new EmployeeListView(collection: @employeesInDepartments)
           app.employeesLayoutView.listRegion.show(employeeListView)
 
-    adminEmployeesCreate: =>
+    adminEmployeesCreate: (deptId) =>
       @model = new Employee()
+      @model.set({"departmentId" : deptId})
       @showEmployeeMaintenance()
 
     adminEmployeesEdit: (deptid, id) =>

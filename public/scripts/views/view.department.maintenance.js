@@ -48,7 +48,7 @@
 
       DepartmentMaintenanceView.prototype.cancel = function(e) {
         e.preventDefault();
-        return app.vent.trigger("main:admin:departments");
+        return window.history.back();
       };
 
       DepartmentMaintenanceView.prototype.onRender = function() {

@@ -11,9 +11,11 @@ class DepartmentRoutes
  
   getall: (req, res) =>
     res.contentType 'application/json'
-    @Model.find().exec (err, data) -> 
-      res.send err if err
-      res.send data
+    @Model.find()
+      .sort({'name' : 'asc'})
+      .exec (err, data) -> 
+        res.send err if err
+        res.send data
  
   get: (req, res) =>
     console.log "req.params.id: " + req.params.id + "req.body.id: " + req.body.id
