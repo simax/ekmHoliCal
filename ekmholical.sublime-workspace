@@ -1,0 +1,404 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "tests/testem.json",
+			"settings":
+			{
+				"buffer_size": 289,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "should = chai.should()\n\nbeforeEach: ->\n  \n\ndescribe \"Tests in Coffeescript\", ->\n  it \"true should be truthy\", ->\n    @employees = require '../../public/scripts/collections/collection.Employees.js' \n    true.should.be.ok\n \n\n# require 'coffee-script'\n\n# assert = require 'assert'\n# request = require 'request'\n# app = require '../../server'\n\n \n# describe \"My Suite Of Tests\", ->\n  # describe \"GET /\", ->\n  #   body = null\n  #   before (done)->\n  #     options = \n  #       uri: \"http://localhost/ekmholical/\"    \n  #     request options, (err, response, _body) ->\n  #       body = _body\n  #       done()\n  #   it \"has a 'Admin' button \", ->  \n  #     assert.ok /div class/.test(body)\n  \n  # describe \"GET /api/employees\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       uri: \"http://localhost:1234/ekmholical/api/employees\"    \n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response \n\n  # describe \"POST /api/employees\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       method: \"POST\"\n  #       json:true\n  #       uri: \"http://localhost:1234/ekmholical/api/employees\"\n  #       \"content-type\": \"application/json\"\n  #       body: JSON.stringify\n  #         departmentId : \"4fb3845f23ef714c0f000003\"\n  #         enddate : \"\"\n  #         firstname : \"Dave\"\n  #         lastname : \"Sharpe\"\n  #         email : \"davesharpe@ekmsystems.co.uk\"\n  #         active : false\n\n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response \n\n  # describe \"PUT /api/departments\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       method: \"PUT\"\n  #       json:true\n  #       uri: \"http://localhost:1234/ekmholical/api/departments/4fb3845f23ef714c0f000003\"\n  #       \"content-type\": \"application/json\"\n  #       body: JSON.stringify\n  #         _id : \"4fb3845f23ef714c0f000003\"\n  #         name : \"Design\"\n  #         employees:\n  #           [\n  #             \"_id\" : \"4ff2db9649da545814000179\",\n  #             \"_id\" : \"4ff709ff49da545814001412\"\n  #           ]\n\n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response ",
+			"file": "tests/my first test.coffee",
+			"file_size": 2468,
+			"file_write_time": 129981622734168449,
+			"settings":
+			{
+				"buffer_size": 2403,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/app.coffee",
+			"settings":
+			{
+				"buffer_size": 2251,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/main.coffee",
+			"settings":
+			{
+				"buffer_size": 1924,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/Utils.coffee",
+			"settings":
+			{
+				"buffer_size": 8663,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/models/model.Department.coffee",
+			"settings":
+			{
+				"buffer_size": 630,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/models/model.Employee.coffee",
+			"settings":
+			{
+				"buffer_size": 835,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/Development/ekmHoliCal/server.js",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/E/Development/Testem/assert_libraries/chai.js",
+		"/E/Development/Testem/hello.js",
+		"/E/Development/Testem/myspec.js",
+		"/E/Development/ekmHoliCal/data/log.txt",
+		"/E/temp/example.mdb",
+		"/E/Development/ekmHoliCal/Install mongo as service.bat"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\"../../"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "tests/testem.json",
+					"settings":
+					{
+						"buffer_size": 289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "tests/my first test.coffee",
+					"settings":
+					{
+						"buffer_size": 2403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								138,
+								196
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/scripts/app.coffee",
+					"settings":
+					{
+						"buffer_size": 2251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1000,
+								1000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/scripts/main.coffee",
+					"settings":
+					{
+						"buffer_size": 1924,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								68
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 6,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/scripts/Utils.coffee",
+					"settings":
+					{
+						"buffer_size": 8663,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/scripts/models/model.Department.coffee",
+					"settings":
+					{
+						"buffer_size": 630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								141,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/scripts/models/model.Employee.coffee",
+					"settings":
+					{
+						"buffer_size": 835,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true
+}

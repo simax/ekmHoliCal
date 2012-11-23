@@ -1,11 +1,19 @@
+should = chai.should()
+
+describe "Tests in Coffeescript", ->
+  it "true should be truthy", ->
+    @employees = require '../../public/scripts/collections/collection.Employees.js' 
+    true.should.be.ok
+ 
+
 # require 'coffee-script'
 
-assert = require 'assert'
-request = require 'request'
-app = require '../../server'
+# assert = require 'assert'
+# request = require 'request'
+# app = require '../../server'
 
-
-describe "My Suite Of Tests", ->
+ 
+# describe "My Suite Of Tests", ->
   # describe "GET /", ->
   #   body = null
   #   before (done)->
@@ -52,26 +60,26 @@ describe "My Suite Of Tests", ->
   #   it "There is a response", ->  
   #     assert.ok response 
 
-  describe "PUT /api/departments", ->
-    response = null
-    before (done)->
-      options = 
-        method: "PUT"
-        json:true
-        uri: "http://localhost:1234/ekmholical/api/departments/4fb3845f23ef714c0f000003"
-        "content-type": "application/json"
-        body: JSON.stringify
-          _id : "4fb3845f23ef714c0f000003"
-          name : "Design"
-          employees:
-            [
-              "_id" : "4ff2db9649da545814000179",
-              "_id" : "4ff709ff49da545814001412"
-            ]
+  # describe "PUT /api/departments", ->
+  #   response = null
+  #   before (done)->
+  #     options = 
+  #       method: "PUT"
+  #       json:true
+  #       uri: "http://localhost:1234/ekmholical/api/departments/4fb3845f23ef714c0f000003"
+  #       "content-type": "application/json"
+  #       body: JSON.stringify
+  #         _id : "4fb3845f23ef714c0f000003"
+  #         name : "Design"
+  #         employees:
+  #           [
+  #             "_id" : "4ff2db9649da545814000179",
+  #             "_id" : "4ff709ff49da545814001412"
+  #           ]
 
-      request options, (err, _response, body) ->
-        response = _response
-        done()
+  #     request options, (err, _response, body) ->
+  #       response = _response
+  #       done()
 
-    it "There is a response", ->  
-      assert.ok response 
+  #   it "There is a response", ->  
+  #     assert.ok response 
