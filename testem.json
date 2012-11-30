@@ -1,0 +1,16 @@
+{
+	"framework" : "mocha",
+	"launch_in_dev": [
+		"chrome"
+	],
+	"src_files": [
+		"public/scripts/**/*.coffee",
+		"tests/**/*.coffee"
+	],
+	"serve_files": [
+		"public/scripts/**/*.js",
+		"public/tests/**/*.js"
+	],
+	
+	"test_page": "tests/testRunner.html"
+}

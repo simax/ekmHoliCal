@@ -300,11 +300,43 @@
 	"buffers":
 	[
 		{
-			"file": "/c/development/ekmHoliCal/nodestart.bat",
+			"file": "testem.json",
 			"settings":
 			{
-				"buffer_size": 86,
+				"buffer_size": 251,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/testRunner.html",
+			"settings":
+			{
+				"buffer_size": 3646,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+			"settings":
+			{
+				"buffer_size": 248,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
+			"settings":
+			{
+				"buffer_size": 362,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/server.coffee",
+			"settings":
+			{
+				"buffer_size": 1543,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -368,6 +400,13 @@
 	},
 	"file_history":
 	[
+		"/c/development/ekmHoliCal/public/scripts/libs/require.js",
+		"/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+		"/C/testing/testem.json",
+		"/c/development/ekmHoliCal/package.json",
+		"/c/development/ekmHoliCal/public/scripts/app.coffee",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/c/development/ekmHoliCal/nodestart.bat",
 		"/c/development/ekmHoliCal/public/scripts/views/view.employee.composite.coffee",
 		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_advanced_domainname_ajax.asp",
 		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.maintenance.coffee",
@@ -377,7 +416,6 @@
 		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_shop_shopdetails.asp",
 		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_advanced_domainname_ekmdomains.asp",
 		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"//medusa/ekmPowershop/MacBeth/wwwroot/tbecs/trialusers/index.asp",
 		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/login.asp",
 		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings.asp",
@@ -489,13 +527,7 @@
 		"/C/Development/ekmHoliCal/Server/schemas.coffee.orig",
 		"/C/Development/ekmHoliCal/Server/route.department.coffee.orig",
 		"/C/Development/ekmHoliCal/Server/route.department.js.orig",
-		"/C/Development/ekmHoliCal/.gitignore",
-		"/C/Development/ekmHoliCal/nodestart.bat",
-		"/C/Development/ekmHoliCal/Server.coffee",
-		"/C/Development/ekmHoliCal/Backend/route.user.coffee",
-		"/C/Development/ekmHoliCal/Backend/schemas.coffee",
-		"/C/Development/ekmHoliCal/Backend/route.department.coffee",
-		"/C/Development/ekmHoliCal/tests/app/my first test.js"
+		"/C/Development/ekmHoliCal/.gitignore"
 	],
 	"find":
 	{
@@ -565,6 +597,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"      \"",
 			"addNewDomain",
 			"submit()",
 			"javascript:",
@@ -691,8 +724,7 @@
 			"mongoose.connect",
 			"DataStore",
 			"mongoose.connect",
-			"user",
-			"GetPowershopId"
+			"user"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -731,28 +763,135 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/c/development/ekmHoliCal/nodestart.bat",
+					"file": "testem.json",
 					"settings":
 					{
-						"buffer_size": 86,
+						"buffer_size": 251,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								86
+								249,
+								213
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Batch File/Batch File.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/c/development/ekmHoliCal/tests/testRunner.html",
+					"settings":
+					{
+						"buffer_size": 3646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2176,
+								2176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 456.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+					"settings":
+					{
+						"buffer_size": 248,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								248,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
+					"settings":
+					{
+						"buffer_size": 362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								113,
+								113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/c/development/ekmHoliCal/server.coffee",
+					"settings":
+					{
+						"buffer_size": 1543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -796,7 +935,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 146.0
+		"height": 134.0
 	},
 	"replace":
 	{

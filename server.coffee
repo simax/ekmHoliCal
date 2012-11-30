@@ -26,7 +26,7 @@ server.configure ->
   server.set 'view engine', 'html'
   server.set 'view options', layout: false
   server.use express.bodyParser()
-  server.use server.router
+  server.use server.router 
   server.use express.static(__dirname + '/public')
 
 # API Routes
