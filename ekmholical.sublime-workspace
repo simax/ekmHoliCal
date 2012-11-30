@@ -3,6 +3,7 @@
 	{
 		"selected_items":
 		[
+<<<<<<< HEAD
 			[
 				"user",
 				"userName"
@@ -295,43 +296,85 @@
 				"te",
 				"template"
 			]
+=======
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 		]
 	},
 	"buffers":
 	[
 		{
+<<<<<<< HEAD
 			"file": "testem.json",
 			"settings":
 			{
 				"buffer_size": 251,
+=======
+			"file": "tests/testem.json",
+			"settings":
+			{
+				"buffer_size": 289,
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "should = chai.should()\n\nbeforeEach: ->\n  \n\ndescribe \"Tests in Coffeescript\", ->\n  it \"true should be truthy\", ->\n    @employees = require '../../public/scripts/collections/collection.Employees.js' \n    true.should.be.ok\n \n\n# require 'coffee-script'\n\n# assert = require 'assert'\n# request = require 'request'\n# app = require '../../server'\n\n \n# describe \"My Suite Of Tests\", ->\n  # describe \"GET /\", ->\n  #   body = null\n  #   before (done)->\n  #     options = \n  #       uri: \"http://localhost/ekmholical/\"    \n  #     request options, (err, response, _body) ->\n  #       body = _body\n  #       done()\n  #   it \"has a 'Admin' button \", ->  \n  #     assert.ok /div class/.test(body)\n  \n  # describe \"GET /api/employees\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       uri: \"http://localhost:1234/ekmholical/api/employees\"    \n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response \n\n  # describe \"POST /api/employees\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       method: \"POST\"\n  #       json:true\n  #       uri: \"http://localhost:1234/ekmholical/api/employees\"\n  #       \"content-type\": \"application/json\"\n  #       body: JSON.stringify\n  #         departmentId : \"4fb3845f23ef714c0f000003\"\n  #         enddate : \"\"\n  #         firstname : \"Dave\"\n  #         lastname : \"Sharpe\"\n  #         email : \"davesharpe@ekmsystems.co.uk\"\n  #         active : false\n\n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response \n\n  # describe \"PUT /api/departments\", ->\n  #   response = null\n  #   before (done)->\n  #     options = \n  #       method: \"PUT\"\n  #       json:true\n  #       uri: \"http://localhost:1234/ekmholical/api/departments/4fb3845f23ef714c0f000003\"\n  #       \"content-type\": \"application/json\"\n  #       body: JSON.stringify\n  #         _id : \"4fb3845f23ef714c0f000003\"\n  #         name : \"Design\"\n  #         employees:\n  #           [\n  #             \"_id\" : \"4ff2db9649da545814000179\",\n  #             \"_id\" : \"4ff709ff49da545814001412\"\n  #           ]\n\n  #     request options, (err, _response, body) ->\n  #       response = _response\n  #       done()\n\n  #   it \"There is a response\", ->  \n  #     assert.ok response ",
+			"file": "tests/my first test.coffee",
+			"file_size": 2468,
+			"file_write_time": 129981622734168449,
+			"settings":
+			{
+				"buffer_size": 2403,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
+				"line_ending": "Windows"
+			}
+		},
+		{
+<<<<<<< HEAD
 			"file": "/c/development/ekmHoliCal/tests/testRunner.html",
 			"settings":
 			{
 				"buffer_size": 3646,
+=======
+			"file": "public/scripts/app.coffee",
+			"settings":
+			{
+				"buffer_size": 2251,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 				"line_ending": "Windows"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
 			"settings":
 			{
 				"buffer_size": 248,
+=======
+			"file": "public/scripts/main.coffee",
+			"settings":
+			{
+				"buffer_size": 1924,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 				"line_ending": "Windows"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
 			"settings":
 			{
 				"buffer_size": 362,
+=======
+			"file": "public/scripts/Utils.coffee",
+			"settings":
+			{
+				"buffer_size": 8663,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 				"line_ending": "Windows"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "/c/development/ekmHoliCal/server.coffee",
 			"settings":
 			{
@@ -380,6 +423,32 @@
 			],
 			[
 				"",
+=======
+			"file": "public/scripts/models/model.Department.coffee",
+			"settings":
+			{
+				"buffer_size": 630,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/models/model.Employee.coffee",
+			"settings":
+			{
+				"buffer_size": 835,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 				"Package Control: Install Package"
 			]
 		],
@@ -387,7 +456,11 @@
 	},
 	"console":
 	{
+<<<<<<< HEAD
 		"height": 167.0
+=======
+		"height": 0.0
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 	},
 	"distraction_free":
 	{
@@ -400,6 +473,7 @@
 	},
 	"file_history":
 	[
+<<<<<<< HEAD
 		"/c/development/ekmHoliCal/public/scripts/libs/require.js",
 		"/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
 		"/C/testing/testem.json",
@@ -532,12 +606,31 @@
 	"find":
 	{
 		"height": 37.0
+=======
+		"/E/Development/ekmHoliCal/server.js",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/E/Development/Testem/assert_libraries/chai.js",
+		"/E/Development/Testem/hello.js",
+		"/E/Development/Testem/myspec.js",
+		"/E/Development/ekmHoliCal/data/log.txt",
+		"/E/temp/example.mdb",
+		"/E/Development/ekmHoliCal/Install mongo as service.bat"
+	],
+	"find":
+	{
+		"height": 0.0
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+<<<<<<< HEAD
 			"*.asp",
 			"*.coffee",
 			"*.html",
@@ -590,6 +683,8 @@
 			"*.coffee",
 			"-*.js",
 			""
+=======
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 		]
 	},
 	"find_state":
@@ -597,6 +692,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"      \"",
 			"addNewDomain",
 			"submit()",
@@ -753,6 +849,16 @@
 			"userMaintenanceView",
 			"UserMaintenanceView",
 			"backend"
+=======
+			"\"../../"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 		],
 		"reverse": false,
 		"show_context": true,
@@ -763,23 +869,39 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 4,
+=======
+			"selected": 3,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 			"sheets":
 			[
 				{
 					"buffer": 0,
+<<<<<<< HEAD
 					"file": "testem.json",
 					"settings":
 					{
 						"buffer_size": 251,
+=======
+					"file": "tests/testem.json",
+					"settings":
+					{
+						"buffer_size": 289,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								249,
 								213
+=======
+								90,
+								90
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 							]
 						],
 						"settings":
@@ -795,49 +917,88 @@
 				},
 				{
 					"buffer": 1,
+<<<<<<< HEAD
 					"file": "/c/development/ekmHoliCal/tests/testRunner.html",
 					"settings":
 					{
 						"buffer_size": 3646,
+=======
+					"file": "tests/my first test.coffee",
+					"settings":
+					{
+						"buffer_size": 2403,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								2176,
 								2176
+=======
+								138,
+								196
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 456.0,
+=======
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+<<<<<<< HEAD
 					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
 					"settings":
 					{
 						"buffer_size": 248,
+=======
+					"file": "public/scripts/app.coffee",
+					"settings":
+					{
+						"buffer_size": 2251,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								248,
 								0
+=======
+								1000,
+								1000
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+=======
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -847,23 +1008,41 @@
 				},
 				{
 					"buffer": 3,
+<<<<<<< HEAD
 					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
 					"settings":
 					{
 						"buffer_size": 362,
+=======
+					"file": "public/scripts/main.coffee",
+					"settings":
+					{
+						"buffer_size": 1924,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								113,
 								113
+=======
+								68,
+								68
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+=======
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 6,
+							"translate_tabs_to_spaces": true
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -873,18 +1052,86 @@
 				},
 				{
 					"buffer": 4,
+<<<<<<< HEAD
 					"file": "/c/development/ekmHoliCal/server.coffee",
 					"settings":
 					{
 						"buffer_size": 1543,
+=======
+					"file": "public/scripts/Utils.coffee",
+					"settings":
+					{
+						"buffer_size": 8663,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/scripts/models/model.Department.coffee",
+					"settings":
+					{
+						"buffer_size": 630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								141,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/scripts/models/model.Employee.coffee",
+					"settings":
+					{
+						"buffer_size": 835,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
 								481,
 								481
+=======
+								0,
+								0
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 							]
 						],
 						"settings":
@@ -904,11 +1151,19 @@
 	],
 	"incremental_find":
 	{
+<<<<<<< HEAD
 		"height": 35.0
 	},
 	"input":
 	{
 		"height": 37.0
+=======
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 	},
 	"layout":
 	{
@@ -933,6 +1188,7 @@
 		]
 	},
 	"menu_visible": true,
+<<<<<<< HEAD
 	"output.exec":
 	{
 		"height": 134.0
@@ -942,11 +1198,19 @@
 		"height": 66.0
 	},
 	"save_all_on_build": false,
+=======
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 	"select_file":
 	{
 		"height": 0.0,
 		"selected_items":
 		[
+<<<<<<< HEAD
 			[
 				"view",
 				"public/scripts/views/view.employee.composite.coffee"
@@ -1459,6 +1723,8 @@
 				"bac",
 				"backend.coffee"
 			]
+=======
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 		],
 		"width": 0.0
 	},
@@ -1474,6 +1740,10 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
+<<<<<<< HEAD
 	"side_bar_width": 269.0,
+=======
+	"side_bar_width": 241.0,
+>>>>>>> abca553f00171ca42ef7074cde9e990364bb31af
 	"status_bar_visible": true
 }
