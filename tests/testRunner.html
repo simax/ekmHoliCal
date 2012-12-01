@@ -6,61 +6,63 @@
     <link rel="stylesheet" href="/testem/mocha.css">
     <script src="/testem/mocha.js"></script>
     <script src="/testem.js"></script>
-    <script src="public/scripts/app.js"></script>
-    <script src="public/scripts/collections/collection.Departments.js"></script>
-    <script src="public/scripts/collections/collection.Employees.js"></script>
-    <script src="public/scripts/libs/backbone.amd.js"></script>
-    <script src="public/scripts/libs/backbone.js"></script>
-    <script src="public/scripts/libs/backbone.marionette.amd.js"></script>
-    <script src="public/scripts/libs/backbone.marionette.js"></script>
-    <script src="public/scripts/libs/backbone.modelbinder.js"></script>
-    <script src="public/scripts/libs/backbone.validation.js"></script>
-    <script src="public/scripts/libs/bootstrap/js/bootstrap.js"></script>
-    <script src="public/scripts/libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="public/scripts/libs/handlebars.js"></script>
-    <script src="public/scripts/libs/jquery-1.7.1.js"></script>
-    <script src="public/scripts/libs/jquery-ui-1.8.18.custom.min.js"></script>
-    <script src="public/scripts/libs/jquery.qtip.js"></script>
-    <script src="public/scripts/libs/json2.js"></script>
-    <script src="public/scripts/libs/order.js"></script>
-    <script src="public/scripts/libs/require.js"></script>
-    <script src="public/scripts/libs/select2.js"></script>
-    <script src="public/scripts/libs/underscore.amd.js"></script>
-    <script src="public/scripts/libs/underscore.js"></script>
-    <script src="public/scripts/main.js"></script>
-    <script src="public/scripts/models/model.Department.js"></script>
-    <script src="public/scripts/models/model.Employee.js"></script>
-    <script src="public/scripts/routers/router.department.js"></script>
-    <script src="public/scripts/routers/router.employee.js"></script>
-    <script src="public/scripts/routers/router.main.js"></script>
-    <script src="public/scripts/text.js"></script>
-    <script src="public/scripts/Utils.js"></script>
-    <script src="public/scripts/views/view.admin.layout.js"></script>
-    <script src="public/scripts/views/view.admin.navigation.menu.js"></script>
-    <script src="public/scripts/views/view.department.item.js"></script>
-    <script src="public/scripts/views/view.department.list.js"></script>
-    <script src="public/scripts/views/view.department.maintenance.js"></script>
-    <script src="public/scripts/views/view.department.navigation.menu.js"></script>
-    <script src="public/scripts/views/view.departments.layout.js"></script>
-    <script src="public/scripts/views/view.employee.composite.js"></script>
-    <script src="public/scripts/views/view.employee.item.js"></script>
-    <script src="public/scripts/views/view.employee.layout.js"></script>
-    <script src="public/scripts/views/view.employee.list.empty.js"></script>
-    <script src="public/scripts/views/view.employee.list.js"></script>
-    <script src="public/scripts/views/view.employee.maintenance.js"></script>
-    <script src="public/scripts/views/view.employee.navigation.menu.js"></script>
-    <script src="public/scripts/views/view.employee.remove.modal.js"></script>
-    <script src="public/scripts/views/view.main.js"></script>
-    <script src="public/scripts/views/view.main.navigation.js"></script>
+    <script data-main="/tests/test-main" src="public/scripts/libs/require.js"></script>
+
+ <!--    // <script src="public/scripts/app.js"></script>
+    // <script src="public/scripts/collections/collection.Departments.js"></script>
+    // <script src="public/scripts/collections/collection.Employees.js"></script>
+    // <script src="public/scripts/libs/backbone.amd.js"></script>
+    // <script src="public/scripts/libs/backbone.js"></script>
+    // <script src="public/scripts/libs/backbone.marionette.amd.js"></script>
+    // <script src="public/scripts/libs/backbone.marionette.js"></script>
+    // <script src="public/scripts/libs/backbone.modelbinder.js"></script>
+    // <script src="public/scripts/libs/backbone.validation.js"></script>
+    // <script src="public/scripts/libs/bootstrap/js/bootstrap.js"></script>
+    // <script src="public/scripts/libs/bootstrap/js/bootstrap.min.js"></script>
+    // <script src="public/scripts/libs/handlebars.js"></script>
+    // <script src="public/scripts/libs/jquery-1.7.1.js"></script>
+    // <script src="public/scripts/libs/jquery-ui-1.8.18.custom.min.js"></script>
+    // <script src="public/scripts/libs/jquery.qtip.js"></script>
+    // <script src="public/scripts/libs/json2.js"></script>
+    // <script src="public/scripts/libs/order.js"></script>
+    // <script src="public/scripts/libs/select2.js"></script>
+    // <script src="public/scripts/libs/underscore.amd.js"></script>
+    // <script src="public/scripts/libs/underscore.js"></script>
+    // <script src="public/scripts/main.js"></script>
+    // <script src="public/scripts/models/model.Department.js"></script>
+    // <script src="public/scripts/models/model.Employee.js"></script>
+    // <script src="public/scripts/routers/router.department.js"></script>
+    // <script src="public/scripts/routers/router.employee.js"></script>
+    // <script src="public/scripts/routers/router.main.js"></script>
+    // <script src="public/scripts/text.js"></script>
+    // <script src="public/scripts/Utils.js"></script>
+    // <script src="public/scripts/views/view.admin.layout.js"></script>
+    // <script src="public/scripts/views/view.admin.navigation.menu.js"></script>
+    // <script src="public/scripts/views/view.department.item.js"></script>
+    // <script src="public/scripts/views/view.department.list.js"></script>
+    // <script src="public/scripts/views/view.department.maintenance.js"></script>
+    // <script src="public/scripts/views/view.department.navigation.menu.js"></script>
+    // <script src="public/scripts/views/view.departments.layout.js"></script>
+    // <script src="public/scripts/views/view.employee.composite.js"></script>
+    // <script src="public/scripts/views/view.employee.item.js"></script>
+    // <script src="public/scripts/views/view.employee.layout.js"></script>
+    // <script src="public/scripts/views/view.employee.list.empty.js"></script>
+    // <script src="public/scripts/views/view.employee.list.js"></script>
+    // <script src="public/scripts/views/view.employee.maintenance.js"></script>
+    // <script src="public/scripts/views/view.employee.navigation.menu.js"></script>
+    // <script src="public/scripts/views/view.employee.remove.modal.js"></script>
+    // <script src="public/scripts/views/view.main.js"></script>
+    // <script src="public/scripts/views/view.main.navigation.js"></script> -->
   </head>
 <body>
   <div id="mocha"></div>
-  <script src="public/scripts/libs/require.js"></script>
-  <<script>
-    require(['tests/models/departmentTests.js'], function(department) {
-      mocha.setup('bdd')
+  
+  <script>
+    //require(['backbone','underscore'], function(Backbone, _) {
+    // require(['tests/models/departmentTests.js'], function(department) {
+      mocha.setup('bdd') 
       mocha.run()
-    }); 
+    // }); 
   </script>
 </body>
 </html>

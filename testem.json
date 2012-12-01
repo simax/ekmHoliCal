@@ -4,13 +4,18 @@
 		"chrome"
 	],
 	"src_files": [
-		"public/scripts/**/*.coffee",
+		"public/scripts/collections/*.coffee",
+		"public/scripts/models/*.coffee",
+		"public/scripts/routers/*.coffee",
+		"public/scripts/views/*.coffee",
 		"tests/**/*.coffee"
 	],
 	"serve_files": [
-		"public/scripts/**/*.js",
+		"public/scripts/collections/*.js",
+		"public/scripts/models/*.js",
+		"public/scripts/routers/*.js",
+		"public/scripts/views/*.js",
 		"public/tests/**/*.js"
 	],
-	
 	"test_page": "tests/testRunner.html"
 }
