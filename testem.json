@@ -8,14 +8,14 @@
 		"public/scripts/models/*.coffee",
 		"public/scripts/routers/*.coffee",
 		"public/scripts/views/*.coffee",
-		"tests/**/*.coffee"
+		"tests/**/*.js"
 	],
 	"serve_files": [
 		"public/scripts/collections/*.js",
 		"public/scripts/models/*.js",
 		"public/scripts/routers/*.js",
 		"public/scripts/views/*.js",
-		"public/tests/**/*.js"
+		"tests/**/*.js"
 	],
-	"test_page": "tests/testRunner.html"
+	"test_page": "testRunner.html"
 }
