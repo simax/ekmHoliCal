@@ -1,4 +1,4 @@
 rem supervisor -w Server server.js
 
-coffee --compile --watch .&
+rem coffee --compile --watch .&
 nodemon server.js

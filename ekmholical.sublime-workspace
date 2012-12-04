@@ -3,42 +3,399 @@
 	{
 		"selected_items":
 		[
+			[
+				"user",
+				"userName"
+			],
+			[
+				"doman",
+				"domainName"
+			],
+			[
+				"dom",
+				"domainName"
+			],
+			[
+				"doma",
+				"domainNames"
+			],
+			[
+				"Mac",
+				"Macduff"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
+				"w",
+				"write"
+			],
+			[
+				"de",
+				"department"
+			],
+			[
+				"depa",
+				"departmentId"
+			],
+			[
+				"depart",
+				"department"
+			],
+			[
+				"depar",
+				"departments"
+			],
+			[
+				"departmen",
+				"departmentId"
+			],
+			[
+				"mo",
+				"mongo"
+			],
+			[
+				"get",
+				"getDb"
+			],
+			[
+				"Cas",
+				"casperjs"
+			],
+			[
+				"Ca",
+				"casperjs"
+			],
+			[
+				"domainNames",
+				"domainNamesToJSON"
+			],
+			[
+				"num",
+				"numDomainNames"
+			],
+			[
+				"useExist",
+				"useExistingInUseDomainname"
+			],
+			[
+				"useE",
+				"useExistingInUseDomainname"
+			],
+			[
+				"ou",
+				"output_RegisterDomainName"
+			],
+			[
+				"out",
+				"output_DomainNamesList"
+			],
+			[
+				"outpu",
+				"output_DomainNamesBanner"
+			],
+			[
+				"Cou",
+				"GetCountryCodes"
+			],
+			[
+				"Co",
+				"GetCountryCodes"
+			],
+			[
+				"MAcdu",
+				"Macduff_ConvertToVBArray"
+			],
+			[
+				"country",
+				"CountryCode"
+			],
+			[
+				"isValid",
+				"isValidRequest"
+			],
+			[
+				"co",
+				"cookies"
+			],
+			[
+				"Db",
+				"DbManager"
+			],
+			[
+				"c",
+				"Connection"
+			],
+			[
+				"Departmnt",
+				"department"
+			],
+			[
+				"redire",
+				"redirectUrl"
+			],
+			[
+				"existing",
+				"existingpassword"
+			],
+			[
+				"exist",
+				"existingPassword"
+			],
+			[
+				"ex",
+				"existingpassword"
+			],
+			[
+				"exis",
+				"existingPassword"
+			],
+			[
+				"json",
+				"jsonObject"
+			],
+			[
+				"displ",
+				"display_errors"
+			],
+			[
+				"departm",
+				"departmentId"
+			],
+			[
+				"err",
+				"ErrorExists"
+			],
+			[
+				"number",
+				"Number"
+			],
+			[
+				"Exist",
+				"existing"
+			],
+			[
+				"q",
+				"Querystring"
+			],
+			[
+				"Count",
+				"Country"
+			],
+			[
+				"vi",
+				"ViewModel"
+			],
+			[
+				"b",
+				"body"
+			],
+			[
+				"m_",
+				"m_macbethProducts"
+			],
+			[
+				"m_p",
+				"m_powershopProducts"
+			],
+			[
+				"P",
+				"Products"
+			],
+			[
+				"lock",
+				"lockStatus"
+			],
+			[
+				"e",
+				"end"
+			],
+			[
+				"macb",
+				"macbethProducts"
+			],
+			[
+				"mac",
+				"macbethProducts"
+			],
+			[
+				"macbeth",
+				"macbethProducts"
+			],
+			[
+				"SERVER",
+				"serverpass"
+			],
+			[
+				"has",
+				"hash"
+			],
+			[
+				"Macbeth_",
+				"Macbeth_GenerateAccountLoginUrl"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"Id",
+				"ID"
+			],
+			[
+				"End",
+				"endif"
+			],
+			[
+				"fetc",
+				"fetchDepartments"
+			],
+			[
+				"Depa",
+				"DepartmentController"
+			],
+			[
+				"De",
+				"DepartmentRouter"
+			],
+			[
+				"Main",
+				"MainRouter"
+			],
+			[
+				"background-",
+				"background-color:   (property)"
+			],
+			[
+				"border-",
+				"border-color:   (property)"
+			],
+			[
+				"bac",
+				"background	background: color image repeat attachment position"
+			],
+			[
+				"Use",
+				"UserNavigationView"
+			],
+			[
+				"userNav",
+				"UserNavigationView"
+			],
+			[
+				"main",
+				"mainNavigationMenuRegion"
+			],
+			[
+				"s",
+				"start"
+			],
+			[
+				"te",
+				"template"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "\n<!doctype html>\n<html>\n  <head>\n    <title>Test'em Runner</title>\n    <link rel=\"stylesheet\" href=\"/testem/mocha.css\">\n    <script src=\"/testem/mocha.js\"></script>\n    <script src=\"/testem.js\"></script>\n    <script src=\"public/scripts/libs/require.js\"></script>\n <!--    // <script src=\"public/scripts/app.js\"></script>\n    // <script src=\"public/scripts/collections/collection.Departments.js\"></script>\n    // <script src=\"public/scripts/collections/collection.Employees.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.amd.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.marionette.amd.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.marionette.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.modelbinder.js\"></script>\n    // <script src=\"public/scripts/libs/backbone.validation.js\"></script>\n    // <script src=\"public/scripts/libs/bootstrap/js/bootstrap.js\"></script>\n    // <script src=\"public/scripts/libs/bootstrap/js/bootstrap.min.js\"></script>\n    // <script src=\"public/scripts/libs/handlebars.js\"></script>\n    // <script src=\"public/scripts/libs/jquery-1.7.1.js\"></script>\n    // <script src=\"public/scripts/libs/jquery-ui-1.8.18.custom.min.js\"></script>\n    // <script src=\"public/scripts/libs/jquery.qtip.js\"></script>\n    // <script src=\"public/scripts/libs/json2.js\"></script>\n    // <script src=\"public/scripts/libs/order.js\"></script>\n    // <script src=\"public/scripts/libs/select2.js\"></script>\n    // <script src=\"public/scripts/libs/underscore.amd.js\"></script>\n    // <script src=\"public/scripts/libs/underscore.js\"></script>\n    // <script src=\"public/scripts/main.js\"></script>\n    // <script src=\"public/scripts/models/model.Department.js\"></script>\n    // <script src=\"public/scripts/models/model.Employee.js\"></script>\n    // <script src=\"public/scripts/routers/router.department.js\"></script>\n    // <script src=\"public/scripts/routers/router.employee.js\"></script>\n    // <script src=\"public/scripts/routers/router.main.js\"></script>\n    // <script src=\"public/scripts/text.js\"></script>\n    // <script src=\"public/scripts/Utils.js\"></script>\n    // <script src=\"public/scripts/views/view.admin.layout.js\"></script>\n    // <script src=\"public/scripts/views/view.admin.navigation.menu.js\"></script>\n    // <script src=\"public/scripts/views/view.department.item.js\"></script>\n    // <script src=\"public/scripts/views/view.department.list.js\"></script>\n    // <script src=\"public/scripts/views/view.department.maintenance.js\"></script>\n    // <script src=\"public/scripts/views/view.department.navigation.menu.js\"></script>\n    // <script src=\"public/scripts/views/view.departments.layout.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.composite.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.item.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.layout.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.list.empty.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.list.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.maintenance.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.navigation.menu.js\"></script>\n    // <script src=\"public/scripts/views/view.employee.remove.modal.js\"></script>\n    // <script src=\"public/scripts/views/view.main.js\"></script>\n    // <script src=\"public/scripts/views/view.main.navigation.js\"></script> -->\n  </head>\n<body>\n  <div id=\"mocha\"></div>\n  \n  <script>\n    require(['tests/models/departmentTests.js'], function(department) {\n      mocha.setup('bdd') \n      mocha.run()\n    }); \n  </script>\n</body>\n</html>",
-			"file": "tests/testRunner.html",
-			"file_size": 3868,
-			"file_write_time": 129988383039983791,
+			"file": "testem.json",
 			"settings":
 			{
-				"buffer_size": 3736,
+				"buffer_size": 454,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/testRunner.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+			"settings":
+			{
+				"buffer_size": 379,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
+			"settings":
+			{
+				"buffer_size": 620,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build",
+			"settings":
+			{
+				"buffer_size": 114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/c/development/ekmHoliCal/server.coffee",
+			"settings":
+			{
+				"buffer_size": 1543,
+				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/CoffeeScript/CoffeeScript.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 311.0,
 		"selected_items":
 		[
 			[
-				"Snippet: ",
-				"Snippet: Class"
+				"save",
+				"Project: Save As"
 			],
 			[
-				"Package Control: ",
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packageins",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"install a",
+				"Package Control: Install Package"
+			],
+			[
+				"disc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 167.0
 	},
 	"distraction_free":
 	{
@@ -51,35 +408,196 @@
 	},
 	"file_history":
 	[
-		"/E/Development/ekmHoliCal/tests/testem.json",
-		"/E/Development/ekmHoliCal/tests/my first test.coffee",
-		"/E/Development/ekmHoliCal/public/scripts/app.coffee",
-		"/E/Development/ekmHoliCal/public/scripts/main.coffee",
-		"/E/Development/ekmHoliCal/public/scripts/Utils.coffee",
-		"/E/Development/ekmHoliCal/public/scripts/models/model.Department.coffee",
-		"/E/Development/ekmHoliCal/public/scripts/models/model.Employee.coffee",
-		"/E/Development/ekmHoliCal/server.js",
-		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
-		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/simon/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/E/Development/Testem/assert_libraries/chai.js",
-		"/E/Development/Testem/hello.js",
-		"/E/Development/Testem/myspec.js",
-		"/E/Development/ekmHoliCal/data/log.txt",
-		"/E/temp/example.mdb",
-		"/E/Development/ekmHoliCal/Install mongo as service.bat"
+		"/C/Development/ekmHoliCal/EkmHoliCal.sublime-project",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build-orig.sublime-build",
+		"/c/development/ekmHoliCal/public/scripts/libs/require.js",
+		"/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+		"/C/testing/testem.json",
+		"/c/development/ekmHoliCal/package.json",
+		"/c/development/ekmHoliCal/public/scripts/app.coffee",
+		"/c/development/ekmHoliCal/nodestart.bat",
+		"/c/development/ekmHoliCal/public/scripts/views/view.employee.composite.coffee",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_advanced_domainname_ajax.asp",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.maintenance.coffee",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_advanced_domainname.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/MacDuff/MacduffApiClient.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_shop_shopdetails.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_advanced_domainname_ekmdomains.asp",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/tbecs/trialusers/index.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/login.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings.asp",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.navigation.menu.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/app.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/routers/router.employee.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.department.maintenance.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employee.navigation.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employee.department.header.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.composite.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/app.css",
+		"/C/Development/ekmHoliCal/Server/schemas.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/routers/router.department.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/main.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employee.list.empty.html",
+		"/C/Development/ekmHoliCal/Server/route.employee.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.item.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/models/model.Department.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/collections/collection.Employees.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/models/model.Employee.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employee.item.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.composite.js",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.layout.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.list.coffee",
+		"/C/Development/ekmHoliCal/Server/schemas.js",
+		"/C/Development/ekmHoliCal/public/scripts/collections/collection.Employees.js",
+		"/C/Development/ekmHoliCal/public/scripts/Utils.coffee",
+		"/C/Development/ekmHoliCal/.nodemonignore",
+		"/C/Development/ekmHoliCal/server.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employee.maintenance.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.department.navigation.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.employees.layout.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.admin.navigation.menu.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.admin.navigation.html",
+		"/C/Development/ekmHoliCal/public/scripts/routers/router.main.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.main.coffee",
+		"/C/Development/ekmHoliCal/Server/route.department.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.employee.list.empty.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/app.js",
+		"/C/Development/ekmHoliCal/server.js",
+		"/C/Development/ekmHoliCal/Server/datastore.coffee",
+		"/C/Development/ekmHoliCal/Server/DbManager.coffee",
+		"/C/Development/ekmHoliCal/node_modules/request/tests/server.js",
+		"/C/Development/ekmHoliCal/Server/route.user.js",
+		"/C/Development/ekmHoliCal/Server/route.department.js",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.user.item.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/collections/collection.Users.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/collections/collection.Departments.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.user.maintenance.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/models/model.User.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.user.maintenance.html",
+		"/C/CasperJS/samples/googlepagination.coffee",
+		"/C/CasperJS/samples/googletesting.coffee",
+		"/C/CasperJS/samples/events.coffee",
+		"/C/CasperJS/casperjs/samples/googlelinks.coffee",
+		"/C/CasperJS/samples/googlelinks.coffee",
+		"/C/PhantomJS/examples/loadspeed.coffee",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/SublimeOnSaveBuild.sublime-settings",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/User/vbscript_function.sublime-snippet",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/Macduff_settings_advanced_domainname.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/data/global_headerfooter.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/data/global_headerfooter_system.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/MacDuff/Macduff_settings_shop_shopdetails.asp",
+		"/C/Development/Macduff/Tools/phantomjs/examples/countdown.coffee",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/MacDuff/PowershopApiClient.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/MacbethApiClient.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/serverid.inc",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/youraccount.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/features_ekmresponse.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/signup.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/changepassword.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/loginerror.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/resetpassword.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/newpassword.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/signup-es.asp",
+		"/C/Development/ekmHoliCal/public/scripts/routers/router.main.js",
+		"/C/Development/ekmHoliCal/public/scripts/DbManager.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/DbManager.js",
+		"/C/Development/ekmHoliCal/Server/DbManager.js",
+		"/C/Development/ekmHoliCal/Server/route.user.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/routers/router.user.coffee",
+		"/C/Development/ekmHoliCal/tests/app/my first test.coffee",
+		"/C/Development/ekmHoliCal/public/index.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.user.list.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.user.list.empty.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.user.department.header.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.user.list.empty.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.user.composite.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.user.item.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.user.navigation.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.department.maintenance.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.departments.layout.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.main.content.region.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.main.navigation.menu.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.main.region.html",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.department.list.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/views/view.department.item.coffee",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.department.item.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.admin.layout.html",
+		"/C/Development/ekmHoliCal/public/scripts/templates/tmpl.users.layout.html",
+		"/C/medusa/ekmPowershop/MacBeth/wwwroot/ekmps/signup-ajax-functions.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/settings_account_yourdetails.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/shops/features_featuremanager.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/login-multi-account.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/signup-additional-account.asp",
+		"//medusa/ekmPowershop/MacBeth/wwwroot/ekmps/signup-ajax-functions.asp",
+		"/C/Development/ekmHoliCal/Server/schemas.coffee.orig"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			"*.asp",
+			"*.coffee",
+			"*.html",
+			"*.coffee",
+			"*.html",
+			"*.coffee",
+			"*.*",
+			"*.css",
+			"*.html",
+			"*.*",
+			"*.js",
+			"*.*",
+			"*.coffee",
+			"*.coffee ,*.js",
+			"*.coffee ",
+			"*.*",
+			"*.asp",
+			"*.coffee",
+			"*.asp",
+			"*.*",
+			"*.coffee",
+			"*.asp",
+			"tmpl.*",
+			"*.coffee",
+			"*.asp",
+			"\\\\medusa\\ekmPowershop\\Macbeth\\wwwroot\\ekmps",
+			"C:\\Development\\ekmHoliCal\\",
+			"*.asp",
+			"*.css",
+			"*.asp",
+			"*.coffee",
+			"*.asp",
+			"*.coffee",
+			"*.coffee, *.js",
+			"tmpl.*",
+			"*.coffee",
+			"*.asp",
+			"*.coffee",
+			"*.asp",
+			"*.coffee",
+			"*.*",
+			"*.coffee",
+			"*.asp",
+			"*.coffee",
+			"*.*",
+			"tmpl.*.html",
+			"tmpl-*.html",
+			"*.coffee",
+			"*.*",
+			"*.coffee",
+			"-*.js",
+			""
 		]
 	},
 	"find_state":
@@ -87,14 +605,162 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"\"../../"
+			"      \"",
+			"addNewDomain",
+			"submit()",
+			"javascript:",
+			"useExistingDomainname",
+			"doesDomainExist",
+			"Macduff_GetDomainNames",
+			"Macduff_AddNewDomain",
+			"addNewDomain",
+			"domainNames",
+			"addNewDomain",
+			"addDomain",
+			"validateAddDomain",
+			"transferExistingDomainname",
+			"useExistingDomainname",
+			"addNewDomain",
+			"Add",
+			"Macduff_",
+			"Macduff_AddNewDomain",
+			"Macduff_",
+			"Macduff_GetDomainNames",
+			"domainNamesResponse",
+			"checkInActiveDomains",
+			"update_ShopDetails",
+			"output_DomainNamesContent",
+			"addNewDomain",
+			"addDomain",
+			"ADD DOMAIN",
+			"useExistingDomainname",
+			"userExist",
+			"Macduff_AddNewDomain",
+			"Macduff_",
+			"setdomainname",
+			"<",
+			"SetDomainNameAsActive",
+			"checkInActiveDomains",
+			"Macduff_GetDomainNames",
+			"checkInActiveDomains",
+			"checkEkmDomains",
+			"getDomains",
+			"settings_advanced_domainname_ajax",
+			"checkInActiveDomains",
+			"Macduff_SetDomainNameAsActive",
+			"api",
+			"api.",
+			"Macduff_",
+			"domainCheck",
+			"output_DomainNamesContent",
+			"An Error Has Occurred",
+			"Macduff_SetDomainNameAsActive",
+			"Macduff_GetDomainNames",
+			"domainNames",
+			"api.",
+			"AccountsConn",
+			"ShopConn",
+			"Accounts_Conn",
+			"Shop_Conn",
+			"accountsConn",
+			"accountConn",
+			"shopConn",
+			"getDomains",
+			"Macduff_GetCountryCodes",
+			"checkInActiveDomains",
+			"domainNames",
+			"Macduff_Set",
+			"    public function UpdateShopDetails(shopName, siteUrl, countryCode)\n      AddArgument \"ShopName\", shopName\n      AddArgument \"SiteURL\", siteUrl\n      AddArgument \"CountryCode\", countryCode\n\n      set jsonObject = MakePostRequest(\"/settings/updateshopdetails\")\n      set UpdateShopDetails = jsonObject\n    end function\n",
+			"UpdateShopDetails",
+			"Macduff_SetActiveDomainNames",
+			"update",
+			"Macduff_UpdateShopDetails",
+			"Macduff_GetDomainNames",
+			"domainNames",
+			"Macduff_GetDomainNames",
+			"Getdomainnames",
+			"shopConn",
+			"settings_advanced_domainname_ekmdomains",
+			"output_RegisterDomainName",
+			"getDomains",
+			"output_RegisterDomainName",
+			"shopCon",
+			"accountsConn",
+			"shopConn",
+			"useExistingDomainname",
+			"httpRequest",
+			"register",
+			"checkInActiveDomains",
+			"Macbeth",
+			"MacbethApiClient",
+			"MacduffApiClient",
+			"employee_department_header",
+			"tmpl.employee.department",
+			".employee-container:hover .btn-remove-employee { visibility: visible; }\n",
+			"id=\"employees\"",
+			"departments",
+			"EmployeeController",
+			"employee_navigation",
+			"tmpl.employee.navigation",
+			"add a new employee",
+			"console.dir",
+			"alert",
+			"_.each @collection.models",
+			"_.",
+			"btn-remove-employee",
+			"save",
+			"doc",
+			"Department",
+			"new backbone.collection",
+			"user",
+			"user-container",
+			"Employee",
+			"employee-list-region",
+			"EmployeesLayoutView",
+			"user_navi",
+			"model.user",
+			"view.user",
+			"view.user.compo",
+			"view.user",
+			"../scripts/routers/router.user",
+			"router.user",
+			"DepartmentSchemaModel",
+			"connect",
+			"DbManager",
+			"connect",
+			"Schemas",
+			"mongoose.connect",
+			"DataStore",
+			"mongoose.connect",
+			"user"
 		],
 		"highlight": true,
 		"in_selection": false,
-		"preserve_case": false,
+		"preserve_case": true,
 		"regex": false,
 		"replace_history":
 		[
+			"x-handlebars",
+			"",
+			"server",
+			"ekmsecure.",
+			"ekmsecure110.",
+			"enddate",
+			"EndDate",
+			"enddate",
+			"",
+			"text!",
+			"hbs!",
+			"type=\"text/x-handlebars-template\"",
+			"zstring",
+			"Backbone.Marionette",
+			"app.",
+			"Marionette",
+			"@",
+			"UserMaintenanceView",
+			"userMaintenanceView",
+			"UserMaintenanceView",
+			"backend"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -105,29 +771,164 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "tests/testRunner.html",
+					"file": "testem.json",
 					"settings":
 					{
-						"buffer_size": 3736,
+						"buffer_size": 454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								66,
-								66
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/c/development/ekmHoliCal/tests/testRunner.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 456.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+					"settings":
+					{
+						"buffer_size": 379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								377,
+								377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
+					"settings":
+					{
+						"buffer_size": 620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build",
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								112,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/c/development/ekmHoliCal/server.coffee",
+					"settings":
+					{
+						"buffer_size": 1543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -141,11 +942,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"input":
 	{
-		"height": 35.0
+		"height": 37.0
 	},
 	"layout":
 	{
@@ -170,16 +971,532 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 339.0
+	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 66.0
 	},
-	"save_all_on_build": true,
+	"save_all_on_build": false,
 	"select_file":
 	{
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"view",
+				"public/scripts/views/view.employee.composite.coffee"
+			],
+			[
+				"settings_advanced_dom",
+				"wwwroot/ekmps/shops/settings_advanced_domainname_ekmdomains.asp"
+			],
+			[
+				"settings_advanced_domain",
+				"wwwroot/ekmps/shops/settings_advanced_domainname.asp"
+			],
+			[
+				"login",
+				"wwwroot/ekmps/login.asp"
+			],
+			[
+				"",
+				"wwwroot/ekmps/MacDuff/MacduffApiClient.asp"
+			],
+			[
+				"macd",
+				"wwwroot/ekmps/MacDuff/MacduffApiClient.asp"
+			],
+			[
+				"settings",
+				"wwwroot/ekmps/shops/settings.asp"
+			],
+			[
+				"schema",
+				"Server/schemas.coffee"
+			],
+			[
+				"main",
+				"public/scripts/main.coffee"
+			],
+			[
+				".css",
+				"public/scripts/app.css"
+			],
+			[
+				"tmpl.employee.na",
+				"public/scripts/templates/tmpl.employee.navigation.html"
+			],
+			[
+				"tmpl.emplo",
+				"public/scripts/templates/tmpl.employee.department.header.html"
+			],
+			[
+				"tmpl.employee.lis",
+				"public/scripts/templates/tmpl.employee.list.empty.html"
+			],
+			[
+				"sche",
+				"Server/schemas.coffee"
+			],
+			[
+				"view.depa",
+				"public/scripts/views/view.department.maintenance.coffee"
+			],
+			[
+				"router.employ",
+				"public/scripts/routers/router.employee.coffee"
+			],
+			[
+				"router.dep",
+				"public/scripts/routers/router.department.coffee"
+			],
+			[
+				"app",
+				"public/scripts/app.coffee"
+			],
+			[
+				"router.emplo",
+				"public/scripts/routers/router.employee.coffee"
+			],
+			[
+				"view.employee.item",
+				"public/scripts/views/view.employee.item.coffee"
+			],
+			[
+				"route",
+				"Server/route.employee.coffee"
+			],
+			[
+				"view.employee.com",
+				"public/scripts/views/view.employee.composite.js"
+			],
+			[
+				"view.employees",
+				"public/scripts/views/view.employee.composite.js"
+			],
+			[
+				"employee.compo",
+				"public/scripts/views/view.employee.composite.coffee"
+			],
+			[
+				"view.employee.lis",
+				"public/scripts/views/view.employee.list.coffee"
+			],
+			[
+				"employee.la",
+				"public/scripts/views/view.employee.layout.coffee"
+			],
+			[
+				"model.dep",
+				"public/scripts/models/model.Department.coffee"
+			],
+			[
+				"model.em",
+				"public/scripts/models/model.Employee.coffee"
+			],
+			[
+				"schemas",
+				"Server/schemas.coffee"
+			],
+			[
+				"route.employee",
+				"Server/route.employee.coffee"
+			],
+			[
+				"view.employee.i",
+				"public/scripts/views/view.employee.item.coffee"
+			],
+			[
+				"view.e",
+				"public/scripts/views/view.employee.composite.coffee"
+			],
+			[
+				"model.",
+				"public/scripts/models/model.Employee.coffee"
+			],
+			[
+				"utils",
+				"public/scripts/Utils.coffee"
+			],
+			[
+				"model.depa",
+				"public/scripts/models/model.Department.coffee"
+			],
+			[
+				"model.e",
+				"public/scripts/models/model.Employee.coffee"
+			],
+			[
+				"view.employee.list",
+				"public/scripts/views/view.employee.list.coffee"
+			],
+			[
+				"admin.nav",
+				"public/scripts/templates/tmpl.admin.navigation.html"
+			],
+			[
+				"employeecom",
+				"public/scripts/views/view.employee.composite.coffee"
+			],
+			[
+				"view.employee.li",
+				"public/scripts/views/view.employee.list.coffee"
+			],
+			[
+				"view.employee.n",
+				"public/scripts/views/view.employee.navigation.menu.coffee"
+			],
+			[
+				"eollection.employee",
+				"public/scripts/collections/collection.Employees.coffee"
+			],
+			[
+				"view.employee",
+				"public/scripts/views/view.employee.list.empty.coffee"
+			],
+			[
+				"view.employee.",
+				"public/scripts/views/view.employee.maintenance.coffee"
+			],
+			[
+				"view.emplo",
+				"public/scripts/views/view.employee.composite.coffee"
+			],
+			[
+				"server.js",
+				"server.js"
+			],
+			[
+				"schemas.js",
+				"Server/schemas.js"
+			],
+			[
+				"schema.co",
+				"Server/schemas.coffee"
+			],
+			[
+				"route.dep",
+				"Server/route.department.coffee"
+			],
+			[
+				"route.employ",
+				"Server/route.employee.coffee"
+			],
+			[
+				"server",
+				"server.coffee"
+			],
+			[
+				"route.user.js",
+				"Server/route.user.js"
+			],
+			[
+				"router.user",
+				"public/scripts/routers/router.user.coffee"
+			],
+			[
+				"view.user",
+				"public/scripts/views/view.user.item.coffee"
+			],
+			[
+				"collection.users",
+				"public/scripts/collections/collection.Users.coffee"
+			],
+			[
+				"collection.",
+				"public/scripts/collections/collection.Departments.coffee"
+			],
+			[
+				"collection.dep",
+				"public/scripts/collections/collection.Departments.coffee"
+			],
+			[
+				"tmpl.user.ma",
+				"public/scripts/templates/tmpl.user.maintenance.html"
+			],
+			[
+				"view.",
+				"public/scripts/views/view.user.maintenance.coffee"
+			],
+			[
+				"db",
+				"Server/DbManager.coffee"
+			],
+			[
+				"route.user",
+				"Server/route.user.coffee"
+			],
+			[
+				"route.de",
+				"Server/route.department.coffee"
+			],
+			[
+				"youraccount.asp",
+				"wwwroot/ekmps/youraccount.asp"
+			],
+			[
+				"macduff",
+				"wwwroot/ekmps/MacDuff/MacduffApiClient.asp"
+			],
+			[
+				"settings_shop_shopdet",
+				"wwwroot/ekmps/shops/settings_shop_shopdetails.asp"
+			],
+			[
+				"goo",
+				"googletesting.coffee"
+			],
+			[
+				"settings_shop_deta",
+				"wwwroot/ekmps/shops/settings_shop_shopdetails.asp"
+			],
+			[
+				"settings_advanced_doma",
+				"wwwroot/ekmps/shops/settings_advanced_domainname_ekmdomains.asp"
+			],
+			[
+				"global_header",
+				"wwwroot/ekmps/data/global_headerfooter.asp"
+			],
+			[
+				"serverid",
+				"wwwroot/serverid.inc"
+			],
+			[
+				"serverid.inc",
+				"wwwroot/serverid.inc"
+			],
+			[
+				"serverin",
+				"wwwroot/serverid.inc"
+			],
+			[
+				"serv",
+				"wwwroot/serverid.inc"
+			],
+			[
+				"settings_shop_details",
+				"wwwroot/ekmps/shops/settings_shop_shopdetails.asp"
+			],
+			[
+				"settings.asp",
+				"wwwroot/ekmps/shops/settings.asp"
+			],
+			[
+				"macbeth",
+				"wwwroot/ekmps/MacbethApiClient.asp"
+			],
+			[
+				"login.asp",
+				"wwwroot/ekmps/login.asp"
+			],
+			[
+				"newpass",
+				"wwwroot/ekmps/newpassword.asp"
+			],
+			[
+				"resetpassword",
+				"wwwroot/ekmps/resetpassword.asp"
+			],
+			[
+				"loginerr",
+				"wwwroot/ekmps/loginerror.asp"
+			],
+			[
+				"changepass",
+				"wwwroot/ekmps/changepassword.asp"
+			],
+			[
+				"signup.asp",
+				"wwwroot/ekmps/signup.asp"
+			],
+			[
+				"signup",
+				"wwwroot/ekmps/signup-es.asp"
+			],
+			[
+				"your",
+				"wwwroot/ekmps/youraccount.asp"
+			],
+			[
+				"dbmanager",
+				"Server/DbManager.js"
+			],
+			[
+				"view.user.main",
+				"public/scripts/views/view.user.maintenance.coffee"
+			],
+			[
+				"route.us",
+				"Server/route.user.coffee"
+			],
+			[
+				"server/js",
+				"Server/schemas.js"
+			],
+			[
+				"route.depart",
+				"Server/route.department.js"
+			],
+			[
+				"router.main",
+				"public/scripts/routers/router.main.coffee"
+			],
+			[
+				"index",
+				"public/index.html"
+			],
+			[
+				"tmpl.user.main",
+				"public/scripts/templates/tmpl.user.maintenance.html"
+			],
+			[
+				"view.user.ma",
+				"public/scripts/views/view.user.maintenance.coffee"
+			],
+			[
+				"features_featuremanager.asp",
+				"wwwroot/ekmps/shops/features_featuremanager.asp"
+			],
+			[
+				"macbethc",
+				"wwwroot/ekmps/MacbethApiClient.asp"
+			],
+			[
+				"model.user",
+				"public/scripts/models/model.User.coffee"
+			],
+			[
+				"route.depa",
+				"Server/route.department.coffee"
+			],
+			[
+				"route.use",
+				"Server/route.user.coffee"
+			],
+			[
+				"router",
+				"public/scripts/routers/router.user.coffee"
+			],
+			[
+				"tmpl.na",
+				"public/scripts/templates/tmpl.user.navigation.html"
+			],
+			[
+				"tmpl.user.item",
+				"public/scripts/templates/tmpl.user.item.html"
+			],
+			[
+				"view.user.compo",
+				"public/scripts/views/view.user.composite.coffee"
+			],
+			[
+				"ma",
+				"public/scripts/main.coffee"
+			],
+			[
+				"view.user.list.e",
+				"public/scripts/views/view.user.list.empty.coffee"
+			],
+			[
+				"tmpl.user.de",
+				"public/scripts/templates/tmpl.user.department.header.html"
+			],
+			[
+				"view.depart",
+				"public/scripts/views/view.department.maintenance.coffee"
+			],
+			[
+				"view.user.item",
+				"public/scripts/views/view.user.item.coffee"
+			],
+			[
+				"tmpl.user.depa",
+				"public/scripts/templates/tmpl.user.department.header.html"
+			],
+			[
+				"view.usercompos",
+				"public/scripts/views/view.user.composite.coffee"
+			],
+			[
+				"main.co",
+				"public/scripts/main.coffee"
+			],
+			[
+				"tmpl.department.main",
+				"public/scripts/templates/tmpl.department.maintenance.html"
+			],
+			[
+				"app.co",
+				"public/scripts/app.coffee"
+			],
+			[
+				"tmpl.department.i",
+				"public/scripts/templates/tmpl.department.item.html"
+			],
+			[
+				"tmpl",
+				"public/scripts/templates/tmpl.department.maintenance.html"
+			],
+			[
+				"tmpl.",
+				"public/scripts/templates/tmpl.department.item.html"
+			],
+			[
+				"view.user.list",
+				"public/scripts/views/view.user.list.coffee"
+			],
+			[
+				"view.user.ite",
+				"public/scripts/views/view.user.item.coffee"
+			],
+			[
+				"tmpl.user",
+				"public/scripts/templates/tmpl.user.department.header.html"
+			],
+			[
+				"features",
+				"wwwroot/ekmps/shops/features_featuremanager.asp"
+			],
+			[
+				"settings_acc",
+				"wwwroot/ekmps/shops/settings_account_yourdetails.asp"
+			],
+			[
+				"newpassword",
+				"wwwroot/ekmps/newpassword.asp"
+			],
+			[
+				"youracc",
+				"wwwroot/ekmps/youraccount.asp"
+			],
+			[
+				"macbethcl",
+				"wwwroot/ekmps/MacbethApiClient.asp"
+			],
+			[
+				"tmpl.depa",
+				"public/scripts/templates/tmpl.department.item.html"
+			],
+			[
+				"tmpl.user.ite",
+				"public/scripts/templates/tmpl.user.item.html"
+			],
+			[
+				"undersc",
+				"public/scripts/libs/underscore.amd.js"
+			],
+			[
+				"sch",
+				"Backend/schemas.coffee"
+			],
+			[
+				"bac",
+				"backend.coffee"
+			]
 		],
 		"width": 0.0
 	},
@@ -195,6 +1512,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 241.0,
+	"side_bar_width": 269.0,
 	"status_bar_visible": true
 }
