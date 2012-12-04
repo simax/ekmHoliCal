@@ -15,4 +15,4 @@ define (require) ->
       new Quiz().score.should.equal 0
 
     it "Should have a blank title", ->
-      new Quiz().title.should.equal " "
+      new Quiz().title.should.equal "X"
