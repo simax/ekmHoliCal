@@ -2,19 +2,16 @@
 (function() {
 
   (function() {
-    require.config({
+    return require.config({
       paths: {
         jquery: "public/scripts/libs/jquery-1.7.1",
         jqueryUI: "public/scripts/libs/jquery-ui-1.8.18.custom.min",
-        underscore: "public/scripts/libs/underscore.amd",
-        order: "public/scripts/libs/order",
-        backbone: "public/scripts/libs/backbone.amd",
+        underscore: "public/scripts/libs/underscore",
+        backbone: "public/scripts/libs/backbone",
         handlebars: "public/scripts/libs/handlebars",
         bootstrap: "public/scripts/libs/bootstrap/js/bootstrap",
-        marionette: "public/scripts/libs/backbone.marionette.amd",
+        marionette: "public/scripts/libs/backbone.marionette",
         modelbinder: "public/scripts/ibs/backbone.modelbinder",
-        modelbinder: "public/scripts/ibs/backbone.modelbinder",
-        modelbinder: "public/scripts/libs/backbone.modelbinder",
         validation: "public/scripts/libs/backbone.validation",
         jqueryQtip: "public/scripts/libs/jquery.qtip",
         select2: "public/scripts/libs/select2",
@@ -32,13 +29,34 @@
         department_item: "public/scripts/templates/tmpl.department.item",
         department_maintenance: "public/scripts/templates/tmpl.department.maintenance",
         department_navigation: "public/scripts/templates/tmpl.department.navigation",
-        department_layout: "public/scripts/templates/tmpl.department.layout"
+        department_layout: "public/scripts/templates/tmpl.department.layout",
+        shim: {
+          backbone: {
+            deps: ["underscore", "jquery"],
+            exports: "Backbone"
+          },
+          underscore: {
+            exports: "_"
+          },
+          marionette: ["backbone"],
+          modelbinder: ["backbone"],
+          validation: ["backbone"],
+          jqueryUI: ["jquery"],
+          jqueryQtip: ["jquery"]
+        },
+        mocha: {
+          init: function() {
+            mocha.setup('bdd');
+            return mocha;
+          }
+        }
       }
     });
-    return require(["require", "jquery", "underscore", "backbone", "order!marionette", "order!handlebars", "order!modelbinder", "order!validation", "tests/models/departmentTests", "tests/models/employeeTests"], function() {
-      mocha.setup("bdd");
+  }, require(["require", "jquery", "underscore", "backbone", "marionette", "handlebars", "modelbinder", "validation"], function(require) {
+    mocha.setup("bdd");
+    return require(["tests/models/departmentTests", "tests/models/employeeTests"], function() {
       return mocha.run();
     });
-  }).call(this);
+  })).call(this);
 
 }).call(this);

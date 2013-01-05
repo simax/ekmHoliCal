@@ -6,12 +6,11 @@
       app: 'app',
       jquery: 'libs/jquery-1.7.1',
       jqueryUI: 'libs/jquery-ui-1.8.18.custom.min',
-      underscore: 'libs/underscore.amd',
-      order: 'libs/order',
-      backbone: 'libs/backbone.amd',
+      underscore: 'libs/underscore',
+      backbone: 'libs/backbone',
       handlebars: 'libs/handlebars',
       bootstrap: 'libs/bootstrap/js/bootstrap',
-      marionette: 'libs/backbone.marionette.amd',
+      marionette: 'libs/backbone.marionette',
       modelbinder: 'libs/backbone.modelbinder',
       validation: 'libs/backbone.validation',
       jqueryQtip: 'libs/jquery.qtip',
@@ -30,10 +29,24 @@
       department_item: 'templates/tmpl.department.item',
       department_maintenance: 'templates/tmpl.department.maintenance',
       department_navigation: 'templates/tmpl.department.navigation',
-      department_layout: 'templates/tmpl.department.layout'
+      department_layout: 'templates/tmpl.department.layout',
+      shim: {
+        backbone: {
+          deps: ["underscore", "jquery"],
+          exports: "Backbone"
+        },
+        underscore: {
+          exports: "_"
+        },
+        marionette: ["backbone"],
+        modelbinder: ["backbone"],
+        validation: ["backbone"],
+        jqueryUI: ["jquery"],
+        jqueryQtip: ["jquery"]
+      }
     }
   });
 
-  require(["require", "jquery", "underscore", "backbone", "order!marionette", "order!handlebars", "order!modelbinder", "order!validation", "app"]);
+  require(["require", "jquery", "underscore", "backbone", "marionette", "handlebars", "modelbinder", "validation", "app"]);
 
 }).call(this);

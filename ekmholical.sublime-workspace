@@ -308,7 +308,10 @@
 			}
 		},
 		{
+			"contents": "",
 			"file": "/c/development/ekmHoliCal/tests/testRunner.html",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
 				"buffer_size": 0,
@@ -316,35 +319,47 @@
 			}
 		},
 		{
+			"contents": "",
 			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 379,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "",
 			"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 620,
-				"line_ending": "Unix"
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "",
 			"file": "/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 114,
-				"line_ending": "Unix"
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "",
 			"file": "/c/development/ekmHoliCal/server.coffee",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 1543,
-				"line_ending": "Unix"
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -771,7 +786,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -822,7 +837,7 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 456.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -832,15 +847,15 @@
 					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.coffee",
 					"settings":
 					{
-						"buffer_size": 379,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								377,
-								377
+								0,
+								0
 							]
 						],
 						"settings":
@@ -860,7 +875,7 @@
 					"file": "/c/development/ekmHoliCal/tests/Models/departmentTests.js",
 					"settings":
 					{
-						"buffer_size": 620,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -888,14 +903,14 @@
 					"file": "/C/Users/simonlomax/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-build",
 					"settings":
 					{
-						"buffer_size": 114,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								112,
+								0,
 								0
 							]
 						],
@@ -914,15 +929,15 @@
 					"file": "/c/development/ekmHoliCal/server.coffee",
 					"settings":
 					{
-						"buffer_size": 1543,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								481,
-								481
+								0,
+								0
 							]
 						],
 						"settings":
